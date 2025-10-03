@@ -9,7 +9,7 @@ With Sendbird AI agent and Desk integration, Sendbird Desk agents can leverage t
 * AI activity log: lists the Knowledge references that AI copilot used to generate the message. This appears at the bottom of each AI message.
 * Evaluate AI responses: allows you to rate AI responses by giving them a thumbs up or down. The rating buttons appear at the bottom of each AI message.
 
-<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -34,7 +34,7 @@ Once you have an AI agent ready, follow the steps below to enable the feature.
 2. Go to **Settings > Desk > AI features**.
 3. Click on the **AI copilot** card and turn on the feature. Make sure the AI agent linked to the copilot is the one you've created for this feature.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Agent access
 
@@ -56,7 +56,7 @@ The AI copilot is available at the two places:
 
 * In the ticket view: This allows agents to utilize the AI-powered features while communicating with a customer. This copilot has both a contextual understanding of the customer's issue and an access to Knowledge data linked to it.
 
-<figure><img src="../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * In the left menu bar: This allows agents to view to their previous conversations with the AI copilot and get more general information regarding the customer support policy and workflow they need to follow.
 

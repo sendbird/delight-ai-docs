@@ -1,16 +1,22 @@
----
-hidden: true
----
-
 # CSAT
 
-Customer satisfaction (CSAT) survey helps you improve the overall user experience with Sendbird AI agent by monitoring and managing the agent's performance and interaction with users. At the end of every conversation, you can send out a resolution feedback (CRE) and CSAT survey to users and collect in-depth feedback using follow-up questions. The CSAT page under Build enables you to customize the survey to your service needs. Go to **Build > CSAT** in Sendbird AI agent dashboard to start creating a custom CSAT survey.
+Customer satisfaction (CSAT) survey helps you improve the overall user experience with Sendbird AI agent by monitoring and managing the agent's performance and interaction with users. At the end of every conversation, you can send out a resolution feedback (CRE) and CSAT survey to users and collect in-depth feedback using follow-up questions. The CSAT page under Build enables you to customize the survey to your service needs.&#x20;
+
+Go to **Build > CSAT** in Sendbird AI agent dashboard to get started with a customizable CSAT survey.
 
 {% hint style="warning" %}
 Such customization can be applied to [Messenger](channels/messenger/) and [Email](channels/email.md) channels only. If you wish to update the survey question for other channels such as [SMS](channels/sms.md) and [WhatsApp](channels/whatsapp.md), go to **Build >** **Channels** and configure the settings for each channel type. CSAT survey isn't supported in Voice channels.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+***
+
+## Prerequisites
+
+For seamless customer experience for your users, you must have the following:&#x20;
+
+* The latest version of Sendbird AI agent SDK in your client app.
 
 ***
 
@@ -18,10 +24,21 @@ Such customization can be applied to [Messenger](channels/messenger/) and [Email
 
 This guide walks you through the customization process for a CSAT survey.
 
-1. Log in to Sendbird AI agent dashboard.
-2. Select a Development agent from the AI agent list.
-3. After choosing an AI agent to set a CSAT survey for, navigate to Build > CSAT in the left menu bar.
-4. In the CSAT page, you can customize the survey as follows:
+1. Log in to [Sendbird AI agent dashboard](https://dashboard.sendbird.com).
+2. Select a **Development** agent from the AI agent list.
+3. After choosing an AI agent to set a CSAT survey for, navigate to **Build > CSAT** in the left menu bar.
+4. Then, activate the feature.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+Once this feature is enabled:
+
+* A new customizable CSAT survey will replace the current survey.
+* Data already collected from the current survey will remain and continue to be reflected in your metrics.
+{% endhint %}
+
+5. Once the feature is enabled, you can start customizing the survey as follows:
 
 ### Language
 
@@ -59,16 +76,21 @@ The CSAT survey asks users to rate the service provided by AI agent on a scale o
 
 A follow-up question is a conditional query that can be asked when the user selects a certain response option for the CSAT survey. Here's how to create a follow-up.
 
-1. Select ratings for **If ranting is** and add your question to the box next to **ask**. \
-   Take the screenshot below as an example. If a user rates their satisfaction with one of **1**, **2**, and **3**, they will be asked "What were you dissatisfied with?"
+1. Select the rating conditions for **If ranting is**. Then, add your question to the box next to **ask**.&#x20;
+   1. Take the screenshot below as an example. If a user rates their satisfaction with one of **1**, **2**, and **3**, they will be asked "What were you dissatisfied with?"
 2. Select response type and add response options. The response type can be either a single answer or a paragraph. For single-answer questions, up to five options are allowed.
 3. Determine whether the follow-up question will be required or optional. If required, check the **Required** box in the top-right corner of the section.
 
-<figure><img src="../../.gitbook/assets/image (91).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+The default CSAT survey includes one open-ended follow-up question for all rating options.\
+Each rating can have only one follow-up question. To customize follow-ups per rating, change the question conditions.
+{% endhint %}
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (103).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Others
 

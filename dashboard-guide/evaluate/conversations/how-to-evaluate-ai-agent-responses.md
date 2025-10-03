@@ -51,7 +51,7 @@ Once evaluators completed their rating, you can see the results in the **Convers
    4. **Category**
 3. If you wish to edit the evaluation result of a conversation, navigate to the conversation view. You will see the **Edit** button at the top-right corner of the screen in the conversation view. Click it and make changes needed. Then **Submit**.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ***
 
