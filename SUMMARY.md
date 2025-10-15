@@ -87,3 +87,4 @@
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
+* [Template-Based Layout Component Customization Guide](tutorials/template-based-layout-component-customization-guide.md)
