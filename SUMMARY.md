@@ -71,6 +71,7 @@
   * [Quickstart guide (Messenger)](sdk-docs/react-npm/quickstart-guide-messenger.md)
   * [Context object](sdk-docs/react-npm/context-object.md)
   * [Multi-language support](sdk-docs/react-npm/multi-language-support.md)
+  * [Template-Based Layout Component Customization Guide](sdk-docs/react-npm/template-based-layout-component-customization-guide.md)
 
 ## Platform API
 
@@ -87,4 +88,3 @@
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
-* [Template-Based Layout Component Customization Guide](tutorials/template-based-layout-component-customization-guide.md)

@@ -10,30 +10,6 @@ description: >-
 
 ***
 
-### Table of Contents
-
-* Template-Based Layout Component Customization Guide
-  * Table of Contents
-  * Overview
-    * How Template Components Work
-  * Available Layout Components
-  * Component Hierarchy and Customization
-    * IncomingMessageLayout
-      * Basic Customization Example
-      * Advanced Customization - Hiding Components
-    * OutgoingMessageLayout
-      * Customization Example
-    * SystemMessageLayout
-      * Customization Example
-    * ConversationLayout
-      * Customization Example
-    * PlaceholderLayout
-      * Customization Example
-  * Putting It All Together
-  * Best Practices
-
-***
-
 ### Overview
 
 The Sendbird AI Agent Messenger React SDK provides a powerful template-based layout system that allows for deep customization of UI components while maintaining the core functionality. This system uses a composition pattern where each layout component exposes a template and sub-components that can be individually customized or replaced.
