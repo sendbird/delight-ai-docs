@@ -2,7 +2,7 @@
 icon: rocket-launch
 ---
 
-# Sendbird AI Agent Docs & Guides
+# Sendbird AI Agent Docs & Guides 
 
 Learn how to implement, customize, and perfect your AI agents — all in one place.\
 \
