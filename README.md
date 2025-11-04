@@ -8,7 +8,7 @@ Learn how to implement, customize, and perfect your AI agents — all in one pla
 \
 Our comprehensive documentation guides you through leveraging Sendbird's powerful AI agents to transform customer experiences across all channels. Discover how to go beyond basic conversation AI to create intelligent assistants that achieve impressive resolution rates while freeing your human agents to focus on high-value interactions.&#x20;
 
-### What you'll find inside
+### What you'll find insides
 
 #### Dashboard Guide
 
