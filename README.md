@@ -15,7 +15,7 @@ Our comprehensive documentation guides you through leveraging Sendbird's powerfu
 * **AI agent list:** View all of your AI agents and workspaces, where you can manage deployments, control agent states, and create new agents and workspaces.
 * **Shared assets:** Centrally manage resources that are shared across all AI agents in the same workspace.&#x20;
 * **Build**: Configure your AI agent's profile, appearance, conversation settings, and safeguards.
-* **Test**:  Evaluate how well your AI agent responds to expected user interactions by comparing its responses against predefined examples.
+* **Test**: Evaluate how well your AI agent responds to expected user interactions by comparing its responses against predefined examples.
 * **Evaluate**: Analyze conversations by categories, review AI suggestions, and monitor performance across channels.
 * **Channels**: Manage the platforms where your AI agent interacts with customers.
 * **Integrations**: Connect your AI agent with third-party services and tools.
