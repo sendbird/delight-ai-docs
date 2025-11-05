@@ -1,6 +1,6 @@
 # Freshworks
 
-The Freshworks integration with Sendbird AI Agent enhances customer support by blending intelligent automation with human assistance. This integration allows you to:
+The Freshworks integration with Delight AI agent enhances customer support by blending intelligent automation with human assistance. This integration allows you to:
 
 * Automatically create tickets: When an AI Agent detects issues that require human intervention, it can automatically generate tickets in Freshworks, carrying over relevant conversation details. This ensures a seamless handoff for efficient issue resolution.
 * Hand off conversations to human agents: For complex inquiries or escalations, an AI Agent can smoothly transfer conversations to human agents in Freshworks. The integration preserves full conversation history, enabling human agents to provide faster, more personalized support.
@@ -9,7 +9,7 @@ The Freshworks integration with Sendbird AI Agent enhances customer support by b
 
 ## **Prerequisite**
 
-To establish a connection between Freshworks and Sendbird AI agent, you must meet the following requirements:&#x20;
+To establish a connection between Freshworks and Delight AI agent, you must meet the following requirements:&#x20;
 
 * Subscription to at least Freshworks’ Pro plan to enable its Integration feature.
 * A channel dedicated to Sendbird Integration in your Freshworks account. Follow the instructions below to create one:
@@ -28,7 +28,7 @@ To establish a connection between Freshworks and Sendbird AI agent, you must mee
 
 ### **Step 1: Fill in your Freshworks information in Sendbird**
 
-Now, open your Sendbird AI agent's dashboard and go to **Workspace settings > Integration > Freshworks**.&#x20;
+Now, open your Delight AI agent's dashboard and go to **Workspace settings > Integration > Freshworks**.&#x20;
 
 1. Fill out the credentials fields on the page. Information required for each field can be found in your **Freshworks dashboard**.
 
@@ -59,6 +59,6 @@ You will then see a confirmation label on the **Freshworks** tile indicating tha
 Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Freshworks** for a handoff platform.
-2. Start a conversation on the AI agent widget in Sendbird AI agent dahsboard.&#x20;
+2. Start a conversation on the AI agent widget in Delight AI agent dahsboard.&#x20;
 3. Then click on the **Handoff** button to transfer the conversation to Freshworks.&#x20;
 4. See the summary of the AI agent conversation successfully transferred to the Freshworks ticket.

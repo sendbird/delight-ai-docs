@@ -2,7 +2,7 @@
 
 For high-quality, worry-free AI customer experience, Sendbird provides a feature that can detect AI hallucinations and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
 
-The Flagged messages in Sendbird AI agent Dashboard is divided into two tabs:&#x20;
+The Flagged messages in Delight AI dashboard are divided into two tabs:&#x20;
 
 * [Safeguards](flagged-messages.md#safeguard)
 * [Hallucination](flagged-messages.md#hallucination)
@@ -31,11 +31,11 @@ The **Hallucination** tab under **Flagged messages** collects all the hallucinat
 
 ## Webhook events for flagged messages
 
-Sendbird AI agent features webhook events for flagged messages, enabling you to keep track of any message events that could impact a safe and positive user experience.&#x20;
+Delight AI agent features webhook events for flagged messages, enabling you to keep track of any message events that could impact a safe and positive user experience.&#x20;
 
 ### How to set up
 
-1. Go to **Workspace settings > Webhooks** in Sendbird AI agent Dashboard.
+1. Go to **Workspace settings > Webhooks** in Delight AI dashboard.
 2. &#x20;Enter your webhook server **URL** to receive the event request from the Sendbird server.
 3. Select events to subscribe to and **Save**. The following two events are currently supported:
 

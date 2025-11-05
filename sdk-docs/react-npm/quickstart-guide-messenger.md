@@ -3,11 +3,11 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.5.0 released: Sendbird AI Agent SDK for React **v1.5.0** was released on **September 25, 2025**.&#x20;
+* Version 1.5.0 released: Delight AI agent SDK for React **v1.5.0** was released on **September 25, 2025**.&#x20;
 * Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.&#x20;
 {% endhint %}
 
-The **Sendbird AI Agent Messenger React** allows seamless integration of chatbot features into your React application.
+The **Delight AI agent Messenger React** allows seamless integration of chatbot features into your React application.
 
 ### Prerequisites
 

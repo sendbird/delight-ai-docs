@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Sendbird AI Agent Docs & Guides](README.md)
+* [Delight AI agent Docs & Guides](README.md)
 
 ## Dashboard guide
 

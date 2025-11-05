@@ -6,7 +6,7 @@ hidden: true
 
 ### Coming soon - Multipart request
 
-If your request contains a file, you should send a **Multipart** request. To make that request, specify `multipart/form-data` in the `Content-Type` header, as well as a `boundary`, which is a delimiter string that separates each data field. Sendbird AI agent plans to roll out a multipart file upload of up to five files, each 10MB max.
+If your request contains a file, you should send a **Multipart** request. To make that request, specify `multipart/form-data` in the `Content-Type` header, as well as a `boundary`, which is a delimiter string that separates each data field. Delight AI agent plans to roll out a multipart file upload of up to five files, each 10MB max.
 
 #### Supported format
 

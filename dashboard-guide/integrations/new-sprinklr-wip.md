@@ -10,7 +10,7 @@ The Sprinklr integration with Sendbird’s AI Agent facilitates seamless custome
 * Hand off conversations to human agents in Sprinklr: For complex queries or escalations, AI Agent can transfer conversations to human agents in Sprinklr. The integration ensures that agents receive full conversation context, enabling faster and more personalized customer service.
 
 {% hint style="info" %}
-Self-serve integration is currently not supported. Contact a Sendbird representative to connect Sprinklr with Sendbird AI agent.&#x20;
+Self-serve integration is currently not supported. Contact a Sendbird representative to connect Sprinklr with Delight AI agent.&#x20;
 {% endhint %}
 
 ***
@@ -43,7 +43,7 @@ For more information, refer to [Sprinklr's guide on API key generation](https://
 
 ### Step 1: Enter your Sprinklr API credentials.
 
-Go to Workspace settings > Integration > Sprinklr on Sendbird AI agent's dashboard and fill out the API credentials.
+Go to Workspace settings > Integration > Sprinklr on Delight AI agent's dashboard and fill out the API credentials.
 
 <figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 

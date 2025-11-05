@@ -1,8 +1,8 @@
 # CSAT
 
-Customer satisfaction (CSAT) survey helps you improve the overall user experience with Sendbird AI agent by monitoring and managing the agent's performance and interaction with users. At the end of every conversation, you can send out a resolution feedback (CRE) and CSAT survey to users and collect in-depth feedback using follow-up questions. The CSAT page under Build enables you to customize the survey to your service needs.&#x20;
+Customer satisfaction (CSAT) survey helps you improve the overall user experience with Delight AI agent by monitoring and managing the agent's performance and interaction with users. At the end of every conversation, you can send out a resolution feedback (CRE) and CSAT survey to users and collect in-depth feedback using follow-up questions. The CSAT page under Build enables you to customize the survey to your service needs.&#x20;
 
-Go to **Build > CSAT** in Sendbird AI agent dashboard to get started with a customizable CSAT survey.
+Go to **Build > CSAT** in Delight AI agent dashboard to get started with a customizable CSAT survey.
 
 {% hint style="warning" %}
 Such customization can be applied to [Messenger](channels/messenger/) and [Email](channels/email.md) channels only. If you wish to update the survey question for other channels such as [SMS](channels/sms.md) and [WhatsApp](channels/whatsapp.md), go to **Build >** **Channels** and configure the settings for each channel type. CSAT survey isn't supported in Voice channels.
@@ -16,7 +16,7 @@ Such customization can be applied to [Messenger](channels/messenger/) and [Email
 
 For seamless customer experience for your users, you must have the following:&#x20;
 
-* The latest version of Sendbird AI agent SDK in your client app.
+* The latest version of Delight AI agent SDK in your client app.
 
 ***
 
@@ -24,7 +24,7 @@ For seamless customer experience for your users, you must have the following:&#x
 
 This guide walks you through the customization process for a CSAT survey.
 
-1. Log in to [Sendbird AI agent dashboard](https://dashboard.sendbird.com).
+1. Log in to [Delight AI agent dashboard](https://dashboard.sendbird.com).
 2. Select a **Development** agent from the AI agent list.
 3. After choosing an AI agent to set a CSAT survey for, navigate to **Build > CSAT** in the left menu bar.
 4. Then, activate the feature.
@@ -117,6 +117,6 @@ Make sure that the language set to the tester widget matches with the language u
 
 ## Permission
 
-In Sendbird AI agent dashboard, only the users with a permission can access and manage the CSAT survey settings. If you need to grant the access to certain roles, go to **Organization settings > Roles** and create a new permission set or update an existing set. [See our guide on Roles and permissions](../roles-and-permissions.md) to learn more.
+In Delight AI agent dashboard, only the users with a permission can access and manage the CSAT survey settings. If you need to grant the access to certain roles, go to **Organization settings > Roles** and create a new permission set or update an existing set. [See our guide on Roles and permissions](../roles-and-permissions.md) to learn more.
 
 <figure><img src="../../.gitbook/assets/image (92).png" alt="" width="563"><figcaption></figcaption></figure>

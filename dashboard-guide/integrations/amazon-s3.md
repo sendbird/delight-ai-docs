@@ -1,8 +1,8 @@
 # Amazon S3
 
-Sendbird AI agent supports an integration of Amazon S3 bucket as knowledge for your AI agent. This integration allows:&#x20;
+Delight AI agent supports an integration of Amazon S3 bucket as knowledge for your AI agent. This integration allows:&#x20;
 
-* Leverage objects in Amazon S3 bucket for instant answers: AI Agents can access all dat in the platform. This allows the AI Agent to retrieve relevant articles, FAQs, and documentation when handling user queries, instead of you building it from scratch.
+* Leverage objects in Amazon S3 bucket for instant answers: AI Agents can access all data in the platform. This allows the AI Agent to retrieve relevant articles, FAQs, and documentation when handling user queries, instead of you building it from scratch.
 
 ***
 
@@ -10,7 +10,7 @@ Sendbird AI agent supports an integration of Amazon S3 bucket as knowledge for y
 
 ### Step 1: Provide your AWS credentials.
 
-Go to **Workspace settings > Integrations** in Sendbird AI agent dashboard and click on the **Amazon S3** tile. Then fill out the following information:
+Go to **Workspace settings > Integrations** in Delight AI dashboard and click on the **Amazon S3** tile. Then fill out the following information:
 
 * **AWS access key ID**
 * **AWS secret access key**
@@ -23,7 +23,7 @@ You can find the IAM user credentials in AWS' IAM console. For more information,
 
 ### Step 2: **Click Connect**
 
-Once you've entered all the required credentials, click **Connect** at the top-right corner of the browser.  You will then see a confirmation label on the **Amazon S3** tile indicating that the integration has been successfully established.
+Once you've entered all the required credentials, click **Connect** in the top-right corner of the browser.  You will then see a confirmation label on the **Amazon S3** tile indicating that the integration has been successfully established.
 
 <figure><img src="../../.gitbook/assets/image (77) (1).png" alt="" width="326"><figcaption></figcaption></figure>
 
@@ -33,4 +33,4 @@ Once you've entered all the required credentials, click **Connect** at the top-r
 
 ### Add Amazon S3 URI as knowledge.
 
-If you have any guideline files in the bucket that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and add their URI to Sendbird AI agent.&#x20;
+If you have any guideline files in the bucket that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and add their URI to Delight AI agent.&#x20;

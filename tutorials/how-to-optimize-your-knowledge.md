@@ -1,6 +1,6 @@
 # How to optimize your knowledge
 
-Documents in Knowledge are key sources of information when Sendbird AI Agents handle customer inquiries. This guide explains the way the AI Agents digest the articles and offers tips to optimize your content for AI Agents. The tips below will ensure that your AI Agents properly understand your content, retrieve accurate information, and generate better responses, enhancing customer experience.
+Documents in Knowledge are key sources of information when Delight AI agents handle customer inquiries. This guide explains the way the AI Agents digest the articles and offers tips to optimize your content for AI Agents. The tips below will ensure that your AI Agents properly understand your content, retrieve accurate information, and generate better responses, enhancing customer experience.
 
 Here are some tips to refine your knowledge bases to optimize the AI agent's performance.
 

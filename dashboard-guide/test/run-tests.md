@@ -29,7 +29,7 @@ You can do the following actions on this page:\
 
 <figure><img src="../../.gitbook/assets/CleanShot 2025-05-14 at 22.18.42.gif" alt=""><figcaption></figcaption></figure>
 
-1. Log into your [Sendbird AI agent dashboard](https://dashboard.sendbird.com/).
+1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
 2. Go to **AI agent > Test > Run test sets**.
 3. Click **Create test set+.**&#x20;
 4. Add a title, and one or more test conversations.

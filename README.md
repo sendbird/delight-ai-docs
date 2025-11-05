@@ -2,7 +2,7 @@
 icon: rocket-launch
 ---
 
-# Sendbird AI Agent Docs & Guides 
+# Delight AI agent Docs & Guides 
 
 Learn how to implement, customize, and perfect your AI agents — all in one place.\
 \
@@ -23,10 +23,10 @@ Our comprehensive documentation guides you through leveraging Sendbird's powerfu
 
 #### SDK Documentation&#x20;
 
-* **iOS, Android & JavaScript**: Platform-specific guides on how to seamlessly integrate Sendbird AI agent messenger.
+* **iOS, Android & JavaScript**: Platform-specific guides on how to seamlessly integrate Delight AI agent messenger.
 
 #### Platform API&#x20;
 
 * **Data export**: Get a comprehensive view of your AI agent's daily performance by exporting detailed metrics from conversations and daily analysis.
 
-Whether you're looking to enhance customer support, create personalized shopping experiences, or develop sophisticated knowledge-based assistants, our documentation provides everything you need to succeed with Sendbird AI agents.
+Whether you're looking to enhance customer support, create personalized shopping experiences, or develop sophisticated knowledge-based assistants, our documentation provides everything you need to succeed with Delight AI agents.

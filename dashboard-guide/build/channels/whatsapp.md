@@ -1,6 +1,6 @@
 # WhatsApp
 
-Sendbird AI agent is designed to assist users across a wide range of everyday communication channels, ensuring seamless and efficient interactions including popular online messaging platforms like WhatsApp.&#x20;
+Delight AI agent is designed to assist users across a wide range of everyday communication channels, ensuring seamless and efficient interactions including popular online messaging platforms like WhatsApp.&#x20;
 
 In the **WhatsApp** channel settings you can:
 
@@ -29,10 +29,10 @@ In the **WhatsApp** channel settings you can:
 
 ### **Step 1: Connect your WhatsApp Business Account to Sendbird**
 
-Connect your WhatsApp Business account with Sendbird directly from Sendbird AI agent dashboard. Make sure you have the prerequisites ready. \
+Connect your WhatsApp Business account with Sendbird directly from Delight AI dashboard. Make sure you have the prerequisites ready. \
 
 
-1. Go to **Channels** and click the **WhatsApp** tile in Sendbird AI agent dashboard.&#x20;
+1. Go to **Channels** and click the **WhatsApp** tile in Delight AI dashboard.&#x20;
 2. Click **Continue** with Meta shown on the pop-up modal.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.46.35 PM.png" alt=""><figcaption></figcaption></figure>
@@ -68,7 +68,7 @@ Connect your WhatsApp Business account with Sendbird directly from Sendbird AI a
 
 ### **Step 2: Configure the channel settings**
 
-You can set up the channel and manage its settings in Channel > WhatsApp in Sendbird AI agent dashboard.&#x20;
+You can set up the channel and manage its settings in Channel > WhatsApp in Delight AI dashboard.&#x20;
 
 #### **Close inactive conversation**
 

@@ -12,14 +12,14 @@ Currently, this feature is supported for SMS and messenger channels in web apps 
 
 ## **Behavior**
 
-* If the user responds, the conversation is handled first by Sendbird AI agent. The AI agent can escalate and hand over the inquiry to a human agent upon request.
+* If the user responds, the conversation is handled first by Delight AI agent. The AI agent can escalate and hand over the inquiry to a human agent upon request.
 * If the user does not respond, the proactive chat is automatically closed based on the auto-close setting. This will trigger a customer satisfaction (CSAT) survey.
 
 ***
 
 ## How to send a proactive chat
 
-1. Go to **Proactive chat** in Sendbird AI agent dashboard.
+1. Go to **Proactive chat** in Delight AI dashboard.
 2. Click the **Send message** button in the top-right corner of the screen.
 3. When a new message popup appears, specify the following information:
    1. **Channel**: choose a channel type between messenger and SMS.
