@@ -9,10 +9,10 @@ The Zendesk integration with Sendbird’s AI Agent enables seamless customer sup
 
 ## **How to integrate**
 
-### **Step 1: Fill in your Zendesk information in Sendbird AI agent dashboard**
+### **Step 1: Fill in your Zendesk information in Delight AI dashboard**
 
 1. Log in to your Zendesk account to integrate.
-2. Then come back to **Workspace settings > Integrations** in **Sendbird AI agent dashboard**.
+2. Then come back to **Workspace settings > Integrations** in **Delight AI dashboard**.
 3. Click on the **Zendesk** tile and fill out the fields in the page. The information of each field can be found in your **Zendesk** dashboard. For detailed information, see the table below the screenshot.
 
 <figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
@@ -27,7 +27,7 @@ Determine whether you would like to integrate Zendesk for both Knowledge and Han
 
 **Zendesk API credentials**
 
-<table><thead><tr><th width="190.64453125">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Account email</td><td>The email connected to your Zendesk account. </td></tr><tr><td>API token</td><td>The unique API token issued for your account. Sendbird AI agent will require this in order to authenticate its request to your Zendesk account. Create a new API token for your AI agent under <strong>Apps and Integration > APIs > Zendesk API</strong> on <strong>Zendesk Admin Center</strong>. </td></tr></tbody></table>
+<table><thead><tr><th width="190.64453125">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Account email</td><td>The email connected to your Zendesk account. </td></tr><tr><td>API token</td><td>The unique API token issued for your account. Delight AI agent will require this in order to authenticate its request to your Zendesk account. Create a new API token for your AI agent under <strong>Apps and Integration > APIs > Zendesk API</strong> on <strong>Zendesk Admin Center</strong>. </td></tr></tbody></table>
 
 **Conversation API credentials**
 
@@ -45,7 +45,7 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Zendesk** for a handoff platform.
 2. Turn your Zendesk agent to **Online** in Zendesk.
-3. Start a conversation on the AI agent widget in Sendbird AI agent dahsboard.&#x20;
+3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.&#x20;
 4. Then click on the **Handoff** button to transfer the conversation to Zendesk.&#x20;
 5. Go back to Zendesk and accept the new ticket in Zendesk .
 6. See the summary and transcript of the AI agent conversation successfully transferred to the Zendesk ticket.
@@ -56,4 +56,4 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 ### Connect Zendesk subdomains as knowledge.
 
-If you have any guidelines or articles in Zendesk that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Sendbird AI agent.&#x20;
+If you have any guidelines or articles in Zendesk that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.&#x20;

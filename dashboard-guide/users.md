@@ -2,7 +2,7 @@
 
 To enable the AI agent to deliver a fully personalized experience, create user accounts on the Sendbird server in advance. This allows you to store relevant user data, helping the AI agent provide more tailored support.
 
-## Create a user in Sendbird AI agent dashboard
+## Create a user in Delight AI dashboard
 
 You can create users directly in the dashboard for testing.&#x20;
 

@@ -1,6 +1,6 @@
 # Email
 
-Sendbird AI Agent supports omni-channel customer service, from your in-app channels to traditional ones like **Email**. To enable email support, register your company domain in Sendbird AI Agent Dashboard, create a Custom sender email address, and configure the Domain Name System (DNS) to ensure your AI agent's emails aren't filtered as spam.
+Delight AI agent supports omni-channel customer service, from your in-app channels to traditional ones like **Email**. To enable email support, register your company domain in Delight AI dashboard, create a Custom sender email address, and configure the Domain Name System (DNS) to ensure your AI agent's emails aren't filtered as spam.
 
 In the **Email** channel settings, you can manage the configuration and authentication settings of your business’ email communications. This includes:
 
@@ -17,7 +17,7 @@ In the **Email** channel settings, you can manage the configuration and authenti
 
 When you enable the Email channel, it will automatically create a Sendbird email for the AI agent. You will need to connect this email to your company domain and a Custom sender email address so that your AI agent can communicate with users on behalf of your brand.
 
-1. Go to **Channels** on the left menu bar in Sendbird AI agent dashboard.
+1. Go to **Channels** on the left menu bar in Delight AI dashboard.
 2. Click the **Email** tile.
 
 <figure><img src="../../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-3e92c306-4cec-4ff4-94c0-f61b0ae42466-channels-2025-04-28-15_00_55.png" alt=""><figcaption></figcaption></figure>
@@ -36,7 +36,7 @@ For unified communication, we highly recommend that you register your email doma
 
 First, set up the email domain and register AI agent’s DNS records to your domain service as follows.&#x20;
 
-1. Go to **Workspace settings > Channels > Emails** in Sendbird AI agent Dashboard.
+1. Go to **Workspace settings > Channels > Emails** in Delight AI dashboard.
 2. Click **Add +** to add a domain that your business mainly uses.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-23 at 4.02.09 PM.png" alt=""><figcaption></figcaption></figure>
@@ -71,7 +71,7 @@ This guide provides step-by-step instructions for setting up each of these email
    1. How to Add an SPF Record.
       1. Log in to your DNS provider’s dashboard.
       2. Find the option to add a new TXT record.
-      3. Go to **Workspace settings > Channels > Emails** in **Sendbird AI agent Dashboard**. Under **Verification**, you will find the following details for **SPF**:
+      3. Go to **Workspace settings > Channels > Emails** in **Delight AI dashboard**. Under **Verification**, you will find the following details for **SPF**:
          1. Type: TXT and MX
          2. Host/Name: your MAIL-FROM domain
          3. Value: the value specified for your MAIL-FROM domain
@@ -82,7 +82,7 @@ v=spf1 include:_spf.aiagent.sendbird.com ~all
 
 2. Configure DKIM.&#x20;
    1. How to Add a DKIM Record.
-      1. Go to **Workspace settings > Channels > Emails** in **Sendbird AI agent Dashboard**.
+      1. Go to **Workspace settings > Channels > Emails** in **Delight AI dashboard**.
       2. Copy and paste all three CNAMEs provided into your DNS provider’s dashboard:&#x20;
          1. Type: CNAME
          2. Host/Name: This varies by your domain. An example can be `default._domainkey.yourdomain.com`.
@@ -90,7 +90,7 @@ v=spf1 include:_spf.aiagent.sendbird.com ~all
 3. Configure DMARC. &#x20;
    1. How to Add a DMARC Record.
       1. Go to your DNS provider and add a TXT record.
-      2. Go to **Workspace settings > Channels > Emails** in **Sendbird AI agent Dashboard**. Under **Verification**, you will find the following details for DMARC:&#x20;
+      2. Go to **Workspace settings > Channels > Emails** in **Delight AI dashboard**. Under **Verification**, you will find the following details for DMARC:&#x20;
          1. Type: TXT
          2. Host/Name:`_dmarc.yourdomain.com`
          3. Value: This varies by your settings. This will contain the DMARC policy level value as described below.
@@ -101,7 +101,7 @@ v=spf1 include:_spf.aiagent.sendbird.com ~all
 💡 Tip: Start with p=none for monitoring and adjust over time to p=quarantine or p=reject based on reports. If you have an existing DMARC rule, it’s not necessary to change your existing rule.&#x20;
 {% endhint %}
 
-Once you’ve set up SPF, DKIM, and DMARC, check if all records have been successfully detected and verified through your DNS by clicking the Check verification status button under **Workspace settings > Channels > Emails** in **Sendbird AI agent Dashboard**.&#x20;
+Once you’ve set up SPF, DKIM, and DMARC, check if all records have been successfully detected and verified through your DNS by clicking the Check verification status button under **Workspace settings > Channels > Emails** in **Delight AI dashboard**.&#x20;
 
 <figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption><p><strong>Check verification status</strong> button</p></figcaption></figure>
 

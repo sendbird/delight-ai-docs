@@ -1,6 +1,6 @@
 # AI copilot
 
-With Sendbird AI agent and Desk integration, Sendbird Desk agents can leverage the powerful features that AI agents have to offer through AI copilot. Once the copilot is enabled and accessible to human agents in Sendbird Desk, it can not only boost the productivity of those agents but also improve the customer experience for users. The features of AI copilot include:
+With Delight AI agent and Desk integration, Sendbird Desk agents can leverage the powerful features that AI agents have to offer through AI copilot. Once the copilot is enabled and accessible to human agents in Sendbird Desk, it can not only boost the productivity of those agents but also improve the customer experience for users. The features of AI copilot include:
 
 * Conversation summary: provides a contextual summary of the ticket conversation, helping Desk agents to identify the customer issue at a glance.
 * Knowledge search: sifts through all the knowledge instantly and provides the most relevant resources that human agents need.

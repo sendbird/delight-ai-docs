@@ -6,7 +6,7 @@ Connect your AI agent to Salesforce for advanced customer support. The Salesforc
 * Hand off conversations to human agents: For complex inquiries or escalations, an AI Agent can smoothly transfer conversations to human agents in Salesforce. The integration preserves the full conversation history, enabling human agents to provide faster, more personalized support.
 
 {% hint style="info" %}
-Sendbird AI agent supports a conversation handoff through [Sendbird Salesforce Connector](https://sendbird.com/docs/support-chat/guide/v1/overview). If you haven't implemented the connector yet, [visit our docs](https://sendbird.com/docs/support-chat/guide/v1/salesforce-connector/integrate-with-salesforce-service-cloud) and integrate Sendbird Chat with Salesforce Service Cloud.
+Delight AI agent supports a conversation handoff through [Sendbird Salesforce Connector](https://sendbird.com/docs/support-chat/guide/v1/overview). If you haven't implemented the connector yet, [visit our docs](https://sendbird.com/docs/support-chat/guide/v1/salesforce-connector/integrate-with-salesforce-service-cloud) and integrate Sendbird Chat with Salesforce Service Cloud.
 {% endhint %}
 
 * Leverage Salesforce Knowledge for instant answers: By integrating with Salesforce Knowledge, AI Agents can access all knowledge base content in Salesforce. This allows the AI Agent to retrieve relevant articles, FAQs, and documentation to provide accurate, self-serve responses before escalating to human support. For the initial integration, real-time or periodic sync is not supported for Knowledge.
@@ -19,7 +19,7 @@ Sendbird AI agent supports a conversation handoff through [Sendbird Salesforce C
 
 First, log in to your Salesforce account and find **OAuth and OpenID Connect Settings** in the **Setup** console. Then enable **Allow OAuth Username-Password Flows**. This will allow your AI agent to communicate with Salesforce without interruption.&#x20;
 
-In Sendbird dashboard, you will need to enter the following credentials under **Workspace settings > Integrations > Salesforce** on **Sendbird AI agent dashboard:**
+In Sendbird dashboard, you will need to enter the following credentials under **Workspace settings > Integrations > Salesforce** on **Delight AI dashboard:**
 
 <table><thead><tr><th width="191.484375">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Domain</td><td>Enter the Salesforce domain that you are currently using. (e.g., yourDomain.my.salesforce.com).</td></tr><tr><td>Username</td><td>Enter the user email of your Salesforce account that has an access to <strong>Salesforce's Developer console</strong>.</td></tr><tr><td>Security token</td><td><p>Enter an authentication code required for communication with Salesforce through the API. It's your user password followed by Salesforce-issued security token, with no space in between. </p><p></p><p>Format: <code>[Password][SecurityToken]</code>  </p><blockquote><p>e.g., if your user password is <code>Sendbird123</code> and Salesforce security token is <code>ABC456</code> , enter <code>Sendbird123ABC456</code>.</p></blockquote><p>If you need a fresh Salesforce security token for your AI agent, go to <strong>Settings > Personal > Reset My Security Token</strong> in <strong>Salesforce</strong>. Once you click the <strong>Reset My Security Token</strong> button, the new security token will be emailed to the username’s email.</p></td></tr><tr><td>Consumer key</td><td>Generate a new Consumer key under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr><tr><td>Consumer secret</td><td>Generate a new Consumer secret under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr></tbody></table>
 
@@ -29,7 +29,7 @@ In Sendbird dashboard, you will need to enter the following credentials under **
 
 
 
-For smooth communication between Sendbird AI agent and Salesforce, add a new Connected App dedicated to your AI agent and issue a new Consumer key and secret for it. Follow the instructions below.
+For smooth communication between Delight AI agent and Salesforce, add a new Connected App dedicated to your AI agent and issue a new Consumer key and secret for it. Follow the instructions below.
 
 1. Go to **Setup > Apps > App Manager** in Salesforce with the system admin credential.&#x20;
 2. Click **New Connected App** in the top-right corner of the browser.
@@ -37,7 +37,7 @@ For smooth communication between Sendbird AI agent and Salesforce, add a new Con
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXemxK-C6N607DnCTCNXQdSnTMMmrV8h8O_r1AXSryt4shogSO7IVYofQN1dZf_LfKtH3mD_uW3HN1KAqQKQckDPjCyYeBY9iTaSXoIwJSRt6Blltr9jPDjN-MKzwDMSOSdOlofy?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
-4. Enter **Connected App Name**, **API Name**, and **Contact Email** you will use for Sendbird AI agent.
+4. Enter **Connected App Name**, **API Name**, and **Contact Email** you will use for Delight AI agent.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXfqPshFJXpTB4g2o0S1B2wwyKXvFf70t5iNo-ay97sJwtZSlxJJ1Cp9LlQL-PW0_yXKJJFyeAKZGUFTMMtlWYvHIhzF1MkWPud2IKsbkSQI__2GyfldApfFizh_XNKJVxhNQEDH?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
@@ -92,7 +92,7 @@ Once you've entered all the required credentials, click **Connect** at the top-r
 To send an HTTP request from Salesforce to the Sendbird server, your Sendbird API request URL must be registerd as a Remote Site in Salesforce. See [our guide on Salesforce connector](https://sendbird.com/docs/support-chat/guide/v1/salesforce-connector/integrate-with-salesforce-service-cloud#2-step-3-configure-the-salesforce-service-cloud-settings-3-register-a-remote-site) or expand the instructions below.
 
 {% hint style="info" %}
-For Sendbird AI agent, register the following two URLs as a remote site. Your Sendbird Application ID can be found under **Workspace settings > General** in the dashboard.
+For Delight AI agent, register the following two URLs as a remote site. Your Sendbird Application ID can be found under **Workspace settings > General** in the dashboard.
 
 * `https://api-{YOUR_SENDBIRD_APPLICATION_ID}.sendbird.com`&#x20;
 * `https://genai-{YOUR_REGION}-llm-api.chat.sendbird.com`&#x20;
@@ -126,7 +126,7 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and click Edit at the top right corner of your browser.&#x20;
 2. Select **Salesforce** for a handoff platform.
-3. Start a conversation on the AI agent widget in Sendbird AI agent dahsboard.&#x20;
+3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.&#x20;
 4. Then click on the **Handoff** button to transfer the conversation to Salesforce Connector in Salesforce Service Cloud.&#x20;
 5. See the summary of the AI agent conversation successfully transferred to the Connector.
 
@@ -136,4 +136,4 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 ### Connect Salesforce account as knowledge.
 
-If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Sendbird AI agent.&#x20;
+If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.&#x20;

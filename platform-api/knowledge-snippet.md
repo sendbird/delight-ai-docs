@@ -19,7 +19,7 @@ A typical HTTP request to the Chat API includes the following headers for authen
 
 ### Headers
 
-* `app_id` and `ai_agent_id`: Can be found in Sendbird AI agent dashboard or its URL
+* `app_id` and `ai_agent_id`: Can be found in Delight AI dashboard or its URL
 * Content-Type: Every request must include a `Content-Type` header.
 * Api-Token: Either the master API token or a secondary API token is required for Sendbird server to [authenticate](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api) your API requests.
 
@@ -72,7 +72,7 @@ POST https://api-{application_id}.sendbird.com/v3/embeddings
 
 #### Optional parameters
 
-<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Sendbird AI agent dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
+<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
 
 ### **Response**
 
@@ -129,7 +129,7 @@ PUT https://api-{application_id}.sendbird.com/v3/embeddings/{embedding_key}
 
 #### Optional parameters
 
-<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Sendbird AI agent dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
+<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
 
 ### **Response**
 

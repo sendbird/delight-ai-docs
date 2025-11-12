@@ -1,6 +1,6 @@
 # SMS
 
-Sendbird AI agent supports omni-channel customer service from an in-app channels to more traditional platforms such **SMS**. Your AI agent can send out a consent message before engaging in a conversation with users, carry out the service, and even auto-close the conversation based on the **SMS** channel settings.
+Delight AI agent supports omni-channel customer service from an in-app channels to more traditional platforms such **SMS**. Your AI agent can send out a consent message before engaging in a conversation with users, carry out the service, and even auto-close the conversation based on the **SMS** channel settings.
 
 Within the **SMS** channel settings you can:
 
@@ -18,13 +18,13 @@ To enable this feature and add a phone number, contact your sales representative
 
 ### **Step 1: Add a phone number**
 
-To assist a user through text message on their mobile device, Sendbird AI agent must have a phone number connected to it. As of April 30, 2025, a phone number can be added to your account by Sendbird upon request. Contact a Sendbird representative for further assistance.
+To assist a user through text message on their mobile device, Delight AI agent must have a phone number connected to it. As of April 30, 2025, a phone number can be added to your account by Sendbird upon request. Contact a Sendbird representative for further assistance.
 
 ### Step 2: Connect the phone number to AI agent
 
 Once the phone number was added, follow the instructions below to connect a phone nubmer for the AI agent.
 
-1. Go to **Sendbird AI agent Dashboard > Channels**.
+1. Go to **Delight AI dashboard > Channels**.
 2. Click the **SMS** tile.
 
 <figure><img src="../../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-3e92c306-4cec-4ff4-94c0-f61b0ae42466-channels-2025-04-28-15_00_55.png" alt=""><figcaption></figcaption></figure>

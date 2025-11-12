@@ -1,10 +1,10 @@
 # Multi-language support
 
-This guide explains how to localize the UI strings used in the **Sendbird AI Agent SDK for JavaScript** to support multiple languages in your web application.
+This guide explains how to localize the UI strings used in the **Delight AI agent SDK for JavaScript** to support multiple languages in your web application.
 
 ***
 
-The Sendbird AI Agent SDK includes a predefined set of UI string resources — including button labels, error messages, input hints, and system messages.
+The Delight AI agent SDK includes a predefined set of UI string resources — including button labels, error messages, input hints, and system messages.
 
 To support internationalization, you can set the language preference during initialization or update it later using the `updateConfig` method.
 

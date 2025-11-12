@@ -3,12 +3,12 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.0.0 released: Sendbird AI Agent SDK for iOS **v1.0.0** was released on **September 25, 2025**.&#x20;
+* Version 1.0.0 released: Delight AI agent SDK for iOS **v1.0.0** was released on **September 25, 2025**.&#x20;
 * Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.&#x20;
 * Deprecation notice: The previous version, v0.9, will be deprecated on **December 31, 2025**.
 {% endhint %}
 
-The **Sendbird AI Agent Messenger** allows seamless integration of chatbot features into your iOS application. Follow the steps below to initialize and utilize the SDK effectively.
+The **Delight AI agent Messenger** allows seamless integration of chatbot features into your iOS application. Follow the steps below to initialize and utilize the SDK effectively.
 
 ### Requirements
 

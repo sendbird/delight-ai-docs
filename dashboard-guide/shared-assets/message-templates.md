@@ -45,7 +45,7 @@ Once created, the message template will appear in the message template list.&#x2
 
 ## Template types
 
-Sendbird AI agent supports five template types, each designed for a different message format and use case.
+Delight AI agent supports five template types, each designed for a different message format and use case.
 
 ### Text
 

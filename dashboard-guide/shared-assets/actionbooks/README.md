@@ -33,7 +33,7 @@ Actionbooks are a shared asset created and managed at the **workspace level,** b
 
 ## Creating an actionbook
 
-Follow the instsructions below to create a workflow that Sendbird AI agent can follow when handling customer inquiries.
+Follow the instsructions below to create a workflow that Delight AI agent can follow when handling customer inquiries.
 
 {% hint style="success" %}
 [Our tutorial ](../../../tutorials/actionbook-best-practices.md)offers the best practices you can refer to when building your own actionbooks.

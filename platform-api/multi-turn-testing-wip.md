@@ -142,7 +142,7 @@ If successful, this action returns the ID of the result object created for the t
 
 ## Webhook for test results
 
-Sendbird AI Agent supports webhooks for test execution events to help teams monitor and validate AI behavior in real time. When a test suite is executed, a webhook can be triggered to notify your system of the test results, including pass/fail counts and overall status.
+Delight AI agent supports webhooks for test execution events to help teams monitor and validate AI behavior in real time. When a test suite is executed, a webhook can be triggered to notify your system of the test results, including pass/fail counts and overall status.
 
 By subscribing to test result webhooks, you can automate workflows such as logging test outcomes, triggering alerts for regressions, or visualizing performance trends. When enabled, your server will receive an HTTP POST request from the Sendbird server each time a test run is completed.
 

@@ -61,7 +61,7 @@ Once you've create a permission set for AI agents, create a new role to assign t
 
 <summary>Create a role for Desk users</summary>
 
-If you have integrated Sendbird Desk with Sendbird AI Agent and need to control member access by product, follow the instructions below:
+If you have integrated Sendbird Desk with Delight AI agent and need to control member access by product, follow the instructions below:
 
 1. When members should have access to AI Agent pages only:
    1. Go to the **Permission set for AI agent** tab and create a permission set.

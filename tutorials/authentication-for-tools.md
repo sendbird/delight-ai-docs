@@ -1,6 +1,6 @@
 # Authentication for Tools
 
-When integrating Sendbird AI Agent with your client app, you will consider how you can authenticate data requests coming from AI agents while handling user inquiries. In general, you need authentication process on two layers:  &#x20;
+When integrating Delight AI agent with your client app, you will consider how you can authenticate data requests coming from AI agents while handling user inquiries. In general, you need authentication process on two layers:  &#x20;
 
 <table><thead><tr><th width="102.546875">Layer</th><th width="239.828125">Communication</th><th width="243.00390625">Data flow</th><th>Authentication</th></tr></thead><tbody><tr><td>Client app</td><td>when a user tries to start a conversation with AI agent</td><td>User device ↔ Sendbird server</td><td>Session token</td></tr><tr><td>Backend</td><td>when AI agent needs to make a Tools call to your API</td><td>Sendbird server ↔ Your server</td><td>X-Signature, Static token, JWT</td></tr></tbody></table>
 
@@ -43,7 +43,7 @@ Before implementing the authentication flow for AI agent and its [Tools](../dash
 
 When a user information doesn't need to be verified, the basic authentication can be implemented as follows:
 
-1. A user opens your client app and enters Sendbird AI agent messenger.
+1. A user opens your client app and enters Delight AI agent messenger.
 2. The user sends a message to an AI agent.
 3. Based on their message, the AI agent determines that it needs to call an API.
 4. Then AI agent sends an authenticated request to your endpoint.&#x20;
@@ -59,7 +59,7 @@ To authenticate the request from the AI agent, you can use either of the options
 
 * Security: High as a dynamic signature required per request.
 * Method: HMAC-SHA256 signature using your Sendbird master API token.
-  * Sendbird master API token can be found under **Workspace settings > General > API authentication & base URL** in Sendbird AI agent dashboard.
+  * Sendbird master API token can be found under **Workspace settings > General > API authentication & base URL** in Delight AI dashboard.
 * Header: `x-sendbird-signature: [calculated_signature]`
 
 ```python
@@ -93,7 +93,7 @@ You can consider authenticate the AI agent's call with an **API scoping check.**
 
 This is how a Tools call will be authenticated and performed with Sendbird `user_id`:
 
-1. A user opens your client app and enters Sendbird AI agent messenger.
+1. A user opens your client app and enters Delight AI agent messenger.
 2. The user sends a message to an AI agent.
 3. Based on their message, the AI agent determines that it needs to call an API.
 4. Then the AI agent sends an authenticated request using the unique ID of the user to your endpoint.&#x20;
@@ -108,10 +108,10 @@ For **high-risk endpoints**, issue a scoped, short-lived JSON Web Token (JWT) on
 
 This is how a [Tools](../dashboard-guide/shared-assets/tools.md) call will be authenticated and performed:
 
-1. A user opens your client app and enters Sendbird AI agent messenger.
+1. A user opens your client app and enters Delight AI agent messenger.
 2. This action prompts a request for a JWT, which contains information on the access scope.&#x20;
-3. Sendbird AI agent messenger channel then populates a `context` object with the JWT.
-4. The user sends a message to Sendbird AI agent.
+3. Delight AI agent messenger channel then populates a `context` object with the JWT.
+4. The user sends a message to Delight AI agent.
 5. Based on the user's message, the AI agent determines that it needs to call one of your APIs.
 6. Then the AI agent sends an authenticated request using the unique ID and JWT token provided the user to your endpoint.&#x20;
    * `user_id` is provided by the Sendbird server.
@@ -124,7 +124,7 @@ This is how a [Tools](../dashboard-guide/shared-assets/tools.md) call will be au
 
 ## Things to consider
 
-For a smooth operation, take the items below into account when setting up your server environment for Sendbird AI agent and its [Tools](../dashboard-guide/shared-assets/tools.md) call authentication.
+For a smooth operation, take the items below into account when setting up your server environment for Delight AI agent and its [Tools](../dashboard-guide/shared-assets/tools.md) call authentication.
 
 ### Development requirements
 
@@ -137,7 +137,7 @@ Refer to the following check list when integrating SDK and Sendbird Platform API
 #### Pre-development
 
 * [ ] Choose an authentication method (X-Signature or static token).
-* [ ] Create a Sendbird application in Sendbird AI agent dashboard and obtain API tokens.
+* [ ] Create a Sendbird application in Delight AI dashboard and obtain API tokens.
 * [ ] Design API endpoints for AI Agent-related functionalities.
 * [ ] Plan a user and session token management policy.
 

@@ -2,7 +2,7 @@
 
 ### Overview
 
-**Sendbird AI Agent SDK for React** includes a default set of user-facing strings such as button labels, error messages, input hints, and system texts. To support internationalization, you can set the language preference during component initialization or update it later using the `FixedMessenger` props.
+**Delight AI agent SDK for React** includes a default set of user-facing strings such as button labels, error messages, input hints, and system texts. To support internationalization, you can set the language preference during component initialization or update it later using the `FixedMessenger` props.
 
 The language setting influences both the UI text displayed in the messenger and potentially the AI Agent's responses.
 

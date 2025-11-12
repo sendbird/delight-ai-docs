@@ -19,7 +19,7 @@ Based on your role in the dashboard, admins and evaluators can perform the follo
 
 Admins can grant an evaluator role to dashboard users and set their conversation languages to determine which conversations they need to evaluate. Follow the instructions below to grant the role and assign conversations by their language.
 
-1. Log in to the [**Sendbird AI agent dashboard**](https://dashboard.sendbird.com/auth/signin?next=/).
+1. Log in to the [**Delight AI dashboard**](https://dashboard.sendbird.com/auth/signin?next=/).
 2. On the dashboard home, review the list of **AI agents** created under your account.
 3. Click the **Development** AI agent card to open. The **Development** agent is where you will review all test conversations and provide feedback for changes prior to production deployment.&#x20;
 
@@ -59,7 +59,7 @@ Once evaluators completed their rating, you can see the results in the **Convers
 
 Evaluators will be assigned to conversations by the languages set for them. Go to Evaluate > Conversations and see the list of conversations assigned to you. Once clicking on a conversation, you can submit your evaluation or update the ratings of the evaluation you've submitted before.&#x20;
 
-1. Log in to the [**Sendbird AI agent dashboard**](https://dashboard.sendbird.com/auth/signin?next=/).
+1. Log in to the [**Delight AI dashboard**](https://dashboard.sendbird.com/auth/signin?next=/).
 2. On the dashboard home, review the list of **AI agents** created under your account
 3. Click the **Development AI agent** card to open. Evaluators will be able to see the list of AI agents they can review.
 4. In the **Conversations** view, evaluators can see a list of conversation available.
@@ -90,7 +90,7 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 
 ### Keyboard shortcuts
 
-Sendbird AI agent dashboard also offers keyboard shortcuts. Hover over your cursor onto the tool tip on the top right of the screen to see what's available.
+Delight AI dashboard also offers keyboard shortcuts. Hover over your cursor onto the tool tip on the top right of the screen to see what's available.
 
 * MacBook users:
 

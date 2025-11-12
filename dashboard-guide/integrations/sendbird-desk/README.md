@@ -1,6 +1,6 @@
 # Sendbird Desk
 
-Sendbird has our own customer support service called [**Sendbird Desk**](https://sendbird.com/docs/desk), which can also be integrate with AI agents for streamlined CX operation and management. The Sendbird Desk integration enables seamless customer support experiences by combining automation with human expertise. This integration allows you to:
+Sendbird has our own customer support service called [**Sendbird Desk**](https://sendbird.com/docs/desk), which can also be integrated with AI agents for streamlined CX operation and management. The Sendbird Desk integration enables seamless customer support experiences by combining automation with human expertise. This integration allows you to:
 
 * Hand off conversations to human agents: For complex queries or escalations, AI Agent can transfer conversations to human agents in Sendbird Desk. The integration ensures that agents receive full conversation context, enabling faster and more personalized customer service.
 * Automatically create tickets: When an AI Agent identifies issues that require further attention, it can automatically generate tickets in Sendbird Desk with all relevant conversation details. This ensures a smooth transition to your ticketing system for effective issue tracking and resolution.
@@ -27,10 +27,10 @@ As of May 12, 2025, the integration can be established by Sendbird upon your req
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-16 at 4.26.11 PM.png" alt=""><figcaption></figcaption></figure>
 
-Once the integration is complete, you will see the `CONNECTED` label on the **Sendbird Desk** tile in Sendbird AI agent dashboard.&#x20;
+Once the integration is complete, you will see the `CONNECTED` label on the **Sendbird Desk** tile in Delight AI dashboard.&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (67).png" alt="" width="326"><figcaption><p>Connection status on Sendbird AI agent dashboard</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (67).png" alt="" width="326"><figcaption><p>Connection status on Delight AI dashboard</p></figcaption></figure>
 
-Click the **Sendbird Dashboard** button right next to your organization name at the top-right corner of the browser to return to your Desk dashboard. You can also see the `CONNECTED` label on the **Sendbird AI agent** tile and manage AI agents' status in Sendbird Desk dashboard.
+Click the **Sendbird Dashboard** button right next to your organization name at the top-right corner of the browser to return to your Desk dashboard. You can also see the `CONNECTED` label on the **Delight AI agent** tile and manage AI agents' status in Sendbird Desk dashboard.
 
 <figure><img src="../../../.gitbook/assets/image (15) (1).png" alt="" width="326"><figcaption><p>Connection status on Sendbird Desk dashbaord</p></figcaption></figure>
