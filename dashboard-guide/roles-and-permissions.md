@@ -1,6 +1,6 @@
 # Roles and permissions
 
-In Sendbird Dashboard, each member is assigned a role that defines their access to Sendbird products, including the AI agent. For more granular control over AI agent features, you can create a permission set to manage access to specific agents and their functionalities. To streamline operations, start by designing permission sets first and then create custom roles based on those sets.&#x20;
+In Delight AI dashboard, each member is assigned a role that defines their access to Sendbird products, including the AI agent. For more granular control over AI agent features, you can create a permission set to manage access to specific agents and their functionalities. To streamline operations, start by designing permission sets first and then create custom roles based on those sets.&#x20;
 
 This page explains the process of creating and managing roles and permissions, ensuring that members have the appropriate access to AI agent's functionalities.
 
@@ -16,7 +16,7 @@ The table below outlines the key difference between roles and permissions.
 
 ## Default system roles
 
-Sendbird provides a number of default `SYSTEM ROLE`s with pre-defined permission:
+Delight AI agent provides a number of default `SYSTEM ROLE`s with pre-defined permission:
 
 * **Owner**: Have full access to dashboard
 * **Admin**: Have all access to dashboard except for the ability to delete organization

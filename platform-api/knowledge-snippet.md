@@ -1,6 +1,6 @@
 # Knowledge - Snippet
 
-Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Sendbird Platform API. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's data base. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.&#x20;
+Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Delight Platform API. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's data base. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.&#x20;
 
 Snippets can be useful when it comes to:
 
@@ -21,7 +21,7 @@ A typical HTTP request to the Chat API includes the following headers for authen
 
 * `app_id` and `ai_agent_id`: Can be found in Delight AI dashboard or its URL
 * Content-Type: Every request must include a `Content-Type` header.
-* Api-Token: Either the master API token or a secondary API token is required for Sendbird server to [authenticate](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api) your API requests.
+* Api-Token: Either the master API token or a secondary API token is required for the Delight server to [authenticate](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api) your API requests.
 
 ### Base URL
 
@@ -32,7 +32,7 @@ https://api-{app_id}.sendbird.com/v3
 ```
 
 {% hint style="info" %}
-To learn more about how to use Sendbird Platform APIs, see [our guide](how-to-use-platform-api.md).
+To learn more about how to use Delight Platform APIs, see [our guide](how-to-use-platform-api.md).
 {% endhint %}
 
 ***

@@ -8,7 +8,7 @@ The Confluence integration with Delight AI agent enables us to extract all the i
 
 ## **How to integrate**
 
-### **Step 1: Fill in your Confluence credentials in Sendbird**&#x20;
+### **Step 1: Fill in your Confluence credentials in Delight AI agent**&#x20;
 
 Under **Workspace settings > Integrations > Confluence** on **Delight AI dashboard**, enter the following credentials:
 

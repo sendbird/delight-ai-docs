@@ -1,6 +1,6 @@
 # Users
 
-To enable the AI agent to deliver a fully personalized experience, create user accounts on the Sendbird server in advance. This allows you to store relevant user data, helping the AI agent provide more tailored support.
+To enable the AI agent to deliver a fully personalized experience, create user accounts on the Delight server in advance. This allows you to store relevant user data, helping the AI agent provide more tailored support.
 
 ## Create a user in Delight AI dashboard
 
@@ -19,9 +19,9 @@ For testing purposes, you can manually create a user in the dashboard and allow 
 
 ## Create a user through Platform API&#x20;
 
-For your production system, we would generally recommend creating Sendbird users when a user is onboarded into your application, rather than determining on the fly whether a Sendbird user already exists for your application user.
+For your production system, we would generally recommend creating Delight users when a user is onboarded into your application, rather than determining on the fly whether a Delight user already exists for your application user.
 
-This RESTful API call allows you to create a user in the Sendbird server.
+This RESTful API call allows you to create a user in the Delight server.
 
 ### API specification
 
@@ -47,7 +47,7 @@ The following code snippet demonstrates what to include in a request body. To se
 
 ## **Issue an access token**
 
-For simplicity, you can forgo Access or Session Tokens during your initial testing. However, a secure authentication process using tokens is strongly recommended for production environments, unless there are specific reasons you don’t want or need to secure access. It essentially extends your own authentication in your application to Sendbird. A few things to note:
+For simplicity, you can forgo Access or Session Tokens during your initial testing. However, a secure authentication process using tokens is strongly recommended for production environments, unless there are specific reasons you don’t want or need to secure access. It essentially extends your own authentication in your application to Delight. A few things to note:
 
 * Session tokens are generally recommended, but you can read the comparison in the documentation link.
 * Tokens are issued via a Platform API call made server side, not from your client application.

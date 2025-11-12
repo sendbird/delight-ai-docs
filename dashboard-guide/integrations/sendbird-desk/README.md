@@ -23,7 +23,7 @@ When an AI agent hands off a conversation, it invites a human agent to the chann
 
 ### **Step 1:** Contact our Sales team
 
-As of May 12, 2025, the integration can be established by Sendbird upon your request. Contact a Sendbird representative or [our Sales team](https://sendbird.com/contact-sales) to connect Sendbird Desk with the AI agent.
+As of May 12, 2025, the integration can be established by Sendbird upon your request. Contact a Delight AI agent representative or [our Sales team](https://ß.com/contact-sales) to connect Sendbird Desk with the AI agent.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-16 at 4.26.11 PM.png" alt=""><figcaption></figcaption></figure>
 

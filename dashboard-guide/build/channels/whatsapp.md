@@ -4,7 +4,7 @@ Delight AI agent is designed to assist users across a wide range of everyday com
 
 In the **WhatsApp** channel settings you can:
 
-* Connect a WhatsApp Business Account with Sendbird.
+* Connect a WhatsApp Business Account with Delight AI agent.
 * Configure the settings of WhatsApp conversations for your AI agent.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-28 at 4.36.21 PM.png" alt=""><figcaption></figcaption></figure>
@@ -21,15 +21,15 @@ In the **WhatsApp** channel settings you can:
   * Your business email address.
 * Access to a phone number for verification during the sign-up process of creating a Meta Business Account.
   * If you need to purchase a new number, reach out to our sales representative.&#x20;
-  * If you have a number that is already associated with a WhatsApp Business Account, reach out to our sales representative to port your WhatsApp Business Account under Sendbird.
+  * If you have a number that is already associated with a WhatsApp Business Account, reach out to our sales representative to port your WhatsApp Business Account under Delight AI agent.
 
 ***
 
 ## **How to connect**
 
-### **Step 1: Connect your WhatsApp Business Account to Sendbird**
+### **Step 1: Connect your WhatsApp Business Account to Delight**
 
-Connect your WhatsApp Business account with Sendbird directly from Delight AI dashboard. Make sure you have the prerequisites ready. \
+Connect your WhatsApp Business account with Delight directly from Delight AI dashboard. Make sure you have the prerequisites ready. \
 
 
 1. Go to **Channels** and click the **WhatsApp** tile in Delight AI dashboard.&#x20;
@@ -41,7 +41,7 @@ Connect your WhatsApp Business account with Sendbird directly from Delight AI da
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.46.45 PM.png" alt=""><figcaption></figcaption></figure>
 
-4. Meta will show which permissions are shared to Sendbird. Click **Get started**.
+4. Meta will show which permissions are shared to Delight AI agent. Click **Get started**.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.46.53 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -59,10 +59,10 @@ Connect your WhatsApp Business account with Sendbird directly from Delight AI da
 
 8. Next, add a phone number to your **WhatsApp Business Profile**.&#x20;
    1. To connect a phone number with your WhatsApp Business Profile, you must have access to a phone number to send WhatsApp messages with.
-      1. If you need to purchase a number, talk to a Sendbird representative.
+      1. If you need to purchase a number, talk to a Delight representative.
    2. Then, proceed to **Next** to receive a **One Time Password** through the phone number.
    3. Input the **OTP** on Meta’s authentication page.&#x20;
-   4. After connecting your WhatsApp Business Profile with Sendbird, you can connect and configure a WhatsApp channel for your AI agent.
+   4. After connecting your WhatsApp Business Profile with Delight AI agent, you can connect and configure a WhatsApp channel for your AI agent.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.47.32 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -83,7 +83,7 @@ Once the channel is enabled, the `ON` label will appear on the **WhatsApp** tile
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeewnSzThCdDycVpEABhiqwrCsRa83Pppyu0-NATjWlFU_jheTSlynO8Bm2l9_Y1wevgzO2g0kUg13FgtCNMskZt6Qm4QW6qz9CRPC6fGK75i3wmNpBSaa_N6vQB0_fBKTHbxItuw?key=8-oF9HT8RoAMEJMBLA_bi6oj" alt="" width="375"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Deleting a WhatsApp channel is temporarily unavailable. To delete a WhatsApp channel, contact your Sendbird sales representative.&#x20;
+Deleting a WhatsApp channel is temporarily unavailable. To delete a WhatsApp channel, contact your Delight sales representative.&#x20;
 {% endhint %}
 
 \

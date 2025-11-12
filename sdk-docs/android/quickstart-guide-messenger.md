@@ -23,9 +23,9 @@ The minimum requirements for AI Agent for Android are the following.
 
 ### Prerequisites
 
-Before you start, you'll need your Sendbird **Application ID** and **AI Agent ID**.\
+Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.\
 \
-You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Sendbird Dashboard.
+You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
 <figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39.png" alt=""><figcaption></figcaption></figure>
 
@@ -166,7 +166,7 @@ Make sure to perform the following steps after the SDK has been successfully ini
 #### Manage user sessions
 
 To use the SDK, session information is required.\
-Before using `AIAgentMessenger`, you must set the session information for the application user issued by Sendbird.
+Before using `AIAgentMessenger`, you must set the session information for the application user issued by Delight.
 
 **When to set the session information:**
 
@@ -225,7 +225,7 @@ There are two ways to display the messenger:
 1. Using the launcher button
 2. Opening the conversation channel in full-screen mode
 
-> **Note**: Replace `your_ai_agent_id` with your AI agent ID which you can obtain from the Sendbird Dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
+> **Note**: Replace `your_ai_agent_id` with your AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
 
 **1. Using the launcher button**
 
@@ -343,4 +343,4 @@ Note: You can also update or patch the context object after initialization using
 
 ***
 
-Sendbird's AI Agent also supports multi-language feature. To learn more, see the[ Multi-language support](multi-language-support.md) page.
+Delight's AI Agent also supports multi-language feature. To learn more, see the[ Multi-language support](multi-language-support.md) page.

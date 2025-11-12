@@ -35,9 +35,9 @@ Method and URL of the API request:
 * Supported methods: POST, GET, PUT, PATCH, DELETE
 * Dynamic parameters available in URL
   * Conversation ID (channelURL)
-  * User ID (Sendbird user ID)
-  * User email (Sendbird’s default user attributes)
-  * User phone number (Sendbird’s default user attribute)
+  * User ID (Delight user ID)
+  * User email (Delight’s default user attributes)
+  * User phone number (Delight’s default user attribute)
   * From conversation: AI will generate or request based on context
 
 
@@ -50,9 +50,9 @@ Request body of API request.
 
 * Dynamic parameters available in URL
   * Conversation ID (channelURL)
-  * User ID (Sendbird user ID)
-  * User email (Sendbird’s default user attributes)
-  * User phone number (Sendbird’s default user attribute)
+  * User ID (Delight user ID)
+  * User email (Delight’s default user attributes)
+  * User phone number (Delight’s default user attribute)
   * From conversation: AI will generate or request based on context
 * Static parameter supported
 

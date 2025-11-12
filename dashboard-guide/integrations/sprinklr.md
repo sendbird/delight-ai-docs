@@ -1,12 +1,12 @@
 # Sprinklr
 
-The Sprinklr integration with Sendbird’s AI Agent facilitates seamless customer experience by blending intelligent automation with human assistance. This integration allows AI agent to:
+The Sprinklr integration with Delight AI agent facilitates seamless customer experience by blending intelligent automation with human assistance. This integration allows AI agent to:
 
 * Hand off conversations to human agents: For complex queries or escalations, AI Agent can transfer conversations to human agents in Sprinklr. The integration ensures that agents receive full conversation context, enabling faster and more personalized customer service.
 * Leverage Sprinklr articles for instant answers: If you already have multiple customer support articles in Sprinklr, AI agents can easily reference them when handling user queries, instead of you building it from scratch.
 
 {% hint style="info" %}
-Self-serve integration is currently not supported. Contact a Sendbird representative to connect Sprinklr with Delight AI agent.&#x20;
+Self-serve integration is currently not supported. Contact a Delight representative to connect Sprinklr with Delight AI agent.&#x20;
 {% endhint %}
 
 ***
@@ -15,7 +15,7 @@ Self-serve integration is currently not supported. Contact a Sendbird representa
 
 ### Step 1: Provide your Sprinklr API credentials.
 
-As of May 12, 2025, the integration can be established by Sendbird upon your request. To integrate, Sendbird will need the following information:
+As of May 12, 2025, the integration can be established by Delight upon your request. To integrate, Delight will need the following information:
 
 * **Live chat application ID** and **API key**
 * **Environment**

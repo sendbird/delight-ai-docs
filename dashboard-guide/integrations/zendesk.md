@@ -1,6 +1,6 @@
 # Zendesk
 
-The Zendesk integration with Sendbird’s AI Agent enables seamless customer support experiences by combining ticket automation with human expertise. This integration allows you to:
+The Zendesk integration with Delight AI agent enables seamless customer support experiences by combining ticket automation with human expertise. This integration allows you to:
 
 * Hand off conversations to human agents: For complex queries or escalations, AI Agent can transfer conversations to human agents in Zendesk. The integration ensures that agents receive full conversation context, enabling faster and more personalized customer service.
 * Automatically create tickets: When an AI Agent identifies issues that require a human agent's involvement, it can automatically generate tickets in Zendesk with all relevant conversation details. This ensures a smooth transition to your ticketing system for effective issue tracking and resolution.

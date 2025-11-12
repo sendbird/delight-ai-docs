@@ -11,9 +11,9 @@ The **Delight AI agent Messenger** allows seamless integration of chatbot featur
 
 ### Prerequisites
 
-Before you start, you'll need your Sendbird **Application ID** and **AI Agent ID**.\
+Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.\
 \
-You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Sendbird Dashboard.
+You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
 <figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39.png" alt=""><figcaption></figcaption></figure>
 
@@ -132,7 +132,7 @@ Once the authentication information has been successfully registered, you can la
 
 To launch and display the messenger, implement the code below:
 
-> **Note**: Replace `YOUR_APP_ID` AND `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Sendbird Dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
+> **Note**: Replace `YOUR_APP_ID` AND `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
 
 ```javascript
 const messenger = await loadMessenger();
