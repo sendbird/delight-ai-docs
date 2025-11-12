@@ -2,7 +2,7 @@
 
 When integrating Delight AI agent with your client app, you will consider how you can authenticate data requests coming from AI agents while handling user inquiries. In general, you need authentication process on two layers:  &#x20;
 
-<table><thead><tr><th width="102.546875">Layer</th><th width="239.828125">Communication</th><th width="243.00390625">Data flow</th><th>Authentication</th></tr></thead><tbody><tr><td>Client app</td><td>when a user tries to start a conversation with AI agent</td><td>User device ↔ Delight server</td><td>Session token</td></tr><tr><td>Backend</td><td>when AI agent needs to make a Tools call to your API</td><td>Delight server ↔ Your server</td><td>X-Signature, Static token, JWT</td></tr></tbody></table>
+<table><thead><tr><th width="102.546875">Layer</th><th width="239.828125">Communication</th><th width="243.00390625">Data flow</th><th>Authentication</th></tr></thead><tbody><tr><td>Client app</td><td>when a user tries to start a conversation with AI agent</td><td>User device ↔ Sendbird server</td><td>Session token</td></tr><tr><td>Backend</td><td>when AI agent needs to make a Tools call to your API</td><td>Sendbird server ↔ Your server</td><td>X-Signature, Static token, JWT</td></tr></tbody></table>
 
 Each layer requires a different approach to authentication and implementation. This guide focuses on authenticating the AI agent’s [Tool](../dashboard-guide/shared-assets/tools.md) calls on the backend.
 
@@ -89,7 +89,7 @@ This method requires a token rotation policy on your side.
 
 ### With Sendbird `user_id`&#x20;
 
-You can consider authenticate the AI agent's call with an **API scoping check.** While following the basic authentication flow, the Delight server also provides the user's Sendbird `user_id`, which is automatically generated and provided during server-to-server calls.
+You can consider authenticate the AI agent's call with an **API scoping check.** While following the basic authentication flow, the Sendbird server also provides the user's Sendbird `user_id`, which is automatically generated and provided during server-to-server calls.
 
 This is how a Tools call will be authenticated and performed with Sendbird `user_id`:
 
@@ -97,7 +97,7 @@ This is how a Tools call will be authenticated and performed with Sendbird `user
 2. The user sends a message to an AI agent.
 3. Based on their message, the AI agent determines that it needs to call an API.
 4. Then the AI agent sends an authenticated request using the unique ID of the user to your endpoint.&#x20;
-   * `user_id` is provided by the Delight server.
+   * `user_id` is provided by the Sendbird server.
 5. A middleware determines if the user has permission to make the API call.
 6. Your server processes the request and returns its response to the AI agent.
 7. The AI agent provides an answer to the user using the data in the response body.
@@ -114,7 +114,7 @@ This is how a [Tools](../dashboard-guide/shared-assets/tools.md) call will be au
 4. The user sends a message to Delight AI agent.
 5. Based on the user's message, the AI agent determines that it needs to call one of your APIs.
 6. Then the AI agent sends an authenticated request using the unique ID and JWT token provided the user to your endpoint.&#x20;
-   * `user_id` is provided by the Delight server.
+   * `user_id` is provided by the Sendbird server.
    * The JWT `token` is from the context object in the messenger channel.
 7. A middleware determines if the user has permission to make the API call.
 8. Your server processes the request and returns its response to the AI agent.
@@ -132,12 +132,12 @@ For a smooth operation, take the items below into account when setting up your s
 
 ### API Integration checklist
 
-Refer to the following check list when integrating SDK and Delight Platform APIs.
+Refer to the following check list when integrating SDK and Sendbird platform APIs.
 
 #### Pre-development
 
 * [ ] Choose an authentication method (X-Signature or static token).
-* [ ] Create a Delight application in Delight AI dashboard and obtain API tokens.
+* [ ] Create a Sendbird application in Delight AI dashboard and obtain API tokens.
 * [ ] Design API endpoints for AI Agent-related functionalities.
 * [ ] Plan a user and session token management policy.
 
@@ -145,7 +145,7 @@ Refer to the following check list when integrating SDK and Delight Platform APIs
 
 * [ ] Implement an authentication logic for backend.
 * [ ] Create API endpoints for AI agent's Tool calls.
-* [ ] Integrate Delight Platform API for user and token management.
+* [ ] Integrate Sendbird platform API for user and token management.
 * [ ] Implement client-app SDK integration.
 * [ ] Implement a session management and refresh logic.
 

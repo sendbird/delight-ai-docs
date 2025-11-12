@@ -89,7 +89,7 @@ Once you've entered all the required credentials, click **Connect** at the top-r
 
 ### Step 3. Register a remote site
 
-To send an HTTP request from Salesforce to the Delight AI agent server, your Delight API request URL must be registered as a Remote Site in Salesforce. See [our guide on Salesforce connector](https://sendbird.com/docs/support-chat/guide/v1/salesforce-connector/integrate-with-salesforce-service-cloud#2-step-3-configure-the-salesforce-service-cloud-settings-3-register-a-remote-site) or expand the instructions below.
+To send an HTTP request from Salesforce to the Delight AI agent server, your Sendbird API request URL must be registered as a Remote Site in Salesforce. See [our guide on Salesforce connector](https://sendbird.com/docs/support-chat/guide/v1/salesforce-connector/integrate-with-salesforce-service-cloud#2-step-3-configure-the-salesforce-service-cloud-settings-3-register-a-remote-site) or expand the instructions below.
 
 {% hint style="info" %}
 For Delight AI agent, register the following two URLs as a remote site. Your Sendbird Application ID can be found under **Workspace settings > General** in the dashboard.
