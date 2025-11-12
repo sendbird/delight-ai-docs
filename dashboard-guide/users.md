@@ -1,6 +1,6 @@
 # Users
 
-To enable the AI agent to deliver a fully personalized experience, create user accounts on the Delight server in advance. This allows you to store relevant user data, helping the AI agent provide more tailored support.
+To enable the AI agent to deliver a fully personalized experience, create user accounts on the Sendbird server in advance. This allows you to store relevant user data, helping the AI agent provide more tailored support.
 
 ## Create a user in Delight AI dashboard
 
@@ -21,7 +21,7 @@ For testing purposes, you can manually create a user in the dashboard and allow 
 
 For your production system, we would generally recommend creating Delight users when a user is onboarded into your application, rather than determining on the fly whether a Delight user already exists for your application user.
 
-This RESTful API call allows you to create a user in the Delight server.
+This RESTful API call allows you to create a user in the Sendbird server.
 
 ### API specification
 
