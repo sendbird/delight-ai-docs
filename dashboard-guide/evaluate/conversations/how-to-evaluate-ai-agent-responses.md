@@ -33,7 +33,7 @@ Admins can grant an evaluator role to dashboard users and set their conversation
       1. To limit an evaluator to a specific language, pick a set of languages.
       2. To allow evaluation of all conversations, choose **All languages**.
 
-<figure><img src="../../../.gitbook/assets/스크린샷 2025-09-23 오후 4.51.45 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (81).png" alt=""><figcaption></figcaption></figure>
 
 7. Click **OK** to return to the evaluator list.
 
@@ -51,7 +51,7 @@ Once evaluators completed their rating, you can see the results in the **Convers
    4. **Category**
 3. If you wish to edit the evaluation result of a conversation, navigate to the conversation view. You will see the **Edit** button at the top-right corner of the screen in the conversation view. Click it and make changes needed. Then **Submit**.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ***
 
@@ -65,7 +65,7 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 4. In the **Conversations** view, evaluators can see a list of conversation available.
 5. Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows a list of conversations assigned to the evaluator **Paul Rogers**.
 
-<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
 
 6. Select one of the conversations in the list to evaluate AI agent's responses.
 

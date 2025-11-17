@@ -2,7 +2,7 @@
 
 For high-quality, worry-free AI customer experience, Sendbird provides a feature that can detect AI hallucinations and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
 
-The Flagged messages in Delight AI dashboard are divided into two tabs:&#x20;
+The Flagged messages in Delight AI dashboard are divided into two tabs:
 
 * [Safeguards](flagged-messages.md#safeguard)
 * [Hallucination](flagged-messages.md#hallucination)
@@ -15,34 +15,32 @@ During the [Build](../build/) process, you can configure [safeguards](../build/s
 
 <table><thead><tr><th width="232.00390625">Flag type</th><th>Description</th></tr></thead><tbody><tr><td>Harmful content</td><td>The user messages detected by guardrails for containing content that is disrespectful, degrading, offensive, or otherwise inappropriate.</td></tr><tr><td>Context injection</td><td>The user's attempt to manipulate the AI agent’s response by inserting false or misleading information early in the conversation. This can result in hallucinations.</td></tr><tr><td>Adversarial attack</td><td>The user's attempts to manipulate the AI agent using techniques like prompt injection or jailbreaking.</td></tr><tr><td>Banned words &#x26; phrases</td><td>The user messages containing sensitive topics that are banned for AI agents from discussing. You can designate any text as banned words, including proper nouns, specific terms and expressions.</td></tr></tbody></table>
 
-<figure><img src="../../.gitbook/assets/image (79) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (93).png" alt=""><figcaption></figcaption></figure>
 
 ### Hallucination
 
-Sometimes, an AI agent can generate responses that are not grounded on the knowledge sources provided. Such messages are called hallucinations. This happens because the AI model predicts text based on learned patterns rather than factual accuracy.&#x20;
+Sometimes, an AI agent can generate responses that are not grounded on the knowledge sources provided. Such messages are called hallucinations. This happens because the AI model predicts text based on learned patterns rather than factual accuracy.
 
 The **Hallucination** tab under **Flagged messages** collects all the hallucinations generated during the selected period. This tab includes a language filter and a bar chart showing the distribution of hallucinations by language. Based on the analysis, you can enhance the grounded-ness of your AI agent responses by identifying which content or information is missing from its data sources.
 
-<figure><img src="../../.gitbook/assets/image (78) (1).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../../.gitbook/assets/image (94).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
 ## Webhook events for flagged messages
 
-Delight AI agent features webhook events for flagged messages, enabling you to keep track of any message events that could impact a safe and positive user experience.&#x20;
+Delight AI agent features webhook events for flagged messages, enabling you to keep track of any message events that could impact a safe and positive user experience.
 
 ### How to set up
 
 1. Go to **Workspace settings > Webhooks** in Delight AI dashboard.
-2. &#x20;Enter your webhook server **URL** to receive the event request from the Sendbird server.
+2. Enter your webhook server **URL** to receive the event request from the Sendbird server.
 3. Select events to subscribe to and **Save**. The following two events are currently supported:
 
 * [Hallucination](flagged-messages.md#hallucination): when an AI agent response is not grounded on the data provided.
 * [Safeguards](flagged-messages.md#safeguards): when a user message is flagged as harmful, adversarial, or banned according to the [safeguards](../build/safeguards.md) settings.
 
-<figure><img src="../../.gitbook/assets/image (69).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
 
 ### Event payload
 

@@ -6,7 +6,7 @@ The Sprinklr integration with Sendbird’s AI Agent facilitates seamless custome
 * Leverage Sprinklr articles for instant answers: If you already have multiple customer support articles in Sprinklr, AI agents can easily reference them when handling user queries, instead of you building it from scratch.
 
 {% hint style="info" %}
-Self-serve integration is currently not supported. Contact a Sendbird representative to connect Sprinklr with Delight AI agent.&#x20;
+Self-serve integration is currently not supported. Contact a Sendbird representative to connect Sprinklr with Delight AI agent.
 {% endhint %}
 
 ***
@@ -27,7 +27,7 @@ For more information, refer to [Sprinklr's guide on API key generation](https://
 
 Once we connect your account to the AI agent, you can find your Sprinklr API integration settings under **Workspace settings > Integration > Sprinklr** on **Delight AI dashboard**.
 
-<figure><img src="../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-settings-integrations-sprinklr-2025-04-28-15_31_52.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (109).png" alt=""><figcaption></figcaption></figure>
 
 Also, you will see a `CONNECTED` label on the **Sprinklr** tile indicating that the integration has been successfully established.
 
@@ -39,5 +39,4 @@ Also, you will see a `CONNECTED` label on the **Sprinklr** tile indicating that 
 
 ### Connect Sprinklr account as knowledge.
 
-If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.&#x20;
-
+If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.

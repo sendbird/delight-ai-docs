@@ -2,7 +2,7 @@
 
 The Insights page offer a holistic view on the AI agent's performance in terms of Categories, Knowledge sources, Actionbooks, Tools, and conversation handoff. The metrics on this page reflects how your AI agent is interacting with users; whether it remains aligned with communication guidelines, attentively follows a user's sentiment, offers grounded responses to them.
 
-You can go through five different tabs at the top of page and deep-dive into the following topics:&#x20;
+You can go through five different tabs at the top of page and deep-dive into the following topics:
 
 * [Overview](insights.md#overview)
 * [Categories](insights.md#categories)
@@ -33,7 +33,7 @@ The **Categories** tab provides insights into customer-and-AI agent interactions
 Categories are pre-defined by the business during onboarding and can be configured. Once conversations begin, they are automatically categorized by AI Agents according to your category definition.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (77).png" alt=""><figcaption></figcaption></figure>
 
 ### **How to read Categories**
 
@@ -54,5 +54,4 @@ Categories are pre-defined by the business during onboarding and can be configur
 
 The three tabs on resources - Knowledge, Actionbooks, and Tools - shows the usage and trends of the resources provided to the AI agent, in descending order of reference frequency. The resource most frequently referenced in all AI activities appears at the top of the table. By clicking the option button in the right-end column, you can see the detailed information of the resource.
 
-<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
-
+<figure><img src="../../.gitbook/assets/image (80).png" alt=""><figcaption></figcaption></figure>

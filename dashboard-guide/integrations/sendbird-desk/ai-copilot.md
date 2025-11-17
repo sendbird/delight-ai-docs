@@ -4,8 +4,8 @@ With Delight AI agent and Desk integration, Sendbird Desk agents can leverage th
 
 * Conversation summary: provides a contextual summary of the ticket conversation, helping Desk agents to identify the customer issue at a glance.
 * Knowledge search: sifts through all the knowledge instantly and provides the most relevant resources that human agents need.
-* Response suggestions: generates a reply in various tones and lengths.&#x20;
-* Drag and ask: a shortcut to AI copilot - simply drag on a user's message and right-click the block. This reveals the **Ask AI** button for a quick question.&#x20;
+* Response suggestions: generates a reply in various tones and lengths.
+* Drag and ask: a shortcut to AI copilot - simply drag on a user's message and right-click the block. This reveals the **Ask AI** button for a quick question.
 * AI activity log: lists the Knowledge references that AI copilot used to generate the message. This appears at the bottom of each AI message.
 * Evaluate AI responses: allows you to rate AI responses by giving them a thumbs up or down. The rating buttons appear at the bottom of each AI message.
 
@@ -34,7 +34,7 @@ Once you have an AI agent ready, follow the steps below to enable the feature.
 2. Go to **Settings > Desk > AI features**.
 3. Click on the **AI copilot** card and turn on the feature. Make sure the AI agent linked to the copilot is the one you've created for this feature.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Agent access
 

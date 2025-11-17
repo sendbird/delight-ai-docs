@@ -29,7 +29,7 @@ Template types include:
 Once saved, the type cannot be changed.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 2.51.32 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
 
 4. Provide the content specific to the type you selected.
 

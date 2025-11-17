@@ -18,7 +18,7 @@ Actionbooks are a shared asset created and managed at the **workspace level,** b
 * Assign country tags.
 * Acts as the central repository for the entire workspace.
 
-<figure><img src="../../../.gitbook/assets/CleanShot 2025-05-16 at 15.42.30@2x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 #### 2. Agent-level (per AI agent)
 
@@ -39,7 +39,7 @@ Follow the instsructions below to create a workflow that Delight AI agent can fo
 [Our tutorial ](../../../tutorials/actionbook-best-practices.md)offers the best practices you can refer to when building your own actionbooks.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/스크린샷 2025-09-09 오후 2.40.31 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 1. Go to **Workspace settings > Shared assets > Actionbooks**.
 2. Click **Add actionbook +**.

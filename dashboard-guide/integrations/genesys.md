@@ -25,4 +25,4 @@ This guide presumes that you have already registered a phone number in Genesys v
 3. Save the settings and navigate to **Workspace settings > Integration.** Click on the **Genesys** tile.
 4. Here, enter the phone number you registered in Genesys.
 
-<figure><img src="../../.gitbook/assets/스크린샷 2025-09-16 오전 11.15.43 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (111).png" alt=""><figcaption></figcaption></figure>

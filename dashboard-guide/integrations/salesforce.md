@@ -15,23 +15,21 @@ Delight AI agent supports a conversation handoff through [Sendbird Salesforce Co
 
 ## **How to integrate**
 
-### **Step 1: Fill in your Salesforce credentials in Sendbird**&#x20;
+### **Step 1: Fill in your Salesforce credentials in Sendbird**
 
-First, log in to your Salesforce account and find **OAuth and OpenID Connect Settings** in the **Setup** console. Then enable **Allow OAuth Username-Password Flows**. This will allow your AI agent to communicate with Salesforce without interruption.&#x20;
+First, log in to your Salesforce account and find **OAuth and OpenID Connect Settings** in the **Setup** console. Then enable **Allow OAuth Username-Password Flows**. This will allow your AI agent to communicate with Salesforce without interruption.
 
 In Sendbird dashboard, you will need to enter the following credentials under **Workspace settings > Integrations > Salesforce** on **Delight AI dashboard:**
 
-<table><thead><tr><th width="191.484375">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Domain</td><td>Enter the Salesforce domain that you are currently using. (e.g., yourDomain.my.salesforce.com).</td></tr><tr><td>Username</td><td>Enter the user email of your Salesforce account that has an access to <strong>Salesforce's Developer console</strong>.</td></tr><tr><td>Security token</td><td><p>Enter an authentication code required for communication with Salesforce through the API. It's your user password followed by Salesforce-issued security token, with no space in between. </p><p></p><p>Format: <code>[Password][SecurityToken]</code>  </p><blockquote><p>e.g., if your user password is <code>Sendbird123</code> and Salesforce security token is <code>ABC456</code> , enter <code>Sendbird123ABC456</code>.</p></blockquote><p>If you need a fresh Salesforce security token for your AI agent, go to <strong>Settings > Personal > Reset My Security Token</strong> in <strong>Salesforce</strong>. Once you click the <strong>Reset My Security Token</strong> button, the new security token will be emailed to the username’s email.</p></td></tr><tr><td>Consumer key</td><td>Generate a new Consumer key under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr><tr><td>Consumer secret</td><td>Generate a new Consumer secret under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr></tbody></table>
+<table><thead><tr><th width="191.484375">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Domain</td><td>Enter the Salesforce domain that you are currently using. (e.g., yourDomain.my.salesforce.com).</td></tr><tr><td>Username</td><td>Enter the user email of your Salesforce account that has an access to <strong>Salesforce's Developer console</strong>.</td></tr><tr><td>Security token</td><td><p>Enter an authentication code required for communication with Salesforce through the API. It's your user password followed by Salesforce-issued security token, with no space in between.</p><p>Format: <code>[Password][SecurityToken]</code></p><blockquote><p>e.g., if your user password is <code>Sendbird123</code> and Salesforce security token is <code>ABC456</code> , enter <code>Sendbird123ABC456</code>.</p></blockquote><p>If you need a fresh Salesforce security token for your AI agent, go to <strong>Settings > Personal > Reset My Security Token</strong> in <strong>Salesforce</strong>. Once you click the <strong>Reset My Security Token</strong> button, the new security token will be emailed to the username’s email.</p></td></tr><tr><td>Consumer key</td><td>Generate a new Consumer key under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr><tr><td>Consumer secret</td><td>Generate a new Consumer secret under <strong>App Manager > Connected App > View > Consumer Key and Secret > Manage Consumer Details</strong> on your <strong>Salesforce Setup</strong>. Expand the <strong>How-to</strong> instructions below for more information.</td></tr></tbody></table>
 
 <details>
 
 <summary>How to generate a new Consumer key and a Consumer secret</summary>
 
-
-
 For smooth communication between Delight AI agent and Salesforce, add a new Connected App dedicated to your AI agent and issue a new Consumer key and secret for it. Follow the instructions below.
 
-1. Go to **Setup > Apps > App Manager** in Salesforce with the system admin credential.&#x20;
+1. Go to **Setup > Apps > App Manager** in Salesforce with the system admin credential.
 2. Click **New Connected App** in the top-right corner of the browser.
 3. Select **Create a Connected App** and click **Continue**.
 
@@ -69,7 +67,7 @@ For smooth communication between Delight AI agent and Salesforce, add a new Conn
 8.  After saving the changes, go to the detail page of the Apps you created and click the **Manage Consumer Details**.
 
     <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXea7hH6kNVRJMqqtjfjhrC3cHXVrnIV52QdBfmS4PojvaoGwcrohBFk3xjKNtD0RFQ4yEWbQT9e9f9cm3vbqEb5zpSsmvIoWwhav_FchwZrvOdVCTQBVLvC5bWSSek86IWQkHU4vw?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
-9. You will find the **Consumer Details** such as **Consumer Key** and **Consumer Secret**. Copy and paste them into the **Salesforce** **Integration** page in the AI agent.&#x20;
+9. You will find the **Consumer Details** such as **Consumer Key** and **Consumer Secret**. Copy and paste them into the **Salesforce** **Integration** page in the AI agent.
 
 {% hint style="info" %}
 The Consumer Details appear only once initially, so save the information somewhere safe.
@@ -79,7 +77,7 @@ The Consumer Details appear only once initially, so save the information somewhe
 
 </details>
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-04-16 at 3.30.28 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (103).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2. Click **Connect**
 
@@ -94,8 +92,8 @@ To send an HTTP request from Salesforce to the Sendbird server, your Sendbird AP
 {% hint style="info" %}
 For Delight AI agent, register the following two URLs as a remote site. Your Sendbird Application ID can be found under **Workspace settings > General** in the dashboard.
 
-* `https://api-{YOUR_SENDBIRD_APPLICATION_ID}.sendbird.com`&#x20;
-* `https://genai-{YOUR_REGION}-llm-api.chat.sendbird.com`&#x20;
+* `https://api-{YOUR_SENDBIRD_APPLICATION_ID}.sendbird.com`
+* `https://genai-{YOUR_REGION}-llm-api.chat.sendbird.com`
 {% endhint %}
 
 <details>
@@ -110,9 +108,9 @@ For Delight AI agent, register the following two URLs as a remote site. Your Sen
 3. Fill in each field according to the following instructions.
 
 * **Remote Site Name**: Enter any value of your choice. Only alphanumeric characters and underscores are allowed in **Remote Site Name**. Don't use spaces.
-* **Remote Site URL**: Add the following two URLs:&#x20;
+* **Remote Site URL**: Add the following two URLs:
   * `https://api-{YOUR_SENDBIRD_APPLICATION_ID}.sendbird.com`. Replace `{YOUR_SENDBIRD_APPLICATION_ID}` in the URL with your Sendbird application ID.
-  * `https://genai-{YOUR_REGION}-llm-api.chat.sendbird.com` . You can find your Sendbird Webhook URL under **Workspace settings > Integrations > Salesforce**.&#x20;
+  * `https://genai-{YOUR_REGION}-llm-api.chat.sendbird.com` . You can find your Sendbird Webhook URL under **Workspace settings > Integrations > Salesforce**.
 
 <figure><img src="https://static.sendbird.com/docs/support-chat/support-chat-v1-sf-sc-edit-remote-site.png" alt=""><figcaption></figcaption></figure>
 
@@ -120,14 +118,14 @@ For Delight AI agent, register the following two URLs as a remote site. Your Sen
 
 </details>
 
-### **Step 4:  Test the conversation handoff**&#x20;
+### **Step 4: Test the conversation handoff**
 
-Once connected, you can try out a handoff on our AI agent widget.&#x20;
+Once connected, you can try out a handoff on our AI agent widget.
 
-1. Go to **Build > Conversation settings > Transfer to human agent** and click Edit at the top right corner of your browser.&#x20;
+1. Go to **Build > Conversation settings > Transfer to human agent** and click Edit at the top right corner of your browser.
 2. Select **Salesforce** for a handoff platform.
-3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.&#x20;
-4. Then click on the **Handoff** button to transfer the conversation to Salesforce Connector in Salesforce Service Cloud.&#x20;
+3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.
+4. Then click on the **Handoff** button to transfer the conversation to Salesforce Connector in Salesforce Service Cloud.
 5. See the summary of the AI agent conversation successfully transferred to the Connector.
 
 ***
@@ -136,4 +134,4 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 ### Connect Salesforce account as knowledge.
 
-If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.&#x20;
+If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.

@@ -6,7 +6,7 @@ With Proactive chat, AI agents can send a message to users and initiate a conver
 Currently, this feature is supported for SMS and messenger channels in web apps only.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (89).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (96).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -26,10 +26,9 @@ Currently, this feature is supported for SMS and messenger channels in web apps 
    2. **Recipient**: search a target user by their ID or nickname.
    3. **Message**: enter the message content.
    4. [**Suggested reply**](shared-assets/message-templates.md#suggested-replies): add predefined response options that can lead the target user to a specific web page or prompt a follow-up action.
-
-<figure><img src="../.gitbook/assets/image (90).png" alt=""><figcaption></figcaption></figure>
-
 4. Once specified, **Send**.
+
+<figure><img src="../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -37,7 +36,7 @@ Currently, this feature is supported for SMS and messenger channels in web apps 
 
 Proactive chat also offers metrics that allows you to track user engagement of the messages.
 
-* Status: the response status of the message. Its value can be&#x20;
+* Status: the response status of the message. Its value can be
   * **Responsed:** the target user replied back or showed a reaction to the proactive chat.
   * **Not responsed**: the proactive chat was sent but received no response.
 * Resolution time: the total time it took from the target user's first response to conversation closure.

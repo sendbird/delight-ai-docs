@@ -27,11 +27,11 @@ Once the phone number was added, follow the instructions below to connect a phon
 1. Go to **Delight AI dashboard > Channels**.
 2. Click the **SMS** tile.
 
-<figure><img src="../../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-3e92c306-4cec-4ff4-94c0-f61b0ae42466-channels-2025-04-28-15_00_55.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
 
 3. Select an existing phone number you've registered in advance.
 
-<figure><img src="../../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-3e92c306-4cec-4ff4-94c0-f61b0ae42466-channels-sms-2025-04-28-15_02_09.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3: Configure the channel settings
 
@@ -39,7 +39,7 @@ Once adding a phone number, you can manage the following features in the channel
 
 #### **Conversation close time**
 
-You can configure how long your AI agent will wait for a user’s response until it automatically closes an email conversation. Set the time period and message that will be sent when an Email conversation is closed.&#x20;
+You can configure how long your AI agent will wait for a user’s response until it automatically closes an email conversation. Set the time period and message that will be sent when an Email conversation is closed.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXccoaXWu5CQ35sNkAOyg0ZekE81NDF0Uz-l2wD8w7572_LWRr9MmoZdZsG-OuC03z_3fqxRAjuCcFBk4_4rRFhgCyyLt9ALjFzo2HqhBfXiSV0VoY1RtK8NVPvRdpM2GUzD4g3TAA?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
@@ -48,4 +48,3 @@ You can configure how long your AI agent will wait for a user’s response until
 Once the channel is enabled, the `on` label will appear on the channel's tile along with the registered phone number. Click the tile to edit its settings or even delete the channel.
 
 <figure><img src="../../../.gitbook/assets/image (71).png" alt="" width="326"><figcaption></figcaption></figure>
-
