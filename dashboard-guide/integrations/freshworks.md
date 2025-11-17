@@ -12,13 +12,13 @@ The Freshworks integration with Delight AI agent enhances customer support by bl
 To establish a connection between Freshworks and Delight AI agent, you must meet the following requirements:
 
 * Subscription to at least Freshworks’ Pro plan to enable its Integration feature.
-* A channel dedicated to Sendbird Integration in your Freshworks account. Follow the instructions below to create one:
+* A channel dedicated to Delight AI agent Integration in your Freshworks account. Follow the instructions below to create one:
 
 1. Go to **Admin Settings > Configuration and Workflows > Web Chat Topics** on **Freshworks**.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf9CjR5tKN-jTy4AYPF_KtAwT5ScpJFn4-4xXBLQqQYjGviAOqYVVd1NRmamMwW1drGHr_6PgzmUB9KI87EYMVdMuI5OaxCnklFEu7ciPGNngk1s8qRqDKvtpwy7D6e2JwOslf70w?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
-2. Click the **+Topic** button and create a channel with the name “**Sendbird Integration**”. As the integration system is case-sensitive, make sure you enter the name correctly.
+2. Click the  **+Topic** button and create a channel with the name “**Delight AI agent Integration**”. As the integration system is case-sensitive, make sure you enter the name correctly.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe7oG5Ei8h14X5FyhanDsGLCZyPGLuBd7sr56M-UDTMj92GCNnQeXf-ZC5_8EBmHDHeTP5woKGoWwIGIUVmsahuJmCTKH8lQv5DPjRVtglG8yve8vpQhMNF6EOtFUNB6uiYyQJ-2Q?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
@@ -26,7 +26,7 @@ To establish a connection between Freshworks and Delight AI agent, you must meet
 
 ## **How to integrate**
 
-### **Step 1: Fill in your Freshworks information in Sendbird**
+### **Step 1: Fill in your Freshworks information in Delight AI agent**
 
 Now, open your Delight AI agent's dashboard and go to **Workspace settings > Integration > Freshworks**.
 
@@ -42,7 +42,7 @@ Now, open your Delight AI agent's dashboard and go to **Workspace settings > Int
 
 #### **Webhooks**
 
-<table><thead><tr><th width="190.19140625">Field</th><th>Description</th></tr></thead><tbody><tr><td>Webhook URL</td><td>The webhook URL to listen to events happening in Freshworks. Copy this URL and paste it into the Webhook field under Admin Settings > Marketplace and Integrations > Webhooks on Freshworks dashboard.</td></tr><tr><td>Authentication</td><td>To authenticate AI agent’s calls to your Freshworks account, copy the header of your Freshworks account and paste it into Sendbird dashboard.</td></tr></tbody></table>
+<table><thead><tr><th width="190.19140625">Field</th><th>Description</th></tr></thead><tbody><tr><td>Webhook URL</td><td>The webhook URL to listen to events happening in Freshworks. Copy this URL and paste it into the Webhook field under Admin Settings > Marketplace and Integrations > Webhooks on Freshworks dashboard.</td></tr><tr><td>Authentication</td><td>To authenticate AI agent’s calls to your Freshworks account, copy the header of your Freshworks account and paste it into Delight AI dashboard.</td></tr></tbody></table>
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeYtexm0EgQP0ZSGr385MjKGDtElCMSgRkop2BXJyd8wBRtWM_qUB77c_j2gYI6k6wXUg2WZJiEtFwgz_lO4b53uXJrJ2gxVGbptKRU53LNHBk9AznVN5S-TEc08UY9HuyC0iaWkQ?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption><p>Webhook in Freshworks' Admin settings</p></figcaption></figure>
 
@@ -59,6 +59,6 @@ You will then see a confirmation label on the **Freshworks** tile indicating tha
 Once connected, you can try out a handoff on our AI agent widget.
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Freshworks** for a handoff platform.
-2. Start a conversation on the AI agent widget in Delight AI agent dahsboard.
-3. Then click on the **Handoff** button to transfer the conversation to Freshworks.
+2. Start a conversation on the AI agent widget in Delight AI dashboard.&#x20;
+3. Then click on the **Handoff** button to transfer the conversation to Freshworks.&#x20;
 4. See the summary of the AI agent conversation successfully transferred to the Freshworks ticket.

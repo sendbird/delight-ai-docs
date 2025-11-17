@@ -1,6 +1,6 @@
 # Flagged messages
 
-For high-quality, worry-free AI customer experience, Sendbird provides a feature that can detect AI hallucinations and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
+For high-quality, worry-free AI customer experience, Delight AI agent provides a feature that can detect AI hallucinations and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
 
 The Flagged messages in Delight AI dashboard are divided into two tabs:
 

@@ -148,8 +148,8 @@ When the AI agent calls your carousel endpoint, it sends the following data in t
 
 | Properties                  | Type          | Description          |
 | --------------------------- | ------------- | -------------------- |
-| `user`                      | nested object | Sendbird user object |
-| `user.user_id`              | string        | Sendbird user ID     |
+| `user`                      | nested object | Delight user object |
+| `user.user_id`              | string        | Delight user ID     |
 | `ai_agent_context`          | nested object | AI agent context     |
 | `ai_agent_context.language` | string        | The language code    |
 | `ai_agent_context.country`  | string        | The country code     |

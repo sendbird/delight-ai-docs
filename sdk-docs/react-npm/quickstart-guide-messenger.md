@@ -11,9 +11,9 @@ The **Delight AI agent Messenger React** allows seamless integration of chatbot 
 
 ### Prerequisites
 
-Before you start, you'll need your Sendbird **Application ID** and **AI Agent ID**.\
+Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.\
 \
-You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Sendbird Dashboard.
+You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
 <figure><img src="../../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
@@ -135,7 +135,7 @@ Now that you have installed and initialized the AI Agent SDK, follow the steps b
 
 To launch and display the messenger, implement the code below:
 
-> **Note:** Replace `YOUR_APP_ID` and `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Sendbird Dashboard. To learn how to do so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
+> **Note:** Replace `YOUR_APP_ID` and `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how to do so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
 
 ```tsx
 function App() {

@@ -1,6 +1,6 @@
 # How to use Platform API
 
-Delight AI agent's Platform API allows you to directly work with data resources related to your Sendbird agent's conversation activities. The APIs use standard `HTTP` protocols where `JSON` payloads are returned in response to the `HTTP` requests. It is internally implemented based on the `RESTful` principles. These APIs allow for more flexibility and adds additional functionalities to your service from the server side.
+Delight AI agent's Platform API allows you to directly work with data resources related to your Delight agent's conversation activities. The APIs use standard `HTTP` protocols where `JSON` payloads are returned in response to the `HTTP` requests. It is internally implemented based on the `RESTful` principles. These APIs allow for more flexibility and adds additional functionalities to your service from the server side.
 
 ***
 
@@ -12,7 +12,7 @@ A typical HTTP request to the Chat API includes the following headers for authen
 
 * `app_id` and `ai_agent_id`: Can be found in Delight AI dashboard or its URL
 * Content-Type: Every request must include a `Content-Type` header.
-* Api-Token: Either the master API token or a secondary API token is required for Sendbird server to [authenticate](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api) your API requests.
+* Api-Token: Either the master API token or a secondary API token is required for the Sendbird server to [authenticate](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api) your API requests.
 
 The following snippet demonstrates a sample request body in shell.
 

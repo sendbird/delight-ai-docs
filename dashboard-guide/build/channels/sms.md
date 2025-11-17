@@ -18,7 +18,7 @@ To enable this feature and add a phone number, contact your sales representative
 
 ### **Step 1: Add a phone number**
 
-To assist a user through text message on their mobile device, Delight AI agent must have a phone number connected to it. As of April 30, 2025, a phone number can be added to your account by Sendbird upon request. Contact a Sendbird representative for further assistance.
+To assist a user through text message on their mobile device, Delight AI agent must have a phone number connected to it. As of April 30, 2025, a phone number can be added to your account by Delight upon request. Contact a Delight representative for further assistance.
 
 ### Step 2: Connect the phone number to AI agent
 

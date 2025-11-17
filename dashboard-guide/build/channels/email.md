@@ -13,9 +13,9 @@ In the **Email** channel settings, you can manage the configuration and authenti
 
 ## **How to connect**
 
-### **Step 1: Create a Sendbird email for AI agent**
+### **Step 1: Create a Delight email for AI agent**
 
-When you enable the Email channel, it will automatically create a Sendbird email for the AI agent. You will need to connect this email to your company domain and a Custom sender email address so that your AI agent can communicate with users on behalf of your brand.
+When you enable the Email channel, it will automatically create a Delight email for the AI agent. You will need to connect this email to your company domain and a Custom sender email address so that your AI agent can communicate with users on behalf of your brand.
 
 1. Go to **Channels** on the left menu bar in Delight AI dashboard.
 2. Click the **Email** tile.
@@ -60,7 +60,7 @@ To learn more about how to set up these records to your DNS configurations, expa
 
 <details>
 
-<summary>Configure DNS Settings for Sendbird’s AI Agent</summary>
+<summary>Configure DNS Settings for Delight AI Agent</summary>
 
 To ensure the AI Agent’s outgoing emails are delivered reliably and not flagged as spam, you must properly configure DNS records for Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM), and Domain-Based Message Authentication, Report & Conformance (DMARC). These authentication mechanisms help verify that your AI Agent is authorized to send emails on behalf of your domain.
 
@@ -107,7 +107,7 @@ Once you’ve set up SPF, DKIM, and DMARC, check if all records have been succes
 </details>
 
 5. After updating the DNS settings, click the **Check verification status** button to check if DKIM and SPF are properly authenticated.
-6. If authenticated, you can add any email addresses to **Custom sender email addresses**. These custom addresses will mask the sender email address of your AI agent's outgoing emails, displaying the specified **Custom sender email address** in your user's inbox instead of its Sendbird email address.
+6. If authenticated, you can add any email addresses to **Custom sender email addresses**. These custom addresses will mask the sender email address of your AI agent's outgoing emails, displaying the specified **Custom sender email address** in your user's inbox instead of its Delight email address.
 
 <figure><img src="../../../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-580D1EDC-7B50-40E5-AF33-D99CD7C34D01-settings-emails-2025-04-23-17_47_56.png" alt=""><figcaption></figcaption></figure>
 

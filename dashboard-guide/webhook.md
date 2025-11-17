@@ -5,7 +5,7 @@ Delight AI agent supports a webhook API so that you can be notified whenever a n
 <figure><img src="../.gitbook/assets/image (91).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-As of August 27, 2025, the webhook configuration should be set by Sendbird. Contact your Sendbird representative for further assistance.
+As of August 27, 2025, the webhook configuration should be set by Delight. Contact your Delight representative for further assistance.
 {% endhint %}
 
 This guide presents the list of the Delight AI agent events you can listen to and sample payloads for each of them.
@@ -14,7 +14,7 @@ This guide presents the list of the Delight AI agent events you can listen to an
 
 ## Events
 
-A lot can happen during a conversation with a user and Sendbird notifies you such event through webhook. Here are a list of events that you can subscribe to.
+A lot can happen during a conversation with a user and Delight notifies you such event through webhook. Here are a list of events that you can subscribe to.
 
 * `conversation:started` - A conversation started.
 * `conversation:closed` - A conversation has been closed.
