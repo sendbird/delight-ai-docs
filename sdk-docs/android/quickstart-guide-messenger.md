@@ -3,8 +3,8 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.0.0 released: Delight AI agent SDK for Android **v1.0.0** was released on **September 25, 2025**.&#x20;
-* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.&#x20;
+* Version 1.0.0 released: Delight AI agent SDK for Android **v1.0.0** was released on **September 25, 2025**.
+* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 * Deprecation notice: The previous version, v0.9, will be deprecated on **December 31, 2025**.
 {% endhint %}
 
@@ -27,7 +27,7 @@ Before you start, you'll need your Sendbird **Application ID** and **AI Agent ID
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Sendbird Dashboard.
 
-<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39 (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -40,7 +40,7 @@ Quickly install and initialize the AI Agent SDK by following the steps below.
 1. In Android Studio, create a new project (**File > New > New Project...**).
 2. Select **Empty Views Activity** and click **Next**.
 
-<figure><img src="../../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (74) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. Give your project a name. Accept all other defaults, including the language as `Kotlin` and the minimum SDK as `API 21: Android 5.0 (Lollipop)` and click **Finish**.
 
@@ -338,7 +338,7 @@ startActivity(
 ```
 
 {% hint style="info" %}
-Note: You can also update or patch the context object after initialization using the `updateContext` or `patchContext` methods on the messenger object. For details, see the [Context object ](context-object.md) page.
+Note: You can also update or patch the context object after initialization using the `updateContext` or `patchContext` methods on the messenger object. For details, see the [Context object ](context-object.md)page.
 {% endhint %}
 
 ***

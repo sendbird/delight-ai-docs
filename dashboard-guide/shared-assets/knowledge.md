@@ -10,15 +10,15 @@ Knowledge consists of various content sources your AI agent uses to generate acc
 
 ### Supported knowledge types
 
-* Files — Upload text-based files.&#x20;
+* Files — Upload text-based files.
   * Supported file format: `json`, `txt`, `md`, `pdf`, `xlsx`, `xls`, `docx`, `doc`, `pptx`, `ppt`
 * Snippets — Manually add quick facts or guidance.
 * Websites — Import subpages from a main URL.
-* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk
-* _(Coming soon: Notion, Google Drive)_
+* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk, Notion, Amazon S3 \
+  (Coming soon: Google Drive)
 
 {% hint style="info" %}
-&#x20;Integrations must first be configured under **Workspace settings > Integrations**.
+Integrations must first be configured under **Workspace settings > Integrations**.
 {% endhint %}
 
 ***
@@ -105,7 +105,7 @@ You can simulate how your Knowledge works using the built-in **tester** on the r
 
 1.  Select test **agent**, **user**, **country**, **language,** and **context objects.**
 
-    These are information used to simulate user-specific conditions and evaluate how the AI agent responds in realistic, production-like scenarios.&#x20;
+    These are information used to simulate user-specific conditions and evaluate how the AI agent responds in realistic, production-like scenarios.
 
 {% include "../../.gitbook/includes/tester-fields.md" %}
 

@@ -2,7 +2,7 @@
 
 **Actionbooks** are structured playbooks that provide AI agents with detailed guidance for handling specific user scenarios. They contain step-by-step instructions that help agents deliver consistent and accurate responses across common support situations like subscription cancellations, order updates, or account inquiries.
 
-Each actionbook can reference other shared assets such as tools, message templates, or even other actionbooks. You can also escalate to a human agent or highlight important steps using feature like handoff and pin.&#x20;
+Each actionbook can reference other shared assets such as tools, message templates, or even other actionbooks. You can also escalate to a human agent or highlight important steps using feature like handoff and pin.
 
 ***
 
@@ -39,7 +39,7 @@ Follow the instsructions below to create a workflow that Delight AI agent can fo
 [Our tutorial ](../../../tutorials/actionbook-best-practices.md)offers the best practices you can refer to when building your own actionbooks.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/스크린샷 2025-09-09 오후 2.40.31.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/스크린샷 2025-09-09 오후 2.40.31 (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Go to **Workspace settings > Shared assets > Actionbooks**.
 2. Click **Add actionbook +**.
@@ -77,7 +77,7 @@ You can simulate how your Actionbook works using the built-in **tester** on the 
 
 1.  Select test **agent**, **user**, **country**, **language,** and **context objects.**
 
-    These are information used to simulate user-specific conditions and evaluate how the AI agent responds in realistic, production-like scenarios.&#x20;
+    These are information used to simulate user-specific conditions and evaluate how the AI agent responds in realistic, production-like scenarios.
 
 {% include "../../../.gitbook/includes/tester-fields.md" %}
 
@@ -89,10 +89,3 @@ If testing is unavailable, make sure the Actionbook is enabled for the selected 
 {% endhint %}
 
 ***
-
-
-
-
-
-
-

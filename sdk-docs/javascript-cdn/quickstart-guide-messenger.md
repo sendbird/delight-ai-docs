@@ -3,8 +3,8 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.5.0 released: Delight AI agent SDK for JavaScript (CDN) **v1.5.0** was released on **September 25, 2025**.&#x20;
-* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.&#x20;
+* Version 1.5.0 released: Delight AI agent SDK for JavaScript (CDN) **v1.5.0** was released on **September 25, 2025**.
+* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 {% endhint %}
 
 The **Delight AI agent Messenger** allows seamless integration of chatbot features into your Web. Follow the steps below to initialize and utilize the SDK effectively.
@@ -15,7 +15,7 @@ Before you start, you'll need your Sendbird **Application ID** and **AI Agent ID
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Sendbird Dashboard.
 
-<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39 (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
