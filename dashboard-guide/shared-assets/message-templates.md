@@ -2,7 +2,7 @@
 
 **Message templates** let you predefine structured messages— such as text, CTA buttons, images, or carousels— that your AI agent can send during a conversation. They are used when you need responses that follow specific wording, formatting, or interaction patterns.
 
-Templates can be created in advance and referenced in **Actionbooks** using slash command (`/`), allowing your agent to deliver consistent, controlled messages across different workflows.&#x20;
+Templates can be created in advance and referenced in **Actionbooks** using slash command (`/`), allowing your agent to deliver consistent, controlled messages across different workflows.
 
 Template types include:
 
@@ -29,9 +29,9 @@ Template types include:
 Once saved, the type cannot be changed.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/스크린샷 2025-09-09 오후 2.51.32.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
 
-4. Provide the content specific to the type you selected.&#x20;
+4. Provide the content specific to the type you selected.
 
 {% hint style="info" %}
 For detailed guidance on how to structure each type, see the Template types section below.
@@ -39,7 +39,7 @@ For detailed guidance on how to structure each type, see the Template types sect
 
 5. Click **Save**.
 
-Once created, the message template will appear in the message template list.&#x20;
+Once created, the message template will appear in the message template list.
 
 ***
 
@@ -77,7 +77,7 @@ The following code snippet demonstrates a sample payload for a message with sugg
 
 ### Image
 
-Displays an image in the conversation, typically used for showing product visuals, plan previews, or banners. The image is retrieved dynamically through an external `GET` endpoint. \
+Displays an image in the conversation, typically used for showing product visuals, plan previews, or banners. The image is retrieved dynamically through an external `GET` endpoint.\
 When the AI agent calls your image endpoint, it sends the following data in the HTTP request body:
 
 #### **HTTP request**
@@ -107,7 +107,7 @@ Your endpoint must return a JSON response in the following format:
 }
 ```
 
-Use the values provided in the **HTTP request body** — such as `user_id`, `language`, `country`, and `context object` — to dynamically determine which image to return. This allows the response to be tailored based on the specific user or scenario.&#x20;
+Use the values provided in the **HTTP request body** — such as `user_id`, `language`, `country`, and `context object` — to dynamically determine which image to return. This allows the response to be tailored based on the specific user or scenario.
 
 ### CTA button
 
@@ -207,7 +207,7 @@ Use the request data (`user_id`, `language`, `context object`, etc.) to tailor w
 Each message template can support multiple languages. Adding language variants ensures that users receive responses in their preferred language, without relying on AI translation.
 
 * You can add one or more language versions for each template.
-* The AI agent will use the version that matches the user's language setting (based on `language` in the request).&#x20;
+* The AI agent will use the version that matches the user's language setting (based on `language` in the request).
 * If no match is found:
   * The default language version will be used as the reference, and
   * The system will apply AI-based translation to generate a localized response.

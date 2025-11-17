@@ -9,12 +9,12 @@ The Freshworks integration with Delight AI agent enhances customer support by bl
 
 ## **Prerequisite**
 
-To establish a connection between Freshworks and Delight AI agent, you must meet the following requirements:&#x20;
+To establish a connection between Freshworks and Delight AI agent, you must meet the following requirements:
 
 * Subscription to at least Freshworks’ Pro plan to enable its Integration feature.
 * A channel dedicated to Delight AI agent Integration in your Freshworks account. Follow the instructions below to create one:
 
-1. Go to **Admin Settings > Configuration and Workflows > Web Chat Topics** on **Freshworks**.&#x20;
+1. Go to **Admin Settings > Configuration and Workflows > Web Chat Topics** on **Freshworks**.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf9CjR5tKN-jTy4AYPF_KtAwT5ScpJFn4-4xXBLQqQYjGviAOqYVVd1NRmamMwW1drGHr_6PgzmUB9KI87EYMVdMuI5OaxCnklFEu7ciPGNngk1s8qRqDKvtpwy7D6e2JwOslf70w?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
@@ -28,11 +28,11 @@ To establish a connection between Freshworks and Delight AI agent, you must meet
 
 ### **Step 1: Fill in your Freshworks information in Delight AI agent**
 
-Now, open your Delight AI agent's dashboard and go to **Workspace settings > Integration > Freshworks**.&#x20;
+Now, open your Delight AI agent's dashboard and go to **Workspace settings > Integration > Freshworks**.
 
 1. Fill out the credentials fields on the page. Information required for each field can be found in your **Freshworks dashboard**.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2025-04-16 at 3.41.42 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
 
 **API details**
 
@@ -48,15 +48,15 @@ Now, open your Delight AI agent's dashboard and go to **Workspace settings > Int
 
 ### Step 2: Click Connect
 
-Once you have finished retrieving the required information for the Freshworks integration, click **Connect** at the top of the browser.&#x20;
+Once you have finished retrieving the required information for the Freshworks integration, click **Connect** at the top of the browser.
 
 You will then see a confirmation label on the **Freshworks** tile indicating that the integration has been successfully established.
 
 <figure><img src="../../.gitbook/assets/image (58).png" alt="" width="326"><figcaption></figcaption></figure>
 
-### **Step 3:  Test the conversation handoff**&#x20;
+### **Step 3: Test the conversation handoff**
 
-Once connected, you can try out a handoff on our AI agent widget.&#x20;
+Once connected, you can try out a handoff on our AI agent widget.
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Freshworks** for a handoff platform.
 2. Start a conversation on the AI agent widget in Delight AI dashboard.&#x20;

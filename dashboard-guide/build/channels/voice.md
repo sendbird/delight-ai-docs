@@ -4,7 +4,7 @@ Delight's Voice agent enables your AI agent to speak with users over the phoneâ€
 
 You can set up your Voice agent under **AI agent > Build > Channels > Voice** on Delight AI dashboard.
 
-<figure><img src="../../../.gitbook/assets/CleanShot 2025-09-02 at 11.12.19@2x (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
 
 This guide walks you through how to configure and customize your Voice agent inside Delight AI dashboard. From setting the default language and phone number to choosing a realistic voice and defining automated call behaviors, youâ€™ll learn how to fine-tune the way your AI agent handles inbound and outbound calls.
 
@@ -85,6 +85,3 @@ Configure when and how to escalate the call to a human agent via a third-party s
 ### Preview your configuration
 
 You can test your voice agent setup using the built-in **Tester** view on the right side of the dashboard. This lets you simulate calls and hear your AI agent's voice and responses.
-
-
-

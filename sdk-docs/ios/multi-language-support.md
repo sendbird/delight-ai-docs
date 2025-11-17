@@ -6,7 +6,7 @@ This guide walks you through adding a `Localizable.strings` file to your Xcode p
 
 {% stepper %}
 {% step %}
-### Add `Localizable.strings` Fil
+#### Add `Localizable.strings` Fil
 
 1. In the **Project Navigator**, right-click on your target group or folder.
 2. Select **New File from Template…**
@@ -24,11 +24,11 @@ Enable Localization
 {% endstep %}
 
 {% step %}
-### Add Translations
+#### Add Translations
 
 Edit the `Localizable.strings` files per language:
 
-#### `Localizable.strings` (English)
+**`Localizable.strings` (English)**
 
 ```
 "SBA_Common_cancel" = "Cancel";
@@ -50,4 +50,3 @@ Refer to the [English-based `Localizable.string` file](https://github.com/sendbi
 2. Open **Settings > General > Language & Region**
 3. Change the language to your desired option (e.g., Bangla)
 4. Relaunch your app — localized strings should appear accordingly
-

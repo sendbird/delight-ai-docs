@@ -1,8 +1,8 @@
 # AI agent (home)
 
-The **AI agent home** gives you a centralized view of all AI agents within your workspace.&#x20;
+The **AI agent home** gives you a centralized view of all AI agents within your workspace.
 
-<figure><img src="../.gitbook/assets/screencapture-dashboard-sendbird-ai-agent-agent-select-2025-09-09-14_32_22.png" alt=""><figcaption><p>AI agent list view</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ## What you can do
 
@@ -35,11 +35,11 @@ Modifications in Development do not impact the live agent until they are deploye
 
 If there are updates in the Development environment that haven’t been deployed, a **changes to deploy** badge will appear on the agent card.
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-09-03 at 15.51.31@2x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 A modal will then pop up with a detailed list of items that were modified. You can review the changes and choose to deploy all or selectively deploy changes.
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-09-03 at 15.48.24@2x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -57,7 +57,7 @@ This allows you to:
 * A/B test different flows across agents
 * Avoid unintended changes to agents that share the same workspace assets
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-09-03 at 15.57.08.gif" alt=""><figcaption></figcaption></figure>
+{% include "../.gitbook/includes/untitled.md" %}
 
 ***
 
@@ -65,7 +65,7 @@ This allows you to:
 
 Click **Deployment history** on any agent card to view past deployments.
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-05-14 at 16.51.41@2x.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Each record shows:
 

@@ -3,8 +3,8 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.5.0 released: Delight AI agent SDK for React **v1.5.0** was released on **September 25, 2025**.&#x20;
-* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.&#x20;
+* Version 1.5.0 released: Delight AI agent SDK for React **v1.5.0** was released on **September 25, 2025**.
+* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 {% endhint %}
 
 The **Delight AI agent Messenger React** allows seamless integration of chatbot features into your React application.
@@ -15,7 +15,7 @@ Before you start, you'll need your Delight **Application ID** and **AI Agent ID*
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
-![ai-agent-app-id-agent-id](<../../.gitbook/assets/스크린샷 2025-09-09 오후 1.58.39.png>)
+<figure><img src="../../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
 **System requirements:**
 

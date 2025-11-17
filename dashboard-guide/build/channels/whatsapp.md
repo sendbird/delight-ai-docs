@@ -1,19 +1,19 @@
 # WhatsApp
 
-Delight AI agent is designed to assist users across a wide range of everyday communication channels, ensuring seamless and efficient interactions including popular online messaging platforms like WhatsApp.&#x20;
+Delight AI agent is designed to assist users across a wide range of everyday communication channels, ensuring seamless and efficient interactions including popular online messaging platforms like WhatsApp.
 
 In the **WhatsApp** channel settings you can:
 
 * Connect a WhatsApp Business Account with Delight AI agent.
 * Configure the settings of WhatsApp conversations for your AI agent.
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2025-04-28 at 4.36.21 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-## Prerequisites&#x20;
+## Prerequisites
 
-* Your[ Meta Business Account. ](https://www.facebook.com/business/help/1710077379203657?id=180505742745347)
+* Your[ Meta Business Account.](https://www.facebook.com/business/help/1710077379203657?id=180505742745347)
   * A personal Facebook account to create or link a Meta Business Manager account. If you are linking an existing Meta Business Account, your personal account must be an admin on the Meta Business Account.
   * Your company’s legal name.
   * Your WhatsApp Business display name which will face customers.
@@ -31,8 +31,7 @@ In the **WhatsApp** channel settings you can:
 
 Connect your WhatsApp Business account with Delight directly from Delight AI dashboard. Make sure you have the prerequisites ready. \
 
-
-1. Go to **Channels** and click the **WhatsApp** tile in Delight AI dashboard.&#x20;
+1. Go to **Channels** and click the **WhatsApp** tile in Delight AI dashboard.
 2. Click **Continue** with Meta shown on the pop-up modal.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.46.35 PM.png" alt=""><figcaption></figcaption></figure>
@@ -49,7 +48,7 @@ Connect your WhatsApp Business account with Delight directly from Delight AI das
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.47.05 PM.png" alt=""><figcaption></figcaption></figure>
 
-6. Create or select a WhatsApp Business account.&#x20;
+6. Create or select a WhatsApp Business account.
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.47.14 PM.png" alt=""><figcaption></figcaption></figure>
 
@@ -57,7 +56,7 @@ Connect your WhatsApp Business account with Delight directly from Delight AI das
 
 <figure><img src="../../../.gitbook/assets/Screenshot 2025-04-03 at 2.47.24 PM.png" alt=""><figcaption></figcaption></figure>
 
-8. Next, add a phone number to your **WhatsApp Business Profile**.&#x20;
+8. Next, add a phone number to your **WhatsApp Business Profile**.
    1. To connect a phone number with your WhatsApp Business Profile, you must have access to a phone number to send WhatsApp messages with.
       1. If you need to purchase a number, talk to a Delight representative.
    2. Then, proceed to **Next** to receive a **One Time Password** through the phone number.
@@ -68,7 +67,7 @@ Connect your WhatsApp Business account with Delight directly from Delight AI das
 
 ### **Step 2: Configure the channel settings**
 
-You can set up the channel and manage its settings in Channel > WhatsApp in Delight AI dashboard.&#x20;
+You can set up the channel and manage its settings in Channel > WhatsApp in Delight AI dashboard.
 
 #### **Close inactive conversation**
 
@@ -88,4 +87,4 @@ Deleting a WhatsApp channel is temporarily unavailable. To delete a WhatsApp cha
 
 \
 \
-\
+\\

@@ -2,16 +2,16 @@
 
 The **Run tests** page allows you to use the test conversations to evaluate how your AI agent performs. This page is where actual testing takes place — either manually or on a schedule — and where you view results, performance trends, and pass or fail rates.
 
-***
+<figure><img src="../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/CleanShot 2025-05-14 at 22.53.13@2x (1).png" alt=""><figcaption></figcaption></figure>
+***
 
 ## What is a test set?
 
 A test set is a group of test conversations bundled together to be evaluated at once. Instead of running tests one by one, you can organize multiple conversations into a single set — making it easier to check your AI agent's performance across a variety of scenarios in a single run. It helps you test multiple user intents, edge cases and failure scenarios, and consistency across shared assets such as Knowledge and Actionbooks.
 
 {% hint style="info" %}
-Test sets are not shared between Development and Production.&#x20;
+Test sets are not shared between Development and Production.
 {% endhint %}
 
 ### Key capabilities
@@ -31,7 +31,7 @@ You can do the following actions on this page:\
 
 1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
 2. Go to **AI agent > Test > Run test sets**.
-3. Click **Create test set+.**&#x20;
+3. Click **Create test set+.**
 4. Add a title, and one or more test conversations.
 5. **Save** the test set.
 
@@ -39,7 +39,7 @@ You can do the following actions on this page:\
 **Note**: Test sets cannot be edited once created. To make changes, you will need to create a new set.
 {% endhint %}
 
-You can also create a test set through the Test conversation details page (**AI agent > Test > Test conversations**) as shown in the image below.&#x20;
+You can also create a test set through the Test conversation details page (**AI agent > Test > Test conversations**) as shown in the image below.
 
 <figure><img src="../../.gitbook/assets/CleanShot 2025-05-14 at 22.26.49 (1).gif" alt=""><figcaption></figcaption></figure>
 
@@ -66,7 +66,7 @@ Once a test set is created, you can manually run it to evaluate your AI agent's 
 1. Go to **AI agent > Test > Run test sets**.
 2. Click on the test set you wish to run.
 3. In the top right corner, click **Run test**.
-4. Review the confirmation details. Ensure no shared assets are being modified during the test run, as this may impact results.&#x20;
+4. Review the confirmation details. Ensure no shared assets are being modified during the test run, as this may impact results.
 5. Confirm and **run**. The system will execute the test based on the current agent configuration.
 
 Once complete, you will be able to view success rates and detailed pass or fail results in the same test set details view.
@@ -85,7 +85,7 @@ In addition to running test sets manually, you can schedule them to run automati
 2. Click **Schedule runs** located in the upper right corner of the test set detail view.
 3. Configure the schedule
 
-* Period&#x20;
+* Period
   * For a specific period: Define a start and end date.
   * No end date: The test set will continue running on a schedule until manually stopped.
 * Start date
@@ -114,9 +114,9 @@ After a test set has been run — either manually or on a schedule — the resul
 
     * Run date and time
     * Number of test conversations within the test set
-    * Status&#x20;
-    * Success rate&#x20;
-    * Pass and Fail count&#x20;
+    * Status
+    * Success rate
+    * Pass and Fail count
 
 Each test conversation is evaluated independently. A conversation **passes** if the AI agent's response meets the expected output based on the defined evaluation criteria (such as semantic similarity). A **failure** indicates that the AI agent's response did not meet expectations.
 

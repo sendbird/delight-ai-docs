@@ -15,7 +15,7 @@ The Zendesk integration with Delight AI agent enables seamless customer support 
 2. Then come back to **Workspace settings > Integrations** in **Delight AI dashboard**.
 3. Click on the **Zendesk** tile and fill out the fields in the page. The information of each field can be found in your **Zendesk** dashboard. For detailed information, see the table below the screenshot.
 
-<figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
 
 **Integration type**
 
@@ -27,11 +27,11 @@ Determine whether you would like to integrate Zendesk for both Knowledge and Han
 
 **Zendesk API credentials**
 
-<table><thead><tr><th width="190.64453125">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Account email</td><td>The email connected to your Zendesk account. </td></tr><tr><td>API token</td><td>The unique API token issued for your account. Delight AI agent will require this in order to authenticate its request to your Zendesk account. Create a new API token for your AI agent under <strong>Apps and Integration > APIs > Zendesk API</strong> on <strong>Zendesk Admin Center</strong>. </td></tr></tbody></table>
+<table><thead><tr><th width="190.64453125">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Account email</td><td>The email connected to your Zendesk account.</td></tr><tr><td>API token</td><td>The unique API token issued for your account. Delight AI agent will require this in order to authenticate its request to your Zendesk account. Create a new API token for your AI agent under <strong>Apps and Integration > APIs > Zendesk API</strong> on <strong>Zendesk Admin Center</strong>.</td></tr></tbody></table>
 
 **Conversation API credentials**
 
-<table><thead><tr><th width="189.5703125">Credentail</th><th>Description</th></tr></thead><tbody><tr><td>Key ID</td><td>Credentials required for authenticating API requests. Create a new Conversation API key for your AI agent under <strong>Admin Center > Apps and integrations > APIs > Conversations API</strong> on <strong>Zendesk Admin Center</strong>. This will generate a new <strong>Key ID</strong>, <strong>Secret Key</strong>, and <strong>APP ID</strong>. For more information, refer to <a href="https://support.zendesk.com/hc/en-us/articles/4576088682266-Using-the-Conversations-API-keys">Zendesk's Help page</a>.</td></tr><tr><td>Secret key</td><td>Credentials required for authenticating API requests. This will be provided along with your <strong>Key ID</strong>.</td></tr><tr><td>APP ID</td><td>The identifier for a specific app in your Zendesk account.  This will be provided along with your <strong>Key ID</strong>.</td></tr></tbody></table>
+<table><thead><tr><th width="189.5703125">Credentail</th><th>Description</th></tr></thead><tbody><tr><td>Key ID</td><td>Credentials required for authenticating API requests. Create a new Conversation API key for your AI agent under <strong>Admin Center > Apps and integrations > APIs > Conversations API</strong> on <strong>Zendesk Admin Center</strong>. This will generate a new <strong>Key ID</strong>, <strong>Secret Key</strong>, and <strong>APP ID</strong>. For more information, refer to <a href="https://support.zendesk.com/hc/en-us/articles/4576088682266-Using-the-Conversations-API-keys">Zendesk's Help page</a>.</td></tr><tr><td>Secret key</td><td>Credentials required for authenticating API requests. This will be provided along with your <strong>Key ID</strong>.</td></tr><tr><td>APP ID</td><td>The identifier for a specific app in your Zendesk account. This will be provided along with your <strong>Key ID</strong>.</td></tr></tbody></table>
 
 ### Step 2: Click Connect
 
@@ -39,14 +39,14 @@ Once you have finished retrieving the required information for the **Zendesk** i
 
 <figure><img src="../../.gitbook/assets/image (9) (1).png" alt="" width="326"><figcaption></figcaption></figure>
 
-### **Step 3:  Test the conversation handoff**&#x20;
+### **Step 3: Test the conversation handoff**
 
-Once connected, you can try out a handoff on our AI agent widget.&#x20;
+Once connected, you can try out a handoff on our AI agent widget.
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Zendesk** for a handoff platform.
 2. Turn your Zendesk agent to **Online** in Zendesk.
-3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.&#x20;
-4. Then click on the **Handoff** button to transfer the conversation to Zendesk.&#x20;
+3. Start a conversation on the AI agent widget in Delight AI agent dahsboard.
+4. Then click on the **Handoff** button to transfer the conversation to Zendesk.
 5. Go back to Zendesk and accept the new ticket in Zendesk .
 6. See the summary and transcript of the AI agent conversation successfully transferred to the Zendesk ticket.
 
@@ -56,4 +56,4 @@ Once connected, you can try out a handoff on our AI agent widget.&#x20;
 
 ### Connect Zendesk subdomains as knowledge.
 
-If you have any guidelines or articles in Zendesk that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.&#x20;
+If you have any guidelines or articles in Zendesk that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.
