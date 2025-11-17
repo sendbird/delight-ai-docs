@@ -25,7 +25,7 @@ https://api-{app_id}.sendbird.com/v3
 ```
 
 {% hint style="info" %}
-To learn more about how to use Sendbird platform APIs, see [our guide](how-to-use-platform-api.md).
+To learn more about how to use Sendbird Platform APIs for Delight AI agent, see [our guide](how-to-use-platform-api.md).
 {% endhint %}
 
 ***
