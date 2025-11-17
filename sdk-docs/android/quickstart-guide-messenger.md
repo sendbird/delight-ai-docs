@@ -193,7 +193,7 @@ Follow the code below to refresh and provide a new session token in the session 
 
 1. Detect session expiration in the session handler callback.
 2. Request a new session token from the server.
-3.  Update the SDK with the new session token.
+3. Update the SDK with the new session token.
 
     ```kotlin
     class AbstractSessionHandler : AIAgentSessionHandler() {

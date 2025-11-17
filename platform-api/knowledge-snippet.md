@@ -1,6 +1,6 @@
 # Knowledge - Snippet
 
-Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Sendbird platform API. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's data base. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.&#x20;
+Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Sendbird platform API for Delight AI agent. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's database. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.&#x20;
 
 Snippets can be useful when it comes to:
 
@@ -32,7 +32,7 @@ https://api-{app_id}.sendbird.com/v3
 ```
 
 {% hint style="info" %}
-To learn more about how to use Sendbird platform APIs, see [our guide](how-to-use-platform-api.md).
+To learn more about how to use Sendbird platform APIs for Delight AI agent, see [our guide](how-to-use-platform-api.md).
 {% endhint %}
 
 ***
