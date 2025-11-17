@@ -132,7 +132,7 @@ For a smooth operation, take the items below into account when setting up your s
 
 ### API Integration checklist
 
-Refer to the following check list when integrating SDK and Sendbird platform APIs.
+Refer to the following check list when integrating SDK and Sendbird platform APIs for Delight AI agent.
 
 #### Pre-development
 

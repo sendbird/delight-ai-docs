@@ -1,6 +1,6 @@
 # How to use Platform API
 
-Delight AI agent's Platform API allows you to directly work with data resources related to your Delight agent's conversation activities. The APIs use standard `HTTP` protocols where `JSON` payloads are returned in response to the `HTTP` requests. It is internally implemented based on the `RESTful` principles. These APIs allow for more flexibility and adds additional functionalities to your service from the server side.
+Platform API for Delight AI agent allows you to directly work with data resources related to your Delight agent's conversation activities. The APIs use standard `HTTP` protocols where `JSON` payloads are returned in response to the `HTTP` requests. It is internally implemented based on the `RESTful` principles. These APIs allow for more flexibility and adds additional functionalities to your service from the server side.
 
 ***
 
