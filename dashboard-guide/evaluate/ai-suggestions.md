@@ -10,7 +10,7 @@ hidden: true
 
 You can find these action items under **Evaluate > AI suggestions** in the left navigation bar.
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 AI Suggestions can be generated 30 days after the AI agent is activated.
@@ -38,7 +38,7 @@ On the **AI suggestions** page, you can:
 * Prioritize suggestions with high, medium, or low urgency to focus on critical improvements first.
 * Track progress with status labels such as To Do, In Progress, Done, or Won’t Do to manage implementation efforts.
 
-### &#x20;**Step 2: Implement AI suggestions**
+### **Step 2: Implement AI suggestions**
 
 * Implement suggested updates to improve AI performance.
 * Use performance metrics such as CSAT scores, resolution rates, and handoff frequency to measure improvements via Overview, Categories and Conversations.
@@ -49,4 +49,4 @@ On the **AI suggestions** page, you can:
 * Review related conversations before taking action.
 * Use the **Mark as done** buttons to address or resolve the suggestion directly.
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>

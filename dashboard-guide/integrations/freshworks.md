@@ -18,7 +18,7 @@ To establish a connection between Freshworks and Delight AI agent, you must meet
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXf9CjR5tKN-jTy4AYPF_KtAwT5ScpJFn4-4xXBLQqQYjGviAOqYVVd1NRmamMwW1drGHr_6PgzmUB9KI87EYMVdMuI5OaxCnklFEu7ciPGNngk1s8qRqDKvtpwy7D6e2JwOslf70w?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
-2. Click the  **+Topic** button and create a channel with the name “**Delight AI agent Integration**”. As the integration system is case-sensitive, make sure you enter the name correctly.
+2. Click the **+Topic** button and create a channel with the name “**Delight AI agent Integration**”. As the integration system is case-sensitive, make sure you enter the name correctly.
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe7oG5Ei8h14X5FyhanDsGLCZyPGLuBd7sr56M-UDTMj92GCNnQeXf-ZC5_8EBmHDHeTP5woKGoWwIGIUVmsahuJmCTKH8lQv5DPjRVtglG8yve8vpQhMNF6EOtFUNB6uiYyQJ-2Q?key=xS65XOd58rPJOYVnOh8lJEX0" alt=""><figcaption></figcaption></figure>
 
@@ -32,7 +32,7 @@ Now, open your Delight AI agent's dashboard and go to **Workspace settings > Int
 
 1. Fill out the credentials fields on the page. Information required for each field can be found in your **Freshworks dashboard**.
 
-<figure><img src="../../.gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 **API details**
 
@@ -59,6 +59,6 @@ You will then see a confirmation label on the **Freshworks** tile indicating tha
 Once connected, you can try out a handoff on our AI agent widget.
 
 1. Go to **Build > Conversation settings > Transfer to human agent** and select **Freshworks** for a handoff platform.
-2. Start a conversation on the AI agent widget in Delight AI dashboard.&#x20;
-3. Then click on the **Handoff** button to transfer the conversation to Freshworks.&#x20;
+2. Start a conversation on the AI agent widget in Delight AI dashboard.
+3. Then click on the **Handoff** button to transfer the conversation to Freshworks.
 4. See the summary of the AI agent conversation successfully transferred to the Freshworks ticket.

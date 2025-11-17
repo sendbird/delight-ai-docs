@@ -41,7 +41,7 @@ Admins can grant an evaluator role to dashboard users and set their conversation
 
 Once evaluators completed their rating, you can see the results in the **Conversations** page. Navigate to **Evaluate > Conversations** to see the results summary or click one of the conversations to see the details. If needed, you can also edit the evaluation scores.
 
-<figure><img src="../../../.gitbook/assets/image (101).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 1. In the left menu bar, go to **Evaluate > Conversations**. The page will show you the list of all conversations that AI agent has conducted.
 2. You can reorganize and sort the conversation list using the filters at the top of the screen. The filters below can be handful in terms of AI agent evaluation:
@@ -51,7 +51,7 @@ Once evaluators completed their rating, you can see the results in the **Convers
    4. **Category**
 3. If you wish to edit the evaluation result of a conversation, navigate to the conversation view. You will see the **Edit** button at the top-right corner of the screen in the conversation view. Click it and make changes needed. Then **Submit**.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ***
 
@@ -65,7 +65,7 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 4. In the **Conversations** view, evaluators can see a list of conversation available.
 5. Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows a list of conversations assigned to the evaluator **Paul Rogers**.
 
-<figure><img src="../../../.gitbook/assets/image (84).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 6. Select one of the conversations in the list to evaluate AI agent's responses.
 
@@ -73,7 +73,7 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 
 <summary>What's in the Conversation view</summary>
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 <table data-header-hidden><thead><tr><th width="147.07421875"></th><th></th></tr></thead><tbody><tr><td><strong>Layout</strong></td><td><strong>Description</strong></td></tr><tr><td>Left panel</td><td>A list of conversations assigned to the evaluator.</td></tr><tr><td>Center panel</td><td><p>A conversation view that displays all the messages exchanged between AI agent and the user.</p><ul><li>Grey bubble: AI agent's message. <strong>AI agent activity log</strong> will appear at the bottom of the bubble. This section logs the Knowledge sources used when generating the response.</li><li>Purple bubble: the user's message</li><li><strong>Show all logs</strong> toggle: expands the <strong>AI agent activity log</strong> that lists the <strong>Knowledge</strong> sources referenced by AI agent.</li></ul></td></tr><tr><td>Right panel</td><td><p>This panel is divided in to two sections:</p><ul><li>Top: the <strong>Evaluation</strong> section. Evaluators can rate each criterion with either <strong>Good</strong> or <strong>Bad</strong> and leave a comment in regard to the AI responses.</li><li>Bottom: the detailed information about the conversation. It contains the conversation summary, user sentiment, language settings, category, and more.</li></ul></td></tr></tbody></table>
 

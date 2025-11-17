@@ -12,7 +12,7 @@ Tools let you connect external APIs to your AI agent, enabling it to retrieve or
 2. Click **Add tool** + in the top-right corner.
 3. Fill out the following fields:
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### **Basic information**
 

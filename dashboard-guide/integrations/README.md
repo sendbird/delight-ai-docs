@@ -21,10 +21,10 @@ We support integrations with tools like Confluence, Salesforce, and ZenDesk allo
 
 The following table summarizes what features each integration supports.
 
-<table><thead><tr><th width="189.84765625">Platform</th><th>Handoff to human agents</th><th>Knowledge </th></tr></thead><tbody><tr><td>Zendesk</td><td>Supported</td><td>Supported</td></tr><tr><td>Salesforce</td><td>Supported</td><td>Supported</td></tr><tr><td>Freshworks</td><td>Supported</td><td>-</td></tr><tr><td>Confluence</td><td>-</td><td>Supported</td></tr><tr><td>Sendbird Desk</td><td>Supported</td><td>-</td></tr><tr><td>Sprinklr</td><td>Supported</td><td>Supported</td></tr><tr><td>AWS S3</td><td>-</td><td>Supported</td></tr><tr><td>Genesys*</td><td>Supported</td><td>-</td></tr></tbody></table>
+<table><thead><tr><th width="189.84765625">Platform</th><th>Handoff to human agents</th><th>Knowledge</th></tr></thead><tbody><tr><td>Zendesk</td><td>Supported</td><td>Supported</td></tr><tr><td>Salesforce</td><td>Supported</td><td>Supported</td></tr><tr><td>Freshworks</td><td>Supported</td><td>-</td></tr><tr><td>Confluence</td><td>-</td><td>Supported</td></tr><tr><td>Sendbird Desk</td><td>Supported</td><td>-</td></tr><tr><td>Sprinklr</td><td>Supported</td><td>Supported</td></tr><tr><td>AWS S3</td><td>-</td><td>Supported</td></tr><tr><td>Genesys*</td><td>Supported</td><td>-</td></tr><tr><td>Notion</td><td>-</td><td>Supproted</td></tr></tbody></table>
 
 {% hint style="info" %}
 \*[Genesys integration ](genesys.md)is available for [Voice](../build/channels/voice.md) channels only.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>

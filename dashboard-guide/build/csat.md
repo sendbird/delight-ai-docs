@@ -81,7 +81,7 @@ A follow-up question is a conditional query that can be asked when the user sele
 2. Select response type and add response options. The response type can be either a single answer or a paragraph. For single-answer questions, up to five options are allowed.
 3. Determine whether the follow-up question will be required or optional. If required, check the **Required** box in the top-right corner of the section.
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The default CSAT survey includes one open-ended follow-up question for all rating options.\
@@ -90,7 +90,7 @@ Each rating can have only one follow-up question. To customize follow-ups per ra
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Others
 
@@ -111,7 +111,7 @@ On the right side of the survey section, there is **Tester** that shows a previe
 Make sure that the language set to the tester widget matches with the language used for the survey. Otherwise, the tester won't work properly.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ***
 
