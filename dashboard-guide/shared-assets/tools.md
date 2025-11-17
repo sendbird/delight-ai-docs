@@ -2,7 +2,7 @@
 
 Tools let you connect external APIs to your AI agent, enabling it to retrieve or send data dynamically during a conversation. For example, you can validate a credit card, check membership status, or pause a subscription using tools. These tools are shared assets managed at the workspace level and can be used within Actionbooks to automate workflows.
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (121).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -39,7 +39,7 @@ The AI agent automatically uses the tool’s response to generate the most relev
 
 * **Add parameter**: Click the **Add +** icon to insert parameters into the URL.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
 
 #### **Types of parameters you can insert**
 
@@ -49,7 +49,7 @@ The AI agent automatically uses the tool’s response to generate the most relev
 
 ## Testing the tool
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (123).png" alt=""><figcaption></figcaption></figure>
 
 You can test your tool directly on the dashboard:
 

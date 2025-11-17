@@ -15,7 +15,7 @@ Delight AI agent supports a conversation handoff through [Sendbird Salesforce Co
 
 ## **How to integrate**
 
-### **Step 1: Fill in your Salesforce credentials in Delight AI agent**&#x20;
+### **Step 1: Fill in your Salesforce credentials in Delight AI agent**
 
 First, log in to your Salesforce account and find **OAuth and OpenID Connect Settings** in the **Setup** console. Then enable **Allow OAuth Username-Password Flows**. This will allow your AI agent to communicate with Salesforce without interruption.
 
@@ -77,7 +77,7 @@ The Consumer Details appear only once initially, so save the information somewhe
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (103).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2. Click **Connect**
 

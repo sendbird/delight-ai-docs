@@ -2,7 +2,7 @@
 
 The **AI agent home** gives you a centralized view of all AI agents within your workspace.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (118).png" alt=""><figcaption></figcaption></figure>
 
 ## What you can do
 
@@ -39,7 +39,7 @@ If there are updates in the Development environment that haven’t been deployed
 
 A modal will then pop up with a detailed list of items that were modified. You can review the changes and choose to deploy all or selectively deploy changes.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

@@ -14,7 +14,7 @@ Knowledge consists of various content sources your AI agent uses to generate acc
   * Supported file format: `json`, `txt`, `md`, `pdf`, `xlsx`, `xls`, `docx`, `doc`, `pptx`, `ppt`
 * Snippets — Manually add quick facts or guidance.
 * Websites — Import subpages from a main URL.
-* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk, Notion, Amazon S3 \
+* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk, Notion, Amazon S3\
   (Coming soon: Google Drive)
 
 {% hint style="info" %}
@@ -34,7 +34,7 @@ Knowledge is a shared asset created and managed at the **workspace level**, but 
 * Assign country and language tags for each knowledge.
 * Acts as the central repository for the entire workspace.
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
 
 #### 2. Agent-level (per AI agent)
 

@@ -23,7 +23,7 @@ Before you start, you'll need your Delight **Application ID** and **AI Agent ID*
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
-<figure><img src="../../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (49) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -270,4 +270,3 @@ Note: You can also update or patch the context object after initialization using
 ***
 
 Delight AI agent also supports multi-language feature. To learn more, see the[ Multi-language support](multi-language-support.md) page.
-

@@ -23,7 +23,7 @@ Admins can grant an evaluator role to dashboard users and set their conversation
 2. On the dashboard home, review the list of **AI agents** created under your account.
 3. Click the **Development** AI agent card to open. The **Development** agent is where you will review all test conversations and provide feedback for changes prior to production deployment.
 
-<figure><img src="../../../.gitbook/assets/스크린샷 2025-09-23 오후 4.50.31 (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (117).png" alt="" width="563"><figcaption></figcaption></figure>
 
 4. In the AI agent view, go to **Workspace settings > General**. Unlike general agents, users with an **Admin** role can access all menus in the dashboard.
 5. In the left menu, navigate to **Evaluators**.
@@ -82,7 +82,7 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 7. Start rating the AI messages by criterion in the **Evaluation** section in the top-right area of the screen.
 8. In the **Evaluation** section, rate each item by clicking **Good** or **Poor**, then submit your evaluation by clicking **Submit** or pressing a keyboard shortcut (Command/Ctrl + Enter). Assigned evaluators can edit scores after submission.
 
-<figure><img src="../../../.gitbook/assets/image (8).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (32).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ***
 

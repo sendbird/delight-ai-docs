@@ -45,7 +45,7 @@ Enable human-agent handoff and select the support platform—set platform creden
 
 Configure how to respond to customers when their conversation went well or bad.
 
-<figure><img src="../../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (128).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="245.5546875">Field</th><th>Description</th></tr></thead><tbody><tr><td>Ask if issue was resolved</td><td>Set a message to ask the customer for confirmation when the AI agent detects that their issue may be resolved.</td></tr><tr><td>Positive 👍</td><td><p>Define how the AI agent should handle positive feedback from customers.</p><ul><li>Feedback: Set the label for the button that customers can select to indicate their issue has been resolved.</li><li>Action: The conversation will automatically close when the customer selects this button. Provide a message to confirm the conversation’s closure.</li><li>Conversation status: Once positive feedback is received, the conversation status will always be marked as <code>Resolved</code>.</li></ul></td></tr><tr><td>Negative 👎</td><td><p>Define how the AI agent should handle negative feedback from customers.</p><ul><li>Feedback: Set the label for the button that customers can select to indicate their issue hasn’t been resolved.</li><li>Action: The conversation will automatically close when the customer selects this button. Provide a message to confirm the conversation’s closure.</li><li>Conversation status: Once positive feedback is received, the conversation status will always be marked as <code>Unresolved</code>.</li></ul></td></tr></tbody></table>
 
@@ -55,7 +55,7 @@ Configure how to respond to customers when their conversation went well or bad.
 
 Define how to manage conversations with no response from customers.
 
-<figure><img src="../../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (129).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="258.94140625">Field</th><th>Description</th></tr></thead><tbody><tr><td>Timeout period</td><td><p>Define the duration of inactivity after which the conversation is considered ended. The AI agent automatically closes the conversation if the customer does not respond within the specified timeframe.</p><p>Default timeout period: 10 minutes</p></td></tr><tr><td>Closing message</td><td>Enter a message that informs the customer when the conversation is closing due to inactivity.</td></tr></tbody></table>
 

@@ -12,7 +12,7 @@ You can create a test scenario by uploading a CSV, importing from real conversat
 
 ### Using a CSV file
 
-<figure><img src="../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption></figcaption></figure>
 
 1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
 2. Go to the Manage test scenarios page under **AI agent > Test > Manage test scenarios.**
@@ -40,7 +40,7 @@ Download sample test conversation here.
 
 5. Manually enter user message and AI agent messages on the right panel to create an ideal conversation.
 
-<figure><img src="../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (132).png" alt=""><figcaption></figcaption></figure>
 
 6. Then, **Save** the test scenario.
 

@@ -6,7 +6,7 @@ The Sprinklr integration with Delight AI agent facilitates seamless customer exp
 * Leverage Sprinklr articles for instant answers: If you already have multiple customer support articles in Sprinklr, AI agents can easily reference them when handling user queries, instead of you building it from scratch.
 
 {% hint style="info" %}
-Self-serve integration is currently not supported. Contact a Delight representative to connect Sprinklr with Delight AI agent.&#x20;
+Self-serve integration is currently not supported. Contact a Delight representative to connect Sprinklr with Delight AI agent.
 {% endhint %}
 
 ***
@@ -27,7 +27,7 @@ For more information, refer to [Sprinklr's guide on API key generation](https://
 
 Once we connect your account to the AI agent, you can find your Sprinklr API integration settings under **Workspace settings > Integration > Sprinklr** on **Delight AI dashboard**.
 
-<figure><img src="../../.gitbook/assets/image (109).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
 
 Also, you will see a `CONNECTED` label on the **Sprinklr** tile indicating that the integration has been successfully established.
 
