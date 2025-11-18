@@ -27,7 +27,7 @@ Once the phone number was added, follow the instructions below to connect a phon
 1. Go to **Delight AI dashboard > Channels**.
 2. Click the **SMS** tile.
 
-<figure><img src="../../../.gitbook/assets/image (125) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (132) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. Select an existing phone number you've registered in advance.
 

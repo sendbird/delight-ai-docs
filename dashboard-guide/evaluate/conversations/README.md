@@ -2,7 +2,7 @@
 
 This feature provides a detailed view of AI agent-customer interactions, helping businesses to assess the agent’s performance, identify resolution patterns, and optimize its behavior. By analyzing individual conversations, you can refine their AI agent’s responses, improve automation efficiency, and enhance customer satisfaction.
 
-<figure><img src="../../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
 
 ## How to analyze conversations
 

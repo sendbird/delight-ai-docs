@@ -150,7 +150,7 @@ There are two ways to display the chat view:
 
 **1. Using the launcher button**
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt="" width="375"><figcaption></figcaption></figure>
 
 Display a floating launcher button:
 
@@ -168,7 +168,7 @@ AIAgentMessenger.detachLauncher(aiAgentId: {AIAgentId})
 
 **2. Opening the conversation channel in presentation mode**
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt="" width="375"><figcaption></figcaption></figure>
 
 Present the chat view as a modal:
 

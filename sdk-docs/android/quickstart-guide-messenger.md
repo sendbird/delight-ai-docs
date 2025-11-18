@@ -193,7 +193,7 @@ Follow the code below to refresh and provide a new session token in the session 
 
 1. Detect session expiration in the session handler callback.
 2. Request a new session token from the server.
-3. Update the SDK with the new session token.
+3.  Update the SDK with the new session token.
 
     ```kotlin
     class AbstractSessionHandler : AIAgentSessionHandler() {
@@ -229,7 +229,7 @@ There are two ways to display the messenger:
 
 **1. Using the launcher button**
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt="" width="375"><figcaption></figcaption></figure>
 
 The SDK provides a `MessengerLauncher` view that can be programmatically attached to your application's root view. This eliminates the need to modify your XML layouts directly.
 
@@ -263,7 +263,7 @@ Use `LauncherLayoutParams` to control the launcher's behavior and position.
 
 **2. Opening the conversation channel in full-screen mode**
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt="" width="375"><figcaption></figcaption></figure>
 
 You can open a full-screen conversation by starting an `Activity`.
 

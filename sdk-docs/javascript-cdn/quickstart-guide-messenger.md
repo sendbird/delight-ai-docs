@@ -126,7 +126,7 @@ messenger.updateUserSession(newManualSessionInfo);
 
 #### Launch the messenger
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-launcher.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-launcher.png" alt="" width="375"><figcaption></figcaption></figure>
 
 Once the authentication information has been successfully registered, you can launch the messenger to start a conversation with the AI agent.
 
@@ -175,7 +175,7 @@ The following are available advanced features.
 
 #### Display messenger without launcher button
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-suggested-replies.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-suggested-replies.png" alt="" width="375"><figcaption></figcaption></figure>
 
 ```javascript
 const messenger = await loadMessenger({
