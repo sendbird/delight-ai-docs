@@ -41,7 +41,7 @@ Admins can grant an evaluator role to dashboard users and set their conversation
 
 Once evaluators completed their rating, you can see the results in the **Conversations** page. Navigate to **Evaluate > Conversations** to see the results summary or click one of the conversations to see the details. If needed, you can also edit the evaluation scores.
 
-<figure><img src="../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (2).png" alt=""><figcaption></figcaption></figure>
 
 1. In the left menu bar, go to **Evaluate > Conversations**. The page will show you the list of all conversations that AI agent has conducted.
 2. You can reorganize and sort the conversation list using the filters at the top of the screen. The filters below can be handful in terms of AI agent evaluation:

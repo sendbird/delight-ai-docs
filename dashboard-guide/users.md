@@ -4,20 +4,18 @@ To enable the AI agent to deliver a fully personalized experience, create user a
 
 ## Create a user in Delight AI dashboard
 
-You can create users directly in the dashboard for testing.&#x20;
+You can create users directly in the dashboard for testing.
 
 1. Go to **Workspace settings > Users** and click the **Create user +** button at the top right corner of your browser.
-2. When a popup appears, specify a user's unique **ID** and **Nickname** and **Create**.&#x20;
+2. When a popup appears, specify a user's unique **ID** and **Nickname** and **Create**.
 
 {% hint style="info" %}
 For testing purposes, you can manually create a user in the dashboard and allow access without an access or session token. However, for production, we strongly recommend creating users through the Platform API and authenticating them with a token.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/Screenshot 2025-05-22 at 2.46.33 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
-###
-
-## Create a user through Platform API&#x20;
+## Create a user through Platform API
 
 For your production system, we would generally recommend creating Delight users when a user is onboarded into your application, rather than determining on the fly whether a Delight user already exists for your application user.
 
@@ -82,8 +80,4 @@ messenger.initialize({
 These settings can only be configured during initialization and applicable to messenger only. To create and manage a context object through Platform API, see our [Platform API guide on the context object](../platform-api/context-object-for-messenger-channel.md).
 {% endhint %}
 
-\
-
-
-
-
+\\
