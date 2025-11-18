@@ -3,7 +3,7 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.0.0 released: Delight AI agent SDK for Android **v1.0.0** was released on **September 25, 2025**.
+* Version 1.4.0 released: Delight AI agent SDK for Android **v1.4.0** was released.
 * Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 * Deprecation notice: The previous version, v0.9, will be deprecated on **December 31, 2025**.
 {% endhint %}

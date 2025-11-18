@@ -15,7 +15,7 @@ The **AI agent home** gives you a centralized view of all AI agents within your 
 * [Enable or disable an AI agent](ai-agent-home.md#managing-ai-agents-operational-state)
 
 {% hint style="info" %}
-**Note:** The AI agent list view may vary based on your [role and permission](https://ai-docs.sendbird.com/roles-and-permissions) settings within the workspace.
+**Note:** The AI agent list view may vary based on your [role and permission](https://docs.delight.ai/roles-and-permissions) settings within the workspace.
 {% endhint %}
 
 ***

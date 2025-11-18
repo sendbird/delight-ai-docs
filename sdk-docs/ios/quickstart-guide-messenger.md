@@ -3,7 +3,7 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.0.0 released: Delight AI agent SDK for iOS **v1.0.0** was released on **September 25, 2025**.
+* Version 1.4.0 released: Delight AI agent SDK for iOS **v1.4.0** was released.
 * Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 * Deprecation notice: The previous version, v0.9, will be deprecated on **December 31, 2025**.
 {% endhint %}
@@ -150,7 +150,7 @@ There are two ways to display the chat view:
 
 **1. Using the launcher button**
 
-<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt=""><figcaption></figcaption></figure>
 
 Display a floating launcher button:
 
@@ -168,7 +168,7 @@ AIAgentMessenger.detachLauncher(aiAgentId: {AIAgentId})
 
 **2. Opening the conversation channel in presentation mode**
 
-<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt=""><figcaption></figcaption></figure>
 
 Present the chat view as a modal:
 
