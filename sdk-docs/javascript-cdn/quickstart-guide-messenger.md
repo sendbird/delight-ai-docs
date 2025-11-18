@@ -15,7 +15,7 @@ Before you start, you'll need your Delight **Application ID** and **AI Agent ID*
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-messenger-basic-information.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -126,7 +126,7 @@ messenger.updateUserSession(newManualSessionInfo);
 
 #### Launch the messenger
 
-<figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-launcher.png" alt=""><figcaption></figcaption></figure>
 
 Once the authentication information has been successfully registered, you can launch the messenger to start a conversation with the AI agent.
 
@@ -175,7 +175,7 @@ The following are available advanced features.
 
 #### Display messenger without launcher button
 
-<figure><img src="../../.gitbook/assets/image (70).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-js-suggested-replies.png" alt=""><figcaption></figcaption></figure>
 
 ```javascript
 const messenger = await loadMessenger({

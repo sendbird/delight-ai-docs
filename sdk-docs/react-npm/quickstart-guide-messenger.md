@@ -15,7 +15,7 @@ Before you start, you'll need your Delight **Application ID** and **AI Agent ID*
 \
 You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-messenger-basic-information.png" alt=""><figcaption></figcaption></figure>
 
 **System requirements:**
 
