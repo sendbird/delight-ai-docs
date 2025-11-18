@@ -27,7 +27,7 @@ For more information, refer to [Sprinklr's guide on API key generation](https://
 
 Once we connect your account to the AI agent, you can find your Sprinklr API integration settings under **Workspace settings > Integration > Sprinklr** on **Delight AI dashboard**.
 
-<figure><img src="../../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (123).png" alt=""><figcaption></figcaption></figure>
 
 Also, you will see a `CONNECTED` label on the **Sprinklr** tile indicating that the integration has been successfully established.
 

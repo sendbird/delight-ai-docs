@@ -15,7 +15,7 @@ The Zendesk integration with Delight AI agent enables seamless customer support 
 2. Then come back to **Workspace settings > Integrations** in **Delight AI dashboard**.
 3. Click on the **Zendesk** tile and fill out the fields in the page. The information of each field can be found in your **Zendesk** dashboard. For detailed information, see the table below the screenshot.
 
-<figure><img src="../../.gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
 
 **Integration type**
 

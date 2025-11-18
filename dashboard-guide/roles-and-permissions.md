@@ -1,6 +1,6 @@
 # Roles and permissions
 
-In Delight AI dashboard, each member is assigned a role that defines their access to Sendbird products, including the AI agent. For more granular control over AI agent features, you can create a permission set to manage access to specific agents and their functionalities. To streamline operations, start by designing permission sets first and then create custom roles based on those sets.&#x20;
+In Delight AI dashboard, each member is assigned a role that defines their access to Sendbird products, including the AI agent. For more granular control over AI agent features, you can create a permission set to manage access to specific agents and their functionalities. To streamline operations, start by designing permission sets first and then create custom roles based on those sets.
 
 This page explains the process of creating and managing roles and permissions, ensuring that members have the appropriate access to AI agent's functionalities.
 
@@ -38,13 +38,13 @@ To create and manage roles and their permission sets, click on your organization
 
 1. On the **Roles** page, go to the **Permission set for AI agent** tab and click **Create permission set+** button.
 
-<figure><img src="../.gitbook/assets/image (112).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (114).png" alt=""><figcaption></figcaption></figure>
 
 2. Then fill out the following fields and **Save**:
 
 <table><thead><tr><th width="189.90234375">Field</th><th>Description</th></tr></thead><tbody><tr><td>Name</td><td>Provide a unique title for the set.</td></tr><tr><td>Description</td><td>Write a short sentence explaining what this permission set permits.</td></tr><tr><td>Permissions</td><td>Select functionalities accessible with this permission set</td></tr><tr><td>AI agent access</td><td>Select AI agents that can be managed with this set</td></tr></tbody></table>
 
-<figure><img src="../.gitbook/assets/image (113).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (115).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: Create a role
 
@@ -55,7 +55,7 @@ Once you've create a permission set for AI agents, create a new role to assign t
 
 <table><thead><tr><th width="210.17578125">Field</th><th>Description</th></tr></thead><tbody><tr><td>Name</td><td>Provide a unique title for the role.</td></tr><tr><td>Description</td><td>Write a short sentence explaining what this role permits.</td></tr><tr><td>Permissions</td><td>Select products and their functionalities accessible with this role.</td></tr><tr><td>AI agent permission set</td><td>Select permission sets granted to a member with this role. This is exclusive to AI agents only.</td></tr></tbody></table>
 
-<figure><img src="../.gitbook/assets/image (114).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (116).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -86,4 +86,4 @@ If you have integrated Sendbird Desk with Delight AI agent and need to control m
 2. Go to the **Members** page under your organization settings.
 3. Click **Invite +** to invite new members to your organization. You can choose from the dropdown list of roles you created earlier.
 
-<figure><img src="../.gitbook/assets/image (115).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (117).png" alt=""><figcaption></figcaption></figure>

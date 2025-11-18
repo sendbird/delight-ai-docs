@@ -34,7 +34,7 @@ Knowledge is a shared asset created and managed at the **workspace level**, but 
 * Assign country and language tags for each knowledge.
 * Acts as the central repository for the entire workspace.
 
-<figure><img src="../../.gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (127).png" alt=""><figcaption></figcaption></figure>
 
 #### 2. Agent-level (per AI agent)
 

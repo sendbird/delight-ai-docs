@@ -13,7 +13,7 @@ You can edit in the **Development** environment and deploy them to apply changes
 
 This is where you configure how the AI agent initiates a customer conversation.
 
-<figure><img src="../../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="226.078125">Fields</th><th>Description</th></tr></thead><tbody><tr><td>Welcome message</td><td><p>Craft a friendly and inviting message that users will see when they interact with your AI agent. This is the chance to make a good first impression, so consider what message will make users feel welcomed and eager to engage.<br></p><p><strong>Example:</strong></p><ul><li>“Hi there! I’m here to help. How can I assist you today?”</li><li>“Welcome! Looking for help or have a question?”</li></ul></td></tr><tr><td>Suggested replies</td><td><p>Propose pre-defined replies that users can choose from when responding to your AI agent. This helps streamline the conversation and makes it easier for users to interact, especially if they are unsure of what to say.</p><p><strong>Example:</strong></p><ul><li>“What’s the status of my order?”</li><li>“Can I speak to a representative?”</li></ul></td></tr></tbody></table>
 
@@ -23,7 +23,7 @@ This is where you configure how the AI agent initiates a customer conversation.
 
 Provide information that customers should be aware of before starting a conversation (e.g., Terms of Service, Privacy Policy).
 
-<figure><img src="../../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -37,7 +37,7 @@ Enable human-agent handoff and select the support platform—set platform creden
 * Sendbird Desk
 * Sprinklr
 
-<figure><img src="../../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -45,7 +45,7 @@ Enable human-agent handoff and select the support platform—set platform creden
 
 Configure how to respond to customers when their conversation went well or bad.
 
-<figure><img src="../../../../.gitbook/assets/image (128).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="245.5546875">Field</th><th>Description</th></tr></thead><tbody><tr><td>Ask if issue was resolved</td><td>Set a message to ask the customer for confirmation when the AI agent detects that their issue may be resolved.</td></tr><tr><td>Positive 👍</td><td><p>Define how the AI agent should handle positive feedback from customers.</p><ul><li>Feedback: Set the label for the button that customers can select to indicate their issue has been resolved.</li><li>Action: The conversation will automatically close when the customer selects this button. Provide a message to confirm the conversation’s closure.</li><li>Conversation status: Once positive feedback is received, the conversation status will always be marked as <code>Resolved</code>.</li></ul></td></tr><tr><td>Negative 👎</td><td><p>Define how the AI agent should handle negative feedback from customers.</p><ul><li>Feedback: Set the label for the button that customers can select to indicate their issue hasn’t been resolved.</li><li>Action: The conversation will automatically close when the customer selects this button. Provide a message to confirm the conversation’s closure.</li><li>Conversation status: Once positive feedback is received, the conversation status will always be marked as <code>Unresolved</code>.</li></ul></td></tr></tbody></table>
 
@@ -55,7 +55,7 @@ Configure how to respond to customers when their conversation went well or bad.
 
 Define how to manage conversations with no response from customers.
 
-<figure><img src="../../../../.gitbook/assets/image (129).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="258.94140625">Field</th><th>Description</th></tr></thead><tbody><tr><td>Timeout period</td><td><p>Define the duration of inactivity after which the conversation is considered ended. The AI agent automatically closes the conversation if the customer does not respond within the specified timeframe.</p><p>Default timeout period: 10 minutes</p></td></tr><tr><td>Closing message</td><td>Enter a message that informs the customer when the conversation is closing due to inactivity.</td></tr></tbody></table>
 

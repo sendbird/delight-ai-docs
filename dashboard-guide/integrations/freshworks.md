@@ -32,7 +32,7 @@ Now, open your Delight AI agent's dashboard and go to **Workspace settings > Int
 
 1. Fill out the credentials fields on the page. Information required for each field can be found in your **Freshworks dashboard**.
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 **API details**
 

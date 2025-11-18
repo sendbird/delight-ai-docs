@@ -2,7 +2,7 @@
 
 This feature provides a detailed view of AI agent-customer interactions, helping businesses to assess the agent’s performance, identify resolution patterns, and optimize its behavior. By analyzing individual conversations, you can refine their AI agent’s responses, improve automation efficiency, and enhance customer satisfaction.
 
-<figure><img src="../../../.gitbook/assets/image (13) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## How to analyze conversations
 
@@ -12,7 +12,7 @@ Use the following tools and insights to evaluate conversation quality and AI age
 * Pattern detection: Identify patterns in AI agent effectiveness, such as recurring issues, that merits human intervention or AI agent optimization.
 * In-depth analysis: Click on any row in the conversation table to view detailed information and assess how the AI agent handled the exchange in a scorecard. Use this view to evaluate specific responses and pinpoint areas for improvement. Refer to the image below.
 
-<figure><img src="../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 ### Review the conversation
 

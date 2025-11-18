@@ -10,4 +10,4 @@ In Messenger, you can view and configure the messenger channel settings in the f
 * [Appearance](appearance.md)
 * [Basic information](basic-information.md)
 
-<figure><img src="../../../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>

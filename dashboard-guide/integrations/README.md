@@ -27,4 +27,4 @@ The following table summarizes what features each integration supports.
 \*[Genesys integration ](genesys.md)is available for [Voice](../build/channels/voice.md) channels only.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>

@@ -28,7 +28,7 @@ When you enable the Email channel, it will automatically create a Delight email 
 
 4. Once the email channel is enabled, you will see an email address auto-generated for your AI agent in the **Channel settings** tab.
 
-<figure><img src="../../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 
 ### **Step 2: Register your email domain**
 
@@ -39,7 +39,7 @@ First, set up the email domain and register AI agent’s DNS records to your dom
 1. Go to **Workspace settings > Channels > Emails** in Delight AI dashboard.
 2. Click **Add +** to add a domain that your business mainly uses.
 
-<figure><img src="../../../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (68).png" alt=""><figcaption></figcaption></figure>
 
 3. Enter your company **Domain URL** and **MAIL-FROM domain URL**.
 
@@ -189,7 +189,7 @@ Before setting up email forwarding rules, ensure your domain allows automatic fo
 
 Once you’ve set your custom sender email address, go to the Conversation settings tab and configure the system messages such as a resolution message and goodbye message.
 
-<figure><img src="../../../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
 
 #### **Check for resolution**
 

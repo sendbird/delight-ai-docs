@@ -14,4 +14,4 @@ Delight AI agent can assist users in real-time through the following channels:
 * [**Email**](email.md): Save your company's email domain and custom sender email address, enabling your AI agent to send and receive inquiry emails from users on behalf of you.
 * [**WhatsApp**](whatsapp.md): Connect your WhatsApp Business Account to Delight AI agent for streamlined customer interactions and improved communication efficiency.
 
-<figure><img src="../../../.gitbook/assets/image (125).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (132).png" alt=""><figcaption></figcaption></figure>

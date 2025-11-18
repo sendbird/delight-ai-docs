@@ -77,7 +77,7 @@ The Consumer Details appear only once initially, so save the information somewhe
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2. Click **Connect**
 

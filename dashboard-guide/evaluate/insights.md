@@ -33,7 +33,7 @@ The **Categories** tab provides insights into customer-and-AI agent interactions
 Categories are pre-defined by the business during onboarding and can be configured. Once conversations begin, they are automatically categorized by AI Agents according to your category definition.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (139).png" alt=""><figcaption></figcaption></figure>
 
 ### **How to read Categories**
 
@@ -54,4 +54,4 @@ Categories are pre-defined by the business during onboarding and can be configur
 
 The three tabs on resources - Knowledge, Actionbooks, and Tools - shows the usage and trends of the resources provided to the AI agent, in descending order of reference frequency. The resource most frequently referenced in all AI activities appears at the top of the table. By clicking the option button in the right-end column, you can see the detailed information of the resource.
 
-<figure><img src="../../.gitbook/assets/image (135).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (140).png" alt=""><figcaption></figcaption></figure>

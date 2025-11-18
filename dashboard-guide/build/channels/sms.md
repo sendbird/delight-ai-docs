@@ -31,7 +31,7 @@ Once the phone number was added, follow the instructions below to connect a phon
 
 3. Select an existing phone number you've registered in advance.
 
-<figure><img src="../../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3: Configure the channel settings
 

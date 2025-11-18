@@ -14,7 +14,7 @@ Under **Workspace settings > Integrations > Confluence** on **Delight AI dashboa
 
 <table><thead><tr><th width="189.5078125">Credential</th><th>Description</th></tr></thead><tbody><tr><td>Atlassian domain</td><td>Enter the Confluence domain that you are currently using. (e.g., yourDomain.atlassian.net)</td></tr><tr><td>User ID (email)</td><td>Enter the user email of your Confluence account.</td></tr><tr><td>API key</td><td>The unique API key issued for your account. Delight AI agent will require this in order to authenticate its request to your Confluence account. Refer to <a href="https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/">Atlassian's guide on how to manage API key</a>s.</td></tr></tbody></table>
 
-<figure><img src="../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (120).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: **Click Connect**
 

@@ -8,7 +8,7 @@ Go to **Build > CSAT** in Delight AI dashboard to get started with a customizabl
 Such customization can be applied to [Messenger](channels/messenger/) and [Email](channels/email.md) channels only. If you wish to update the survey question for other channels such as [SMS](channels/sms.md) and [WhatsApp](channels/whatsapp.md), go to **Build >** **Channels** and configure the settings for each channel type. CSAT survey isn't supported in Voice channels.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (124).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -29,7 +29,7 @@ This guide walks you through the customization process for a CSAT survey.
 3. After choosing an AI agent to set a CSAT survey for, navigate to **Build > CSAT** in the left menu bar.
 4. Then, activate the feature.
 
-<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Once this feature is enabled:
@@ -81,7 +81,7 @@ A follow-up question is a conditional query that can be asked when the user sele
 2. Select response type and add response options. The response type can be either a single answer or a paragraph. For single-answer questions, up to five options are allowed.
 3. Determine whether the follow-up question will be required or optional. If required, check the **Required** box in the top-right corner of the section.
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The default CSAT survey includes one open-ended follow-up question for all rating options.\
@@ -90,7 +90,7 @@ Each rating can have only one follow-up question. To customize follow-ups per ra
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ### Others
 

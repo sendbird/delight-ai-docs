@@ -2,7 +2,7 @@
 
 The **Run tests** page allows you to use the test conversations to evaluate how your AI agent performs. This page is where actual testing takes place — either manually or on a schedule — and where you view results, performance trends, and pass or fail rates.
 
-<figure><img src="../../.gitbook/assets/image (133).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (138).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

@@ -2,7 +2,7 @@
 
 The **AI agent home** gives you a centralized view of all AI agents within your workspace.
 
-<figure><img src="../.gitbook/assets/image (118).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (125).png" alt=""><figcaption></figcaption></figure>
 
 ## What you can do
 
@@ -35,11 +35,11 @@ Modifications in Development do not impact the live agent until they are deploye
 
 If there are updates in the Development environment that haven’t been deployed, a **changes to deploy** badge will appear on the agent card.
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 A modal will then pop up with a detailed list of items that were modified. You can review the changes and choose to deploy all or selectively deploy changes.
 
-<figure><img src="../.gitbook/assets/image (119).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (126).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -65,7 +65,7 @@ This allows you to:
 
 Click **Deployment history** on any agent card to view past deployments.
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 Each record shows:
 

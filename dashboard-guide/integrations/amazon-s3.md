@@ -19,7 +19,7 @@ Go to **Workspace settings > Integrations** in Delight AI dashboard and click on
 You can find the IAM user credentials in AWS' IAM console. For more information, see [AWS' guide on how to create new access keys](https://docs.aws.amazon.com/keyspaces/latest/devguide/create.keypair.html).
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (95).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (122).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: **Click Connect**
 
