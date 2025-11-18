@@ -24,7 +24,7 @@ For seamless customer experience for your users, you must have the following:
 
 This guide walks you through the customization process for a CSAT survey.
 
-1. Log in to [Delight AI dashboard](https://dashboard.sendbird.com).
+1. Log in to [Delight AI dashboard](https://dashboard.delight.ai).
 2. Select a **Development** agent from the AI agent list.
 3. After choosing an AI agent to set a CSAT survey for, navigate to **Build > CSAT** in the left menu bar.
 4. Then, activate the feature.

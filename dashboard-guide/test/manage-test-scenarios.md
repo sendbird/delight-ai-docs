@@ -14,7 +14,7 @@ You can create a test scenario by uploading a CSV, importing from real conversat
 
 <figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption></figcaption></figure>
 
-1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
+1. Log into your [Delight AI dashboard](https://dashboard.delight.ai/).
 2. Go to the Manage test scenarios page under **AI agent > Test > Manage test scenarios.**
 3. Click **Create > Create from CSV.**
 4. Enter the following fields:
@@ -31,7 +31,7 @@ Download sample test conversation here.
 
 ### Creating manually
 
-1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
+1. Log into your [Delight AI dashboard](https://dashboard.delight.ai/).
 2. Go to the Manage test scenarios page under **AI agent > Test > Manage test scenarios.**
 3. Click **Create > Create manually.**
 4. Enter the following fields:
@@ -46,7 +46,7 @@ Download sample test conversation here.
 
 ### Using user conversation
 
-1. Log into your [Delight AI dashboard](https://dashboard.sendbird.com/).
+1. Log into your [Delight AI dashboard](https://dashboard.delight.ai/).
 2. Go to the Conversation details page under your **AI agent > Evaluate > Conversations**.
 3. Click **Create test conversation** in the top-right corner.
 4. Enter the following fields:
