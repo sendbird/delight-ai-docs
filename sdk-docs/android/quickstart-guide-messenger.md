@@ -263,7 +263,7 @@ Use `LauncherLayoutParams` to control the launcher's behavior and position.
 
 **2. Opening the conversation channel in full-screen mode**
 
-<figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt=""><figcaption></figcaption></figure>
 
 You can open a full-screen conversation by starting an `Activity`.
 
