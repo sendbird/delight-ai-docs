@@ -82,14 +82,14 @@ When the AI agent calls your image endpoint, it sends the following data in the 
 
 #### **HTTP request**
 
-| Properties                  | Type          | Description          |
-| --------------------------- | ------------- | -------------------- |
-| `user`                      | nested object | Sendbird user object |
-| `user.user_id`              | string        | Sendbird user ID     |
-| `ai_agent_context`          | nested object | AI agent context     |
-| `ai_agent_context.language` | string        | The language code    |
-| `ai_agent_context.country`  | string        | The country code     |
-| `ai_agent_context.context`  | nested object | The context objects  |
+| Properties                  | Type          | Description                          |
+| --------------------------- | ------------- | ------------------------------------ |
+| `user`                      | nested object | A user object                        |
+| `user.user_id`              | string        |  The user ID in Delight AI dashboard |
+| `ai_agent_context`          | nested object | AI agent context                     |
+| `ai_agent_context.language` | string        | The language code                    |
+| `ai_agent_context.country`  | string        | The country code                     |
+| `ai_agent_context.context`  | nested object | The context objects                  |
 
 Your endpoint must return a JSON response in the following format:
 
@@ -146,14 +146,14 @@ When the AI agent calls your carousel endpoint, it sends the following data in t
 
 #### **HTTP request**
 
-| Properties                  | Type          | Description          |
-| --------------------------- | ------------- | -------------------- |
+| Properties                  | Type          | Description         |
+| --------------------------- | ------------- | ------------------- |
 | `user`                      | nested object | Delight user object |
 | `user.user_id`              | string        | Delight user ID     |
-| `ai_agent_context`          | nested object | AI agent context     |
-| `ai_agent_context.language` | string        | The language code    |
-| `ai_agent_context.country`  | string        | The country code     |
-| `ai_agent_context.context`  | nested object | The context objects  |
+| `ai_agent_context`          | nested object | AI agent context    |
+| `ai_agent_context.language` | string        | The language code   |
+| `ai_agent_context.country`  | string        | The country code    |
+| `ai_agent_context.context`  | nested object | The context objects |
 
 Your endpoint must return a JSON object containing a `carousel_items` array with up to 7 structured cards.
 

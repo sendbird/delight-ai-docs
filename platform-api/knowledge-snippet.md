@@ -1,6 +1,6 @@
 # Knowledge - Snippet
 
-Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Sendbird platform API for Delight AI agent. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's database. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.&#x20;
+Add and manage [Knowledge snippets](../dashboard-guide/shared-assets/knowledge.md#supported-knowledge-types) through Sendbird Platform API for Delight AI agent. Snippets in Knowledge are a set of simple question-and-answer pairs you can easily add to your AI agent's database. AI agents can then access the information and offer users a precise and clear answer in regard to their inquiry.
 
 Snippets can be useful when it comes to:
 
@@ -15,7 +15,7 @@ You can upload up to 15 files, each 25MB max.
 
 ## Platform API Authentication
 
-A typical HTTP request to the Chat API includes the following headers for authentication:&#x20;
+A typical HTTP request to the Chat API includes the following headers for authentication:
 
 ### Headers
 
@@ -32,7 +32,7 @@ https://api-{app_id}.sendbird.com/v3
 ```
 
 {% hint style="info" %}
-To learn more about how to use Sendbird platform APIs for Delight AI agent, see [our guide](how-to-use-platform-api.md).
+To learn more about how to use Platform APIs for Delight AI agent, see [our guide](how-to-use-platform-api.md).
 {% endhint %}
 
 ***
@@ -72,7 +72,7 @@ POST https://api-{application_id}.sendbird.com/v3/embeddings
 
 #### Optional parameters
 
-<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
+<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any.</td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
 
 ### **Response**
 
@@ -96,9 +96,9 @@ POST https://api-{application_id}.sendbird.com/v3/embeddings
 
 ***
 
-## **Update a snippet**&#x20;
+## **Update a snippet**
 
-Updates the content of the snippet.&#x20;
+Updates the content of the snippet.
 
 ### HTTP request
 
@@ -129,7 +129,7 @@ PUT https://api-{application_id}.sendbird.com/v3/embeddings/{embedding_key}
 
 #### Optional parameters
 
-<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any. </td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
+<table><thead><tr><th width="200.16796875">Parameter</th><th width="130.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td>language</td><td>string</td><td>Specifies the language code of the knowledge content in ISO <a href="https://en.wikipedia.org/wiki/IETF_language_tag">BCP-47</a> format, like <code>"en"</code></td></tr><tr><td>countries</td><td>array</td><td>Specifies the countries in which this snippet will be used.</td></tr><tr><td>attachment_urls</td><td>array</td><td>Specifies the public web URL of the file attachment, if any.</td></tr><tr><td>content_url</td><td>string</td><td>Specifies the URL of the snippet if this was from an internal platform. This will be displayed in the Embedding details view in Delight AI dashboard.</td></tr><tr><td>snippet_source_key</td><td>string</td><td>Specifies the citation link or key of the reference used for this content. AI agent will log this as their source.</td></tr></tbody></table>
 
 ### **Response**
 
@@ -183,7 +183,7 @@ Deletes the snippet from AI agent's knowledge. Once deleted, the agent can't ref
 
 #### Required parameters
 
-<table><thead><tr><th width="154.08984375">Parameter</th><th width="124.84765625">Type</th><th>Description </th></tr></thead><tbody><tr><td>embedding_key</td><td>string</td><td>Specifies the unique key of the snippet to delete.</td></tr></tbody></table>
+<table><thead><tr><th width="154.08984375">Parameter</th><th width="124.84765625">Type</th><th>Description</th></tr></thead><tbody><tr><td>embedding_key</td><td>string</td><td>Specifies the unique key of the snippet to delete.</td></tr></tbody></table>
 
 ### Response
 

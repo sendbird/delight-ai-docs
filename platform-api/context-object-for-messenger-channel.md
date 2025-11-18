@@ -8,7 +8,7 @@ This guide demonstrates how to create and manage a context for a messenger chann
 
 ## Platform API Authentication
 
-A typical HTTP request to the Chat API includes the following headers for authentication:&#x20;
+A typical HTTP request to the Chat API includes the following headers for authentication:
 
 ### Headers
 
@@ -25,7 +25,7 @@ https://api-{app_id}.sendbird.com/v3
 ```
 
 {% hint style="info" %}
-To learn more about how to use Sendbird platform APIs, see [our guide](how-to-use-platform-api.md).
+To learn more about how to use Platform APIs for Delight AI agent, see [our guide](how-to-use-platform-api.md).
 {% endhint %}
 
 ***
