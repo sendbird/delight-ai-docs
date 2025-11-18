@@ -57,7 +57,7 @@ Add the following to your `settings.gradle.kts` (Project Settings) file:
 ```
 dependencyResolutionManagement {
     repositories {
-        maven { setUrl("https://repo.sendbird.com/public/maven") }
+        maven { setUrl("https://repo.delight.ai/public/maven") }
     }
 }
 ```
@@ -229,7 +229,7 @@ There are two ways to display the messenger:
 
 **1. Using the launcher button**
 
-<figure><img src="../../.gitbook/assets/image (79).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt=""><figcaption></figcaption></figure>
 
 The SDK provides a `MessengerLauncher` view that can be programmatically attached to your application's root view. This eliminates the need to modify your XML layouts directly.
 
