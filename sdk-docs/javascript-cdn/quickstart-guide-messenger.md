@@ -3,7 +3,7 @@
 {% hint style="warning" %}
 Release notes
 
-* Version 1.5.0 released: Delight AI agent SDK for JavaScript (CDN) **v1.5.0** was released on **September 25, 2025**.
+* Version 1.9.4 released: Delight AI agent SDK for JavaScript (CDN) **v1.9.4** was released.
 * Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
 {% endhint %}
 
