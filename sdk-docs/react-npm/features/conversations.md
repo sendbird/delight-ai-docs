@@ -119,12 +119,7 @@ Set the launcher position on the screen using the `position` prop. Available pos
 
 Adjust the spacing around the launcher using the `margin` prop. You can set margins for each side individually. The `margin` prop accepts an object with the following optional properties.
 
-| Property | Type   | Default | Description                                        |
-| -------- | ------ | ------- | -------------------------------------------------- |
-| `top`    | number | 24      | Top margin in pixels                               |
-| `bottom` | number | 24      | Bottom margin in pixels                            |
-| `start`  | number | 24      | Start margin in pixels (left in LTR, right in RTL) |
-| `end`    | number | 24      | End margin in pixels (right in LTR, left in RTL)   |
+<table><thead><tr><th width="112.4375">Property</th><th width="110.078125">Type</th><th width="96.984375">Default</th><th>Description</th></tr></thead><tbody><tr><td><code>top</code></td><td>number</td><td>24</td><td>Top margin in pixels</td></tr><tr><td><code>bottom</code></td><td>number</td><td>24</td><td>Bottom margin in pixels</td></tr><tr><td><code>start</code></td><td>number</td><td>24</td><td>Start margin in pixels (left in LTR, right in RTL)</td></tr><tr><td><code>end</code></td><td>number</td><td>24</td><td>End margin in pixels (right in LTR, left in RTL)</td></tr></tbody></table>
 
 * Size
 
@@ -284,45 +279,19 @@ function CreateConversationButton() {
 
 Configuration options for the `FixedMessenger` component.
 
-| Property          | Type                                      | Default            | Description                                                             |
-| ----------------- | ----------------------------------------- | ------------------ | ----------------------------------------------------------------------- |
-| `appId`           | string                                    | Required           | Your application ID.                                                    |
-| `aiAgentId`       | string                                    | Required           | AI agent identifier for conversation target.                            |
-| `entryPoint`      | 'Conversation' \| 'ConversationList'      | 'Conversation'     | Which screen to show when the messenger is first loaded.                |
-| `userSessionInfo` | ManualSessionInfo \| AnonymousSessionInfo | -                  | User session information for authentication.                            |
-| `language`        | string                                    | navigator.language | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR"). |
-| `countryCode`     | string                                    | -                  | Country code following ISO 3166 format (e.g., "US", "KR").              |
-| `context`         | Record\<string, string>                   | -                  | Context object for personalized AI agent responses.                     |
-| `queryParams`     | AIAgentQueryParams                        | -                  | Global default query parameters for AI agent.                           |
-| `config`          | AIAgentConfig                             | -                  | Global default configuration for AI agent.                              |
-| `theme`           | object                                    | -                  | Theme customization for palette and typography.                         |
-| `stringSet`       | Partial                                   | -                  | Localization string set for the messenger.                              |
-| `logLevel`        | LogLevel                                  | LogLevel.WARN      | Log level for the AI agent client.                                      |
-| `dir`             | 'ltr' \| 'rtl'                            | -                  | Text direction for the widget.                                          |
-| `entryStyle`      | CSSProperties                             | -                  | Custom CSS styles for the entry container element.                      |
-| `rootElement`     | HTMLElement                               | document.body      | Root HTML element to which the messenger will be appended.              |
-| `state`           | object                                    | -                  | Custom state management for opened/expanded states.                     |
+<table><thead><tr><th width="155.2421875">Property</th><th width="202.49609375">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>appId</code></td><td>string</td><td>Your application ID. This is required.</td></tr><tr><td><code>aiAgentId</code></td><td>string</td><td>AI agent identifier for conversation target. This is required.</td></tr><tr><td><code>entryPoint</code></td><td>'Conversation' | 'ConversationList'</td><td>Which screen to show when the messenger is first loaded. (Default: <code>'Conversation'</code>)      </td></tr><tr><td><code>userSessionInfo</code></td><td>ManualSessionInfo | AnonymousSessionInfo</td><td>User session information for authentication.</td></tr><tr><td><code>language</code></td><td>string</td><td>Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR"). (Default: <code>navigator.language</code>)</td></tr><tr><td><code>countryCode</code></td><td>string</td><td>Country code following ISO 3166 format (e.g., "US", "KR").</td></tr><tr><td><code>context</code></td><td>Record&#x3C;string, string></td><td>Context object for personalized AI agent responses.</td></tr><tr><td><code>queryParams</code></td><td>AIAgentQueryParams</td><td>Global default query parameters for AI agent.</td></tr><tr><td><code>config</code></td><td>AIAgentConfig</td><td>Global default configuration for AI agent.</td></tr><tr><td><code>theme</code></td><td>object</td><td>Theme customization for palette and typography.</td></tr><tr><td><code>stringSet</code></td><td>Partial</td><td>Localization string set for the messenger.</td></tr><tr><td><code>logLevel</code></td><td>LogLevel</td><td>Log level for the AI agent client. (Default: <code>LogLevel.WARN</code>)</td></tr><tr><td><code>dir</code></td><td>'ltr' | 'rtl'</td><td>Text direction for the widget.</td></tr><tr><td><code>entryStyle</code></td><td>CSSProperties</td><td>Custom CSS styles for the entry container element.</td></tr><tr><td><code>rootElement</code></td><td>HTMLElement</td><td>Root HTML element to which the messenger will be appended. (Default: <code>LogLevel.WARN</code>)</td></tr><tr><td><code>state</code></td><td>object</td><td>Custom state management for opened/expanded states.</td></tr></tbody></table>
 
 ### FixedMessenger.Style Props
 
 Configuration options for customizing the launcher appearance.
 
-| Property       | Type                                                                 | Default                                     | Description                            |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------- |
-| `position`     | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom'           | 'end-bottom'                                | Position of the launcher button.       |
-| `margin`       | Partial<{ top: number; bottom: number; start: number; end: number }> | { top: 24, bottom: 24, start: 24, end: 24 } | Margin around the launcher.            |
-| `launcherSize` | number                                                               | 48                                          | Size of the launcher button in pixels. |
+<table><thead><tr><th width="132.12109375">Property</th><th width="312.890625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>position</code></td><td>'start-top' | 'start-bottom' | 'end-top' | 'end-bottom'</td><td>Position of the launcher button. (Default: <code>'end-bottom'</code>)</td></tr><tr><td><code>margin</code></td><td>Partial&#x3C;{ top: number; bottom: number; start: number; end: number }></td><td>Margin around the launcher. (Default: 24 for all dicrections)</td></tr><tr><td><code>launcherSize</code></td><td>number</td><td>Size of the launcher button in pixels. (Default: 48)</td></tr></tbody></table>
 
 ### Conversation Props
 
 Configuration options for the `Conversation` component.
 
-| Property                       | Type       | Default | Description                                                             |
-| ------------------------------ | ---------- | ------- | ----------------------------------------------------------------------- |
-| `channelUrl`                   | string     | -       | Channel URL to open. If not provided, uses active channel from context. |
-| `onClearChannelUrl`            | () => void | -       | Callback when channel URL should be cleared.                            |
-| `onNavigateToConversationList` | () => void | -       | Callback to navigate to conversation list.                              |
-| `shouldMarkAsRead`             | boolean    | false   | Whether to mark messages as read when viewed.                           |
+<table><thead><tr><th width="261.9765625">Property</th><th width="102.59765625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>channelUrl</code></td><td>string</td><td>Channel URL to open. If not provided, uses active channel from context.</td></tr><tr><td><code>onClearChannelUrl</code></td><td>() => void</td><td>Callback when channel URL should be cleared.</td></tr><tr><td><code>onNavigateToConversationList</code></td><td>() => void</td><td>Callback to navigate to conversation list.</td></tr><tr><td><code>shouldMarkAsRead</code></td><td>boolean</td><td>Whether to mark messages as read when viewed. (Default: <code>false</code>)</td></tr></tbody></table>
 
 ### useMessengerSessionContext Hook
 
@@ -330,9 +299,7 @@ Access to messenger session context and conversation management functions.
 
 * Key Properties
 
-| Property  | Type         | Description                    |
-| --------- | ------------ | ------------------------------ |
-| `sdkUser` | User \| null | Sendbird Chat SDK user object. |
+<table><thead><tr><th width="151.0625">Property</th><th width="150.890625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>sdkUser</code></td><td>User | null</td><td>Sendbird Chat SDK user object.</td></tr></tbody></table>
 
 * Methods
 
@@ -347,9 +314,4 @@ Access to messenger session context and conversation management functions.
 
 Parameters for creating new conversations.
 
-| Property    | Type                    | Default  | Description                       |
-| ----------- | ----------------------- | -------- | --------------------------------- |
-| `aiAgentId` | string                  | Required | AI agent identifier.              |
-| `language`  | string                  | -        | Language code (IETF BCP 47).      |
-| `country`   | string                  | -        | Country code (ISO 3166).          |
-| `context`   | Record\<string, string> | -        | Additional metadata for AI agent. |
+<table><thead><tr><th width="172.9765625">Property</th><th width="187.9453125">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>aiAgentId</code></td><td>string</td><td>AI agent identifier. This is required.</td></tr><tr><td><code>language</code></td><td>string</td><td>Language code (IETF BCP 47).</td></tr><tr><td><code>country</code></td><td>string</td><td>Country code (ISO 3166).</td></tr><tr><td><code>context</code></td><td>Record&#x3C;string, string></td><td>Additional metadata for AI agent.</td></tr></tbody></table>

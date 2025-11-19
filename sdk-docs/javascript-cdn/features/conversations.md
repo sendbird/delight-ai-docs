@@ -301,10 +301,7 @@ Loads the AI Agent Messenger module. It returns `Promise<Messenger>`.
 await loadMessenger(config)
 ```
 
-| Parameter             | Type     | Default | Description                                                        |
-| --------------------- | -------- | ------- | ------------------------------------------------------------------ |
-| `useShadowDOM`        | boolean  | true    | Use Shadow DOM for style encapsulation (set to `false` to disable) |
-| `customMainComponent` | function | -       | Custom main component function for advanced customization          |
+<table><thead><tr><th width="201.9296875">Parameter</th><th width="118.0234375">Type</th><th width="104.63671875">Default</th><th>Description</th></tr></thead><tbody><tr><td><code>useShadowDOM</code></td><td>boolean</td><td>true</td><td>Use Shadow DOM for style encapsulation (set to <code>false</code> to disable)</td></tr><tr><td><code>customMainComponent</code></td><td>function</td><td>-</td><td>Custom main component function for advanced customization</td></tr></tbody></table>
 
 ### messenger.initialize()
 
@@ -379,7 +376,4 @@ new messenger.AnonymousSessionInfo()
 
 Parameters for `setPosition()` method:
 
-| Parameter  | Type                                                                 | Default | Description                          |
-| ---------- | -------------------------------------------------------------------- | ------- | ------------------------------------ |
-| `position` | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom'           | -       | Position of the launcher button      |
-| `margin`   | Partial<{ top: number; bottom: number; start: number; end: number }> | -       | Margin around the launcher in pixels |
+<table><thead><tr><th width="130.2421875">Parameter</th><th width="264.66796875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>position</code></td><td>'start-top' | 'start-bottom' | 'end-top' | 'end-bottom'</td><td>Position of the launcher button. (Default: -)</td></tr><tr><td><code>margin</code></td><td>Partial&#x3C;{ top: number; bottom: number; start: number; end: number }></td><td>Margin around the launcher in pixels.  (Default: -)</td></tr></tbody></table>
