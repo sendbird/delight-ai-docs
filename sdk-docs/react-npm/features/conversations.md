@@ -4,38 +4,38 @@ In Delight AI agent, a conversation refers to a channel where an AI Agent commun
 
 When the launcher is clicked, a user can be led to either their conversation list or a conversation depending on your choice of the conversation mode.
 
-| Feature| Single active conversation| Multiple active conversations (Default)|
-|-------------------|------------------|----------------|
-| Number of active conversation| A user can have only one active conversation with your AI agent at a time.| A user can have multiple active conversations with your AI agent at the same time.|
-| Starting a new conversation | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first.| New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`.|
+| Feature                       | Single active conversation                                                                                                      | Multiple active conversations (Default)                                                                                 |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Number of active conversation | A user can have only one active conversation with your AI agent at a time.                                                      | A user can have multiple active conversations with your AI agent at the same time.                                      |
+| Starting a new conversation   | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first. | New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`. |
 
->__Note__: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+> **Note**: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
 
 This guide explains:
 
-- [Conversations](#conversations)
-  - [Start a conversation](#start-a-conversation)
-    - [With `FixedMessenger`](#with-fixedmessenger)
-      - [Launch a conversation](#launch-a-conversation)
-      - [Launch a conversation list](#launch-a-conversation-list)
-      - [Set the launcher layout (position, margin, size)](#set-the-launcher-layout)
-      - [Customize the launcher appearance](#customize-the-launcher-appearance)
-    - [With direct presentation](#with-direct-presentation)
-  - [Advanced configuration](#advanced-configuration)
-    - [Context object for personalized conversation](#context-object-for-personalized-conversation)
-    - [Opening a specific conversation with channel URL](#opening-a-specific-conversation-with-channel-url)
-    - [Start a conversation in multiple conversation mode](#start-a-conversation-in-multiple-conversation-mode)
-  - [API Reference](#api-reference)
+* [Conversations](conversations.md#conversations)
+  * [Start a conversation](conversations.md#start-a-conversation)
+    * [With `FixedMessenger`](conversations.md#with-fixedmessenger)
+      * [Launch a conversation](conversations.md#launch-a-conversation)
+      * [Launch a conversation list](conversations.md#launch-a-conversation-list)
+      * [Set the launcher layout (position, margin, size)](conversations.md#set-the-launcher-layout)
+      * [Customize the launcher appearance](conversations.md#customize-the-launcher-appearance)
+    * [With direct presentation](conversations.md#with-direct-presentation)
+  * [Advanced configuration](conversations.md#advanced-configuration)
+    * [Context object for personalized conversation](conversations.md#context-object-for-personalized-conversation)
+    * [Opening a specific conversation with channel URL](conversations.md#opening-a-specific-conversation-with-channel-url)
+    * [Start a conversation in multiple conversation mode](conversations.md#start-a-conversation-in-multiple-conversation-mode)
+  * [API Reference](conversations.md#api-reference)
 
----
+***
 
 ## Start a conversation
 
 Once you have determined which conversation mode to apply, you should also consider how the messenger will be launched. Delight AI agent SDK for React provides two launch methods: `FixedMessenger` and directly using the `Conversation` component. The following table describes the characteristics of each approach.
 
-| Launch method | Description | Recommended use case |
-|----------------|--------------|-----------------------|
-| FixedMessenger | Provides a floating launcher button that automatically manages conversation creation and navigation. | Ideal when you want a persistent, always-accessible AI agent across your application. |
+| Launch method             | Description                                                                                                            | Recommended use case                                                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| FixedMessenger            | Provides a floating launcher button that automatically manages conversation creation and navigation.                   | Ideal when you want a persistent, always-accessible AI agent across your application.                              |
 | Direct Conversation Usage | Programmatically render the Conversation component directly, offering fine-grained control over layout and navigation. | Best for custom UI layouts, embedded conversations, or when you need full control over the conversation interface. |
 
 ### With `FixedMessenger`
@@ -46,7 +46,7 @@ Once you have determined which conversation mode to apply, you should also consi
 
 The `entryPoint` prop allows you to lead the user to either a conversation view or a conversation list view. By default, the messenger launches a conversation view when the launcher is clicked. However, if there is no ongoing conversation for the user, mounting the `<FixedMessenger />` component automatically creates a conversation on click. If you wish to show a conversation list first, simply set `entryPoint` to `ConversationList`.
 
-The launcher's appearance can be customized via the dashboard. For positioning and sizing customization, see [Launcher customization](#launcher-customization).
+The launcher's appearance can be customized via the dashboard. For positioning and sizing customization, see [Launcher customization](conversations.md#launcher-customization).
 
 ```tsx
 import { FixedMessenger } from '@sendbird/ai-agent-messenger-react';
@@ -77,9 +77,9 @@ You can configure the messenger to show the conversation list first:
 
 You can customize the launcher's position, margin, and size using the `FixedMessenger.Style` component.
 
-<img width="441" height="737" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png" />
+![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png)
 
->__Note__: On mobile devices, the messenger automatically opens in full-screen mode. On desktop, it displays as a floating mini-window anchored near the launcher.
+> **Note**: On mobile devices, the messenger automatically opens in full-screen mode. On desktop, it displays as a floating mini-window anchored near the launcher.
 
 The following example demonstrates all customization options together:
 
@@ -104,50 +104,48 @@ import { FixedMessenger } from '@sendbird/ai-agent-messenger-react';
 </FixedMessenger>
 ```
 
-- Position
+* Position
 
-Set the launcher position on the screen using the `position` prop. Available positions are: `start-top`, `start-bottom`, `end-top`, and `end-bottom`.
-The following table lists available position values:
+Set the launcher position on the screen using the `position` prop. Available positions are: `start-top`, `start-bottom`, `end-top`, and `end-bottom`. The following table lists available position values:
 
-| Position | Description |
-|----------|-------------|
-| `'start-top'` | Top-left corner of the screen.|
-| `'start-bottom'` | Bottom-left corner of the screen. |
-| `'end-top'` | Top-right corner of the screen. |
-| `'end-bottom'` | Bottom-right corner of the screen (default). |
+| Position         | Description                                  |
+| ---------------- | -------------------------------------------- |
+| `'start-top'`    | Top-left corner of the screen.               |
+| `'start-bottom'` | Bottom-left corner of the screen.            |
+| `'end-top'`      | Top-right corner of the screen.              |
+| `'end-bottom'`   | Bottom-right corner of the screen (default). |
 
-- Margin
+* Margin
 
-Adjust the spacing around the launcher using the `margin` prop. You can set margins for each side individually.
-The `margin` prop accepts an object with the following optional properties. 
+Adjust the spacing around the launcher using the `margin` prop. You can set margins for each side individually. The `margin` prop accepts an object with the following optional properties.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `top` | number | 24 | Top margin in pixels |
-| `bottom` | number | 24 | Bottom margin in pixels |
-| `start` | number | 24 | Start margin in pixels (left in LTR, right in RTL) |
-| `end` | number | 24 | End margin in pixels (right in LTR, left in RTL) |
+| Property | Type   | Default | Description                                        |
+| -------- | ------ | ------- | -------------------------------------------------- |
+| `top`    | number | 24      | Top margin in pixels                               |
+| `bottom` | number | 24      | Bottom margin in pixels                            |
+| `start`  | number | 24      | Start margin in pixels (left in LTR, right in RTL) |
+| `end`    | number | 24      | End margin in pixels (right in LTR, left in RTL)   |
 
-- Size
+* Size
 
 Customize the launcher button size in pixels using the `launcherSize` prop. The default size is `48` pixels.
 
-
 #### Customize the launcher appearance
 
-The launcher's icon and color can be configured through the [Delight AI dashboard](https://dashboard.delight.ai) - no code changes required. Simply go to **[Build > Channels > Messenger](https://dashboard.delight.ai/ai-agent/{application-id}/channels/messenger/?active_tab=Appearance)** in the dashboard and click on the **Appearance** tab to customize your launcher.
+The launcher's icon and color can be configured through the [Delight AI dashboard](https://dashboard.delight.ai) - no code changes required. Simply go to [**Build > Channels > Messenger**](https://dashboard.delight.ai/ai-agent/%7Bapplication-id%7D/channels/messenger/?active_tab=Appearance) in the dashboard and click on the **Appearance** tab to customize your launcher.
 
-<img width="821" height="909" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png">
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png" alt=""><figcaption></figcaption></figure>
 
 ### With direct presentation
 
 For advanced use cases where you need direct control over the conversation view without the floating launcher, you can use the `Conversation` component directly. This provides a full-screen or custom-sized conversation interface.
 
 This approach is recommended when:
-- You want to embed the conversation in a specific part of your UI.
-- You need custom navigation or layout control.
-- You want to build a full-page conversation experience.
-- You need to open a specific conversation programmatically with its `channelUrl`.
+
+* You want to embed the conversation in a specific part of your UI.
+* You need custom navigation or layout control.
+* You want to build a full-page conversation experience.
+* You need to open a specific conversation programmatically with its `channelUrl`.
 
 The following snippet demonstrates how to render a conversation directly by wrapping the `Conversation` component with `AgentProviderContainer`.
 
@@ -173,7 +171,7 @@ function DirectConversationView() {
 }
 ```
 
----
+***
 
 ## Advanced configuration
 
@@ -232,7 +230,7 @@ function CustomMessengerView() {
 
 Multiple active conversation mode allows users to simultaneously communicate with your AI agent in different channels. In this case, use the `createConversation()` function from `useMessengerSessionContext()` to create a new conversation whenever needed.
 
->__Note__: In single conversation mode, a new conversation can't be created if there is an active conversation.
+> **Note**: In single conversation mode, a new conversation can't be created if there is an active conversation.
 
 ```tsx
 import { useMessengerSessionContext } from '@sendbird/ai-agent-messenger-react';
@@ -278,7 +276,7 @@ function CreateConversationButton() {
 </FixedMessenger>
 ```
 
----
+***
 
 ## API Reference
 
@@ -286,72 +284,72 @@ function CreateConversationButton() {
 
 Configuration options for the `FixedMessenger` component.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `appId` | string | Required | Your application ID. |
-| `aiAgentId` | string | Required | AI agent identifier for conversation target. |
-| `entryPoint` | 'Conversation' \| 'ConversationList' | 'Conversation' | Which screen to show when the messenger is first loaded. |
-| `userSessionInfo` | ManualSessionInfo \| AnonymousSessionInfo | - | User session information for authentication. |
-| `language` | string | navigator.language | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR"). |
-| `countryCode` | string | - | Country code following ISO 3166 format (e.g., "US", "KR"). |
-| `context` | Record<string, string> | - | Context object for personalized AI agent responses. |
-| `queryParams` | AIAgentQueryParams | - | Global default query parameters for AI agent. |
-| `config` | AIAgentConfig | - | Global default configuration for AI agent. |
-| `theme` | object | - | Theme customization for palette and typography. |
-| `stringSet` | Partial<StringSet> | - | Localization string set for the messenger. |
-| `logLevel` | LogLevel | LogLevel.WARN | Log level for the AI agent client. |
-| `dir` | 'ltr' \| 'rtl' | - | Text direction for the widget. |
-| `entryStyle` | CSSProperties | - | Custom CSS styles for the entry container element. |
-| `rootElement` | HTMLElement | document.body | Root HTML element to which the messenger will be appended. |
-| `state` | object | - | Custom state management for opened/expanded states. |
+| Property          | Type                                      | Default            | Description                                                             |
+| ----------------- | ----------------------------------------- | ------------------ | ----------------------------------------------------------------------- |
+| `appId`           | string                                    | Required           | Your application ID.                                                    |
+| `aiAgentId`       | string                                    | Required           | AI agent identifier for conversation target.                            |
+| `entryPoint`      | 'Conversation' \| 'ConversationList'      | 'Conversation'     | Which screen to show when the messenger is first loaded.                |
+| `userSessionInfo` | ManualSessionInfo \| AnonymousSessionInfo | -                  | User session information for authentication.                            |
+| `language`        | string                                    | navigator.language | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR"). |
+| `countryCode`     | string                                    | -                  | Country code following ISO 3166 format (e.g., "US", "KR").              |
+| `context`         | Record\<string, string>                   | -                  | Context object for personalized AI agent responses.                     |
+| `queryParams`     | AIAgentQueryParams                        | -                  | Global default query parameters for AI agent.                           |
+| `config`          | AIAgentConfig                             | -                  | Global default configuration for AI agent.                              |
+| `theme`           | object                                    | -                  | Theme customization for palette and typography.                         |
+| `stringSet`       | Partial                                   | -                  | Localization string set for the messenger.                              |
+| `logLevel`        | LogLevel                                  | LogLevel.WARN      | Log level for the AI agent client.                                      |
+| `dir`             | 'ltr' \| 'rtl'                            | -                  | Text direction for the widget.                                          |
+| `entryStyle`      | CSSProperties                             | -                  | Custom CSS styles for the entry container element.                      |
+| `rootElement`     | HTMLElement                               | document.body      | Root HTML element to which the messenger will be appended.              |
+| `state`           | object                                    | -                  | Custom state management for opened/expanded states.                     |
 
 ### FixedMessenger.Style Props
 
 Configuration options for customizing the launcher appearance.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `position` | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom' | 'end-bottom' | Position of the launcher button. |
-| `margin` | Partial<{ top: number; bottom: number; start: number; end: number }> | { top: 24, bottom: 24, start: 24, end: 24 } | Margin around the launcher. |
-| `launcherSize` | number | 48 | Size of the launcher button in pixels. |
+| Property       | Type                                                                 | Default                                     | Description                            |
+| -------------- | -------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------- |
+| `position`     | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom'           | 'end-bottom'                                | Position of the launcher button.       |
+| `margin`       | Partial<{ top: number; bottom: number; start: number; end: number }> | { top: 24, bottom: 24, start: 24, end: 24 } | Margin around the launcher.            |
+| `launcherSize` | number                                                               | 48                                          | Size of the launcher button in pixels. |
 
 ### Conversation Props
 
 Configuration options for the `Conversation` component.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `channelUrl` | string | - | Channel URL to open. If not provided, uses active channel from context. |
-| `onClearChannelUrl` | () => void | - | Callback when channel URL should be cleared. |
-| `onNavigateToConversationList` | () => void | - | Callback to navigate to conversation list. |
-| `shouldMarkAsRead` | boolean | false | Whether to mark messages as read when viewed. |
+| Property                       | Type       | Default | Description                                                             |
+| ------------------------------ | ---------- | ------- | ----------------------------------------------------------------------- |
+| `channelUrl`                   | string     | -       | Channel URL to open. If not provided, uses active channel from context. |
+| `onClearChannelUrl`            | () => void | -       | Callback when channel URL should be cleared.                            |
+| `onNavigateToConversationList` | () => void | -       | Callback to navigate to conversation list.                              |
+| `shouldMarkAsRead`             | boolean    | false   | Whether to mark messages as read when viewed.                           |
 
 ### useMessengerSessionContext Hook
 
 Access to messenger session context and conversation management functions.
 
-- Key Properties
+* Key Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
+| Property  | Type         | Description                    |
+| --------- | ------------ | ------------------------------ |
 | `sdkUser` | User \| null | Sendbird Chat SDK user object. |
 
-- Methods
+* Methods
 
-| Method | Parameters | Return Type | Description |
-|--------|------------|-------------|-------------|
-| `createConversation` | params: ConversationCreateParams | Promise<string> | Creates a new conversation and returns the channel URL. |
-| `refreshActiveChannel` | - | Promise<string> | Refreshes the active channel and returns URL. |
-| `authenticate` | - | Promise<MessengerSettingsResponse> | Authenticates the user session. |
-| `deauthenticate` | - | Promise<void> | Deauthenticates the user session. |
+| Method                 | Parameters                       | Return Type | Description                                             |
+| ---------------------- | -------------------------------- | ----------- | ------------------------------------------------------- |
+| `createConversation`   | params: ConversationCreateParams | Promise     | Creates a new conversation and returns the channel URL. |
+| `refreshActiveChannel` | -                                | Promise     | Refreshes the active channel and returns URL.           |
+| `authenticate`         | -                                | Promise     | Authenticates the user session.                         |
+| `deauthenticate`       | -                                | Promise     | Deauthenticates the user session.                       |
 
 ### ConversationCreateParams
 
 Parameters for creating new conversations.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `aiAgentId` | string | Required | AI agent identifier. |
-| `language` | string | - | Language code (IETF BCP 47).|
-| `country` | string | - | Country code (ISO 3166). |
-| `context` | Record<string, string> | - | Additional metadata for AI agent. |
+| Property    | Type                    | Default  | Description                       |
+| ----------- | ----------------------- | -------- | --------------------------------- |
+| `aiAgentId` | string                  | Required | AI agent identifier.              |
+| `language`  | string                  | -        | Language code (IETF BCP 47).      |
+| `country`   | string                  | -        | Country code (ISO 3166).          |
+| `context`   | Record\<string, string> | -        | Additional metadata for AI agent. |
