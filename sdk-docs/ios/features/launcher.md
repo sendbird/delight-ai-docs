@@ -238,12 +238,7 @@ This section describes how to configure the parameters and enums that control la
 
 The following table lists the configuration options in `LauncherSettingsParams`, which can be used when initializing the messenger launcher.
 
-| Property      | Type               | Description                                                                                               | Default  |
-| ------------- | ------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `options`     | SBALauncherOptions | Configures the launcher layout and display options, such as its entry point, position, and display style. | .default |
-| `language`    | String?            | Sets the language code in IETF BCP 47 format.                                                             | nil      |
-| `countryCode` | String?            | Sets the country code in ISO 3166 format.                                                                 | nil      |
-| `context`     | \[String: String]  | Contains additional metadata on the user for more personalized support by AI agent.                       | \[:]     |
+<table><thead><tr><th width="126.765625">Property</th><th width="148.9453125">Type</th><th width="340.32421875">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>options</code></td><td>SBALauncherOptions</td><td>Configures the launcher layout and display options, such as its entry point, position, and display style.</td><td>.default</td></tr><tr><td><code>language</code></td><td>String?</td><td>Sets the language code in IETF BCP 47 format.</td><td>nil</td></tr><tr><td><code>countryCode</code></td><td>String?</td><td>Sets the country code in ISO 3166 format.</td><td>nil</td></tr><tr><td><code>context</code></td><td>[String: String]</td><td>Contains additional metadata on the user for more personalized support by AI agent.</td><td>[:]</td></tr></tbody></table>
 
 ```swift
 // LauncherSettingsParams is used within the builder closure.
@@ -274,12 +269,7 @@ AIAgentMessenger.attachLauncher(
 
 The following table lists the configuration options in `SBALauncherOptions`, which can be used when setting the visual layout and behavior of the launcher.
 
-| Property       | Type                                         | Description                                                                                                                       | Default       |
-| -------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `parentView`   | UIView?                                      | Sets the parent view to attach the launcher.                                                                                      | nil           |
-| `entryPoint`   | [`SBAEntryPoint`](launcher.md#sbaentrypoint) | Determines which screen to show first when the launcher is tapped. Acceptable values are `.conversation` and `.conversationList`. | .conversation |
-| `layout`       | [`Layout`](launcher.md#layout)               | Configures the layout of the launcher, such as its position and margins.                                                          | .default      |
-| `displayStyle` | [`DisplayStyle`](launcher.md#displaystyle)   | Sets how the conversation screen appears. Acceptable values are `.fullscreen` and `.overlay`.                                     | .overlay()    |
+<table><thead><tr><th width="142.8046875">Property</th><th width="133.76953125">Type</th><th width="341.51171875">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>parentView</code></td><td>UIView?</td><td>Sets the parent view to attach the launcher.</td><td>nil</td></tr><tr><td><code>entryPoint</code></td><td><a href="launcher.md#sbaentrypoint"><code>SBAEntryPoint</code></a></td><td>Determines which screen to show first when the launcher is tapped. Acceptable values are <code>.conversation</code> and <code>.conversationList</code>.</td><td>.conversation</td></tr><tr><td><code>layout</code></td><td><a href="launcher.md#layout"><code>Layout</code></a></td><td>Configures the layout of the launcher, such as its position and margins.</td><td>.default</td></tr><tr><td><code>displayStyle</code></td><td><a href="launcher.md#displaystyle"><code>DisplayStyle</code></a></td><td>Sets how the conversation screen appears. Acceptable values are <code>.fullscreen</code> and <code>.overlay</code>.</td><td>.overlay()</td></tr></tbody></table>
 
 ```swift
 let options = SBALauncherOptions(
@@ -298,10 +288,7 @@ let options = SBALauncherOptions(
 
 The following table lists the configuration options in `SBAEntryPoint`, which can be used when launching the messenger.
 
-| Value               | Description                                                           |
-| ------------------- | --------------------------------------------------------------------- |
-| `.conversation`     | Opens a conversation directly after a tap on the launcher.            |
-| `.conversationList` | Shows the user's conversation list first after a tap on the launcher. |
+<table><thead><tr><th width="228.27734375">Value</th><th>Description</th></tr></thead><tbody><tr><td><code>.conversation</code></td><td>Opens a conversation directly after a tap on the launcher.</td></tr><tr><td><code>.conversationList</code></td><td>Shows the user's conversation list first after a tap on the launcher.</td></tr></tbody></table>
 
 ```swift
 // Launch directly into conversation.
@@ -325,11 +312,7 @@ let listOptions = SBALauncherOptions(
 
 The following table lists the configuration options in `Layout`, which can be used when setting the positioning and margins of the launcher.
 
-| Property      | Type                                                   | Description                                     | Default         |
-| ------------- | ------------------------------------------------------ | ----------------------------------------------- | --------------- |
-| `position`    | [`LauncherPosition`](launcher.md#launcherposition)     | Sets the position of the launcher on a screen.  | .trailingBottom |
-| `margin`      | [`LauncherAreaMargin`](launcher.md#launcherareamargin) | Sets its margins from edges.                    | .default        |
-| `useSafeArea` | Bool                                                   | Determines whether to respect safe area insets. | true            |
+<table><thead><tr><th width="134.6796875">Property</th><th width="181.03515625">Type</th><th width="283.7890625">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>position</code></td><td><a href="launcher.md#launcherposition"><code>LauncherPosition</code></a></td><td>Sets the position of the launcher on a screen.</td><td>.trailingBottom</td></tr><tr><td><code>margin</code></td><td><a href="launcher.md#launcherareamargin"><code>LauncherAreaMargin</code></a></td><td>Sets its margins from edges.</td><td>.default</td></tr><tr><td><code>useSafeArea</code></td><td>Bool</td><td>Determines whether to respect safe area insets.</td><td>true</td></tr></tbody></table>
 
 ```swift
 let layout = SBALauncherOptions.Layout(
@@ -348,12 +331,7 @@ let layout = SBALauncherOptions.Layout(
 
 The following table lists the configuration options in `LauncherPosition`, which can be used when setting where the launcher appears on the screen.
 
-| Value             | Description                    |
-| ----------------- | ------------------------------ |
-| `.leadingTop`     | Top-left corner of screen.     |
-| `.trailingTop`    | Top-right corner of screen.    |
-| `.leadingBottom`  | Bottom-left corner of screen.  |
-| `.trailingBottom` | Bottom-right corner of screen. |
+<table><thead><tr><th width="229.8515625">Value</th><th>Description</th></tr></thead><tbody><tr><td><code>.leadingTop</code></td><td>Top-left corner of screen.</td></tr><tr><td><code>.trailingTop</code></td><td>Top-right corner of screen.</td></tr><tr><td><code>.leadingBottom</code></td><td>Bottom-left corner of screen.</td></tr><tr><td><code>.trailingBottom</code></td><td>Bottom-right corner of screen.</td></tr></tbody></table>
 
 ```swift
 // Position at bottom-right corner.
@@ -385,10 +363,7 @@ let leadingTopOptions = SBALauncherOptions(
 
 The following table lists the configuration options in `DisplayStyle`, which can be used when determining how the conversation screen appears.
 
-| Value                          | Description                                                    |
-| ------------------------------ | -------------------------------------------------------------- |
-| `.fullscreen(FullscreenStyle)` | The conversation opens as a full screen.                       |
-| `.overlay(OverlayStyle)`       | The conversation opens like an anchored box near the launcher. |
+<table><thead><tr><th width="270.11328125">Value</th><th>Description</th></tr></thead><tbody><tr><td><code>.fullscreen(FullscreenStyle)</code></td><td>The conversation opens as a full screen.</td></tr><tr><td><code>.overlay(OverlayStyle)</code></td><td>The conversation opens like an anchored box near the launcher.</td></tr></tbody></table>
 
 ```swift
 // Full screen mode.
@@ -418,10 +393,7 @@ let overlayOptions = SBALauncherOptions(
 
 Configuration for full-screen display mode.
 
-| Property            | Type                     | Description              | Default     |
-| ------------------- | ------------------------ | ------------------------ | ----------- |
-| `presentationStyle` | UIModalPresentationStyle | Modal presentation style | .fullScreen |
-| `parentController`  | UIViewController?        | Parent view controller   | nil         |
+<table><thead><tr><th width="178.01171875">Property</th><th width="222.56640625">Type</th><th width="228.0078125">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>presentationStyle</code></td><td>UIModalPresentationStyle</td><td>Modal presentation style</td><td>.fullScreen</td></tr><tr><td><code>parentController</code></td><td>UIViewController?</td><td>Parent view controller</td><td>nil</td></tr></tbody></table>
 
 ```swift
 let fullscreenStyle = SBALauncherOptions.DisplayStyle.FullscreenStyle(
@@ -434,10 +406,7 @@ let fullscreenStyle = SBALauncherOptions.DisplayStyle.FullscreenStyle(
 
 Configuration for overlay display mode.
 
-| Property          | Type    | Description                               | Default |
-| ----------------- | ------- | ----------------------------------------- | ------- |
-| `spacing`         | CGFloat | Spacing between launcher and conversation | 12      |
-| `overlayLauncher` | Bool    | Whether to overlay the launcher           | false   |
+<table><thead><tr><th width="170.37890625">Property</th><th width="111.30078125">Type</th><th width="336.34765625">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>spacing</code></td><td>CGFloat</td><td>Spacing between launcher and conversation</td><td>12</td></tr><tr><td><code>overlayLauncher</code></td><td>Bool</td><td>Whether to overlay the launcher</td><td>false</td></tr></tbody></table>
 
 ```swift
 let overlayStyle = SBALauncherOptions.DisplayStyle.OverlayStyle(
@@ -450,12 +419,7 @@ let overlayStyle = SBALauncherOptions.DisplayStyle.OverlayStyle(
 
 The following table lists the configuration options in `LauncherAreaMargin`, which can be used to set the spacing around the launcher.
 
-| Property   | Type    | Description                |
-| ---------- | ------- | -------------------------- |
-| `leading`  | CGFloat | Leading margin in points.  |
-| `trailing` | CGFloat | Trailing margin in points. |
-| `top`      | CGFloat | Top margin in points.      |
-| `bottom`   | CGFloat | Bottom margin in points.   |
+<table><thead><tr><th width="162.125">Property</th><th width="155.1328125">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>leading</code></td><td>CGFloat</td><td>Leading margin in points.</td></tr><tr><td><code>trailing</code></td><td>CGFloat</td><td>Trailing margin in points.</td></tr><tr><td><code>top</code></td><td>CGFloat</td><td>Top margin in points.</td></tr><tr><td><code>bottom</code></td><td>CGFloat</td><td>Bottom margin in points.</td></tr></tbody></table>
 
 ```swift
 // 16pt margins on all sides.
@@ -501,11 +465,7 @@ static func attachLauncher(
 )
 ```
 
-| Parameter       | Type                             | Description                                                                                               |
-| --------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `aiAgentId`     | `String`                         | The unique identifier of the AI agent.                                                                    |
-| `channelURL`    | `String?`                        | (Optional) The channel URL to open a specific conversation. If `nil`, a new conversation will be created. |
-| `paramsBuilder` | `LauncherSettingsParamsBuilder?` | (Optional) A closure used to configure launcher settings such as layout and appearance.                   |
+<table><thead><tr><th width="173.56640625">Parameter</th><th width="278.703125">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>aiAgentId</code></td><td><code>String</code></td><td>The unique identifier of the AI agent.</td></tr><tr><td><code>channelURL</code></td><td><code>String?</code></td><td>(Optional) The channel URL to open a specific conversation. If <code>nil</code>, a new conversation will be created.</td></tr><tr><td><code>paramsBuilder</code></td><td><code>LauncherSettingsParamsBuilder?</code></td><td>(Optional) A closure used to configure launcher settings such as layout and appearance.</td></tr></tbody></table>
 
 #### detachLauncher
 
@@ -517,20 +477,13 @@ static func detachLauncher(
 )
 ```
 
-| Parameter   | Type     | Description                            |
-| ----------- | -------- | -------------------------------------- |
-| `aiAgentId` | `String` | The unique identifier of the AI agent. |
+<table><thead><tr><th width="201.546875">Parameter</th><th width="200.2890625">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>aiAgentId</code></td><td><code>String</code></td><td>The unique identifier of the AI agent.</td></tr></tbody></table>
 
 ### LauncherSettingsParams
 
 Configuration parameters for the launcher button. Inherits from `BaseMessengerParams`.
 
-| Property      | Type               | Description                          | Default  |
-| ------------- | ------------------ | ------------------------------------ | -------- |
-| `options`     | SBALauncherOptions | Launcher layout and display options. | .default |
-| `language`    | String?            | Language code (IETF BCP 47).         | nil      |
-| `countryCode` | String?            | Country code (ISO 3166).             | nil      |
-| `context`     | \[String: String]  | Additional metadata for AI agent.    | \[:]     |
+<table><thead><tr><th>Property</th><th width="185.2421875">Type</th><th width="305.7578125">Description</th><th>Default</th></tr></thead><tbody><tr><td><code>options</code></td><td>SBALauncherOptions</td><td>Launcher layout and display options.</td><td>.default</td></tr><tr><td><code>language</code></td><td>String?</td><td>Language code (IETF BCP 47).</td><td>nil</td></tr><tr><td><code>countryCode</code></td><td>String?</td><td>Country code (ISO 3166).</td><td>nil</td></tr><tr><td><code>context</code></td><td>[String: String]</td><td>Additional metadata for AI agent.</td><td>[:]</td></tr></tbody></table>
 
 ### SBALauncherOptions
 
