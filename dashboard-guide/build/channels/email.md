@@ -19,9 +19,6 @@ When you enable the Email channel, it will automatically create a Delight email 
 
 1. Go to **Channels** on the left menu bar in Delight AI dashboard.
 2. Click the **Email** tile.
-
-<figure><img src="../../../.gitbook/assets/image (132) (1).png" alt=""><figcaption></figcaption></figure>
-
 3. Confirm that you will add an email channel for the AI Agent.
 
 <figure><img src="../../../.gitbook/assets/image (27).png" alt="" width="375"><figcaption></figcaption></figure>

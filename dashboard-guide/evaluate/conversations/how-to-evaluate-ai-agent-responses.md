@@ -41,8 +41,6 @@ Admins can grant an evaluator role to dashboard users and set their conversation
 
 Once evaluators completed their rating, you can see the results in the **Conversations** page. Navigate to **Evaluate > Conversations** to see the results summary or click one of the conversations to see the details. If needed, you can also edit the evaluation scores.
 
-<figure><img src="../../../.gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
-
 1. In the left menu bar, go to **Evaluate > Conversations**. The page will show you the list of all conversations that AI agent has conducted.
 2. You can reorganize and sort the conversation list using the filters at the top of the screen. The filters below can be handful in terms of AI agent evaluation:
    1. **Evaluators**
@@ -63,10 +61,9 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 2. On the dashboard home, review the list of **AI agents** created under your account
 3. Click the **Development AI agent** card to open. Evaluators will be able to see the list of AI agents they can review.
 4. In the **Conversations** view, evaluators can see a list of conversation available.
-5. Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows a list of conversations assigned to the evaluator **Paul Rogers**.
+5.  Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows the **Evaluator** column on the right end of the table.<br>
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
-
+    <figure><img src="../../../.gitbook/assets/Screenshot 2025-11-26 at 5.08.52 PM.png" alt=""><figcaption></figcaption></figure>
 6. Select one of the conversations in the list to evaluate AI agent's responses.
 
 <details>

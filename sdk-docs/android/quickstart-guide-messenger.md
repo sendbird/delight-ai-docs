@@ -39,9 +39,6 @@ Quickly install and initialize the AI Agent SDK by following the steps below.
 
 1. In Android Studio, create a new project (**File > New > New Project...**).
 2. Select **Empty Views Activity** and click **Next**.
-
-<figure><img src="../../.gitbook/assets/image (74) (1).png" alt=""><figcaption></figcaption></figure>
-
 3. Give your project a name. Accept all other defaults, including the language as `Kotlin` and the minimum SDK as `API 21: Android 5.0 (Lollipop)` and click **Finish**.
 
 <figure><img src="../../.gitbook/assets/image (78).png" alt=""><figcaption></figcaption></figure>

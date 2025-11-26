@@ -1,11 +1,11 @@
 # Flagged messages
 
-For high-quality, worry-free AI customer experience, Delight AI agent provides a feature that can detect AI hallucinations and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
+For high-quality, worry-free AI customer experience, Delight AI agent provides a feature that can detect low-confidence messages and filter sensitive messages in all conversations. Such messages are flagged to notify you of a potential issue, allowing you to swiftly address and mitigate any risks to maintain a secure and safe communication environment.
 
 The Flagged messages in Delight AI dashboard are divided into two tabs:
 
 * [Safeguards](flagged-messages.md#safeguard)
-* [Hallucination](flagged-messages.md#hallucination)
+* [Low confidence](flagged-messages.md#low-confidence)
 
 ***
 
@@ -13,17 +13,17 @@ The Flagged messages in Delight AI dashboard are divided into two tabs:
 
 During the [Build](../build/) process, you can configure [safeguards](../build/safeguards.md) to set boundaries and prevent potential misuse against your AI agent. This tab gathers such filtered user messages and tracks their trend so that you could monitor them in detail.
 
-<table><thead><tr><th width="232.00390625">Flag type</th><th>Description</th></tr></thead><tbody><tr><td>Harmful content</td><td>The user messages detected by guardrails for containing content that is disrespectful, degrading, offensive, or otherwise inappropriate.</td></tr><tr><td>Context injection</td><td>The user's attempt to manipulate the AI agent’s response by inserting false or misleading information early in the conversation. This can result in hallucinations.</td></tr><tr><td>Adversarial attack</td><td>The user's attempts to manipulate the AI agent using techniques like prompt injection or jailbreaking.</td></tr><tr><td>Banned words &#x26; phrases</td><td>The user messages containing sensitive topics that are banned for AI agents from discussing. You can designate any text as banned words, including proper nouns, specific terms and expressions.</td></tr></tbody></table>
+<table><thead><tr><th width="232.00390625">Flag type</th><th>Description</th></tr></thead><tbody><tr><td>Harmful content</td><td>The user messages detected by guardrails for containing content that is disrespectful, degrading, offensive, or otherwise inappropriate.</td></tr><tr><td>Context injection</td><td>The user's attempt to manipulate the AI agent’s response by inserting false or misleading information early in the conversation. This can result in low-confidence messages.</td></tr><tr><td>Adversarial attack</td><td>The user's attempts to manipulate the AI agent using techniques like prompt injection or jailbreaking.</td></tr><tr><td>Banned words &#x26; phrases</td><td>The user messages containing sensitive topics that are banned for AI agents from discussing. You can designate any text as banned words, including proper nouns, specific terms and expressions.</td></tr></tbody></table>
 
-<figure><img src="../../.gitbook/assets/image (142).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2025-11-26 at 4.33.48 PM.png" alt=""><figcaption></figcaption></figure>
 
-### Hallucination
+### Low confidence
 
-Sometimes, an AI agent can generate responses that are not grounded on the knowledge sources provided. Such messages are called hallucinations. This happens because the AI model predicts text based on learned patterns rather than factual accuracy.
+Sometimes, an AI agent can generate responses that are not grounded on the knowledge sources provided. Such messages are called low-confidence messages. This happens because the AI model predicts text based on learned patterns rather than factual accuracy.
 
-The **Hallucination** tab under **Flagged messages** collects all the hallucinations generated during the selected period. This tab includes a language filter and a bar chart showing the distribution of hallucinations by language. Based on the analysis, you can enhance the grounded-ness of your AI agent responses by identifying which content or information is missing from its data sources.
+The **Low confidence** tab under **Flagged messages** collects all the low-confidence messages generated during the selected period. This tab includes a language filter and a bar chart showing the distribution of low-confidence messages by language. Based on the analysis, you can enhance the grounded-ness of your AI agent responses by identifying which content or information is missing from its data sources.
 
-<figure><img src="../../.gitbook/assets/image (144).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2025-11-26 at 4.34.08 PM.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -37,18 +37,16 @@ Delight AI agent features webhook events for flagged messages, enabling you to k
 2. Enter your webhook server **URL** to receive the event request from the Sendbird server.
 3. Select events to subscribe to and **Save**. The following two events are currently supported:
 
-* [Hallucination](flagged-messages.md#hallucination): when an AI agent response is not grounded on the data provided.
+* [Low confidence](flagged-messages.md#low-confidence): when an AI agent response is not grounded on the data provided.
 * [Safeguards](flagged-messages.md#safeguards): when a user message is flagged as harmful, adversarial, or banned according to the [safeguards](../build/safeguards.md) settings.
-
-<figure><img src="../../.gitbook/assets/image (145).png" alt=""><figcaption></figcaption></figure>
 
 ### Event payload
 
 The following are sample webhook payloads of flagged message events.
 
-#### AI Hallucination
+#### Low confidence
 
-Whenever a hallucination is generated by the AI agent, a webhook payload will be created and delivered. This payload contains the information about the hallucination message as an JSON object, as demonstrated in the sample snippet below.
+Whenever a low-confidence message is generated by the AI agent, a webhook payload will be created and delivered. This payload contains the information about the low-confidence message as an JSON object, as demonstrated in the sample snippet below.
 
 ```json
 {
@@ -58,7 +56,7 @@ Whenever a hallucination is generated by the AI agent, a webhook payload will be
   "message": [
     {
       "message_id": 10748655,
-      "content": "The world is beatiful",
+      "content": "The world is beautiful",
       "timestamp": 1745146434378
     }
   ],

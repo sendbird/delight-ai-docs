@@ -82,8 +82,6 @@ Each record shows:
 
 ### Creating a new AI agent
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-05-14 at 17.11.53 (1).gif" alt=""><figcaption></figcaption></figure>
-
 Click the ➕ icon at the bottom of the agent list to create a new agent. You'll be asked to:
 
 * Name the agent (visible to users)

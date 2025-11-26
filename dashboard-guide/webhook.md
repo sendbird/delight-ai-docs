@@ -1,8 +1,6 @@
 # Webhook
 
-Delight AI agent supports a webhook API so that you can be notified whenever a new event takes a place during AI-user interaction. From a start of a conversation to human handoff to AI hallucination, choose a set of events to subscribe to in the Delight AI agent dashbaord and use them for your custom implementation.
-
-<figure><img src="../.gitbook/assets/image (145) (1).png" alt=""><figcaption></figcaption></figure>
+Delight AI agent supports a webhook API so that you can be notified whenever a new event takes a place during AI-user interaction. From a start of a conversation to human handoff to low-confidence messages, choose a set of events to subscribe to in the Delight AI agent dashboard and use them for your custom implementation.
 
 {% hint style="warning" %}
 As of August 27, 2025, the webhook configuration should be set by Delight. Contact your Delight representative for further assistance.
@@ -22,7 +20,7 @@ A lot can happen during a conversation with a user and Delight notifies you such
 * `message:user_sent` - A user sends a message to AI agent.
 * `message:ai_agent_sent` - Your AI agent sends a message to the user.
 * `message:human_agent_sent` - A human agent sends a message to the user after handoff.
-* `flagged_message:hallucination_detected` - Your AI agent hallucinated and the message has been detected.
+* `flagged_message:hallucination_detected` - Your AI agent generated a response at a low confidence level and the message has been detected.
 
 These event types are categorized and specified in the `category` field of the webhook payload.
 
@@ -218,9 +216,9 @@ Even after the handoff, you can get the information about a human agent's messag
 
 <table><thead><tr><th width="249.8828125">Parameter</th><th width="110.97265625">Type</th><th>Description</th></tr></thead><tbody><tr><td>message</td><td>object</td><td>A JSON object that contains message information.</td></tr><tr><td>message.message_id</td><td>int</td><td>Specifies the unique ID of the message.</td></tr><tr><td>message.content</td><td>string</td><td>Specifies the text content of the message.</td></tr><tr><td>sent_at</td><td>string</td><td>Specifies the time when the message was sent, in ISO 8601 format.</td></tr></tbody></table>
 
-#### [AI hallucination](evaluate/flagged-messages.md#hallucination)
+#### [Low confidence](evaluate/flagged-messages.md#low-confidence)
 
-When the AI agent generates a hallucination and `flagged_message:hallucination_detected` event occurs, the payload contains a `message` object, along with the common fields listed above.
+When the AI agent generates a low-confidence message and `flagged_message:hallucination_detected` event occurs, the payload contains a `message` object, along with the common fields listed above.
 
 ```json
 {
