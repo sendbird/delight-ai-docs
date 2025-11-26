@@ -61,10 +61,9 @@ Evaluators will be assigned to conversations by the languages set for them. Go t
 2. On the dashboard home, review the list of **AI agents** created under your account
 3. Click the **Development AI agent** card to open. Evaluators will be able to see the list of AI agents they can review.
 4. In the **Conversations** view, evaluators can see a list of conversation available.
-5. Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows a list of conversations assigned to the evaluator **Paul Rogers**.
+5.  Turn on the **View my evaluations** toggle to see conversations assigned to or evaluated by you. The screenshot below shows the **Evaluator** column on the right end of the table.<br>
 
-<figure><img src="../../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
-
+    <figure><img src="../../../.gitbook/assets/Screenshot 2025-11-26 at 5.08.52 PM.png" alt=""><figcaption></figcaption></figure>
 6. Select one of the conversations in the list to evaluate AI agent's responses.
 
 <details>

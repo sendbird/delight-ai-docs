@@ -10,7 +10,7 @@ Use the following tools and insights to evaluate conversation quality and AI age
 * Pattern detection: Identify patterns in AI agent effectiveness, such as recurring issues, that merits human intervention or AI agent optimization.
 * In-depth analysis: Click on any row in the conversation table to view detailed information and assess how the AI agent handled the exchange in a scorecard. Use this view to evaluate specific responses and pinpoint areas for improvement. Refer to the image below.
 
-<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Group 27.png" alt=""><figcaption></figcaption></figure>
 
 ### Review the conversation
 
