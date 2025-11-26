@@ -57,8 +57,6 @@ Knowledge is a shared asset created and managed at the **workspace level**, but 
 
 ## Adding a new knowledge
 
-<figure><img src="../../.gitbook/assets/CleanShot 2025-05-16 at 13.19.09 (1).gif" alt=""><figcaption><p>How to add a snippet in Knowledge</p></figcaption></figure>
-
 1. Go to **Workspace settings > Knowledge.**
 2. The Knowledge tiles are divided in to two sections: **In use** and **Not in use**. If you wish to add more data types, go to [Workspace settings > Integration](../integrations/) and enable the feature.
 3. Among **In use** content types, choose a content type: File, Snippet, Website, or 3rd-party Integration.

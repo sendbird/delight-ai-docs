@@ -41,8 +41,6 @@ You can do the following actions on this page:\
 
 You can also create a test set through the Test conversation details page (**AI agent > Test > Test conversations**) as shown in the image below.
 
-<figure><img src="../../.gitbook/assets/CleanShot 2025-05-14 at 22.26.49 (1).gif" alt=""><figcaption></figcaption></figure>
-
 ***
 
 ## Running tests
@@ -76,8 +74,6 @@ Once complete, you will be able to view success rates and detailed pass or fail 
 ## Scheduling test runs
 
 In addition to running test sets manually, you can schedule them to run automatically on a recurring basis. This is especially useful for monitoring regressions over time or validating changes in your AI agent's configuration.
-
-<figure><img src="../../.gitbook/assets/CleanShot 2025-05-14 at 22.44.55@2x (1).png" alt=""><figcaption></figcaption></figure>
 
 ### How to schedule a test run
 
