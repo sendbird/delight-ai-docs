@@ -21,6 +21,8 @@ The **Overview** tab provides a snapshot of your AI agent’s performance throug
 * **Flagged messages**
 * **Resource usage**
 
+<figure><img src="../../.gitbook/assets/TO-BE (1).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ## Categories
