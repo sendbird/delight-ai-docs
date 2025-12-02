@@ -1,71 +1,95 @@
-# Quickstart guide (Messenger)
+[iOS](https://github.com/sendbird/delight-ai-agent/blob/main/ios/README.md) / **Android** / [JS](https://github.com/sendbird/sendbird-ai-agent/blob/main/js/)
 
-{% hint style="warning" %}
-Release notes
-
-* Version 1.4.0 released: Delight AI agent SDK for Android **v1.4.0** was released.
-* Feature support: We recommend you install the latest version as any features introduced after this date will be supported only in the latest version.
-* Deprecation notice: The previous version, v0.9, will be deprecated on **December 31, 2025**.
-{% endhint %}
+# Delight AI agent Quickstart guide (Android)
+## sagan - testestest
 
 The **Delight AI agent Messenger** allows seamless integration of chatbot features into your Android application. Follow the steps below to initialize and utilize the SDK effectively.
 
-### Requirements
+- [Delight AI agent Quickstart guide (Android)](#delight-ai-agent-quickstart-guide-android)
+  - [Requirements](#requirements)
+  - [Prerequisites](#prerequisites)
+  - [Getting started](#getting-started)
+    - [Step 1. Create a new project](#step-1-create-a-new-project)
+    - [Step 2. Install AI Agent SDK](#step-2-install-ai-agent-sdk)
+      - [Configuring repository](#configuring-repository)
+      - [Adding dependency](#adding-dependency)
+    - [Step 3. Initialize AI Agent SDK](#step-3-initialize-ai-agent-sdk)
+      - [How to create the Application file](#how-to-create-the-application-file)
+  - [Running your application](#running-your-application)
+    - [Manage user sessions](#manage-user-sessions)
+      - [When to set the session information:](#when-to-set-the-session-information)
+    - [Handle session expiration](#handle-session-expiration)
+      - [How to handle session expiration:](#how-to-handle-session-expiration)
+    - [Launch the messenger](#launch-the-messenger)
+      - [Before You Start](#before-you-start)
+      - [1. Using the launcher button](#1-using-the-launcher-button)
+      - [2. Opening the conversation channel in full-screen mode](#2-opening-the-conversation-channel-in-full-screen-mode)
+    - [Push notifications for Android](#push-notifications-for-android)
+  - [Advanced features](#advanced-features)
+    - [Update SDK theme](#update-sdk-theme)
+    - [Deauthenticate and clear session](#deauthenticate-and-clear-session)
+    - [Passing context object to Agent](#passing-context-object-to-agent)
+      - [1. Applying settings data through MessengerLauncher](#1-applying-settings-data-through-messengerlauncher)
+      - [2. Applying settings data through full-screen conversation](#2-applying-settings-data-through-full-screen-conversation)
+
+## Requirements
 
 The minimum requirements for AI Agent for Android are the following.
 
-* Android 5.0 (API level 21) or higher
-* Java 11 or higher
-* Android Gradle plugin 8.0.0 or higher
-* Android ViewBinding enabled
-* Sendbird Chat SDK 4.23.1 or higher
-* Sendbird UIKit 3.22.1 or higher
+- Android 5.0 (API level 21) or higher
+- Java 11 or higher
+- Android Gradle plugin 8.0.0 or higher
+- Android ViewBinding enabled
+- Sendbird Chat SDK 4.23.1 or higher
+- Sendbird UIKit 3.22.1 or higher
 
-### Prerequisites
+## Prerequisites
 
-Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.\
-\
-You can find it under the **Build > Channels** > **Messenger > Basic information** menu on the Delight AI dashboard.
+Before you start, you'll need your **Application ID** and **AI Agent ID**.
+<br><br/>
+You can find it under the **Channels** > **Messenger** menu on the Delight AI dashboard.
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+![ai-agent-app-id-agent-id](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-messenger-basic-information.png)
 
-***
+---
 
-### Getting started
+## Getting started
 
-Quickly install and initialize the AI Agent SDK by following the steps below.
+Quickly install and initalize the AI Agent SDK by following the steps below.
 
-#### Step 1. Create a new project
+### Step 1. Create a new project
 
 1. In Android Studio, create a new project (**File > New > New Project...**).
 2. Select **Empty Views Activity** and click **Next**.
+
+![ai-agent-android-empty-activity](https://github.com/user-attachments/assets/d34eee4c-36e4-441b-8b72-3a7c3592bece)
+
 3. Give your project a name. Accept all other defaults, including the language as `Kotlin` and the minimum SDK as `API 21: Android 5.0 (Lollipop)` and click **Finish**.
 
-<figure><img src="../../.gitbook/assets/image (78).png" alt=""><figcaption></figcaption></figure>
+![ai-agent-android-new-project](https://github.com/user-attachments/assets/630ceccf-d2db-4edb-bb93-109770965a13)
 
-#### Step 2. Install AI Agent SDK
+### Step 2. Install AI Agent SDK
 
 Install AI Agent SDK for Android using Gradle by following the steps below.
 
-**Configuring repository**
+#### Configuring repository
 
 Add the following to your `settings.gradle.kts` (Project Settings) file:
 
-```
+```kotlin
 dependencyResolutionManagement {
     repositories {
         maven { setUrl("https://repo.delight.ai/public/maven") }
     }
 }
 ```
-
 **Note:** You should be using Gradle 8.0 or higher. You can check the `gradle-wrapper.properties` file in your project to see the version of Gradle you are using.
 
-**Adding dependency**
+#### Adding dependency
 
 Add the dependency to your `build.gradle.kts` (Module) file:
 
-```
+```kotlin
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -89,11 +113,11 @@ dependencies {
 }
 ```
 
-Then, click **Sync Now** in the Gradle toolbar to apply all changes.
+Then, click **'Sync Now'** in the Gradle toolbar to apply all changes.
 
-#### Step 3. Initialize AI Agent SDK
+### Step 3. Initialize AI Agent SDK
 
-To properly integrate and initialize Delight AI agent in your Android project, create and add the following code to your `Application` class file.
+To properly integrate and initialize Delight AI agent in your Android project, [create](#how-to-create-the-application-file) and add the following code to your `Application` class file.
 
 ```kotlin
 import android.app.Application
@@ -133,15 +157,14 @@ class AgentApplication : Application(), MessengerInitResultHandler {
 ```
 
 To ensure that your `AgentApplication` class is used as the application class, you need to register it in the AndroidManifest.xml file.
-
-```kotlin
+```xml
 <application
     android:name=".AgentApplication"
 >
 </application>
 ```
 
-**How to create the Application file**
+#### How to create the Application file
 
 1. Open Android Studio and navigate to your project.
 2. In the left side bar, locate the **app** module.
@@ -150,70 +173,181 @@ To ensure that your `AgentApplication` class is used as the application class, y
 5. In the dialog that appears, select **Class** and name it `AgentApplication`.
 6. Then, add the code above to your `AgentApplication.kt` file.
 
-***
+---
 
-### Running your application
+## Running your application
 
 Now that you have installed and initialized the AI Agent SDK, follow the steps below to run your application.
 
-{% hint style="info" %}
-Make sure to perform the following steps after the SDK has been successfully initialized. Once complete, set up the user session, then launch the messenger.
-{% endhint %}
+> Note: Make sure to perform the following steps after the SDK has been successfully initialized. Once initialization is complete, set up the user session and launch the messenger.
 
-#### Manage user sessions
+### Manage user sessions
 
-To use the SDK, session information is required.\
-Before using `AIAgentMessenger`, you must set the session information for the application user issued by Delight.
+To use the SDK, session information is required. The SDK supports two types of user sessions depending on your authentication requirements:
 
-**When to set the session information:**
+#### Session Types
 
-1. **Upon initial login:**\
-   Since there is no session information for the user at the first login, it should be set immediately after app login.
-2.  **For already logged-in users:**\
-    If the user is already logged in, the session should be registered immediately after SDK initialization. `sessionHandler` is the hanlder used when a session expires or needs to be renewed.
+The SDK provides two session types: **Manual Session** for authenticated users and **Anonymous Session** for temporary users.
 
-    ```kotlin
-    val manualSessionInfo = ManualSessionInfo(
-        userId = "your_user_id",
-        sessionToken = "your_session_token", 
-        sessionHandler = YourSessionHandler()
+**1. Manual Session (ManualSessionInfo) - For Authenticated Users**
+
+Use Manual Session when you have an existing user authentication system and want to:
+- Maintain persistent conversation history across app sessions
+- Associate conversations with specific user accounts
+- Track user activity and provide personalized experiences
+
+```kotlin
+val manualSessionInfo = SessionInfo.ManualSessionInfo(
+    userId = USER_ID,
+    sessionToken = SESSION_TOKEN,
+    sessionHandler = YourSessionHandler()
+)
+AIAgentMessenger.updateSessionInfo(manualSessionInfo)
+```
+
+> **⚠️ Important:** When using Manual Session, you **must** implement a `SessionHandler` to handle session expiration and token refresh. See the [Handle session expiration](#handle-session-expiration) section below for implementation details.
+
+**2. Anonymous Session (AnonymousSessionInfo) - For Temporary Users**
+
+Use Anonymous Session when you want to:
+- Provide instant access without requiring user registration
+- Offer guest or trial experiences
+- Support users who prefer not to create accounts
+
+The server automatically creates a temporary user identity - no authentication required.
+
+```kotlin
+val anonymousSessionInfo = SessionInfo.AnonymousSessionInfo()
+AIAgentMessenger.updateSessionInfo(anonymousSessionInfo)
+```
+
+> **⚠️ Important Note for Anonymous Sessions:**
+> - Anonymous users are temporary and generated by the server
+> - Conversation history may **not persist** across different app sessions
+> - Users cannot see their previous conversations if cached session information is removed (e.g., app reinstall) or the session expires
+> - Session expiration handling is **not required** (no SessionHandler needed)
+
+#### When to set the session information
+
+The timing of session setup depends on your app's authentication flow:
+
+**1. Upon initial login (Manual Session):**
+When a user logs in for the first time or after logging out, set the session immediately after successful authentication.
+
+```kotlin
+fun onLoginSuccess(userId: String, sessionToken: String) {
+    PreferenceUtils.saveUserInfo(userId, sessionToken)
+
+    // Update AI Agent Messenger session
+    AIAgentMessenger.updateSessionInfo(
+        SessionInfo.ManualSessionInfo(
+            userId = userId,
+            sessionToken = sessionToken,
+            sessionHandler = YourSessionHandler()
+        )
     )
-    AIAgentMessenger.updateSessionInfo(manualSessionInfo)
-    ```
+}
+```
 
-#### Handle session expiration
+**2. For already logged-in users (Manual Session):**
+If the user is already logged in (credentials stored), register the session immediately after SDK initialization in `onInitSuccess()`.
 
-When registering a session information, the provided session handler must handle the case where the session information expires.\
-Follow the code below to refresh and provide a new session token in the session handler callback.
+```kotlin
+class YourApplication : Application(), MessengerInitResultHandler {
+    override fun onInitSuccess() {
+        // Check if user credentials exist in your app
+        val userInfo = PreferenceUtils.getUserInfo()
 
-**How to handle session expiration:**
-
-1. Detect session expiration in the session handler callback.
-2. Request a new session token from the server.
-3.  Update the SDK with the new session token.
-
-    ```kotlin
-    class AbstractSessionHandler : AIAgentSessionHandler() {
-        override fun onSessionClosed() {
-            // go to login page
-        }
-
-        override fun onSessionTokenRequired(sessionTokenRequester: SessionTokenRequester) {
-            // Request a new session token from the server
-            fetchNewSessionToken { newToken ->
-                // Update the SDK with the new session token
-                sessionTokenRequester.onSuccess(newToken)
-            }
+        if (userInfo != null) {
+            // User is already logged in - use Manual Session
+            val sessionInfo = SessionInfo.ManualSessionInfo(
+                userId = userInfo.userId,
+                sessionToken = userInfo.sessionToken,
+                sessionHandler = YourSessionHandler()
+            )
+            AIAgentMessenger.updateSessionInfo(sessionInfo)
         }
     }
-    ```
+}
+```
 
-#### Launch the messenger
+**3. For guest users (Anonymous Session):**
+Set up anonymous session immediately after SDK initialization or when starting a guest experience.
 
-**Before You Start**
+```kotlin
+// No authentication required - set up immediately
+AIAgentMessenger.updateSessionInfo(SessionInfo.AnonymousSessionInfo())
+```
 
-* Was `onInitSuccess` received via MessengerInitResultHandler after invoking `AIAgentMessenger.initialize()`?
-* `AIAgentMessenger.updateSessionInfo()` been called with the user session information
+### Handle session expiration
+
+**This section is only required when using Manual Session (ManualSessionInfo).**
+
+When using `ManualSessionInfo`, session tokens can expire over time due to security policies. The SDK uses a `SessionHandler` to notify your app when the session needs attention, allowing you to refresh tokens or redirect users to login.
+
+> **Note:** Session expiration handling is **only applicable** when using `ManualSessionInfo`. `AnonymousSessionInfo` does not require session token management or a session handler.
+
+#### Understanding SessionHandler callbacks
+
+The `AIAgentSessionHandler` provides two important callbacks:
+
+**1. `onSessionClosed()`**
+- The session refresh has been denied from the app.
+- Client apps should guide the user to a login page to log in again.
+
+**Action:** Redirect the user to the login screen to re-authenticate.
+
+**2. `onSessionTokenRequired(sessionTokenRequester: SessionTokenRequester)`**
+- Called when the SDK requires a new session token to refresh the session.
+- Refresh the session token from your authentication server and pass it to the SDK through `sessionTokenRequester.onSuccess(NEW_TOKEN)`.
+- When `sessionTokenRequester.onSuccess()` is called with the new token, the SDK internally calls `updateSessionInfo`, which automatically updates the session token, you don't need to call `updateSessionInfo` manually.
+- If you do not want to refresh the session, pass on a null value through sessionTokenRequester.onSuccess(null).
+- If any error occurred while refreshing the token, let the SDK know about it through sessionTokenRequester.onFail().
+
+**Action:** Request a new token from your authentication server and provide it to the SDK.
+
+#### Implementation example
+
+Here's how to implement a SessionHandler based on the ai-agent-sample:
+
+```kotlin
+import com.sendbird.android.handler.SessionTokenRequester
+import com.sendbird.sdk.aiagent.messenger.interfaces.AIAgentSessionHandler
+
+class YourSessionHandler : AIAgentSessionHandler() {
+
+    override fun onSessionClosed() {
+        // The session has been completely closed
+        // Redirect user to login screen
+    }
+
+    override fun onSessionTokenRequired(sessionTokenRequester: SessionTokenRequester) {
+        // The session token has expired and needs to be refreshed
+    }
+}
+```
+
+#### Setting up the SessionHandler
+
+Pass your SessionHandler when creating the ManualSessionInfo:
+
+```kotlin
+val sessionHandler = YourSessionHandler()
+
+val manualSessionInfo = SessionInfo.ManualSessionInfo(
+    userId = "USER_ID",
+    sessionToken = "SESSION_TOKEN",
+    sessionHandler = sessionHandler
+)
+
+AIAgentMessenger.updateSessionInfo(manualSessionInfo)
+```
+
+### Launch the messenger
+
+#### Before You Start
+- Was `onInitSuccess` received via MessengerInitResultHandler after invoking `AIAgentMessenger.initialize()`?
+- `AIAgentMessenger.updateSessionInfo()` been called with the user session information
 
 Once the authentication information has been successfully registered, you can launch the messenger to start a conversation with the ai agent.
 
@@ -222,59 +356,108 @@ There are two ways to display the messenger:
 1. Using the launcher button
 2. Opening the conversation channel in full-screen mode
 
-> **Note**: Replace `your_ai_agent_id` with your AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
+>__Note__: Replace `your_ai_agent_id` with your AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](#prerequisites) section.
 
-**1. Using the launcher button**
+#### 1. Using the launcher button
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher.png" alt="" width="375"><figcaption></figcaption></figure>
+<img width="361" height="642" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-launcher2.png" />
 
-The SDK provides a `MessengerLauncher` view that can be programmatically attached to your application's root view. This eliminates the need to modify your XML layouts directly.
+The SDK provides the MessengerLauncher view, which can be easily attached to your application’s root view programmatically without directly adding it to XML layouts.
 
-> **Note**: The SDK relies on **Fragments**. Ensure the context passed to `MessengerLauncher` is an instance of `FragmentActivity`.
+> Since the SDK utilizes Fragments, make sure the context you pass to the MessengerLauncher is an instance of FragmentActivity. If you’re using standard Android components such as AppCompatActivity, there’s no need to worry, as it already inherits from FragmentActivity.
+However, if you’re using a custom or legacy activity, verify that it inherits from FragmentActivity to avoid runtime issues.
 
-If you're using standard Android components such as `AppCompatActivity`, no additional action is needed — it inherits from `FragmentActivity`. If you're using a custom or legacy `Activity`, confirm that it extends `FragmentActivity` to prevent runtime errors.
-
-**Attach the MessengerLauncher**
-
-To attach the launcher, call the `attach()` function on a `MessengerLauncher` instance, passing your AI agent ID:
+To add the MessengerLauncher to your screen, simply call the `attach()` function of `MessengerLauncher`, specifying the AI agent ID and configuration parameters:
 
 ```kotlin
 MessengerLauncher(context, "your_ai_agent_id").attach()
 ```
 
-**Customize with `LauncherLayoutParams`**
+- **`entryPoint`**: Controls which screen is displayed first when the MessengerLauncher is clicked:
 
-Use `LauncherLayoutParams` to control the launcher's behavior and position.
+```kotlin
+val entryPoint = MessengerEntryPoint.CONVERSATION // or MessengerEntryPoint.CONVERSATION_LIST
+MessengerLauncher(this, "your_ai_agent_id", LauncherSettingsParams(entryPoint = entryPoint)).attach()
+```
 
-* **launchMode**
-  * `EXPANDED`: Opens the messenger in full-screen mode with preset margins.
-  * `ANCHORED`: Opens the messenger near the launcher button, with customizable placement.
-* **margin**\
-  Sets the margin around the launcher button. Does not affect the messenger window.
-* **location**\
-  Defines the corner of the screen where the launcher appears. Options:
-  * `TOP_START`
-  * `TOP_END`
-  * `BOTTOM_START`
-  * `BOTTOM_END`
+Available options:
+- `MessengerEntryPoint.CONVERSATION`: Opens directly to the conversation screen (default)
+- `MessengerEntryPoint.CONVERSATION_LIST`: Opens to the conversation list screen
 
-**2. Opening the conversation channel in full-screen mode**
+Use `CONVERSATION` for single AI agent conversations, or `CONVERSATION_LIST` when multiple conversation channels are available.
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies.png" alt="" width="375"><figcaption></figcaption></figure>
+- `LauncherLayoutParams` allows you to configure the MessengerLauncher's behavior and appearance:
+    - **`launchMode`**:
+        - `EXPANDED`: Opens the messenger in full-screen mode with predefined margins.
+        - `ANCHORED`: Opens the messenger anchored near the launcher button, with adjustable positioning.ㄴ
+
+    - **`margin`**: Defines the margin around the launcher button itself (does not affect the messenger window).
+
+    - **`location`**: Determines which corner of the screen the launcher will appear in. Available options are:
+        - `TOP_START`
+        - `TOP_END`
+        - `BOTTOM_START`
+        - `BOTTOM_END`
+
+#### 2. Opening the conversation channel in full-screen mode
+
+<img width="361" height="642" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png" />
 
 You can open a full-screen conversation by starting an `Activity`.
 
 ```kotlin
-startActivity(ConversationActivity.newIntent(context, "your_ai_agent_id"))
+startActivity(MessengerActivity.newIntentForConversation(context, "your_ai_agent_id"))
 ```
 
-***
+---
 
-### Advanced features
+### Push notifications for Android
+
+For more details, refer to the [Push notifications](https://sendbird.com/docs/chat/sdk/v4/android/push-notifications/overview-push-notifications) page on our official documentation.
+
+#### Register for push notifications
+
+To receive push notifications from Delight AI server, register the device token by setting up a custom `FirebaseMessagingService`.  
+Call the following method after login:
+
+```kotlin
+SendbirdPushHelper.registerHandler(MyFirebaseMessagingService())
+```
+This will register the FCM token and automatically send it to the Delight AI server.
+
+#### Unregister for Push Notifications
+
+To stop receiving push notifications:
+
+```kotlin
+SendbirdPushHelper.unregisterHandler()
+```
+This is typically used on logout or when push notifications should be disabled.
+
+#### Handling Push Notifications
+
+Push payloads will be delivered via FCM and include a `sendbird` field in the RemoteMessage data.
+
+In your custom FirebaseMessagingService, override onMessageReceived() like this:
+```kotlin
+override fun onMessageReceived(context: Context, remoteMessage: RemoteMessage) {
+    val jsonStr = remoteMessage.data["sendbird"] ?: return
+    val sendbird = JSONObject(jsonStr)
+    val message = sendbird.getString("message")
+    val channelUrl = sendbird.getJSONObject("channel").getString("channel_url")
+    
+    // Show local notification and route user to the correct screen
+}
+```
+You can refer to the sample MyFirebaseMessagingService implementation for building local notifications and launching a conversation screen using the channelUrl.
+
+---
+
+## Advanced features
 
 The following are available advanced features.
 
-#### Update SDK theme
+### Update SDK theme
 
 You can update the SDK's color scheme to match your app's theme as shown below.
 
@@ -284,28 +467,28 @@ AIAgentMessenger.setThemeMode(themeMode) // Options: MessengerThemeMode.Dark, Me
 
 Since apps may allow users to switch themes manually or follow the device's settings, theme updates need to be explicitly called.
 
-#### De-authenticate and clear session
+
+### Deauthenticate and clear session
 
 When the user logs out of your app, de-authenticate the SDK to clear session data and disconnect.
 
-```
+```kotlin
 AIAgentMessenger.deauthenticate()
 ```
 
-***
 
-### Passing context object to AI agent
+### Passing context object to Agent
 
-You can predefine customer-specific data such as language, country, or any custom key-value context to help the AI agent deliver faster and more accurate responses.
+You can predefine customer-specific information such as country, language, or other custom context data to guide the AI Agent in providing faster and more accurate responses.
 
-This enables more personalized, context-aware interactions throughout the conversation.
+This allows for a more personalized and context-aware interaction experience.
 
-Once the context is configured, it will be applied when the conversation begins. To update the context dynamically during a conversation, use the Platform API to modify it.
+> Once the contexts are set, they will be used throughout the conversation to provide personalized and context-aware responses. The configured context is set when the conversation starts.
+If you need to update the context during the conversation, you can use the Platform API to modify it.
 
-**1. Set Context via `MessengerLauncher`**
-
+#### 1. Applying settings data through MessengerLauncher
 ```kotlin
-MessengerLauncher(this, aiAgentId, LauncherSettingsParams(
+MessengerLauncher(this, it, LauncherSettingsParams(
     language = "en",
     countryCode = "US",
     context = mapOf(
@@ -315,7 +498,7 @@ MessengerLauncher(this, aiAgentId, LauncherSettingsParams(
 )).attach()
 ```
 
-**2. Set Context via Full-Screen Conversation**
+#### 2. Applying settings data through full-screen conversation
 
 ```kotlin
 startActivity(
@@ -333,11 +516,3 @@ startActivity(
     )
 )
 ```
-
-{% hint style="info" %}
-Note: You can also update or patch the context object after initialization using the `updateContext` or `patchContext` methods on the messenger object. For details, see the [Context object ](context-object.md)page.
-{% endhint %}
-
-***
-
-Delight's AI Agent also supports multi-language feature. To learn more, see the[ Multi-language support](multi-language-support.md) page.
