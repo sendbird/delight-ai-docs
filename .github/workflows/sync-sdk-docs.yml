@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ env.BASE_BRANCH }}
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ github.token }}
 
       - name: Checkout delight-ai-agent
         uses: actions/checkout@v4
@@ -31,6 +31,27 @@ jobs:
           ref: sagan/docs-sync-test        # or main in production
           path: delight-ai-agent
           token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: 2                   # need previous commit for diff
+
+      # NEW: detect which files changed in the latest commit on delight-ai-agent
+      - name: Detect updated source files in delight-ai-agent
+        id: detect-updates
+        run: |
+          cd delight-ai-agent
+
+          # If there is no previous commit (very first commit / shallow history),
+          # fall back to treating all tracked files as "changed".
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            echo "Diffing HEAD~1..HEAD to find changed files..."
+            git diff --name-only HEAD~1 HEAD > ../changed_source_files.txt
+          else
+            echo "No HEAD~1, using all tracked files as changed (initial sync case)..."
+            git ls-files > ../changed_source_files.txt
+          fi
+
+          cd ..
+          echo "Changed source files (from delight-ai-agent):"
+          cat changed_source_files.txt || echo "(none)"
 
       - name: Sync mapped files from delight-ai-agent to sdk-docs
         id: sync-files
@@ -42,6 +63,21 @@ jobs:
           agent_root = Path("delight-ai-agent")
           docs_root = Path(".")
 
+          changed_file_list = Path("changed_source_files.txt")
+          if changed_file_list.is_file():
+              changed_sources = {
+                  line.strip()
+                  for line in changed_file_list.read_text(encoding="utf-8").splitlines()
+                  if line.strip()
+              }
+              print("Changed sources from delight-ai-agent:")
+              for s in sorted(changed_sources):
+                  print(f"  - {s}")
+          else:
+              changed_sources = set()
+              print("[WARN] changed_source_files.txt not found; assuming no changed sources.")
+
+          # Mapping: source in delight-ai-agent -> target in delight-ai-docs
           MAPPING = {
               # ANDROID
               "android/docs/conversations.md": "sdk-docs/android/features/conversations.md",
@@ -71,75 +107,119 @@ jobs:
               "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
           }
 
+          mapping_sources = set(MAPPING.keys())
+
+          # Only sync files that are BOTH:
+          # - changed in delight-ai-agent (changed_sources)
+          # - present in our mapping table (mapping_sources)
+          to_sync_sources = sorted(mapping_sources & changed_sources)
+
+          print("Sources selected for sync (intersection of mapping & changed files):")
+          if to_sync_sources:
+              for src in to_sync_sources:
+                  print(f"  - {src}")
+          else:
+              print("  (none)")
+
           updated_targets = []
 
-          for src, dst in MAPPING.items():
+          for src in to_sync_sources:
+              dst = MAPPING[src]
               src_path = agent_root / src
               dst_path = docs_root / dst
 
               if not src_path.is_file():
-                  print(f"[WARN] Missing source: {src}")
+                  print(f"[WARN] Missing source (skipping): {src}")
                   continue
 
               dst_path.parent.mkdir(parents=True, exist_ok=True)
               shutil.copy2(src_path, dst_path)
-              updated_targets.append(str(dst_path))
+              updated_targets.append(dst)  # store repo-relative path
               print(f"Copied {src} -> {dst}")
 
-          # Write updated targets for later steps
-          with open("updated_files.txt", "w", encoding="utf-8") as f:
-              f.write("\n".join(updated_targets))
-
-          if not updated_targets:
-              print("No updates detected (no mapped files copied).")
+          # Write updated targets for later steps (commits & PR body)
+          updated_list_path = Path("updated_files.txt")
+          if updated_targets:
+              updated_list_path.write_text("\n".join(updated_targets) + "\n", encoding="utf-8")
+              print(f"{len(updated_targets)} file(s) copied for sync.")
+              print("updated_files.txt will contain:")
+              for t in updated_targets:
+                  print(f"  - {t}")
+          else:
+              # still create the file so the next step can safely check it
+              updated_list_path.write_text("", encoding="utf-8")
+              print("No mapped files updated from latest commit.")
           EOF
 
       - name: Commit changes (one commit per changed file)
         id: commit-changes
         run: |
-          # If the file doesn't exist or is empty, nothing to do
+          echo "===== 📝 Commit Changes Step Started ====="
+
+          # 1) Safety check
           if [ ! -f updated_files.txt ] || [ ! -s updated_files.txt ]; then
-            echo "No updated files recorded. Skipping commit and PR."
+            echo "⚠️  No updated files recorded. Skipping commit and PR."
             echo "skip_pr=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
+          echo "📄 updated_files.txt exists and is non-empty"
+          echo "----- Contents of updated_files.txt (truncated per line to 100 chars) -----"
+          while IFS= read -r line; do
+            if [ -z "$line" ]; then
+              continue
+            fi
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < updated_files.txt
+          echo "--------------------------------------------------------------------------"
+
+          # 2) Configure git
+          echo "🔧 Configuring git user"
           git config user.name "docs-sync-bot"
           git config user.email "docs-sync-bot@users.noreply.github.com"
 
-          # We'll track which files we *actually* committed (have a diff)
+          # 3) Prepare commit tracking file
           > committed_files.txt
 
-          echo "Creating commits..."
+          echo "===== 🚀 Creating commits ====="
+          COUNT=0
           while IFS= read -r file; do
             if [ -z "$file" ]; then
               continue
             fi
 
-            # If there is no diff for this file, skip committing it
-            if git diff --quiet -- "$file"; then
-              echo "No changes in $file, skipping commit."
+            if [ ! -f "$file" ]; then
+              echo "⚠️  [WARN] Target file missing at commit time, skipping: $file"
               continue
             fi
 
-            echo "Committing $file"
+            echo "➡️  Committing: $file"
             git add "$file"
-            git commit -m "[Sync] update $file"
+            git commit --allow-empty -m "[Sync] update $file"
             echo "$file" >> committed_files.txt
+            COUNT=$((COUNT+1))
           done < updated_files.txt
 
-          # Clean up helper file so it doesn't accidentally get committed
+          echo "===== 🧹 Cleanup: removing updated_files.txt ====="
           rm -f updated_files.txt
 
-          # If we didn't commit anything, skip PR creation
+          # 4) Post-commit checks
           if [ ! -s committed_files.txt ]; then
-            echo "No commits were created. Skipping PR."
+            echo "⚠️  No commits were created (all files missing?). Skipping PR."
             echo "skip_pr=true" >> "$GITHUB_OUTPUT"
-            # Leave committed_files.txt for debugging if needed
             exit 0
           fi
 
-          echo "Building PR body..."
+          echo "===== 📌 Summary ====="
+          echo "Total commits created: $COUNT"
+          echo "Committed files (truncated to 100 chars):"
+          while IFS= read -r line; do
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < committed_files.txt
+
+          echo "===== 🏗️  Building PR body ====="
           {
             echo "Automated sync from **delight-ai-agent → delight-ai-docs**."
             echo ""
@@ -151,13 +231,15 @@ jobs:
             done < committed_files.txt
           } > PR_BODY.md
 
+          echo "PR body written to PR_BODY.md"
+          echo "===== ✅ Commit Step Finished Successfully ====="
           echo "skip_pr=false" >> "$GITHUB_OUTPUT"
 
       - name: Push branch and create PR via API
         id: push-and-pr
         if: steps.commit-changes.outputs.skip_pr == 'false'
         env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           REPO: sendbird/delight-ai-docs
           BASE_BRANCH: ${{ env.BASE_BRANCH }}
           SYNC_BRANCH: ${{ env.SYNC_BRANCH_PREFIX }}-${{ github.run_id }}
