@@ -65,9 +65,16 @@ jobs:
 
           changed_file_list = Path("changed_source_files.txt")
           if changed_file_list.is_file():
-              changed_sources = changed_file_list.read_text().splitlines()
+              changed_sources = {
+                  line.strip()
+                  for line in changed_file_list.read_text(encoding="utf-8").splitlines()
+                  if line.strip()
+              }
+              print("Changed sources from delight-ai-agent:")
+              for s in sorted(changed_sources):
+                  print(f"  - {s}")
           else:
-              changed_sources = []
+              changed_sources = set()
               print("[WARN] changed_source_files.txt not found; assuming no changed sources.")
 
           # Mapping: source in delight-ai-agent -> target in delight-ai-docs
@@ -100,32 +107,46 @@ jobs:
               "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
           }
 
+          mapping_sources = set(MAPPING.keys())
+
+          # Only sync files that are BOTH:
+          # - changed in delight-ai-agent (changed_sources)
+          # - present in our mapping table (mapping_sources)
+          to_sync_sources = sorted(mapping_sources & changed_sources)
+
+          print("Sources selected for sync (intersection of mapping & changed files):")
+          if to_sync_sources:
+              for src in to_sync_sources:
+                  print(f"  - {src}")
+          else:
+              print("  (none)")
+
           updated_targets = []
 
-          for src, dst in MAPPING.items():
-              # Only sync sources that actually changed in the latest commit
-              if src not in changed_sources:
-                  print(f"Source not changed in latest commit, skipping: {src}")
-                  continue
-
+          for src in to_sync_sources:
+              dst = MAPPING[src]
               src_path = agent_root / src
               dst_path = docs_root / dst
 
               if not src_path.is_file():
-                  print(f"[WARN] Missing source: {src}")
+                  print(f"[WARN] Missing source (skipping): {src}")
                   continue
 
               dst_path.parent.mkdir(parents=True, exist_ok=True)
               shutil.copy2(src_path, dst_path)
-              updated_targets.append(str(dst_path))
+              updated_targets.append(dst)  # store repo-relative path
               print(f"Copied {src} -> {dst}")
 
           # Write updated targets for later steps (commits & PR body)
           updated_list_path = Path("updated_files.txt")
           if updated_targets:
-              updated_list_path.write_text("\n".join(updated_targets), encoding="utf-8")
+              updated_list_path.write_text("\n".join(updated_targets) + "\n", encoding="utf-8")
               print(f"{len(updated_targets)} file(s) copied for sync.")
+              print("updated_files.txt will contain:")
+              for t in updated_targets:
+                  print(f"  - {t}")
           else:
+              # still create the file so the next step can safely check it
               updated_list_path.write_text("", encoding="utf-8")
               print("No mapped files updated from latest commit.")
           EOF
