@@ -13,22 +13,27 @@ jobs:
       contents: write
       pull-requests: write
 
+    env:
+      BASE_BRANCH: sagan/docs-sync-test   # change to develop later if needed
+      SYNC_BRANCH_PREFIX: chore/sync-sdk-docs
+
     steps:
       - name: Checkout delight-ai-docs
         uses: actions/checkout@v4
         with:
-          ref: sagan/docs-sync-test
+          ref: ${{ env.BASE_BRANCH }}
           token: ${{ secrets.BOT_TOKEN }}
 
       - name: Checkout delight-ai-agent
         uses: actions/checkout@v4
         with:
           repository: sendbird/delight-ai-agent
-          ref: sagan/docs-sync-test
+          ref: sagan/docs-sync-test        # or main in production
           path: delight-ai-agent
           token: ${{ secrets.BOT_TOKEN }}
 
       - name: Sync mapped files from delight-ai-agent to sdk-docs
+        id: sync-files
         run: |
           python << 'EOF'
           import shutil
@@ -66,51 +71,165 @@ jobs:
               "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
           }
 
-          updated_files = []
+          updated_targets = []
 
           for src, dst in MAPPING.items():
               src_path = agent_root / src
               dst_path = docs_root / dst
 
-              if src_path.is_file():
-                  dst_path.parent.mkdir(parents=True, exist_ok=True)
-                  shutil.copy2(src_path, dst_path)
-                  updated_files.append(dst)
-                  print(f"Copied {src} -> {dst}")
-              else:
+              if not src_path.is_file():
                   print(f"[WARN] Missing source: {src}")
+                  continue
 
-          if not updated_files:
-              print("No updates detected.")
+              dst_path.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(src_path, dst_path)
+              updated_targets.append(str(dst_path))
+              print(f"Copied {src} -> {dst}")
+
+          # Write updated targets for later steps
+          with open("updated_files.txt", "w", encoding="utf-8") as f:
+              f.write("\n".join(updated_targets))
+
+          if not updated_targets:
+              print("No updates detected (no mapped files copied).")
           EOF
 
-      - name: Create pull request
-        id: cpr
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.BOT_TOKEN }}
-          commit-message: "chore: sync SDK docs from delight-ai-agent"
-          title: "chore: sync SDK docs from delight-ai-agent"
-          body: |
-            Automated sync from **delight-ai-agent → delight-ai-docs**.
-          base: sagan/docs-sync-test
-          branch: chore/sync-sdk-docs
-          branch-suffix: timestamp
-          labels: |
-            docs
-            automated-pr
+      - name: Commit changes (one commit per changed file)
+        id: commit-changes
+        run: |
+          # If the file doesn't exist or is empty, nothing to do
+          if [ ! -f updated_files.txt ] || [ ! -s updated_files.txt ]; then
+            echo "No updated files recorded. Skipping commit and PR."
+            echo "skip_pr=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
 
-      - name: Approve pull request
-        if: steps.cpr.outputs.pull-request-number != ''
-        uses: juliangruber/approve-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.APPROVE_BOT_TOKEN }}
-          number: ${{ steps.cpr.outputs.pull-request-number }}
+          git config user.name "docs-sync-bot"
+          git config user.email "docs-sync-bot@users.noreply.github.com"
 
-      # Optional auto-merge (enable if desired)
-      # - name: Merge PR
-      #   if: steps.cpr.outputs.pull-request-number != ''
-      #   uses: peter-evans/enable-pull-request-automerge@v3
-      #   with:
-      #     token: ${{ secrets.APPROVE_BOT_TOKEN }}
-      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          # We'll track which files we *actually* committed (have a diff)
+          > committed_files.txt
+
+          echo "Creating commits..."
+          while IFS= read -r file; do
+            if [ -z "$file" ]; then
+              continue
+            fi
+
+            # If there is no diff for this file, skip committing it
+            if git diff --quiet -- "$file"; then
+              echo "No changes in $file, skipping commit."
+              continue
+            fi
+
+            echo "Committing $file"
+            git add "$file"
+            git commit -m "[Sync] update $file"
+            echo "$file" >> committed_files.txt
+          done < updated_files.txt
+
+          # Clean up helper file so it doesn't accidentally get committed
+          rm -f updated_files.txt
+
+          # If we didn't commit anything, skip PR creation
+          if [ ! -s committed_files.txt ]; then
+            echo "No commits were created. Skipping PR."
+            echo "skip_pr=true" >> "$GITHUB_OUTPUT"
+            # Leave committed_files.txt for debugging if needed
+            exit 0
+          fi
+
+          echo "Building PR body..."
+          {
+            echo "Automated sync from **delight-ai-agent → delight-ai-docs**."
+            echo ""
+            echo "Updated files:"
+            while IFS= read -r file; do
+              if [ -n "$file" ]; then
+                echo "- \`$file\`"
+              fi
+            done < committed_files.txt
+          } > PR_BODY.md
+
+          echo "skip_pr=false" >> "$GITHUB_OUTPUT"
+
+      - name: Push branch and create PR via API
+        id: push-and-pr
+        if: steps.commit-changes.outputs.skip_pr == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          REPO: sendbird/delight-ai-docs
+          BASE_BRANCH: ${{ env.BASE_BRANCH }}
+          SYNC_BRANCH: ${{ env.SYNC_BRANCH_PREFIX }}-${{ github.run_id }}
+        run: |
+          set -e
+
+          echo "Pushing branch $SYNC_BRANCH"
+          # --force just in case a branch with the same name exists from a previous run
+          git push --force origin HEAD:$SYNC_BRANCH
+
+          echo "Creating PR..."
+          PR_DATA=$(python - << 'EOF'
+          import json, os
+          with open("PR_BODY.md", "r", encoding="utf-8") as f:
+              body = f.read()
+          data = {
+              "title": "[SDK] updated from delight-ai-agent",
+              "body": body,
+              "head": os.environ["SYNC_BRANCH"],
+              "base": os.environ["BASE_BRANCH"],
+          }
+          print(json.dumps(data))
+          EOF
+          )
+
+          RESPONSE=$(curl -sS -w "%{http_code}" -o pr_response.json \
+            -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/pulls" \
+            -d "$PR_DATA")
+
+          echo "GitHub API status: $RESPONSE"
+          echo "PR API response:"
+          cat pr_response.json
+
+          if [ "$RESPONSE" -lt 200 ] || [ "$RESPONSE" -ge 300 ]; then
+            echo "Failed to create PR (status $RESPONSE)."
+            exit 1
+          fi
+
+          PR_NUMBER=$(python - << 'EOF'
+          import json
+          with open("pr_response.json", "r", encoding="utf-8") as f:
+              data = json.load(f)
+          print(data.get("number", ""))
+          EOF
+          )
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "PR number missing in API response."
+            exit 1
+          fi
+
+          echo "Created PR #$PR_NUMBER"
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Approve pull request via API
+        if: steps.push-and-pr.outputs.pr_number != '' && steps.commit-changes.outputs.skip_pr == 'false'
+        env:
+          APPROVE_TOKEN: ${{ secrets.APPROVE_BOT_TOKEN }}
+          REPO: sendbird/delight-ai-docs
+          PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
+        run: |
+          echo "Approving PR #$PR_NUMBER"
+          RESP=$(curl -sS -w "%{http_code}" -o approve_response.json \
+            -X POST \
+            -H "Authorization: Bearer $APPROVE_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/reviews" \
+            -d '{"event":"APPROVE"}')
+
+          echo "Approve API status: $RESP"
+          echo "Approve API response:"
+          cat approve_response.json
