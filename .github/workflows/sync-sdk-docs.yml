@@ -31,6 +31,27 @@ jobs:
           ref: sagan/docs-sync-test        # or main in production
           path: delight-ai-agent
           token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: 2                   # need previous commit for diff
+
+      # NEW: detect which files changed in the latest commit on delight-ai-agent
+      - name: Detect updated source files in delight-ai-agent
+        id: detect-updates
+        run: |
+          cd delight-ai-agent
+
+          # If there is no previous commit (very first commit / shallow history),
+          # fall back to treating all tracked files as "changed".
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            echo "Diffing HEAD~1..HEAD to find changed files..."
+            git diff --name-only HEAD~1 HEAD > ../changed_source_files.txt
+          else
+            echo "No HEAD~1, using all tracked files as changed (initial sync case)..."
+            git ls-files > ../changed_source_files.txt
+          fi
+
+          cd ..
+          echo "Changed source files (from delight-ai-agent):"
+          cat changed_source_files.txt || echo "(none)"
 
       - name: Sync mapped files from delight-ai-agent to sdk-docs
         id: sync-files
@@ -42,6 +63,14 @@ jobs:
           agent_root = Path("delight-ai-agent")
           docs_root = Path(".")
 
+          changed_file_list = Path("changed_source_files.txt")
+          if changed_file_list.is_file():
+              changed_sources = changed_file_list.read_text().splitlines()
+          else:
+              changed_sources = []
+              print("[WARN] changed_source_files.txt not found; assuming no changed sources.")
+
+          # Mapping: source in delight-ai-agent -> target in delight-ai-docs
           MAPPING = {
               # ANDROID
               "android/docs/conversations.md": "sdk-docs/android/features/conversations.md",
@@ -74,6 +103,11 @@ jobs:
           updated_targets = []
 
           for src, dst in MAPPING.items():
+              # Only sync sources that actually changed in the latest commit
+              if src not in changed_sources:
+                  print(f"Source not changed in latest commit, skipping: {src}")
+                  continue
+
               src_path = agent_root / src
               dst_path = docs_root / dst
 
@@ -86,12 +120,14 @@ jobs:
               updated_targets.append(str(dst_path))
               print(f"Copied {src} -> {dst}")
 
-          # Write updated targets for later steps
-          with open("updated_files.txt", "w", encoding="utf-8") as f:
-              f.write("\n".join(updated_targets))
-
-          if not updated_targets:
-              print("No updates detected (no mapped files copied).")
+          # Write updated targets for later steps (commits & PR body)
+          updated_list_path = Path("updated_files.txt")
+          if updated_targets:
+              updated_list_path.write_text("\n".join(updated_targets), encoding="utf-8")
+              print(f"{len(updated_targets)} file(s) copied for sync.")
+          else:
+              updated_list_path.write_text("", encoding="utf-8")
+              print("No mapped files updated from latest commit.")
           EOF
 
       - name: Commit changes (one commit per changed file)
