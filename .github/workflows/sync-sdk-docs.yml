@@ -143,7 +143,7 @@ jobs:
           git config user.name "docs-sync-bot"
           git config user.email "docs-sync-bot@users.noreply.github.com"
 
-          # We'll track which files we *actually* committed (have a diff)
+          # We'll track which files we committed (one commit per file, even if empty)
           > committed_files.txt
 
           echo "Creating commits..."
@@ -152,26 +152,25 @@ jobs:
               continue
             fi
 
-            # If there is no diff for this file, skip committing it
-            if git diff --quiet -- "$file"; then
-              echo "No changes in $file, skipping commit."
+            if [ ! -f "$file" ]; then
+              echo "[WARN] Target file missing at commit time, skipping: $file"
               continue
             fi
 
             echo "Committing $file"
             git add "$file"
-            git commit -m "[Sync] update $file"
+            # Allow empty commits so we still get a commit even if there's no diff
+            git commit --allow-empty -m "[Sync] update $file"
             echo "$file" >> committed_files.txt
           done < updated_files.txt
 
           # Clean up helper file so it doesn't accidentally get committed
           rm -f updated_files.txt
 
-          # If we didn't commit anything, skip PR creation
+          # If we didn't commit anything (e.g. all files missing), skip PR creation
           if [ ! -s committed_files.txt ]; then
             echo "No commits were created. Skipping PR."
             echo "skip_pr=true" >> "$GITHUB_OUTPUT"
-            # Leave committed_files.txt for debugging if needed
             exit 0
           fi
 
