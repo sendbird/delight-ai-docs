@@ -133,48 +133,72 @@ jobs:
       - name: Commit changes (one commit per changed file)
         id: commit-changes
         run: |
-          # If the file doesn't exist or is empty, nothing to do
+          echo "===== 📝 Commit Changes Step Started ====="
+
+          # 1) Safety check
           if [ ! -f updated_files.txt ] || [ ! -s updated_files.txt ]; then
-            echo "No updated files recorded. Skipping commit and PR."
+            echo "⚠️  No updated files recorded. Skipping commit and PR."
             echo "skip_pr=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
+          echo "📄 updated_files.txt exists and is non-empty"
+          echo "----- Contents of updated_files.txt (truncated per line to 100 chars) -----"
+          while IFS= read -r line; do
+            if [ -z "$line" ]; then
+              continue
+            fi
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < updated_files.txt
+          echo "--------------------------------------------------------------------------"
+
+          # 2) Configure git
+          echo "🔧 Configuring git user"
           git config user.name "docs-sync-bot"
           git config user.email "docs-sync-bot@users.noreply.github.com"
 
-          # We'll track which files we committed (one commit per file, even if empty)
+          # 3) Prepare commit tracking file
           > committed_files.txt
 
-          echo "Creating commits..."
+          echo "===== 🚀 Creating commits ====="
+          COUNT=0
           while IFS= read -r file; do
             if [ -z "$file" ]; then
               continue
             fi
 
             if [ ! -f "$file" ]; then
-              echo "[WARN] Target file missing at commit time, skipping: $file"
+              echo "⚠️  [WARN] Target file missing at commit time, skipping: $file"
               continue
             fi
 
-            echo "Committing $file"
+            echo "➡️  Committing: $file"
             git add "$file"
-            # Allow empty commits so we still get a commit even if there's no diff
             git commit --allow-empty -m "[Sync] update $file"
             echo "$file" >> committed_files.txt
+            COUNT=$((COUNT+1))
           done < updated_files.txt
 
-          # Clean up helper file so it doesn't accidentally get committed
+          echo "===== 🧹 Cleanup: removing updated_files.txt ====="
           rm -f updated_files.txt
 
-          # If we didn't commit anything (e.g. all files missing), skip PR creation
+          # 4) Post-commit checks
           if [ ! -s committed_files.txt ]; then
-            echo "No commits were created. Skipping PR."
+            echo "⚠️  No commits were created (all files missing?). Skipping PR."
             echo "skip_pr=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          echo "Building PR body..."
+          echo "===== 📌 Summary ====="
+          echo "Total commits created: $COUNT"
+          echo "Committed files (truncated to 100 chars):"
+          while IFS= read -r line; do
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < committed_files.txt
+
+          echo "===== 🏗️  Building PR body ====="
           {
             echo "Automated sync from **delight-ai-agent → delight-ai-docs**."
             echo ""
@@ -186,6 +210,8 @@ jobs:
             done < committed_files.txt
           } > PR_BODY.md
 
+          echo "PR body written to PR_BODY.md"
+          echo "===== ✅ Commit Step Finished Successfully ====="
           echo "skip_pr=false" >> "$GITHUB_OUTPUT"
 
       - name: Push branch and create PR via API
