@@ -105,6 +105,12 @@ jobs:
               "js/react/MULTILANGUAGE.md": "sdk-docs/react-npm/multi-language-support.md",
               "js/react/README.md": "sdk-docs/react-npm/quickstart-guide-messenger.md",
               "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
+
+              # REACT (Native)
+              "js/react-native/docs/conversations.md": "sdk-docs/react-native/features/conversations.md",
+              "js/react-native/docs/messages.md": "sdk-docs/react-native/features/messages.md",
+              "js/react-native/MULTILANGUAGE.md": "sdk-docs/react-native/multi-language-support.md",
+              "js/react-native/README.md": "sdk-docs/react-native/quickstart-guide-messenger.md",
           }
 
           mapping_sources = set(MAPPING.keys())
