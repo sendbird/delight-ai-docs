@@ -87,6 +87,12 @@
   * [Context object](sdk-docs/react-npm/context-object.md)
   * [Multi-language support](sdk-docs/react-npm/multi-language-support.md)
   * [Template-Based Layout Component Customization Guide](sdk-docs/react-npm/template-based-layout-component-customization-guide.md)
+* [React Native](sdk-docs/react-native/README.md)
+  * [Quickstart guide (Messenger)](sdk-docs/react-native/quickstart-guide-messenger.md)
+  * [Features](sdk-docs/react-native/features/README.md)
+    * [Conversations](sdk-docs/react-native/features/conversations.md)
+    * [Messages](sdk-docs/react-native/features/messages.md)
+  * [Multi-language support](sdk-docs/react-native/multi-language-support.md)
 
 ## Platform API
 
