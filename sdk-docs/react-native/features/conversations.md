@@ -4,32 +4,14 @@ In Delight AI agent, a conversation refers to a channel where an AI Agent commun
 
 When the launcher is clicked, a user can be led to either their conversation list or a conversation depending on your choice of the conversation mode.
 
-| Feature| Single active conversation| Multiple active conversations (Default)|
-|-------------------|------------------|----------------|
-| Number of active conversation| A user can have only one active conversation with your AI agent at a time.| A user can have multiple active conversations with your AI agent at the same time.|
-| Starting a new conversation | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first.| New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`.|
+| Feature                       | Single active conversation                                                                                                      | Multiple active conversations (Default)                                                                                 |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Number of active conversation | A user can have only one active conversation with your AI agent at a time.                                                      | A user can have multiple active conversations with your AI agent at the same time.                                      |
+| Starting a new conversation   | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first. | New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`. |
 
->__Note__: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+> **Note**: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
 
-This guide explains:
-
-- [Conversations](#conversations)
-  - [Prerequisites](#prerequisites)
-  - [Start a conversation](#start-a-conversation)
-    - [With `FixedMessenger`](#with-fixedmessenger)
-      - [Launch a conversation](#launch-a-conversation)
-      - [Launch a conversation list](#launch-a-conversation-list)
-      - [Set the window mode](#set-the-window-mode)
-      - [Set the launcher layout (position, margin, size, spacing)](#set-the-launcher-layout)
-      - [Customize the launcher appearance](#customize-the-launcher-appearance)
-    - [With direct presentation](#with-direct-presentation)
-  - [Advanced configuration](#advanced-configuration)
-    - [Context object for personalized conversation](#context-object-for-personalized-conversation)
-    - [Opening a specific conversation with channel URL](#opening-a-specific-conversation-with-channel-url)
-    - [Start a conversation in multiple conversation mode](#start-a-conversation-in-multiple-conversation-mode)
-  - [API Reference](#api-reference)
-
----
+***
 
 ## Prerequisites
 
@@ -50,17 +32,17 @@ yarn add react-native-mmkv expo-image-picker expo-document-picker
 pnpm add react-native-mmkv expo-image-picker expo-document-picker
 ```
 
->__Note__: If you're using bare React Native instead of Expo, use `react-native-image-picker` and `react-native-document-picker` instead of the Expo packages. Make sure to follow the installation instructions for each package.
+> **Note**: If you're using bare React Native instead of Expo, use `react-native-image-picker` and `react-native-document-picker` instead of the Expo packages. Make sure to follow the installation instructions for each package.
 
 ### Configure native modules
 
 Initialize the required native modules before using the messenger. The following table and snippet describes the purpose of each module and its settings.
 
-| Module | Purpose |
-|--------|----------|
-| `MMKV` | Local storage for caching and session management |
-| `ImagePicker` | Selecting images from the gallery or camera |
-| `DocumentPicker` | Selecting files for sharing in conversations |
+| Module           | Purpose                                          |
+| ---------------- | ------------------------------------------------ |
+| `MMKV`           | Local storage for caching and session management |
+| `ImagePicker`    | Selecting images from the gallery or camera      |
+| `DocumentPicker` | Selecting files for sharing in conversations     |
 
 ```tsx
 import { createMMKV } from 'react-native-mmkv';
@@ -78,15 +60,15 @@ const nativeModules = {
 };
 ```
 
----
+***
 
 ## Start a conversation
 
 Once you have determined which conversation mode to apply, you should also consider how the messenger will be launched. Delight AI agent SDK for React Native provides two launch methods: `FixedMessenger` and directly using the `Conversation` component. The following table describes the characteristics of each approach.
 
-| Launch Method | Description | Recommended Use Case |
-|----------------|--------------|-----------------------|
-| FixedMessenger | Provides a floating launcher button that automatically manages conversation creation and navigation. | Ideal when you want a persistent, always-accessible AI agent across your application. |
+| Launch Method             | Description                                                                                                            | Recommended Use Case                                                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| FixedMessenger            | Provides a floating launcher button that automatically manages conversation creation and navigation.                   | Ideal when you want a persistent, always-accessible AI agent across your application.                              |
 | Direct Conversation Usage | Programmatically render the Conversation component directly, offering fine-grained control over layout and navigation. | Best for custom UI layouts, embedded conversations, or when you need full control over the conversation interface. |
 
 ### With `FixedMessenger`
@@ -203,7 +185,7 @@ You can also configure full-screen insets for safe area handling:
 
 You can customize the launcher's position, margin, size and spacing between the launcher and browser using the `FixedMessenger.Style` component.
 
-<img width="441" height="737" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-launcher.png" />
+![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-launcher.png)
 
 The following example demonstrates all customization options together:
 
@@ -237,53 +219,52 @@ const mmkv = createMMKV();
 </FixedMessenger>
 ```
 
-- Position 
+* Position
 
-Set the launcher position on the screen using the `position` prop. Available positions are: `start-top`, `start-bottom`, `end-top`, and `end-bottom`.
-The following table lists available position values:
+Set the launcher position on the screen using the `position` prop. Available positions are: `start-top`, `start-bottom`, `end-top`, and `end-bottom`. The following table lists available position values:
 
-| Position | Description |
-|----------|-------------|
-| `'start-top'` | Top-left corner of the screen |
-| `'start-bottom'` | Bottom-left corner of the screen |
-| `'end-top'` | Top-right corner of the screen |
-| `'end-bottom'` | Bottom-right corner of the screen (default) |
+| Position         | Description                                 |
+| ---------------- | ------------------------------------------- |
+| `'start-top'`    | Top-left corner of the screen               |
+| `'start-bottom'` | Bottom-left corner of the screen            |
+| `'end-top'`      | Top-right corner of the screen              |
+| `'end-bottom'`   | Bottom-right corner of the screen (default) |
 
-- Margin
+* Margin
 
-Adjust the spacing around the launcher using the `margin` prop. You can set margins for each side individually.
-The `margin` prop accepts an object with the following optional properties.
+Adjust the spacing around the launcher using the `margin` prop. You can set margins for each side individually. The `margin` prop accepts an object with the following optional properties.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `top` | number | 24 | Top margin in pixels |
-| `bottom` | number | 24 | Bottom margin in pixels |
-| `start` | number | 24 | Start margin in pixels (left in LTR, right in RTL) |
-| `end` | number | 24 | End margin in pixels (right in LTR, left in RTL) |
+| Property | Type   | Default | Description                                        |
+| -------- | ------ | ------- | -------------------------------------------------- |
+| `top`    | number | 24      | Top margin in pixels                               |
+| `bottom` | number | 24      | Bottom margin in pixels                            |
+| `start`  | number | 24      | Start margin in pixels (left in LTR, right in RTL) |
+| `end`    | number | 24      | End margin in pixels (right in LTR, left in RTL)   |
 
-- Size
+* Size
 
 Customize the launcher button size in pixels using the `launcherSize` prop. The default size is `48` pixels.
 
-- Spacing
+* Spacing
 
 You can also set the spacing between the launcher and the messenger window using `spacing`. The default is `12`.
 
 #### Customize the launcher appearance
 
-The launcher's icon and color can be configured through the [Delight AI dashboard](https://dashboard.delight.ai) - no code changes required. Simply go to **[Build > Channels > Messenger](https://dashboard.delight.ai/ai-agent/{application-id}/channels/messenger/?active_tab=Appearance)** in the dashboard and click on the **Appearance** tab to customize your launcher.
+The launcher's icon and color can be configured through the [Delight AI dashboard](https://dashboard.delight.ai) - no code changes required. Simply go to [**Build > Channels > Messenger**](https://dashboard.delight.ai/ai-agent/%7Bapplication-id%7D/channels/messenger/?active_tab=Appearance) in the dashboard and click on the **Appearance** tab to customize your launcher.
 
-<img width="821" height="909" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png">
+![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png)
 
 ### With direct presentation
 
 For advanced use cases where you need direct control over the conversation view without the floating launcher, you can use the `Conversation` component directly. This provides both a full-screen or custom-sized conversation interface.
 
 This approach is recommended when:
-- You want to embed the conversation in a specific part of your UI.
-- You need custom navigation or layout control.
-- You want to build a full-page conversation experience.
-- You need to open a specific conversation programmatically with its `channelUrl`.
+
+* You want to embed the conversation in a specific part of your UI.
+* You need custom navigation or layout control.
+* You want to build a full-page conversation experience.
+* You need to open a specific conversation programmatically with its `channelUrl`.
 
 ```tsx
 import { AIAgentProviderContainer, Conversation } from '@sendbird/ai-agent-messenger-react-native';
@@ -315,7 +296,7 @@ function DirectConversationView() {
 }
 ```
 
----
+***
 
 ## Advanced configuration
 
@@ -384,7 +365,7 @@ function CustomMessengerView() {
 
 Multiple active conversation mode allows users to simultaneously communicate with your AI agent in different channels. In this case, use the `createConversation()` function from `useMessengerSessionContext()` to create a new conversation whenever needed.
 
->__Note__: In single conversation mode, a new conversation can't be created if there is an active conversation.
+> **Note**: In single conversation mode, a new conversation can't be created if there is an active conversation.
 
 ```tsx
 import { useMessengerSessionContext } from '@sendbird/ai-agent-messenger-react-native';
@@ -430,7 +411,7 @@ function CreateConversationButton() {
 </FixedMessenger>
 ```
 
----
+***
 
 ## API Reference
 
@@ -438,82 +419,82 @@ function CreateConversationButton() {
 
 Configuration options for the `FixedMessenger` component.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `appId` | string | Required | Your application ID |
-| `aiAgentId` | string | Required | AI agent identifier for conversation target |
-| `userSessionInfo` | ManualSessionInfo \| AnonymousSessionInfo | Required | User session information for authentication |
-| `nativeModules` | NativeAdapterConfig | Required | Native modules configuration (mmkv, imagePicker, documentPicker) |
-| `entryPoint` | 'Conversation' \| 'ConversationList' | 'Conversation' | Which screen to show when the messenger is first loaded |
-| `windowMode` | 'floating' \| 'fullscreen' | 'floating' | Display mode for the messenger window |
-| `fullscreenInsets` | Partial<{ top: number; left: number; right: number; bottom: number }> | - | Insets for fullscreen mode to handle safe areas |
-| `edgeToEdgeEnabled` | boolean | true | (Android only) Enable edge-to-edge display |
-| `language` | string | System default | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR") |
-| `countryCode` | string | - | Country code following ISO 3166 format (e.g., "US", "KR") |
-| `context` | Record<string, string> | - | Context object for personalized AI agent responses |
-| `queryParams` | AIAgentQueryParams | - | Global default query parameters for AI agent |
-| `config` | AIAgentConfig | - | Global default configuration for AI agent |
-| `theme` | object | - | Theme customization including mode, palette and typography |
-| `strings` | PartialDeep<StringSet> | - | Localization strings for the messenger |
-| `logLevel` | LogLevel | LogLevel.WARN | Log level for the AI agent client |
+| Property            | Type                                                                  | Default        | Description                                                            |
+| ------------------- | --------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------- |
+| `appId`             | string                                                                | Required       | Your application ID                                                    |
+| `aiAgentId`         | string                                                                | Required       | AI agent identifier for conversation target                            |
+| `userSessionInfo`   | ManualSessionInfo \| AnonymousSessionInfo                             | Required       | User session information for authentication                            |
+| `nativeModules`     | NativeAdapterConfig                                                   | Required       | Native modules configuration (mmkv, imagePicker, documentPicker)       |
+| `entryPoint`        | 'Conversation' \| 'ConversationList'                                  | 'Conversation' | Which screen to show when the messenger is first loaded                |
+| `windowMode`        | 'floating' \| 'fullscreen'                                            | 'floating'     | Display mode for the messenger window                                  |
+| `fullscreenInsets`  | Partial<{ top: number; left: number; right: number; bottom: number }> | -              | Insets for fullscreen mode to handle safe areas                        |
+| `edgeToEdgeEnabled` | boolean                                                               | true           | (Android only) Enable edge-to-edge display                             |
+| `language`          | string                                                                | System default | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR") |
+| `countryCode`       | string                                                                | -              | Country code following ISO 3166 format (e.g., "US", "KR")              |
+| `context`           | Record\<string, string>                                               | -              | Context object for personalized AI agent responses                     |
+| `queryParams`       | AIAgentQueryParams                                                    | -              | Global default query parameters for AI agent                           |
+| `config`            | AIAgentConfig                                                         | -              | Global default configuration for AI agent                              |
+| `theme`             | object                                                                | -              | Theme customization including mode, palette and typography             |
+| `strings`           | PartialDeep                                                           | -              | Localization strings for the messenger                                 |
+| `logLevel`          | LogLevel                                                              | LogLevel.WARN  | Log level for the AI agent client                                      |
 
 ### FixedMessenger.Style Props
 
 Configuration options for customizing the launcher appearance.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `position` | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom' | 'end-bottom' | Position of the launcher button |
-| `margin` | Partial<{ top: number; bottom: number; start: number; end: number }> | { top: 24, bottom: 24, start: 24, end: 24 } | Margin around the launcher |
-| `launcherSize` | number | 48 | Size of the launcher button in pixels |
-| `spacing` | number | 12 | Space between launcher and messenger window in pixels |
+| Property       | Type                                                                 | Default                                     | Description                                           |
+| -------------- | -------------------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------- |
+| `position`     | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom'           | 'end-bottom'                                | Position of the launcher button                       |
+| `margin`       | Partial<{ top: number; bottom: number; start: number; end: number }> | { top: 24, bottom: 24, start: 24, end: 24 } | Margin around the launcher                            |
+| `launcherSize` | number                                                               | 48                                          | Size of the launcher button in pixels                 |
+| `spacing`      | number                                                               | 12                                          | Space between launcher and messenger window in pixels |
 
 ### NativeAdapterConfig
 
 Required native modules configuration.
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `mmkv` | MMKVInstance | MMKV instance for local storage |
-| `imagePicker` | typeof ImagePicker | Image picker module (expo-image-picker or react-native-image-picker) |
+| Property         | Type                  | Description                                                                   |
+| ---------------- | --------------------- | ----------------------------------------------------------------------------- |
+| `mmkv`           | MMKVInstance          | MMKV instance for local storage                                               |
+| `imagePicker`    | typeof ImagePicker    | Image picker module (expo-image-picker or react-native-image-picker)          |
 | `documentPicker` | typeof DocumentPicker | Document picker module (expo-document-picker or react-native-document-picker) |
 
 ### Conversation Props
 
 Configuration options for the `Conversation` component.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `channelUrl` | string | - | Channel URL to open. If not provided, uses active channel from context |
-| `onClearChannelUrl` | () => void | - | Callback when channel URL should be cleared |
-| `onNavigateToConversationList` | () => void | - | Callback to navigate to conversation list |
+| Property                       | Type       | Default | Description                                                            |
+| ------------------------------ | ---------- | ------- | ---------------------------------------------------------------------- |
+| `channelUrl`                   | string     | -       | Channel URL to open. If not provided, uses active channel from context |
+| `onClearChannelUrl`            | () => void | -       | Callback when channel URL should be cleared                            |
+| `onNavigateToConversationList` | () => void | -       | Callback to navigate to conversation list                              |
 
 ### useMessengerSessionContext Hook
 
 Access to messenger session context and conversation management functions.
 
-- Key Properties
+* Key Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
+| Property  | Type         | Description                   |
+| --------- | ------------ | ----------------------------- |
 | `sdkUser` | User \| null | Sendbird Chat SDK user object |
 
-- Methods
+* Methods
 
-| Method | Parameters | Return Type | Description |
-|--------|------------|-------------|-------------|
-| `createConversation` | params: ConversationCreateParams | Promise<string> | Creates a new conversation and returns the channel URL |
-| `refreshActiveChannel` | - | Promise<string> | Refreshes the active channel and returns URL |
-| `authenticate` | - | Promise<MessengerSettingsResponse> | Authenticates the user session |
-| `deauthenticate` | - | Promise<void> | Deauthenticates the user session |
+| Method                 | Parameters                       | Return Type | Description                                            |
+| ---------------------- | -------------------------------- | ----------- | ------------------------------------------------------ |
+| `createConversation`   | params: ConversationCreateParams | Promise     | Creates a new conversation and returns the channel URL |
+| `refreshActiveChannel` | -                                | Promise     | Refreshes the active channel and returns URL           |
+| `authenticate`         | -                                | Promise     | Authenticates the user session                         |
+| `deauthenticate`       | -                                | Promise     | Deauthenticates the user session                       |
 
 ### ConversationCreateParams
 
 Parameters for creating new conversations.
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `aiAgentId` | string | Required | AI agent identifier |
-| `language` | string | - | Language code (IETF BCP 47) |
-| `country` | string | - | Country code (ISO 3166) |
-| `context` | Record<string, string> | - | Additional metadata for AI agent |
+| Property    | Type                    | Default  | Description                      |
+| ----------- | ----------------------- | -------- | -------------------------------- |
+| `aiAgentId` | string                  | Required | AI agent identifier              |
+| `language`  | string                  | -        | Language code (IETF BCP 47)      |
+| `country`   | string                  | -        | Country code (ISO 3166)          |
+| `context`   | Record\<string, string> | -        | Additional metadata for AI agent |
