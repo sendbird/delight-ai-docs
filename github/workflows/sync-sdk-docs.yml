@@ -1,0 +1,323 @@
+name: Sync SDK docs from delight-ai-agent
+
+on:
+  repository_dispatch:
+    types: [sync-sdk-docs]
+  workflow_dispatch:
+
+jobs:
+  sync-sdk-docs:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    env:
+      BASE_BRANCH: develop
+      SYNC_BRANCH_PREFIX: chore/sync-sdk-docs
+
+    steps:
+      - name: Checkout delight-ai-docs
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+          token: ${{ github.token }}
+
+      - name: Checkout delight-ai-agent
+        uses: actions/checkout@v4
+        with:
+          repository: sendbird/delight-ai-agent
+          ref: main
+          path: delight-ai-agent
+          token: ${{ secrets.BOT_TOKEN }}
+          fetch-depth: 2                   # need previous commit for diff
+
+      # NEW: detect which files changed in the latest commit on delight-ai-agent
+      - name: Detect updated source files in delight-ai-agent
+        id: detect-updates
+        run: |
+          cd delight-ai-agent
+
+          # If there is no previous commit (very first commit / shallow history),
+          # fall back to treating all tracked files as "changed".
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            echo "Diffing HEAD~1..HEAD to find changed files..."
+            git diff --name-only HEAD~1 HEAD > ../changed_source_files.txt
+          else
+            echo "No HEAD~1, using all tracked files as changed (initial sync case)..."
+            git ls-files > ../changed_source_files.txt
+          fi
+
+          cd ..
+          echo "Changed source files (from delight-ai-agent):"
+          cat changed_source_files.txt || echo "(none)"
+
+      - name: Sync mapped files from delight-ai-agent to sdk-docs
+        id: sync-files
+        run: |
+          python << 'EOF'
+          import shutil
+          from pathlib import Path
+
+          agent_root = Path("delight-ai-agent")
+          docs_root = Path(".")
+
+          changed_file_list = Path("changed_source_files.txt")
+          if changed_file_list.is_file():
+              changed_sources = {
+                  line.strip()
+                  for line in changed_file_list.read_text(encoding="utf-8").splitlines()
+                  if line.strip()
+              }
+              print("Changed sources from delight-ai-agent:")
+              for s in sorted(changed_sources):
+                  print(f"  - {s}")
+          else:
+              changed_sources = set()
+              print("[WARN] changed_source_files.txt not found; assuming no changed sources.")
+
+          # Mapping: source in delight-ai-agent -> target in delight-ai-docs
+          MAPPING = {
+              # ANDROID
+              "android/docs/conversations.md": "sdk-docs/android/features/conversations.md",
+              "android/docs/launcher.md": "sdk-docs/android/features/launcher.md",
+              "android/docs/messages.md": "sdk-docs/android/features/messages.md",
+              "android/MULTILANGUAGE.md": "sdk-docs/android/multi-language-support.md",
+              "android/README.md": "sdk-docs/android/quickstart-guide-messenger.md",
+
+              # IOS
+              "ios/docs/conversations.md": "sdk-docs/ios/features/conversations.md",
+              "ios/docs/launcher.md": "sdk-docs/ios/features/launcher.md",
+              "ios/docs/messages.md": "sdk-docs/ios/features/messages.md",
+              "ios/MULTILANGUAGE.md": "sdk-docs/ios/multi-language-support.md",
+              "ios/README.md": "sdk-docs/ios/quickstart-guide-messenger.md",
+
+              # JAVASCRIPT CDN
+              "js/cdn/docs/conversations.md": "sdk-docs/javascript-cdn/features/conversations.md",
+              "js/cdn/docs/messages.md": "sdk-docs/javascript-cdn/features/messages.md",
+              "js/cdn/MULTILANGUAGE.md": "sdk-docs/javascript-cdn/multi-language-support.md",
+              "js/cdn/README.md": "sdk-docs/javascript-cdn/quickstart-guide-messenger.md",
+
+              # REACT (NPM)
+              "js/react/docs/conversations.md": "sdk-docs/react-npm/features/conversations.md",
+              "js/react/docs/messages.md": "sdk-docs/react-npm/features/messages.md",
+              "js/react/MULTILANGUAGE.md": "sdk-docs/react-npm/multi-language-support.md",
+              "js/react/README.md": "sdk-docs/react-npm/quickstart-guide-messenger.md",
+              "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
+
+              # REACT (Native)
+              "js/react-native/docs/conversations.md": "sdk-docs/react-native/features/conversations.md",
+              "js/react-native/docs/messages.md": "sdk-docs/react-native/features/messages.md",
+              "js/react-native/MULTILANGUAGE.md": "sdk-docs/react-native/multi-language-support.md",
+              "js/react-native/README.md": "sdk-docs/react-native/quickstart-guide-messenger.md",
+          }
+
+          mapping_sources = set(MAPPING.keys())
+
+          # Only sync files that are BOTH:
+          # - changed in delight-ai-agent (changed_sources)
+          # - present in our mapping table (mapping_sources)
+          to_sync_sources = sorted(mapping_sources & changed_sources)
+
+          print("Sources selected for sync (intersection of mapping & changed files):")
+          if to_sync_sources:
+              for src in to_sync_sources:
+                  print(f"  - {src}")
+          else:
+              print("  (none)")
+
+          updated_targets = []
+
+          for src in to_sync_sources:
+              dst = MAPPING[src]
+              src_path = agent_root / src
+              dst_path = docs_root / dst
+
+              if not src_path.is_file():
+                  print(f"[WARN] Missing source (skipping): {src}")
+                  continue
+
+              dst_path.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(src_path, dst_path)
+              updated_targets.append(dst)  # store repo-relative path
+              print(f"Copied {src} -> {dst}")
+
+          # Write updated targets for later steps (commits & PR body)
+          updated_list_path = Path("updated_files.txt")
+          if updated_targets:
+              updated_list_path.write_text("\n".join(updated_targets) + "\n", encoding="utf-8")
+              print(f"{len(updated_targets)} file(s) copied for sync.")
+              print("updated_files.txt will contain:")
+              for t in updated_targets:
+                  print(f"  - {t}")
+          else:
+              # still create the file so the next step can safely check it
+              updated_list_path.write_text("", encoding="utf-8")
+              print("No mapped files updated from latest commit.")
+          EOF
+
+      - name: Commit changes (one commit per changed file)
+        id: commit-changes
+        run: |
+          echo "===== 📝 Commit Changes Step Started ====="
+
+          # 1) Safety check
+          if [ ! -f updated_files.txt ] || [ ! -s updated_files.txt ]; then
+            echo "⚠️  No updated files recorded. Skipping commit and PR."
+            echo "skip_pr=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "📄 updated_files.txt exists and is non-empty"
+          echo "----- Contents of updated_files.txt (truncated per line to 100 chars) -----"
+          while IFS= read -r line; do
+            if [ -z "$line" ]; then
+              continue
+            fi
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < updated_files.txt
+          echo "--------------------------------------------------------------------------"
+
+          # 2) Configure git
+          echo "🔧 Configuring git user"
+          git config user.name "docs-sync-bot"
+          git config user.email "docs-sync-bot@users.noreply.github.com"
+
+          # 3) Prepare commit tracking file
+          > committed_files.txt
+
+          echo "===== 🚀 Creating commits ====="
+          COUNT=0
+          while IFS= read -r file; do
+            if [ -z "$file" ]; then
+              continue
+            fi
+
+            if [ ! -f "$file" ]; then
+              echo "⚠️  [WARN] Target file missing at commit time, skipping: $file"
+              continue
+            fi
+
+            echo "➡️  Committing: $file"
+            git add "$file"
+            git commit --allow-empty -m "[Sync] update $file"
+            echo "$file" >> committed_files.txt
+            COUNT=$((COUNT+1))
+          done < updated_files.txt
+
+          echo "===== 🧹 Cleanup: removing updated_files.txt ====="
+          rm -f updated_files.txt
+
+          # 4) Post-commit checks
+          if [ ! -s committed_files.txt ]; then
+            echo "⚠️  No commits were created (all files missing?). Skipping PR."
+            echo "skip_pr=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "===== 📌 Summary ====="
+          echo "Total commits created: $COUNT"
+          echo "Committed files (truncated to 100 chars):"
+          while IFS= read -r line; do
+            truncated=$(echo "$line" | cut -c1-100)
+            echo "  • $truncated"
+          done < committed_files.txt
+
+          echo "===== 🏗️  Building PR body ====="
+          {
+            echo "Automated sync from **delight-ai-agent → delight-ai-docs**."
+            echo ""
+            echo "Updated files:"
+            while IFS= read -r file; do
+              if [ -n "$file" ]; then
+                echo "- \`$file\`"
+              fi
+            done < committed_files.txt
+          } > PR_BODY.md
+
+          echo "PR body written to PR_BODY.md"
+          echo "===== ✅ Commit Step Finished Successfully ====="
+          echo "skip_pr=false" >> "$GITHUB_OUTPUT"
+
+      - name: Push branch and create PR via API
+        id: push-and-pr
+        if: steps.commit-changes.outputs.skip_pr == 'false'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          REPO: sendbird/delight-ai-docs
+          BASE_BRANCH: ${{ env.BASE_BRANCH }}
+          SYNC_BRANCH: ${{ env.SYNC_BRANCH_PREFIX }}-${{ github.run_id }}
+        run: |
+          set -e
+
+          echo "Pushing branch $SYNC_BRANCH"
+          # --force just in case a branch with the same name exists from a previous run
+          git push --force origin HEAD:$SYNC_BRANCH
+
+          echo "Creating PR..."
+          PR_DATA=$(python - << 'EOF'
+          import json, os
+          with open("PR_BODY.md", "r", encoding="utf-8") as f:
+              body = f.read()
+          data = {
+              "title": "[SDK] updated from delight-ai-agent",
+              "body": body,
+              "head": os.environ["SYNC_BRANCH"],
+              "base": os.environ["BASE_BRANCH"],
+          }
+          print(json.dumps(data))
+          EOF
+          )
+
+          RESPONSE=$(curl -sS -w "%{http_code}" -o pr_response.json \
+            -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/pulls" \
+            -d "$PR_DATA")
+
+          echo "GitHub API status: $RESPONSE"
+          echo "PR API response:"
+          cat pr_response.json
+
+          if [ "$RESPONSE" -lt 200 ] || [ "$RESPONSE" -ge 300 ]; then
+            echo "Failed to create PR (status $RESPONSE)."
+            exit 1
+          fi
+
+          PR_NUMBER=$(python - << 'EOF'
+          import json
+          with open("pr_response.json", "r", encoding="utf-8") as f:
+              data = json.load(f)
+          print(data.get("number", ""))
+          EOF
+          )
+
+          if [ -z "$PR_NUMBER" ]; then
+            echo "PR number missing in API response."
+            exit 1
+          fi
+
+          echo "Created PR #$PR_NUMBER"
+          echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+
+      - name: Approve pull request via API
+        if: steps.push-and-pr.outputs.pr_number != '' && steps.commit-changes.outputs.skip_pr == 'false'
+        env:
+          APPROVE_TOKEN: ${{ secrets.APPROVE_BOT_TOKEN }}
+          REPO: sendbird/delight-ai-docs
+          PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
+        run: |
+          echo "Approving PR #$PR_NUMBER"
+          RESP=$(curl -sS -w "%{http_code}" -o approve_response.json \
+            -X POST \
+            -H "Authorization: Bearer $APPROVE_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/pulls/$PR_NUMBER/reviews" \
+            -d '{"event":"APPROVE"}')
+
+          echo "Approve API status: $RESP"
+          echo "Approve API response:"
+          cat approve_response.json
