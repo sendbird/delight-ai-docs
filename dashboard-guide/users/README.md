@@ -13,7 +13,7 @@ You can create users directly in the dashboard for testing.
 For testing purposes, you can manually create a user in the dashboard and allow access without an access or session token. However, for production, we strongly recommend creating users through the Platform API and authenticating them with a token.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (146).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (146).png" alt=""><figcaption></figcaption></figure>
 
 ## Create a user through Platform API
 
@@ -77,7 +77,7 @@ messenger.initialize({
 ```
 
 {% hint style="info" %}
-These settings can only be configured during initialization and applicable to messenger only. To create and manage a context object through Platform API, see our [Platform API guide on the context object](../platform-api/context-object-for-messenger-channel.md).
+These settings can only be configured during initialization and applicable to messenger only. To create and manage a context object through Platform API, see our [Platform API guide on the context object](../../platform-api/context-object-for-messenger-channel.md).
 {% endhint %}
 
 \\
