@@ -79,5 +79,3 @@ messenger.initialize({
 {% hint style="info" %}
 These settings can only be configured during initialization and applicable to messenger only. To create and manage a context object through Platform API, see our [Platform API guide on the context object](../platform-api/context-object-for-messenger-channel.md).
 {% endhint %}
-
-\\
