@@ -48,6 +48,7 @@
   * [Confluence](dashboard-guide/integrations/confluence.md)
   * [Sendbird Desk](dashboard-guide/integrations/sendbird-desk/README.md)
     * [AI copilot](dashboard-guide/integrations/sendbird-desk/ai-copilot.md)
+    * [Handoff](dashboard-guide/integrations/sendbird-desk/handoff.md)
   * [Sprinklr](dashboard-guide/integrations/sprinklr.md)
   * [Amazon S3](dashboard-guide/integrations/amazon-s3.md)
   * [Genesys](dashboard-guide/integrations/genesys.md)
