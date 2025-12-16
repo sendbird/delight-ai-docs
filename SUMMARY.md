@@ -6,13 +6,15 @@
 
 * [AI agent (home)](dashboard-guide/ai-agent-home.md)
 * [Users](dashboard-guide/users/README.md)
-  * [Memory](dashboard-guide/users/memory.md)
+  * [Memory](dashboard-guide/users/memory/README.md)
+    * [For You Conversation](dashboard-guide/users/memory/for-you-conversation.md)
 * [Shared assets](dashboard-guide/shared-assets/README.md)
   * [Knowledge](dashboard-guide/shared-assets/knowledge.md)
   * [Actionbooks](dashboard-guide/shared-assets/actionbooks/README.md)
     * [markdown format](dashboard-guide/shared-assets/actionbooks/markdown-format.md)
   * [Tools](dashboard-guide/shared-assets/tools.md)
   * [Message templates](dashboard-guide/shared-assets/message-templates.md)
+  * [Follow-up triggers](dashboard-guide/shared-assets/follow-up-triggers.md)
 * [Build](dashboard-guide/build/README.md)
   * [Profile](dashboard-guide/build/profile.md)
   * [Knowledge](dashboard-guide/build/knowledge.md)
@@ -54,7 +56,6 @@
   * [Genesys](dashboard-guide/integrations/genesys.md)
 * [Roles and permissions](dashboard-guide/roles-and-permissions.md)
 * [Webhook](dashboard-guide/webhook.md)
-* [Follow-up triggers](dashboard-guide/follow-up-triggers.md)
 
 ## SDK Docs
 
