@@ -37,7 +37,7 @@ user memory - link to FYC message
 
 <figure><img src="../../.gitbook/assets/convo trigger.png" alt=""><figcaption></figcaption></figure>
 
-## Actionbook event trigger
+### Actionbook event trigger
 
 1. Navigate to the **Actionboon event** tab in **Workspace settings > Shared assets > Follow-up triggers**.
 2. Click **Create trigger+** in the top-right corner of the screen.
