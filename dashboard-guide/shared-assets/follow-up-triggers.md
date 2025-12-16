@@ -12,7 +12,7 @@ Delight AI agent supports triggers for two types of events: conversation event a
 
 ***
 
-## How to create triggers
+## How to create&#x20;
 
 You can create and manage triggers under **Workspace settings > Shared assets > Follow-up triggers**.
 
@@ -60,7 +60,7 @@ For the notification messages in Actionbook event triggers,  AI agent supports m
 
 ***
 
-## How to manage triggers
+## How to manage&#x20;
 
 adfafas
 
@@ -77,3 +77,21 @@ dfdf
 <figure><img src="../../.gitbook/assets/actionbook-triggers (1).png" alt=""><figcaption></figcaption></figure>
 
 afdf
+
+***
+
+## Conversation group
+
+Utilize triggers to create a seamless omnichannel customer experience by consolidating scattered conversations into a single, unified customer support stream.
+
+### Channel sequence
+
+In the Conversation Details view, you can track the cross-channel interactions between your AI agent and a user. This section offers a clear overview and detailed metrics on omnichannel communications, known as the Channel sequence.&#x20;
+
+### Conversation group insights
+
+The timeline and summary in the Conversation Group panel provide a quick understanding of conversation history and valuable customer insights.
+
+### Conversation group message count
+
+The number of AI-generated messages and user messages from all channels in the channel sequence.

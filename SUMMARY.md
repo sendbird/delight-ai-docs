@@ -110,5 +110,6 @@
 ## Tutorials
 
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
+* [Omnichannel communication with triggers](tutorials/omnichannel-communication-with-triggers.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
