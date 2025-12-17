@@ -1,6 +1,6 @@
 # Conversations
 
-In Delight AI agent, a conversation refers to a channel where an AI Agent communicates with a user. Depending on your service requirements, you can allow users to maintain a single active conversation or multiple. Delight AI agent supports two different conversation modes: Single active conversation and Multiple active conversation mode, which is the default.
+In Delight AI agent, a conversation refers to a channel where an AI agent communicates with a user. Depending on your service requirements, you can allow users to maintain a single active conversation or multiple. Delight AI agent supports two different conversation modes: Single active conversation and Multiple active conversation mode, which is the default.
 
 When the launcher is clicked, a user can be led to either their conversation list or a conversation depending on your choice of the conversation mode.
 
@@ -12,22 +12,15 @@ When the launcher is clicked, a user can be led to either their conversation lis
 > **Note**: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
 
 This guide explains:
+- [Start a conversation](#start-a-conversation)
+    - [With Messenger](#with-messenger)
+    - [With custom main component](#with-custom-main-component)
+- [Advanced configuration](#advanced-configuration)
+    - [Context object for personalized conversation](#context-object-for-personalized-conversation)
+    - [Managing messenger lifecycle](#managing-messenger-lifecycle)
+- [API references](#api-references)
 
-* [Conversations](conversations.md#conversations)
-  * [Start a conversation](conversations.md#start-a-conversation)
-    * [With Messenger](conversations.md#with-messenger)
-      * [Launch a conversation](conversations.md#launch-a-conversation)
-      * [Launch a conversation list](conversations.md#launch-a-conversation-list)
-      * [Without Shadow DOM](conversations.md#without-shadowdom)
-      * [Set the launcher layout (position, margin)](conversations.md#set-the-launcher-layout)
-      * [Customize the launcher appearance](conversations.md#customize-the-launcher-appearance)
-    * [With custom main component](conversations.md#with-custom-main-component)
-  * [Advanced configuration](conversations.md#advanced-configuration)
-    * [Context object for personalized conversation](conversations.md#context-object-for-personalized-conversation)
-    * [Managing messenger lifecycle](conversations.md#managing-messenger-lifecycle)
-  * [API Reference](conversations.md#api-reference)
-
-***
+---
 
 ## Start a conversation
 
@@ -107,7 +100,10 @@ messenger.initialize({
 
 On mobile devices, the messenger automatically opens in full-screen mode. On the other hand, it displays as a floating mini-window anchored near a small icon called `launcher` on the desktop devices.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png)
+<figure>
+  <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png" alt="" width="375">
+  <figcaption></figcaption>
+</figure>
 
 You can configure the launcher's positioning and margin on the screen using the `setPosition()` method.
 
@@ -123,7 +119,7 @@ messenger.setPosition({
 });
 ```
 
-* Position
+- Position
 
 | Position         | Description                                 |
 | ---------------- | ------------------------------------------- |
@@ -132,7 +128,7 @@ messenger.setPosition({
 | `'end-top'`      | Top-right corner of the screen              |
 | `'end-bottom'`   | Bottom-right corner of the screen (default) |
 
-* Margin
+- Margin
 
 | Property | Type   | Default | Description                                        |
 | -------- | ------ | ------- | -------------------------------------------------- |
@@ -145,9 +141,12 @@ messenger.setPosition({
 
 The launcher's icon and color can be configured through the [Delight AI dashboard](https://dashboard.delight.ai) - no code changes required. Simply go to [**Build > Channels > Messenger**](https://dashboard.delight.ai/ai-agent/%7Bapplication-id%7D/channels/messenger/?active_tab=Appearance) in the dashboard and click on the **Appearance** tab to customize your launcher.
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png" alt=""><figcaption></figcaption></figure>
+<figure>
+  <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-messenger-appearance.png" alt="" width=50%>
+  <figcaption></figcaption>
+</figure>
 
-***
+---
 
 ### With custom main component
 
@@ -155,10 +154,10 @@ For advanced use cases where you need direct control over the conversation view 
 
 This approach is recommended when:
 
-* You want to embed the conversation in a specific part of your UI.
-* You need custom navigation or layout control.
-* You want to build a full-page conversation experience.
-* You need to open a specific conversation programmatically with its `channelUrl`.
+- You want to embed the conversation in a specific part of your UI.
+- You need custom navigation or layout control.
+- You want to build a full-page conversation experience.
+- You need to open a specific conversation programmatically with its `channelUrl`.
 
 The following snippet demonstrates how to load the messenger with a custom main component that renders `AgentProviderContainer` and a `Conversation` view.
 
@@ -181,7 +180,7 @@ messenger.initialize({
 });
 ```
 
-***
+---
 
 ## Advanced configuration
 
@@ -289,9 +288,9 @@ You can also completely remove the messenger instance using `destroy()`.
 messenger.destroy();
 ```
 
-***
+---
 
-## API Reference
+## API references
 
 ### loadMessenger()
 
@@ -301,7 +300,10 @@ Loads the AI Agent Messenger module. It returns `Promise<Messenger>`.
 await loadMessenger(config)
 ```
 
-<table><thead><tr><th width="201.9296875">Parameter</th><th width="118.0234375">Type</th><th width="104.63671875">Default</th><th>Description</th></tr></thead><tbody><tr><td><code>useShadowDOM</code></td><td>boolean</td><td>true</td><td>Use Shadow DOM for style encapsulation (set to <code>false</code> to disable)</td></tr><tr><td><code>customMainComponent</code></td><td>function</td><td>-</td><td>Custom main component function for advanced customization</td></tr></tbody></table>
+| Parameter            | Type     | Default | Description                                                               |
+| -------------------- | -------- | ------- | ------------------------------------------------------------------------- |
+| `useShadowDOM`       | boolean  | true    | Use Shadow DOM for style encapsulation (set to `false` to disable)        |
+| `customMainComponent` | function | -       | Custom main component function for advanced customization                 |
 
 ### messenger.initialize()
 
@@ -325,9 +327,9 @@ messenger.initialize(config)
 | `stringSet`       | Partial                                   | -                  | Localization string set for the messenger                              |
 | `logLevel`        | LogLevel                                  | -                  | Log level for the AI agent client                                      |
 
-### Messenger Methods
+### Messenger methods
 
-* Lifecycle Methods
+#### Lifecycle methods
 
 | Method      | Parameters | Description                              |
 | ----------- | ---------- | ---------------------------------------- |
@@ -335,7 +337,7 @@ messenger.initialize(config)
 | `close()`   | -          | Close the messenger                      |
 | `destroy()` | -          | Completely remove the messenger instance |
 
-* Configuration Methods
+#### Configuration methods
 
 | Method                       | Parameters                                         | Description                       |
 | ---------------------------- | -------------------------------------------------- | --------------------------------- |
@@ -343,15 +345,15 @@ messenger.initialize(config)
 | `updateUserSession(session)` | session: ManualSessionInfo \| AnonymousSessionInfo | Update user session information   |
 | `setPosition(params)`        | params: { position?, margin? }                     | Set launcher position and margins |
 
-* Session Methods
+#### Session methods
 
 | Method             | Description              |
 | ------------------ | ------------------------ |
 | `deauthenticate()` | Log out the current user |
 
-### Session Info Classes
+### Session info classes
 
-* ManualSessionInfo
+#### ManualSessionInfo
 
 ```javascript
 new messenger.ManualSessionInfo({
@@ -366,7 +368,7 @@ new messenger.ManualSessionInfo({
 })
 ```
 
-* AnonymousSessionInfo
+#### AnonymousSessionInfo
 
 ```javascript
 new messenger.AnonymousSessionInfo()
@@ -376,4 +378,7 @@ new messenger.AnonymousSessionInfo()
 
 Parameters for `setPosition()` method:
 
-<table><thead><tr><th width="130.2421875">Parameter</th><th width="264.66796875">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>position</code></td><td>'start-top' | 'start-bottom' | 'end-top' | 'end-bottom'</td><td>Position of the launcher button. (Default: -)</td></tr><tr><td><code>margin</code></td><td>Partial&#x3C;{ top: number; bottom: number; start: number; end: number }></td><td>Margin around the launcher in pixels.  (Default: -)</td></tr></tbody></table>
+| Parameter | Type                                                | Description                                         |
+| --------- | --------------------------------------------------- | --------------------------------------------------- |
+| `position` | 'start-top' \| 'start-bottom' \| 'end-top' \| 'end-bottom' | Position of the launcher button. (Default: -)       |
+| `margin`   | Partial<{ top: number; bottom: number; start: number; end: number }> | Margin around the launcher in pixels. (Default: -) |
