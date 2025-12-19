@@ -110,3 +110,7 @@
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
+
+## Security
+
+* [AI agent security guide (home)](security/ai-agent-security-guide-home.md)
