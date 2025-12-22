@@ -113,4 +113,7 @@
 
 ## Security
 
+* [AI agent environments](security/ai-agent-environments.md)
+* [Workspace & Agent level instructions](security/workspace-and-agent-level-instructions.md)
 * [AI agent security guide (home)](security/ai-agent-security-guide-home.md)
+* [Organization and account security](security/organization-and-account-security.md)
