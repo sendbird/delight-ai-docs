@@ -47,5 +47,5 @@ Delight AI Agent provides multiple layers of safeguards designed to secure instr
 Messages detected by safeguards are flagged and can be monitored in [Evaluate > Flagged messages](../dashboard-guide/evaluate/flagged-messages.md).
 
 {% hint style="info" %}
-For more information, refer to the [Safeguards guide](../dashboard-guide/build/safeguards.md) or [Safeguards security guide](safeguards/)
+For more information, see: [Safeguards guide](../dashboard-guide/build/safeguards.md) or [Safeguards security guide](safeguards/)
 {% endhint %}

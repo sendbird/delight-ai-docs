@@ -22,7 +22,7 @@ Note: All credentials and API keys used for integrations must be treated as sens
 {% endhint %}
 
 {% hint style="info" %}
-For more information, refer to the [Integrations](../../dashboard-guide/integrations/) guide.
+For more information, see: [Integrations](../../dashboard-guide/integrations/)
 {% endhint %}
 
 ***
