@@ -2,6 +2,8 @@
 
 Delight AI agent provides a clear separation between Development and Production environments to ensure safe testing and reliable deployment of agents.
 
+<figure><img src="../.gitbook/assets/image (125).png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Development vs Production environments
