@@ -1,9 +1,9 @@
 # AI agent instructions
 
-Delight AI agent allows configuration of instructions that guide AI Agent behavior. These instructions can be set at two levels:
+Delight AI agent allows you to configure instructions that guide agent behavior. Instructions can be defined at two levels:
 
-* **Workspace:** Common goals and communication styles shared across multiple agents.
-* **Agent:** Goal and guidelines specific to a agent.
+* **Workspace:** Shared goals and communication styles applied across multiple agents.
+* **Agent:** Goals and guidelines specific to an individual agent.
 
 <figure><img src="../.gitbook/assets/CleanShot 2025-05-17 at 13.25.41@2x.png" alt=""><figcaption></figcaption></figure>
 
@@ -11,20 +11,21 @@ Delight AI agent allows configuration of instructions that guide AI Agent behavi
 
 ### Instructions security best practice
 
-Instructions can be configured on the Build page for a AI agent and in the Workspace Settings section of the dashboard. Instructions play a critical role in shaping the responses of your AI agent, but it is essential to understand their security limitations.
+Instructions can be configured on the Build page for a AI agent and in the Workspace settings section of the dashboard. While instructions play a critical role in shaping agent responses, it is important to understand their security limitations.
 
 #### 1. Do not treat instructions as confidential
 
-Instructions are processed by the LLM and may be partially surfaced in responses.
+Instructions are processed by the underlying LLM and may be partially reflected in generated responses.
 
 #### 2. Never include sensitive information
 
-Sensitive information must not be entered into the Goal, Guidelines, or any workspace-level settings.
+Do not include sensitive information in agent goals, guidelines, or any workspace-level instructions.
 
 {% hint style="danger" %}
 **Avoid**
 
-Credentials, API keys, passwords, or details of internal systems
+* Credentials, API keys, or passwords
+* Details of internal systems or infrastructure
 {% endhint %}
 
 
