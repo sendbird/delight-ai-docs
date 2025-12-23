@@ -1,2 +1,0 @@
-# Workspace & Agent level instructions
-
