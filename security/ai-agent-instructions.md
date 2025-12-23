@@ -39,6 +39,7 @@ Delight AI agent provides multiple safeguard layers designed to secure instructi
 * **Guardrails:** Built-in controls that automatically detect and flag inappropriate content before it reaches the AI agent, while also validating outputs before sending to end-users.
 * **Adversarial Defense:** Security features that strive to protect against malicious attempts like prompt injection and jailbreaking designed to manipulate the AI agent’s behavior and breach its security.
 * **Banned Words and Phrases:** Allows organizations to restrict explicit terms, sensitive topics, or competitor mentions.
-* **Low-confidence protection:** The safeguard includes a feature to validate content that is determined to be low-confidence. If the AI’s answer is inconsistent with the provided material and is judged to be low-confidence, it is categorized separately.
+* **PII:** When turned on, mask personally identifiable information (PII) such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history.
+* **Low-confidence protection:** Delight AI agent validate content that is determined to be low-confidence. If the agent’s answer is inconsistent with the provided material and is judged to be low-confidence, it is categorized separately.
 
 For more information, refer to [Safeguards guide](../dashboard-guide/build/safeguards.md) or [Safeguards security guide](safeguards/)
