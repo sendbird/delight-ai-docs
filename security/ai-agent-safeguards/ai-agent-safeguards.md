@@ -16,5 +16,5 @@ For more information, see: [Safeguards setting guide](../../dashboard-guide/buil
 * **Low-confidence protection:** Identifies and validates responses with low confidence. If an AI agent generates responses that are not grounded in the provided knowledge sources, they are categorized as low-confidence messages.
 
 {% hint style="info" %}
-Note: Messages detected by safeguards are flagged and can be monitored in [Evaluate > Flagged messages](../../dashboard-guide/evaluate/flagged-messages.md).
+**Note:** Messages detected by safeguards are flagged and can be monitored in [Evaluate > Flagged messages](../../dashboard-guide/evaluate/flagged-messages.md).
 {% endhint %}

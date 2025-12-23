@@ -18,7 +18,7 @@ Delight AI allows you to ingest knowledge from a variety of content sources, inc
 Integrations are particularly important because they enable AI agents to access existing company data, which may include highly sensitive information.
 
 {% hint style="danger" %}
-Note: All credentials and API keys used for integrations must be treated as sensitive assets and handled securely.
+**Note:** All credentials and API keys used for integrations must be treated as sensitive assets and handled securely.
 {% endhint %}
 
 {% hint style="info" %}
