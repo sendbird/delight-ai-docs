@@ -53,8 +53,8 @@ The Delight AI supports saving, syncing, deploying, and deleting knowledge items
 
 To manage this securely:
 
-* **Restrict knowledge permissions** using role-based access controls.
-* **Review and remove unused or outdated knowledge** before deployment.
-* **Treat knowledge deployment like a software release**, with controlled ownership and approval.
+* Restrict knowledge permissions using role-based access controls.
+* Review and remove unused or outdated knowledge before deployment.
+* Treat knowledge deployment like a software release, with controlled ownership and approval.
 
 When integrations are enabled, data may be ingested automatically from connected platforms. Continuously monitor and reclassify incoming data to ensure only appropriate content is used in production.

@@ -122,6 +122,5 @@
   * [Actionbooks](security/shared-assets/actionbooks.md)
   * [Tools](security/shared-assets/tools.md)
 * [AI agent Safeguards](security/safeguards/README.md)
-  * [Safeguards settings](security/ai-agent-safeguards/safeguards-settings.md)
-  * [Safeguards monitoring](security/ai-agent-safeguards/safeguards-monitoring.md)
+  * [AI agent Safeguards](security/ai-agent-safeguards/ai-agent-safeguards.md)
   * [Personally Indentifiable Information](security/safeguards/personally-indentifiable-information.md)

@@ -4,7 +4,7 @@ This guide provides security considerations and best practices for Delight AI. S
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -50,6 +50,6 @@ This section covers assets that define what agents know and what they can do.
 
 This section covers safeguards applied during live conversations to help ensure safe and reliable AI behavior.
 
-* [Safeguards settings](ai-agent-safeguards/safeguards-settings.md) explains how to define restricted or unsafe content and how it is handled during conversations.
-* [Safeguards monitoring ](ai-agent-safeguards/safeguards-monitoring.md)describes how Delight AI agent detects low-confidence responses and sensitive content for review.
+* [Safeguards settings](ai-agent-safeguards/ai-agent-safeguards.md) explains how to define restricted or unsafe content and how it is handled during conversations.
+* [Safeguards monitoring ](/broken/pages/jgrleJLEWOG7VpgL78v5)describes how Delight AI agent detects low-confidence responses and sensitive content for review.
 * [Personally Indentifiable Information](safeguards/personally-indentifiable-information.md) explains how user data is protected through PII masking, data minimization, and continuous monitoring to reduce privacy and compliance risks<br>
