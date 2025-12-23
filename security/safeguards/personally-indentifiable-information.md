@@ -12,11 +12,11 @@ Delight AI is committed to protecting customer data and adhering to privacy prin
 
 #### Data Minimization
 
-Delight AI only collects and processes data that is absolutely necessary for the provision and improvement of the AI agent service. We strive to minimize the amount of Personally Identifiable Information (PII) and other sensitive data handled by the platform.
+Delight AI only collects and processes data that is absolutely necessary for the provision and improvement of the AI agent service. We strive to minimize the amount of personally identifiable information and other sensitive data handled by the platform.
 
 #### No Training on Customer Data
 
-Delight AI explicitly does not use customer-specific content, conversations, knowledge bases, or other proprietary data for training our foundational AI models. Any data processed by the AI agent for the purpose of serving customer requests remains isolated and is not incorporated into our general model training datasets. This ensures that your intellectual property and sensitive information remain confidential and are not inadvertently exposed or utilized in other contexts.
+Delight AI explicitly does not use customer-specific content, conversations, knowledge bases, or other proprietary data for training our foundational AI models. Any data handled by our AI agent for customer interactions is kept separate and is not included in our model training datasets. This ensures your intellectual property and sensitive information stay confidential and secure, preventing accidental exposure or misuse.
 
 #### Customer Control
 
@@ -29,6 +29,8 @@ Delight AI stores PII data only within the region used by the customer and does 
 ***
 
 ### PII Masking
+
+<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
 The Delight AI includes a PII masking feature that, when enabled, masks personally identifiable information such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history and databases.
 
