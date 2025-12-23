@@ -18,7 +18,7 @@ Actionbooks are a shared asset created and managed at the **workspace level,** b
 * Assign country tags.
 * Acts as the central repository for the entire workspace.
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 2. Agent-level (per AI agent)
 
@@ -27,7 +27,7 @@ Actionbooks are a shared asset created and managed at the **workspace level,** b
 * Useful when AI agents need different scopes of actionbooks to follow.
 * Changes will only be saved in the Development environment until it is deployed to Production.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

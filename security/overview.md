@@ -1,8 +1,12 @@
 # Overview
 
-{image}
-
 This guide provides security considerations and best practices for the Delight AI agent. Security is a shared responsibility between Delight AI agent and our customers. Delight AI agent delivers the core security features, controls, and safeguards that underpin the platform, while customers are responsible for configuring and operating those controls to meet their own security, privacy, and compliance requirements.
+
+
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
 
 There are five sections to this guide.
 
