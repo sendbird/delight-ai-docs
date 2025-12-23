@@ -2,9 +2,11 @@
 
 Sendbird provides a set of features designed to enhance the security of organizations and user accounts. This section provides an overview of these features. Detailed configuration guidance is available in the corresponding documentation.
 
+***
+
 ### Two-Factor Authentication
 
-Two-factor authentication (2FA) is a secure authentication method that mandates users to verify their identity by providing two or more pieces of factors during login. One factor is something the user knows, such as their username and password. Other factors include something the user has on their device, such as an authenticator app or security key. By requiring multiple forms of verification, 2FA significantly reduces the risk of common threats such as phishing attacks and account takeovers.&#x20;
+Two-factor authentication (2FA) is a secure authentication method that mandates users to verify their identity by providing two or more pieces of factors during login. One factor is something the user knows, such as their username and password. Other factors include something the user has on their device, such as an authenticator app or security key. By requiring multiple forms of verification, 2FA significantly reduces the risk of common threats such as phishing attacks and account takeovers.
 
 {% hint style="info" %}
 For more information, see: [Sendbird Docs](https://sendbird.com/docs/security/documentation/org-account/two-factor-authentication).
