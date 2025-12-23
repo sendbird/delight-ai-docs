@@ -34,12 +34,14 @@ Instructions should not be relied upon as a security mechanism. To protect your 
 
 ### Safeguards
 
-Delight AI agent provides multiple safeguard layers designed to secure instructions and prevent misuse of the AI Agent.
+Delight AI Agent provides multiple layers of safeguards designed to secure instructions and prevent misuse.
 
-* **Guardrails:** Built-in controls that automatically detect and flag inappropriate content before it reaches the AI agent, while also validating outputs before sending to end-users.
-* **Adversarial Defense:** Security features that strive to protect against malicious attempts like prompt injection and jailbreaking designed to manipulate the AI agent’s behavior and breach its security.
-* **Banned Words and Phrases:** Allows organizations to restrict explicit terms, sensitive topics, or competitor mentions.
-* **PII:** When turned on, mask personally identifiable information (PII) such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history.
-* **Low-confidence protection:** Delight AI agent validate content that is determined to be low-confidence. If the agent’s answer is inconsistent with the provided material and is judged to be low-confidence, it is categorized separately.
+* **Guardrails:** Built-in controls that automatically detect and flag inappropriate content before it reaches the AI agent, and validate outputs before they are sent to end users.
+* **Adversarial defense:** Security features that protect against malicious techniques such as prompt injection and jailbreaking attempts intended to manipulate agent behavior.
+* **Banned words and phrases:** Allows organizations to block explicit terms, sensitive topics, or competitor mentions.
+* **PII:** Prevents personally identifiable information (PII), such as phone numbers and email addresses, from appearing in conversations.
+* **Low-confidence protection:** Identifies and validates responses with low confidence. If an AI agent generates responses that are not grounded in the provided knowledge sources, they are categorized as low-confidence messages. You can monitor these messages in [Evaluate > Flagged messages](../dashboard-guide/evaluate/flagged-messages.md).
 
+{% hint style="info" %}
 For more information, refer to [Safeguards guide](../dashboard-guide/build/safeguards.md) or [Safeguards security guide](safeguards/)
+{% endhint %}
