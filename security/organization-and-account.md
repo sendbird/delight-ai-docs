@@ -1,6 +1,6 @@
 # Organization and Account
 
-Sendbird provides features aimed at enhancing the security of accounts and organizations. An overview of these features is as follows. For detailed guides on each session, please refer to the corresponding dedicated pages.
+Sendbird provides a set of features designed to enhance the security of organizations and user accounts. This section provides an overview of these features. Detailed configuration guidance is available in the corresponding documentation.
 
 ### Two-Factor Authentication
 
