@@ -113,7 +113,14 @@
 
 ## Security
 
-* [AI agent environments](security/ai-agent-environments.md)
+* [Overview](security/overview.md)
+* [Organization & Account](security/organization-and-account.md)
 * [Workspace & Agent level instructions](security/workspace-and-agent-level-instructions.md)
-* [AI agent security guide (home)](security/ai-agent-security-guide-home.md)
-* [Organization and account security](security/organization-and-account-security.md)
+* [AI agent environments](security/ai-agent-environments.md)
+* [Shared assets](security/shared-assets/README.md)
+  * [Knowledge](security/shared-assets/knowledge/README.md)
+    * [Low confidence](security/shared-assets/knowledge/low-confidence.md)
+  * [Actionbooks](security/shared-assets/actionbooks.md)
+  * [Tools](security/shared-assets/tools.md)
+* [Safeguards](security/safeguards.md)
+* [Personally Indentifiable Information](security/personally-indentifiable-information.md)
