@@ -118,6 +118,7 @@
 * [Environments](security/environments/README.md)
   * [Workspace vs Agent levels](security/environments/workspace-vs-agent-levels.md)
   * [Development vs Production environments](security/environments/development-vs-production-environments.md)
+* [AI agent instructions](security/ai-agent-instructions.md)
 * [Shared assets](security/shared-assets/README.md)
   * [Knowledge](security/shared-assets/knowledge.md)
   * [Actionbooks](security/shared-assets/actionbooks.md)
