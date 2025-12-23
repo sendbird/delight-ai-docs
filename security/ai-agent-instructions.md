@@ -36,6 +36,8 @@ Instructions should not be relied upon as a security mechanism. To protect your 
 
 Delight AI Agent provides multiple layers of safeguards designed to secure instructions and prevent misuse.
 
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
 * **Guardrails:** Built-in controls that automatically detect and flag inappropriate content before it reaches the AI agent, and validate outputs before they are sent to end users.
 * **Adversarial defense:** Security features that protect against malicious techniques such as prompt injection and jailbreaking attempts intended to manipulate agent behavior.
 * **Banned words and phrases:** Allows organizations to block explicit terms, sensitive topics, or competitor mentions.
