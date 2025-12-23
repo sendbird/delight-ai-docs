@@ -1,4 +1,4 @@
-# AI agent Safeguards
+# Safeguards
 
 Delight AI Agent provides multiple layers of safeguards designed to secure instructions and prevent misuse.
 
@@ -15,6 +15,8 @@ For more information, see: [Safeguards setting guide](../../dashboard-guide/buil
 * **Banned words and phrases:** Allows organizations to block explicit terms, sensitive topics, or competitor mentions.
 * **PII:** Prevents personally identifiable information (PII), such as phone numbers and email addresses, from appearing in conversations.
 * **Safeguard message:** Pre-define a message to send when conversations trigger guardrails, adversarial attacks, or banned words and phrases.
-* **Low-confidence protection:** Identifies and validates responses with low confidence. If an AI agent generates responses that are not grounded in the provided knowledge sources, they are categorized as low-confidence messages.&#x20;
+* **Low-confidence protection:** Identifies and validates responses with low confidence. If an AI agent generates responses that are not grounded in the provided knowledge sources, they are categorized as low-confidence messages.
 
-Messages detected by safeguards are flagged and can be monitored in [Evaluate > Flagged messages](../../dashboard-guide/evaluate/flagged-messages.md).
+{% hint style="info" %}
+Note: Messages detected by safeguards are flagged and can be monitored in [Evaluate > Flagged messages](../../dashboard-guide/evaluate/flagged-messages.md).
+{% endhint %}
