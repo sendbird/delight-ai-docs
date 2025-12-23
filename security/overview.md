@@ -46,10 +46,9 @@ This section covers assets that define what agents know and what they can do.
 
 ***
 
-### 5. AI agent Safeguards
+### 5. Safeguards
 
 This section covers safeguards applied during live conversations to help ensure safe and reliable AI behavior.
 
-* [Safeguards settings](ai-agent-safeguards/ai-agent-safeguards.md) explains how to define restricted or unsafe content and how it is handled during conversations.
-* [Safeguards monitoring ](/broken/pages/jgrleJLEWOG7VpgL78v5)describes how Delight AI agent detects low-confidence responses and sensitive content for review.
+* [Safeguards](safeguards/safeguards.md) explains how to define restricted or unsafe content and how it is handled during conversations.
 * [Personally Indentifiable Information](safeguards/personally-indentifiable-information.md) explains how user data is protected through PII masking, data minimization, and continuous monitoring to reduce privacy and compliance risks<br>
