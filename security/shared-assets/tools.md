@@ -1,8 +1,12 @@
 # Tools
 
-Tools allow an AI agent to connect with external APIs to retrieve or send data dynamically. Using Tools, the agent can initiate sensitive operations such as validating a credit card, checking membership status, or canceling a subscription.
+Tools allows an AI agent to connect with external APIs to retrieve or send data dynamically. Using Tools, the agent can initiate sensitive operations such as validating a credit card, checking membership status, or canceling a subscription.
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+For more information, see: [Authentication for Tools](../../tutorials/authentication-for-tools.md)
+{% endhint %}
 
 Because Tools connect the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector, potentially exposing critical backend infrastructure. The following best practices help ensure Tools are implemented securely.
 
@@ -21,7 +25,7 @@ A secret key is included in the request header. While simple to implement, this 
 A request signature provided in the `X-SendBird-Signature` header ensures message integrity. This method allows your server to verify that the request originated from Sendbird and that its contents have not been altered.
 
 {% hint style="info" %}
-For detailed implementation guidance, see: [Verifying X-SendBird-Signature](https://sendbird.com/docs/chat/platform-api/v3/webhook/webhook-overview#2-headers-3-x-sendbird-signature).
+For more information, see: [Verifying X-SendBird-Signature](https://sendbird.com/docs/chat/platform-api/v3/webhook/webhook-overview#2-headers-3-x-sendbird-signature).
 {% endhint %}
 
 ***
@@ -33,7 +37,7 @@ When a tool sends a request, it can include Sendbird user information. The recei
 For example, consider a tool that allows users to cancel an order. When the tool receives a cancellation request, your server must verify through a database check that the requesting user is indeed the owner of that order. Only after successful validation should the cancellation be executed.
 
 {% hint style="info" %}
-Note: Regardless of the tool’s purpose, the server must always enforce user-level validation before the requested action is processed.
+**Note:** Regardless of the tool’s purpose, the server must always enforce user-level validation before the requested action is processed.
 {% endhint %}
 
 ***
