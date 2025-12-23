@@ -11,7 +11,7 @@ Delight AI agent allows you to configure instructions that guide agent behavior.
 
 ### Instructions security best practice
 
-Instructions can be configured on the Build page for a AI agent and in the Workspace settings section of the dashboard. While instructions play a critical role in shaping agent responses, it is important to understand their security limitations.
+Instructions can be configured on the Build page for a AI agent and in the Workspace settings section of the dashboard. While instructions play a critical role in shaping agent responses, it is essential to understand their security limitations.
 
 #### 1. Do not treat instructions as confidential
 
