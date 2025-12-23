@@ -16,7 +16,7 @@ There are five sections to this guide.
 
 ### 2. AI agent environments
 
-[Development vs Production environments](environments/development-vs-production-environments.md)
+[AI agent instructions](ai-agent-instructions.md)
 
 * Delight AI agent separates Development and Production environments, ensuring secure testing and reliable agent deployment. This distinction helps prevent unnecessary data exposure by clearly identifying test/development and live agents.
 
