@@ -12,53 +12,45 @@ There are five sections to this guide.
 
 ### 1. Organization and Account
 
-[Organization and Account](organization-and-account.md)
+This section explains how to secure access to your Sendbird organization and user accounts. It covers authentication and access controls such as two-factor authentication (2FA), single sign-on (SSO), roles and permissions, and access control policies for both administrators and users.
 
-* This section provides guidance on securing your Sendbird organization and user accounts. It covers critical measures such as enabling Two-Factor Authentication (2FA), implementing Role-Based Access Control (RBAC) aligned with the Principle of Least Privilege, enforcing Single Sign-On (SSO), and applying strong access control policies to safeguard both administrative and user access.
+* [Organization and Account](organization-and-account.md)
 
 ***
 
 ### 2. Environment separation
 
-[Environment separation](environment-separation.md)
+This section describes how Delight AI agent separates development and production environments to support secure testing and reliable deployment. Clear separation between test and live agents helps reduce the risk of unintended data exposure.
 
-* Delight AI agent separates Development and Production environments, ensuring secure testing and reliable agent deployment. This distinction helps prevent unnecessary data exposure by clearly identifying test/development and live agents.
+* [Environment separation](environment-separation.md)
 
 ***
 
 ### 3. AI agent instructions
 
-[AI agent instructions](ai-agent-instructions.md)
+This section explains how to configure and securely manage instructions that guide AI agent behavior. It covers both agent-level and workspace-level instructions, emphasizing best practices to avoid sharing sensitive information.
 
-* This section explains how to configure and securely manage instructions that guide AI agent behavior. It covers both agent-level and workspace-level instructions, emphasizing best practices to avoid sharing sensitive information.
+* [AI agent instructions](ai-agent-instructions.md)
 
 ***
 
 ### 4. Shared assets
 
-[Knowledge](shared-assets/knowledge.md)
+This section covers assets that define what agents know and what they can do.
 
-* Securing an AI agent's knowledge base is essential. This section explains best practices, including secure data ingestion, classifying sensitive content, managing with sensitivity awareness, and implementing lifecycle controls for knowledge assets.
-
-[Actionbooks](shared-assets/actionbooks.md)
-
-* Actionbooks define behavior patterns for AI agents. This section explains governance practices for Actionbooks and outlines unsafe or prohibited content and behaviors that should not be included.
-
-[Tools](shared-assets/tools.md)
-
-* When integrating AI agents with external APIs, prioritize security by implementing strong authentication, detailed authorization, and adhering to the Principle of Least Privilege. Strengthen your defenses against common web threats to ensure data protection.
+* [Knowledge](shared-assets/knowledge.md) explains how to securely manage an agent’s knowledge base, including data ingestion, sensitive content handling, and lifecycle controls.
+* [Actionbooks](shared-assets/actionbooks.md) describes how to govern predefined behavior patterns and prevent unsafe or prohibited behaviors.
+* [Tools](shared-assets/tools.md) focuses on securely integrating external APIs using strong authentication, fine-grained authorization, and least-privilege access.
 
 ***
 
 ### 5. AI agent Safeguards
 
-[Delight AI agent safeguards](safeguards/delight-ai-agent-safeguards.md)
+This section covers safeguards applied during live conversations to help ensure safe and reliable AI behavior.
 
-* To ensure a high-quality and worry-free AI customer experience, Delight AI agent offers features to detect low-confidence messages and filter sensitive content throughout all conversations. This section introduces safeguard measures designed to prevent misuse and ensure AI responses remain safe and reliable.
-
-[Personally Indentifiable Information](safeguards/personally-indentifiable-information.md)
-
-* Protect Personally Identifiable Information (PII) by using Delight AI agent's PII masking features, implementing data minimization strategies, and ensuring continuous monitoring to minimize compliance and privacy risks.
+* [Safeguards settings](ai-agent-safeguards/safeguards-settings.md) explains how to define restricted or unsafe content and how it is handled during conversations.
+* [Safeguards monitoring ](ai-agent-safeguards/safeguards-monitoring.md)describes how Delight AI agent detects low-confidence responses and sensitive content for review.
+* [Personally Indentifiable Information](safeguards/personally-indentifiable-information.md) explains how user data is protected through PII masking, data minimization, and continuous monitoring to reduce privacy and compliance risks
 
 
 

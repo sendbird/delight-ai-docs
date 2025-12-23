@@ -122,6 +122,6 @@
   * [Actionbooks](security/shared-assets/actionbooks.md)
   * [Tools](security/shared-assets/tools.md)
 * [AI agent Safeguards](security/safeguards/README.md)
-  * [Delight AI agent safeguards](security/safeguards/delight-ai-agent-safeguards.md)
+  * [Safeguards settings](security/ai-agent-safeguards/safeguards-settings.md)
+  * [Safeguards monitoring](security/ai-agent-safeguards/safeguards-monitoring.md)
   * [Personally Indentifiable Information](security/safeguards/personally-indentifiable-information.md)
-  * [Low confidence](security/safeguards/low-confidence.md)
