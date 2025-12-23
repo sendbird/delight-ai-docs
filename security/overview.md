@@ -14,9 +14,9 @@ There are five sections to this guide.
 
 ***
 
-### 2. Development vs Production environments
+### 2. Environment separation
 
-[Development vs Production environments](development-vs-production-environments.md)
+[Environment separation](environment-separation.md)
 
 * Delight AI agent separates Development and Production environments, ensuring secure testing and reliable agent deployment. This distinction helps prevent unnecessary data exposure by clearly identifying test/development and live agents.
 
@@ -26,7 +26,7 @@ There are five sections to this guide.
 
 [AI agent instructions](ai-agent-instructions.md)
 
-* Instructions define how agents behave and inherit shared context. This section explains how to configure and manage these instructions securely.
+* This section explains how to configure and securely manage instructions that guide AI agent behavior. It covers both agent-level and workspace-level instructions, emphasizing best practices to avoid sharing sensitive information.
 
 ***
 
@@ -48,11 +48,11 @@ There are five sections to this guide.
 
 ### 5. AI agent Safeguards
 
-[Delight AI agent safeguards](ai-agent-safeguards/delight-ai-agent-safeguards.md)
+[Delight AI agent safeguards](safeguards/delight-ai-agent-safeguards.md)
 
 * To ensure a high-quality and worry-free AI customer experience, Delight AI agent offers features to detect low-confidence messages and filter sensitive content throughout all conversations. This section introduces safeguard measures designed to prevent misuse and ensure AI responses remain safe and reliable.
 
-[Personally Indentifiable Information](ai-agent-safeguards/personally-indentifiable-information.md)
+[Personally Indentifiable Information](safeguards/personally-indentifiable-information.md)
 
 * Protect Personally Identifiable Information (PII) by using Delight AI agent's PII masking features, implementing data minimization strategies, and ensuring continuous monitoring to minimize compliance and privacy risks.
 
