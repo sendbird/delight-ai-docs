@@ -36,7 +36,7 @@ For more information, refer to [Sendbird Docs](https://sendbird.com/docs/securit
 
 ### Roles and permissions
 
-Custom roles and permissions provide the ability to manage user access within the Sendbird Dashboard in a way that caters to your needs. They empower organizations to assign specific access rights to different teams or users, ensuring that they have the precise capabilities they need.
+Custom roles and permissions provide the ability to manage user access within the Delight AI dashboard in a way that caters to your needs. They empower organizations to assign specific access rights to different teams or users, ensuring that they have the precise capabilities they need.
 
 For more information, refer to [Roles and permissions](../dashboard-guide/roles-and-permissions.md).
 
