@@ -4,10 +4,6 @@ Tools allows an AI agent to connect with external APIs to retrieve or send data 
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="info" %}
-For more information, see: [Authentication for Tools](../../tutorials/authentication-for-tools.md)
-{% endhint %}
-
 Because Tools connect the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector, potentially exposing critical backend infrastructure. The following best practices help ensure Tools are implemented securely.
 
 ***
@@ -61,3 +57,7 @@ Continuous monitoring is essential to detect misuse.
 * Regularly review your API server logs to identify suspicious usage, failed attempts, or signs of automated probing.
 
 Effective monitoring ensures Tools remain a controlled and auditable mechanism for executing sensitive operations, rather than a security liability.<br>
+
+{% hint style="info" %}
+For more information, see: [Authentication for Tools](../../tutorials/authentication-for-tools.md)
+{% endhint %}

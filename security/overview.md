@@ -5,6 +5,7 @@ This guide provides security considerations and best practices for Delight AI. S
 <figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
 
 Delight AI’s security model is built on layered scopes, from organization and account access controls to workspace and agent configurations, and finally to runtime safeguards that protect live conversations. This guide is organized into five sections, each corresponding to one of these layers.
+Use the sections below to understand which controls apply at each layer and where to implement them.
 
 ***
 
