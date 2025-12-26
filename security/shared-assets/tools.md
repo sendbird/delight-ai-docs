@@ -20,12 +20,12 @@ All communication between Tools and your server must be authenticated to prevent
 
 A secret key is included in the request header. While simple to implement, this method is more vulnerable to man-in-the-middle attacks, as altered payloads may go undetected.
 
-#### X-SendBird-Signature validation
+#### X-Sendbird-Signature validation
 
-A request signature provided in the `X-SendBird-Signature` header ensures message integrity. This method allows your server to verify that the request originated from Sendbird and that its contents have not been altered.
+A request signature provided in the `X-Sendbird-Signature` header ensures message integrity. This method allows your server to verify that the request originated from Sendbird and that its contents have not been altered.
 
 {% hint style="info" %}
-For more information, see: [Verifying X-SendBird-Signature](https://sendbird.com/docs/chat/platform-api/v3/webhook/webhook-overview#2-headers-3-x-sendbird-signature).
+For more information, see: [Verifying X-Sendbird-Signature](https://sendbird.com/docs/chat/platform-api/v3/webhook/webhook-overview#2-headers-3-x-sendbird-signature).
 {% endhint %}
 
 ***
