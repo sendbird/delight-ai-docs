@@ -1,6 +1,6 @@
 # AI agent instructions
 
-Delight AI agent allows you to configure instructions that guide agent behavior. Instructions can be defined at two levels:
+The Delight AI agent allows you to configure instructions that guide agent behavior. Instructions can be defined at two levels:
 
 * **Workspace:** Shared goals and communication styles applied across multiple agents.
 * **Agent:** Goals and guidelines specific to an individual agent.
@@ -9,9 +9,9 @@ Delight AI agent allows you to configure instructions that guide agent behavior.
 
 ***
 
-### Instructions security best practice
+### Instruction security best practices
 
-Instructions can be configured on the Build page for a AI agent and in the Workspace settings section of the dashboard. While instructions play a critical role in shaping agent responses, it is essential to understand their security limitations.
+Instructions can be configured on the Build page for an AI agent and in the Workspace settings section of the dashboard. While instructions play a critical role in shaping agent responses, it is essential to understand their security limitations.
 
 #### 1. Do not treat instructions as confidential
 

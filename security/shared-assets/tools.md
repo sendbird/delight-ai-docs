@@ -49,7 +49,7 @@ External APIs invoked by Tools are indirectly accessible through the AI agent an
 * Implement strong defenses against common web attacks such as injection, replay attacks, and denial-of-service.
 * Ensure that responses do not include unnecessary data. Sensitive or excessive information in the response can inadvertently be exposed to the AI agent, increasing the attack surface.
 * Apply the principle of least privilege to the server handling these requests. The server should only have access to the minimum resources required to fulfill the tool’s function.
-* Maintain comprehensive server-side logging of API requests and responses, capturing details such as timestamps, requesting client identifiers, request parameters.
+* Maintain comprehensive server-side logging of API requests and responses, capturing details such as timestamps, requesting client identifiers, and request parameters.
 
 ***
 

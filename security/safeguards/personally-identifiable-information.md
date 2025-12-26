@@ -1,4 +1,4 @@
-# Personally Indentifiable Information
+# Personally Identifiable Information
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
@@ -24,7 +24,7 @@ Customers retain full control over their data within the Delight AI agent. You h
 
 #### Data Storage Location Regulation
 
-Delight AI stores PII data only within the region used by the customer and does not transfer or store it in other regions.
+Delight AI stores PII data only within the customer's region and does not transfer or store it in other regions.
 
 ***
 
@@ -32,7 +32,7 @@ Delight AI stores PII data only within the region used by the customer and does 
 
 <figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
 
-The Delight AI includes a PII masking feature that, when enabled, masks personally identifiable information such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history and databases.
+Delight AI includes a PII masking feature that, when enabled, masks personally identifiable information such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history and databases.
 
 This feature uses data redaction, replacing sensitive values with placeholder characters to hide the original data. PII masking is a key security measure that reduces exposure to sensitive information and helps ensure compliance with data protection regulations.
 

@@ -22,7 +22,7 @@ Disable any Actionbook that is no longer needed instead of modifying or leaving 
 
 ### Audit and monitor Actionbooks regularly
 
-Review Actionbook usages to ensure that workflows align with organizational policies and do not introduce unintended usages.
+Review Actionbook usage to ensure that workflows align with organizational policies and do not introduce unintended uses.
 
 Regularly review Actionbook usage to:
 

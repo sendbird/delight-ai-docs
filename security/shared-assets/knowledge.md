@@ -49,7 +49,7 @@ Once classified and integrated, knowledge is deployed for use by the AI agent. A
 
 ### Data management lifecycle
 
-The Delight AI supports saving, syncing, deploying, and deleting knowledge items. Updates made in the Development environment do not automatically apply to Production and must be explicitly deployed.
+Delight AI supports saving, syncing, deploying, and deleting knowledge items. Updates made in the Development environment do not automatically apply to Production and must be explicitly deployed.
 
 To manage this securely:
 
