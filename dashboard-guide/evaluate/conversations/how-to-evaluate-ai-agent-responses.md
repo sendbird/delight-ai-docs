@@ -42,11 +42,14 @@ Admins can grant an evaluator role to dashboard users and set their conversation
 Once evaluators completed their rating, you can see the results in the **Conversations** page. Navigate to **Evaluate > Conversations** to see the results summary or click one of the conversations to see the details. If needed, you can also edit the evaluation scores.
 
 1. In the left menu bar, go to **Evaluate > Conversations**. The page will show you the list of all conversations that AI agent has conducted.
-2. You can reorganize and sort the conversation list using the filters at the top of the screen. The filters below can be handful in terms of AI agent evaluation:
-   1. **Evaluators**
-   2. **Evaluation result**
-   3. **Language**
-   4. **Category**
+2.  You can reorganize and sort the conversation list using the filters at the top of the screen. The filters below can be handful in terms of AI agent evaluation:
+
+    1. **Evaluators**
+    2. **Evaluation result**
+    3. **Language**
+    4. **Category**
+
+    > If AI agent's categorization was <mark style="color:red;background-color:red;">POOR</mark>, a human evaluator can manually reassign the conversation's cateogry and sub-category.
 3. If you wish to edit the evaluation result of a conversation, navigate to the conversation view. You will see the **Edit** button at the top-right corner of the screen in the conversation view. Click it and make changes needed. Then **Submit**.
 
 <figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
@@ -98,5 +101,3 @@ Delight AI dashboard also offers keyboard shortcuts. Hover over your cursor onto
 {% hint style="info" %}
 The **O** in the shortcut is an alphabet letter.
 {% endhint %}
-
-\\
