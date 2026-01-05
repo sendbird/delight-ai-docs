@@ -14,7 +14,7 @@ Use the following tools and insights to evaluate conversation quality and AI age
 
 ### Review the conversation
 
-Each conversation has an AI agent scorecard on its side panel. Rate the AI agent's performance and, if it was poor, leave a brief rationale why. You can also make notes of the things you've noticed in the particular conversation.
+Each conversation has an AI agent scorecard on its side panel. [Evaluators](how-to-evaluate-ai-agent-responses.md#roles) can rate the AI agent's performance and, if it was poor, leave a brief rationale why. You can also make notes of the things you've noticed in the particular conversation.
 
 Here you can assess the AI agent's responses based on the following criteria:
 
@@ -22,3 +22,4 @@ Here you can assess the AI agent's responses based on the following criteria:
 * **Clarity and readability**: how easy the AI agent's responses were to understand.
 * **Relevance**: how well the AI agent's answers and information directly addressed the user's questions and needs.
 * **Solution effectiveness**: how successful the AI agent was in resolving the user's issue or fulfilling their request.
+* **Category**: how accurately the AI agent categorized the conversation. Using the categorization predefined and provided by you, our AI agent can determine which cateogry each conversation belongs to. If a human evaluator rates it <mark style="color:red;background-color:red;">POOR</mark>, they can manually reassign the conversation's category and sub-category.
