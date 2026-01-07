@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Webhook
 
 Delight AI agent supports a webhook API so that you can be notified whenever a new event takes a place during AI-user interaction. From a start of a conversation to human handoff to low-confidence messages, choose a set of events to subscribe to in the Delight AI agent dashboard and use them for your custom implementation.
