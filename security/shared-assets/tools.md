@@ -4,7 +4,7 @@ Tools allows an AI agent to connect with external APIs to retrieve or send data 
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-Because Tools connect the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector, potentially exposing critical backend infrastructure. The following best practices help ensure Tools are implemented securely.
+Because Tools connects the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector and may expose critical backend infrastructure. The best practices below help ensure Tools is implemented securely.
 
 ***
 
