@@ -11,6 +11,7 @@ Template types include:
 * Images
 * CTA buttons
 * Carousels
+* Custom message template
 
 <figure><img src="../../.gitbook/assets/image (86).png" alt="A message template with carousels" width="360"><figcaption><p>A message with carousels</p></figcaption></figure>
 
@@ -82,14 +83,14 @@ When the AI agent calls your image endpoint, it sends the following data in the 
 
 #### **HTTP request**
 
-| Properties                  | Type          | Description                          |
-| --------------------------- | ------------- | ------------------------------------ |
-| `user`                      | nested object | A user object                        |
-| `user.user_id`              | string        |  The user ID in Delight AI dashboard |
-| `ai_agent_context`          | nested object | AI agent context                     |
-| `ai_agent_context.language` | string        | The language code                    |
-| `ai_agent_context.country`  | string        | The country code                     |
-| `ai_agent_context.context`  | nested object | The context objects                  |
+| Properties                  | Type          | Description                         |
+| --------------------------- | ------------- | ----------------------------------- |
+| `user`                      | nested object | A user object                       |
+| `user.user_id`              | string        | The user ID in Delight AI dashboard |
+| `ai_agent_context`          | nested object | AI agent context                    |
+| `ai_agent_context.language` | string        | The language code                   |
+| `ai_agent_context.country`  | string        | The country code                    |
+| `ai_agent_context.context`  | nested object | The context objects                 |
 
 Your endpoint must return a JSON response in the following format:
 
@@ -199,6 +200,44 @@ Your endpoint must return a JSON object containing a `carousel_items` array with
 ```
 
 Use the request data (`user_id`, `language`, `context object`, etc.) to tailor which cards are shown to which users. Support for authentication headers is available if needed.
+
+### Custom message template
+
+You can also render your own message UI using a custom message template. Specify a unique ID for the custom template and the Delight server will deliver a raw response to the AI agent SDK in your client app.
+
+Select Custom for the template type and assign a unique ID to identify the template. Make sure you copy and save the ID so that you can request the template in Delight AI agent SDK.&#x20;
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+The ID can be edited. If you change it, make sure to update the same ID in your SDK implementation. Otherwise, the custom template won't work properly.
+{% endhint %}
+
+#### Sample JSON response
+
+```json
+{
+  "custom_message_templates": [
+    {
+      "id": "coupon",
+      "response": {
+        "status": 200,
+        "content": "{\"title\": \"20% Off\", \"code\": \"SAVE20\"}"
+      },
+      "error": null
+    },
+    {
+      "id": "product-list",
+      "response": null,
+      "error": "Failed to fetch products"
+    }
+  ]
+}
+```
+
+{% hint style="info" %}
+Custom message templates are currently supported for JavaScript SDK only. To learn more about SDK implementation, check our guide on [template rendering for JavaScript](../../sdk-docs/javascript-cdn/features/messages.md#custom-message-template).
+{% endhint %}
 
 ***
 
