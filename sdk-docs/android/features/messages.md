@@ -128,7 +128,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Use case: E-commerce integration, product showcases, inventory display.
 
 <figure>
-  <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-product-list2.png" alt="cascade" width="375">
+  <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-sdk-mobile-message-product-list.png" alt="cascade" width="375">
   <figcaption></figcaption>
 </figure>
 
