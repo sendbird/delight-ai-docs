@@ -152,11 +152,11 @@ interface ExtendedMessagePayload {
 }
 ```
 
-<table><thead><tr><th width="190.29296875">Property</th><th width="130.328125">Type</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>string</td><td>Specifies the unique ID of the custom message template. Make sure it is an exact match with the ID you've set in Delight AI agent dashboard. For more information, see <a href="../../../dashboard-guide/shared-assets/message-templates.md#custom-message-template">our Dashboard guide</a>.</td></tr><tr><td>response.status</td><td>number</td><td>Indicates the HTTP request status. </td></tr><tr><td>response.content</td><td>JSON string</td><td>Specifies the content of the message.</td></tr><tr><td>error</td><td>string</td><td>Specifies the reason why the request failed if it failed.</td></tr></tbody></table>
+<table><thead><tr><th width="190.29296875">Property</th><th width="130.328125">Type</th><th>Description</th></tr></thead><tbody><tr><td>id</td><td>string</td><td>Specifies the unique ID of the custom message template. Make sure it is an exact match with the ID you've set in Delight AI agent dashboard. For more information, see <a href="../../../dashboard-guide/shared-assets/message-templates.md#custom-message-template">our Dashboard guide</a>.</td></tr><tr><td>response.status</td><td>number</td><td>Indicates the HTTP request status.</td></tr><tr><td>response.content</td><td>JSON string</td><td>Specifies the content of the message.</td></tr><tr><td>error</td><td>string</td><td>Specifies the reason why the request failed if it failed.</td></tr></tbody></table>
 
-**Sample JSON payload**&#x20;
+**Sample JSON payload**
 
-&#x20;The client app will receive a JSON payload of `custom_message_templates` like below:
+The client app will receive a JSON payload of `custom_message_templates` like below:
 
 ```json
 {
@@ -191,7 +191,7 @@ To render a custom message template, you must:
 
 3\) process the template data.
 
-#### **1) Message component layout**&#x20;
+#### **1) Message component layout**
 
 Custom templates are rendered in a dedicated slot within the message structure. Understanding a message layout helps you see where your custom component will appear:
 
@@ -211,7 +211,7 @@ Custom templates are rendered in a dedicated slot within the message structure. 
 <SuggestedReplies />
 ```
 
-#### **2) Register a custom message template**&#x20;
+#### **2) Register a custom message template**
 
 Register your custom message template as `IncomingMessageLayout.MessageTemplate` under `AgentProviderContainer`. In the following snippet, you'll register `MyCustomMessageTemplate` as a component.
 
@@ -222,11 +222,11 @@ If you don't register a custom component, this template slot renders nothing by 
 <pre class="language-typescript" data-overflow="wrap"><code class="lang-typescript"><strong>import { AgentProviderContainer, IncomingMessageLayout } from '@sendbird/ai-agent-messenger-react';
 </strong>
 &#x3C;AgentProviderContainer {...props}>
-  &#x3C;IncomingMessageLayout.MessageTemplate component={MyCustomMessageTemplate} />
+  &#x3C;IncomingMessageLayout.CustomMessageTemplate component={MyCustomMessageTemplate} />
 &#x3C;/AgentProviderContainer>;
 </code></pre>
 
-#### **3) Render with `CustomMessageTemplateData`**&#x20;
+#### **3) Render with `CustomMessageTemplateData`**
 
 Your custom component receives `extendedMessagePayload` which contains the `custom_message_templates` array. You can retrieve the data to render the message. Here's how to access and render it:
 
@@ -250,13 +250,13 @@ function MyCustomMessageTemplate({ extendedMessagePayload }: Props) {
 
 Refer to the snippets in the tabs in the case of exceptions such as:
 
-* Fallback&#x20;
+* Fallback
 * API request fail
 * Runtime error
 
 {% tabs %}
 {% tab title="a) Fallback UI" %}
-#### a) Fallback UI for unregistered template
+**a) Fallback UI for unregistered template**
 
 The following snippet demonstrates how to render a fallback UI when an unregistered template ID is passed through. In the SDK for JavaScript, an "Unsupported template" UI will appear against a yellow background.
 
@@ -279,7 +279,7 @@ const FallbackUI = () => <div>Unsupported template type</div>;
 {% endtab %}
 
 {% tab title="b) API fail" %}
-#### b) Error UI - API call failed
+**b) Error UI - API call failed**
 
 The following snippet demonstrates how to handle when an API request for a custom template failed.
 
@@ -301,7 +301,7 @@ const RequestErrorUI = () => <div>Please retry later</div>;
 {% endtab %}
 
 {% tab title="c) Runtime error" %}
-#### c) Error Boundary - Runtime error
+**c) Error Boundary - Runtime error**
 
 The following snippet demonstrates how to handle when a runtime error occurs due to unexpected causes such as an API response change.
 
