@@ -1,7 +1,6 @@
 # Organization and Account
 
-Sendbird provides a set of features designed to enhance the security of organizations and user accounts. This section provides an overview of these features. Detailed configuration guidance is available in the corresponding documentation.
-The links in each subsection point to deeper setup guides for that feature.
+Sendbird provides a set of features designed to enhance the security of organizations and user accounts. This section provides an overview of these features. Detailed configuration instructions can be found in the linked documentation within each subsection.
 
 ***
 
