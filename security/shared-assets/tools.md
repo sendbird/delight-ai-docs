@@ -2,9 +2,9 @@
 
 Tools allows an AI agent to connect with external APIs to retrieve or send data dynamically. Using Tools, the agent can initiate sensitive operations such as validating a credit card, checking membership status, or canceling a subscription.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/tools@3x.png" alt=""><figcaption></figcaption></figure>
 
-Because Tools connect the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector, potentially exposing critical backend infrastructure. The following best practices help ensure Tools are implemented securely.
+Because Tools connects the AI agent to external systems, a compromised or misconfigured tool can become a primary attack vector and may expose critical backend infrastructure. The best practices below help ensure Tools is implemented securely.
 
 ***
 
