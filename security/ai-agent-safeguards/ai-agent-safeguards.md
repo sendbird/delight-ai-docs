@@ -6,7 +6,7 @@ Delight AI Agent provides multiple layers of safeguards designed to secure instr
 For more information, see: [Safeguards setting guide](../../dashboard-guide/build/safeguards.md)
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+{% include "../../.gitbook/includes/untitled.md" %}
 
 * **Guardrails:** Built-in controls that automatically detect and flag inappropriate content before it reaches the AI agent, and validate outputs before they are sent to end users.
 * **Adversarial defense:** Security features that protect against malicious techniques such as prompt injection and jailbreaking attempts intended to manipulate agent behavior.

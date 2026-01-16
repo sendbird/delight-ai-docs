@@ -2,7 +2,7 @@
 
 Knowledge is the foundation of the AI agent's responses. Securing this critical asset requires careful attention to data ingestion, classification, and lifecycle management.
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/knowledge@3x (2).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

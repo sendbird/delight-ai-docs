@@ -2,4 +2,4 @@
 title: Untitled
 ---
 
-<figure><img src="../assets/CleanShot 2025-09-03 at 15.57.08.gif" alt=""><figcaption></figcaption></figure>
+<div data-full-width="true"><figure><img src="../assets/safeguards@3x.png" alt=""><figcaption></figcaption></figure></div>
