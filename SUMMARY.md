@@ -110,3 +110,17 @@
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
+
+## Security
+
+* [Overview](security/overview.md)
+* [Organization and Account](security/organization-and-account.md)
+* [Environment separation](security/environment-separation.md)
+* [AI agent instructions](security/ai-agent-instructions.md)
+* [Shared assets](security/shared-assets/README.md)
+  * [Knowledge](security/shared-assets/knowledge.md)
+  * [Actionbooks](security/shared-assets/actionbooks.md)
+  * [Tools](security/shared-assets/tools.md)
+* [Safeguards](security/safeguards/README.md)
+  * [Safeguards](security/ai-agent-safeguards/ai-agent-safeguards.md)
+  * [Personally Identifiable Information](security/safeguards/personally-identifiable-information.md)
