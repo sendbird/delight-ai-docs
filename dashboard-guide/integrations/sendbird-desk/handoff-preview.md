@@ -1,6 +1,6 @@
 # Handoff preview
 
-When you trigger a handoff from an AI agent conversation in a Development or Staging environment to Desk, the system displays a preview instead of creating an actual ticket. This preview shows  ticket information that would be sent to Desk based on your configured Desk rules.
+Delight AI seamlessly integrates with Sendbird Desk for conversation handoffs. To help you verify this integration before deploying to production, triggering a handoff in a Development or Staging environment displays a preview instead of creating an actual ticket. This preview shows ticket information that would be sent to Desk based on Desk rules you set.
 
 {% hint style="info" %}
 To configure Desk rules, go to **Settings > Desk > Rules** on Sendbird Dashboard.
