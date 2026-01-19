@@ -43,4 +43,4 @@ Review the preview to confirm that ticket information is correctly configured ba
 
 ### Ready for production
 
-Preview and verify your end-to-end handoff flow. Once confirmed, deploy to production.
+Preview and verify your end-to-end handoff flow. Once confirmed, deploy to Production.
