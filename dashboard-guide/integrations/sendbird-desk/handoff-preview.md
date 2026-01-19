@@ -6,6 +6,8 @@ When you trigger a handoff from an AI agent conversation in a Dev or Stage envir
 To configure Desk rules, go to Settings > Desk > Rules on Sendbird Dashboard.
 {% endhint %}
 
+{preview modal image}
+
 ## When to use
 
 Use Handoff preview to:
@@ -21,6 +23,4 @@ Use Handoff preview to:
 3. Trigger a handoff to Sendbird Desk.
 4. Click the **View details for handoff preview**\
    {link image}
-
-
 
