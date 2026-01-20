@@ -30,7 +30,7 @@ jobs:
           repository: sendbird/delight-ai-agent
           ref: main
           path: delight-ai-agent
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.SDK_GH_BOT1_TOKEN }}
           fetch-depth: 2                   # need previous commit for diff
 
       # NEW: detect which files changed in the latest commit on delight-ai-agent
@@ -306,7 +306,7 @@ jobs:
       - name: Approve pull request via API
         if: steps.push-and-pr.outputs.pr_number != '' && steps.commit-changes.outputs.skip_pr == 'false'
         env:
-          APPROVE_TOKEN: ${{ secrets.APPROVE_BOT_TOKEN }}
+          APPROVE_TOKEN: ${{ secrets.SDK_GH_BOT2_TOKEN }}
           REPO: sendbird/delight-ai-docs
           PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
         run: |
