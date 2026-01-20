@@ -52,6 +52,7 @@
   * [Sprinklr](dashboard-guide/integrations/sprinklr.md)
   * [Amazon S3](dashboard-guide/integrations/amazon-s3.md)
   * [Genesys](dashboard-guide/integrations/genesys.md)
+  * [ServiceNow](dashboard-guide/integrations/servicenow.md)
 * [Roles and permissions](dashboard-guide/roles-and-permissions.md)
 * [Webhook](dashboard-guide/webhook.md)
 
