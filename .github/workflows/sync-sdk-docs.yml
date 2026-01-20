@@ -30,7 +30,7 @@ jobs:
           repository: sendbird/delight-ai-agent
           ref: main
           path: delight-ai-agent
-          token: ${{ secrets. SDK_GH_BOT1_TOKEN }}
+          token: ${{ secrets.SDK_GH_BOT1_TOKEN }}
           fetch-depth: 2                   # need previous commit for diff
 
       # NEW: detect which files changed in the latest commit on delight-ai-agent
