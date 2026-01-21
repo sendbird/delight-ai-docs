@@ -40,7 +40,7 @@ In the **Conversation Information** panel, you can find the **Handoff details** 
 The modal displays:
 
 * **Ticket priority**: The ticket priority based on Desk's priority rules.
-* **Assigned team**: The team that would receive the ticket based on Desk's assignment rules.
+* **Assigned team**: The assigned team based on Desk's assignment rules.
 * **Updated ticket fields**: Desk ticket field values populated from the context object. For more information, see the [**Desk > Handoff**](handoff.md) guide.
 * **Context object**: Full context data passed during handoff.
 
