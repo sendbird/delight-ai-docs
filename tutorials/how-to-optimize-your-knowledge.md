@@ -5,7 +5,7 @@ Documents in Knowledge are key sources of information when Delight AI agents han
 Here are some tips to refine your knowledge bases to optimize the AI agent's performance.
 
 {% hint style="success" %}
-See [our tutorial on actionbook](actionbook-best-practices.md) specifically dealing with ways to build an optimal workflow for your AI agent.&#x20;
+See [our tutorial on actionbook](actionbook-best-practices.md) specifically dealing with ways to build an optimal workflow for your AI agent.
 {% endhint %}
 
 ***
@@ -19,7 +19,7 @@ Make your content direct and simple. To do so:
 * Keep your paragraphs short and simple, focusing on one specific topic per paragraph.
 * Use full sentences for clear information.
 * Avoid a one-word answer that starts and ends only with “yes” or “no”. Provide detailed information or instructions to follow.
-* Use plain language and skip technical jargons, slangs, and complex terms.&#x20;
+* Use plain language and skip technical jargons, slangs, and complex terms.
 
 {% hint style="danger" %}
 **Avoid**\
@@ -155,14 +155,14 @@ Note: Last updated on August 1, 2025. This guide reflects the current features a
 
 ***
 
-## Tip 3: Structure Your Content&#x20;
+## Tip 3: Structure Your Content
 
 ### 1. Organize Content with Headings
 
 Use headings to organize your document into clear sections and subsections. Follow a consistent hierarchy (e.g., main heading, then sub-heading). Make their title descriptive and brief, showing what's in the section. We recommend the following:
 
-* Always put text right after a heading and don't stack headings.&#x20;
-* Avoid too many headings. A heading should cover a significant amount of content.&#x20;
+* Always put text right after a heading and don't stack headings.
+* Avoid too many headings. A heading should cover a significant amount of content.
 
 {% hint style="success" %}
 **Best practice**
@@ -180,7 +180,7 @@ Use headings to organize your document into clear sections and subsections. Foll
 Use bullet points when presenting features, requirements, or any unordered items. For step-by-step instructions, sequences, or ordered procedures, number each step for smooth flow. Make sure each list item is concise and focused on a single distinct topic.
 
 {% hint style="danger" %}
-**Avoid** \
+**Avoid**\
 Our product offers several benefits, such as improved battery life, a lighter design for portability, and enhanced processing speed for demanding tasks.
 {% endhint %}
 
@@ -222,13 +222,13 @@ Starting a document without any introductory statement about its purpose or boun
 Ensure data is organized into distinct rows and columns. Employ uniform spacing or delimiters (e.g., pipes |) to separate columns. Each row should represent a single entry, with each cell containing unique information. For data in the table, do the following:
 
 * Keep the column headings of your table short and simple.
-* Clearly label the data, including relevant units or symbols (e.g., %, $).&#x20;
+* Clearly label the data, including relevant units or symbols (e.g., %, $).
 * Consider writing tables in markdown format for clarity and ease of use.
 
 {% hint style="danger" %}
 **Avoid (Inconsistent spacing, hard for AI Agents to process)**\
 Product Price Availability\
-Laptop  $1200 In Stock\
+Laptop $1200 In Stock\
 Monitor $300 Low Stock\
 Keyboard $75 Out of Stock
 {% endhint %}
@@ -248,38 +248,26 @@ Never combine or merge cells across rows or columns in tables. Each cell must co
 
 {% hint style="danger" %}
 **Avoid (Visually Merged Cells)**\
-&#x20;  Category  |  Item  \
-\-------------- | -------------- \
-Home Goods | Sofa \
-&#x20;                        \| Lamp \
-Electronics.   | TV \
-&#x20;                        \| Phone
+Category | Item\
+\-------------- | --------------\
+Home Goods | Sofa\
+\| Lamp\
+Electronics. | TV\
+\| Phone
 {% endhint %}
 
 {% hint style="success" %}
 **Best practice (Clearly Structured Data)**\
-Category  | Item\
+Category | Item\
 \------------|----------\
-Home Goods  | Sofa\
-Home Goods  | Lamp\
+Home Goods | Sofa\
+Home Goods | Lamp\
 Electronics | TV\
 Electronics | Phone
 {% endhint %}
 
 ## Conclusion
 
-For AI Agents to give accurate answers, your documents must be clear and well-structured.&#x20;
+For AI Agents to give accurate answers, your documents must be clear and well-structured.
 
 By following these guidelines, you'll create documents that are easy for not only AI Agents but also humans to use, transforming them into powerful resources for precise and valuable information.
-
-\
-
-
-
-
-
-
-
-
-
-

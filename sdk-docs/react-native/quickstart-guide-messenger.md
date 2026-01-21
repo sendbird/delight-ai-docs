@@ -462,4 +462,4 @@ The SDK supports multiple languages and allows you to customize UI strings. You 
 </AIAgentProviderContainer>
 ```
 
-For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](MULTILANGUAGE.md).
+For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](./multi-language-support.md).

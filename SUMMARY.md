@@ -51,9 +51,11 @@
   * [Confluence](dashboard-guide/integrations/confluence.md)
   * [Sendbird Desk](dashboard-guide/integrations/sendbird-desk/README.md)
     * [AI copilot](dashboard-guide/integrations/sendbird-desk/ai-copilot.md)
+    * [Handoff](dashboard-guide/integrations/sendbird-desk/handoff.md)
   * [Sprinklr](dashboard-guide/integrations/sprinklr.md)
   * [Amazon S3](dashboard-guide/integrations/amazon-s3.md)
   * [Genesys](dashboard-guide/integrations/genesys.md)
+  * [ServiceNow](dashboard-guide/integrations/servicenow.md)
 * [Roles and permissions](dashboard-guide/roles-and-permissions.md)
 * [Webhook](dashboard-guide/webhook.md)
 
@@ -113,3 +115,17 @@
 * [Omnichannel communication with triggers](tutorials/omnichannel-communication-with-triggers.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
+
+## Security
+
+* [Overview](security/overview.md)
+* [Organization and Account](security/organization-and-account.md)
+* [Environment separation](security/environment-separation.md)
+* [AI agent instructions](security/ai-agent-instructions.md)
+* [Shared assets](security/shared-assets/README.md)
+  * [Knowledge](security/shared-assets/knowledge.md)
+  * [Actionbooks](security/shared-assets/actionbooks.md)
+  * [Tools](security/shared-assets/tools.md)
+* [Safeguards](security/safeguards/README.md)
+  * [Safeguards](security/ai-agent-safeguards/ai-agent-safeguards.md)
+  * [Personally Identifiable Information](security/safeguards/personally-identifiable-information.md)
