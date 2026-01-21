@@ -25,7 +25,7 @@ If you don't have any assignment or priority rules configured in Desk, tickets w
 
 ### Step 1: Trigger a handoff in a Development or Staging environment
 
-1. Start a conversation with your AI agent in a Dev or Stage environment and trigger a handoff.
+1. Start a conversation with your Delight AI agent in a Dev or Stage environment and trigger a handoff.
 2. Check the completed conversations in **Evaluate > Reports > Conversations** on the Delight AI dashboard.
 3. Click a conversation, and you'll see the conversation details.
 
@@ -41,16 +41,16 @@ The modal displays:
 
 * **Ticket priority**: The ticket priority based on Desk's priority rules.
 * **Assigned team**: The team that would receive the ticket.
-* **Updated ticket fields**: Desk ticket fields values populated from the context object. For more information, see the [**Desk > Handoff**](./handoff.md) guide.
+* **Updated ticket fields**: Desk ticket fields values populated from the context object. For more information, see the [**Desk > Handoff**](handoff.md) guide.
 * **Context object**: Full context data passed during handoff.
 
 ***
 
 ## What's next
 
-### Test the end-to-end handoff flow without creating an actual Desk ticket
+### Evaluate the entire process without creating a Desk ticket
 
-Verify the complete flow from AI agent conversation to Desk handoff in a non-production environment. Once confirmed, deploy the AI agent to Production.
+Validate the entire process from Delight AI agent interaction to Desk handoff in a test environment without generating an actual Desk ticket. Once verified, proceed to deploy the Delight AI agent to the production environment.
 
 {% hint style="info" %}
 If you want to turn off this feature so you can create an actual Desk ticket regardless of the environment, please contact us.
