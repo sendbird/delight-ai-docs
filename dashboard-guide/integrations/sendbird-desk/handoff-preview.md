@@ -1,9 +1,9 @@
 # Handoff preview
 
-Delight AI seamlessly integrates with Sendbird Desk for conversation handoffs. To help you verify this integration, triggering a handoff in a Development or Staging environment displays a preview instead of creating an actual Desk ticket. This preview shows ticket information that would be sent to Desk based on the Desk assignment and priority rules you set. This helps you verify the handoff flow, check assigned teams, and debug issues without affecting your live Desk workspace.
+When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This preview shows ticket information that would be sent to Desk based on the assignment and priority rules you set, helping you verify the handoff flow, check assigned teams, and identify issues without affecting your live Desk workspace.
 
 {% hint style="info" %}
-To configure Desk assignment rules and ticket priority rules, go to [**Settings > Desk > Rules**](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules) on Sendbird Dashboard.
+To configure Desk assignment rules and ticket priority rules, go to [**Settings > Desk > Rules**](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules) on the Sendbird Dashboard.
 {% endhint %}
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
@@ -12,9 +12,8 @@ To configure Desk assignment rules and ticket priority rules, go to [**Settings 
 
 ## Prerequisites
 
-* Sendbird Desk integration.
-* AI agent in a Development or Staging environment.
-* (Optional) Desk assignment and priority rules are configured.
+* Sendbird Desk integration is enabled.
+* Desk assignment and priority rules are configured.
 
 {% hint style="info" %}
 If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
@@ -26,15 +25,15 @@ If you don't have any assignment or priority rules configured in Desk, tickets w
 
 ### Step 1: Trigger a handoff in a Development or Staging environment
 
-1. Start a conversation with your AI agent in Dev or Stage environment and trigger a handoff.
-2. Check the completed conversations in Evaluate > Reports > Conversations on Delight AI dashboard.
-3. Click a conversation then you can see a conversation details.
+1. Start a conversation with your AI agent in a Dev or Stage environment and trigger a handoff.
+2. Check the completed conversations in **Evaluate > Reports > Conversations** on the Delight AI dashboard.
+3. Click a conversation, and you'll see the conversation details.
 
 <figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: View details for handoff preview
 
-In the **Conversation Information** panel, you can find the **Handoff details** section. Click **View details for handoff preview** to open the preview modal.&#x20;
+In the **Conversation Information** panel, you can find the **Handoff details** section. Click **View details for handoff preview** to open the preview modal.
 
 <figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
@@ -42,13 +41,17 @@ The modal displays:
 
 * **Ticket priority**: The ticket priority based on Desk's priority rules.
 * **Assigned team**: The team that would receive the ticket.
-* **Updated ticket fields**: Values populated from the context object.
+* **Updated ticket fields**: Desk ticket fields values populated from the context object. For more information, see the [**Desk > Handoff**](./handoff.md) guide.
 * **Context object**: Full context data passed during handoff.
 
 ***
 
 ## What's next
 
-### Test end-to-end handoff flow without creating an actual Desk ticket
+### Test the end-to-end handoff flow without creating an actual Desk ticket
 
-Verify the complete flow from AI agent conversation to Desk handoff in a non-production environment. Once confirmed, deploy the AI agent to Production safely.
+Verify the complete flow from AI agent conversation to Desk handoff in a non-production environment. Once confirmed, deploy the AI agent to Production.
+
+{% hint style="info" %}
+If you want to turn off this feature so you can create an actual Desk ticket regardless of the environment, please contact us.
+{% endhint %}
