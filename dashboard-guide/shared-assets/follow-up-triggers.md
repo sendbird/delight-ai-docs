@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Follow-up triggers
 
 Utilize follow-up triggers to enhance communication for users by providing seamless omnichannel support. These triggers activate specific actions, such as shifting conversations to different channels or making an API call, offering improved assistance with user inquiries.
