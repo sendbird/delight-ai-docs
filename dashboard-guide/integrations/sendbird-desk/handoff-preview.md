@@ -26,23 +26,24 @@ If you don't have any assignment or priority rules configured in Desk, tickets w
 
 ### Step 1: Trigger a handoff in a Development or Staging environment
 
-Start a conversation with your AI agent and trigger a handoff to Desk.
+Start a conversation with your AI agent and trigger a handoff to Desk and check the **Conversation Information** panel on **Evaluate > Conversations** page.
 
-### Step 2: Open the Handoff details
+{Handoff triggered in conversation}
 
-In the **Conversation Information** panel, find the **Handoff details** section. You can see a quick summary including:
+### Step 2: View details for handoff preview
 
-* **Priority**: The ticket priority based on Desk's priority rules.
+In the **Conversation Information**, find the **Handoff details** section and then click **View details for handoff preview** to open the preview modal.&#x20;
+
+{Handoff details in Conversation Information and preview modal}
+
+
+
+The modal displays:
+
+* **Ticket priority**: The ticket priority based on Desk's priority rules.
 * **Assigned team**: The team that would receive the ticket.
-
-### Step 3: View the full preview
-
-Click **View details for handoff preview** to open the preview modal. The modal displays:
-
-* **Ticket priority**
-* **Assigned team**
 * **Updated ticket fields**: Values populated from the context object.
-* **Context object**: Full context data passed during handoff
+* **Context object**: Full context data passed during handoff.
 
 ***
 
