@@ -26,17 +26,17 @@ If you don't have any assignment or priority rules configured in Desk, tickets w
 
 ### Step 1: Trigger a handoff in a Development or Staging environment
 
-Start a conversation with your AI agent and trigger a handoff to Desk and check the **Conversation Information** panel on **Evaluate > Conversations** page.
+1. Start a conversation with your AI agent in Dev or Stage environment and trigger a handoff.
+2. Check the completed conversations in Evaluate > Reports > Conversations on Delight AI dashboard.
+3. Click a conversation then you can see a conversation details.
 
-{Handoff triggered in conversation}
+<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: View details for handoff preview
 
-In the **Conversation Information**, find the **Handoff details** section and then click **View details for handoff preview** to open the preview modal.&#x20;
+In the **Conversation Information** panel, you can find the **Handoff details** section. Click **View details for handoff preview** to open the preview modal.&#x20;
 
-{Handoff details in Conversation Information and preview modal}
-
-
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 The modal displays:
 
