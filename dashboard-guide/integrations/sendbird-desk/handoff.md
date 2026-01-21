@@ -8,10 +8,10 @@ Handoff is a feature that transfers conversations from an AI agent to a Desk hum
 
 Handoff behaves differently depending on the environment:
 
-| Environment | Behavior |
-|-------------|----------|
+| Environment               | Behavior                                                                                                                      |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | **Development / Staging** | Displays a **handoff preview** without creating an actual Desk ticket. Use this to verify the handoff flow before going live. |
-| **Production** | Creates an actual Desk ticket and assigns it to a human agent. |
+| **Production**            | Creates an actual Desk ticket and assigns it to a human agent.                                                                |
 
 ***
 
@@ -25,6 +25,8 @@ To configure Desk assignment rules and ticket priority rules, go to [**Settings 
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
 
+***
+
 ### Prerequisites
 
 * Sendbird Desk integration is enabled.
@@ -33,6 +35,8 @@ To configure Desk assignment rules and ticket priority rules, go to [**Settings 
 {% hint style="info" %}
 If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
 {% endhint %}
+
+***
 
 ### How to access
 
@@ -69,6 +73,8 @@ When a handoff occurs in a Production environment, the AI agent passes customer-
 
 {% include "../../../.gitbook/includes/sample-integration-desk-handoff-1.md" %}
 
+***
+
 ### Prerequisites
 
 Context object is a key-value store that sends customer-specific information to the AI agent so it can provide relevant answers. It can include business details such as order numbers, membership tiers, or any other data the agent should know.
@@ -81,6 +87,8 @@ If you haven't set up a context object yet, refer to the following guides:
 * [SDK DOCS > JavaScript (CDN) > Context object](../../../sdk-docs/javascript-cdn/context-object.md)
 * [SDK DOCS > React (npm) > Context object](../../../sdk-docs/react-npm/context-object.md)
 * [PLATFORM API > Context object for messenger channel](../../../platform-api/context-object-for-messenger-channel.md)
+
+***
 
 ### How to enable
 
