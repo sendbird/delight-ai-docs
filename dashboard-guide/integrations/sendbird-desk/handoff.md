@@ -1,19 +1,28 @@
 # Handoff
 
-When an AI agent hands off a conversation to a human agent in Desk, it passes customer-specific information called a context object. Desk uses this context object when creating or updating a ticket, automatically populating any ticket fields that match the fields in the context object.
+AI agent can transfer the conversation to Desk human agent. It's called **Handoff**. When the handoff happens, it passes customer-specific information called a context object and ticket information to Desk.&#x20;
 
-AI agent can transfer the conversation to Desk human agent. It's called Handoff. When the handoff happens, it passes customer-specific information called a context object and ticket information to Desk.&#x20;
+Need to guide
+
+* Context object
+* auto-populating
+* difference between two envs
+* handoff preview
+  * Desk rules -> preview
+
+### Development vs Production environments
+
+Triggering a handoff in Development or Staging do not impact the live Desk workspace. Instead, it provides a handoff preview including ticket information and context object. When the handoff is triggered in Production, an actual Desk ticket will be created and assigned to human agent.
+
+So, this page will guide about handoff preview for test environment and result of handoff for production environment.
 
 ***
 
-## What you can do
+## What's the handoff?
 
-## Development vs Production environments
+When an AI agent hands off a conversation to a human agent in Desk, it passes customer-specific information called a context object. Desk uses this context object when creating or updating a ticket, automatically populating any ticket fields that match the fields in the context object.
 
-Triggering a handoff in Development or Staging do not impact the live Desk workspace.
 
-* **Development** **or Staging**— you
-* **Production** — the live version users interact with
 
 ***
 
