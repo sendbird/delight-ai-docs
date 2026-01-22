@@ -4,34 +4,34 @@ Handoff is a feature that transfers conversations from an AI agent to the other 
 
 Handoff to Desk works differently depending on your environment:
 
-| AI agent environment | Behavior |
-|----------------------|----------|
-| **Test:** Development / Staging | Displays a [**handoff preview**](#handoff-preview) without creating an actual Desk ticket. |
-| **Live:** Production | Creates a Desk ticket with [**auto-populated ticket fields**](#auto-populated-ticket-fields). |
+<table><thead><tr><th width="276.7308349609375">AI agent environment</th><th>Behavior</th></tr></thead><tbody><tr><td><strong>Test:</strong> Development / Staging</td><td>Displays a <a href="handoff.md#handoff-preview"><strong>handoff preview</strong></a> without creating an actual Desk ticket.</td></tr><tr><td><strong>Live:</strong> Production</td><td>Creates a Desk ticket with <a href="handoff.md#auto-populated-ticket-fields"><strong>auto-populated ticket fields</strong></a>.</td></tr></tbody></table>
 
 ***
 
 ## Prerequisites
 
-- Sendbird Desk integration is enabled.
-- Context object is set up.
-    - A context object is a key-value store that sends customer-specific information to the AI agent. It can include business details such as order numbers, membership tiers, or any other data.
-    - If you haven't set up a context object yet, refer to the following guides:
-        - [DASHBOARD GUIDE > Users > Pass a context object to AI agents](../../users.md#pass-a-context-object-to-ai-agents)
-        - [SDK DOCS > iOS > Context object](../../../sdk-docs/ios/context-object.md)
-        - [SDK DOCS > Android > Context object](../../../sdk-docs/android/context-object.md)
-        - [SDK DOCS > JavaScript (CDN) > Context object](../../../sdk-docs/javascript-cdn/context-object.md)
-        - [SDK DOCS > React (npm) > Context object](../../../sdk-docs/react-npm/context-object.md)
-        - [PLATFORM API > Context object for messenger channel](../../../platform-api/context-object-for-messenger-channel.md)
+* Sendbird Desk integration is enabled.
+* Context object is set up.
+  * A context object is a key-value store that sends customer-specific information to the AI agent. It can include business details such as order numbers, membership tiers, or any other data.
+  * If you haven't set up a context object yet, refer to the following guides:
+    * [DASHBOARD GUIDE > Users > Pass a context object to AI agents](../../users.md#pass-a-context-object-to-ai-agents)
+    * [SDK DOCS > iOS > Context object](../../../sdk-docs/ios/context-object.md)
+    * [SDK DOCS > Android > Context object](../../../sdk-docs/android/context-object.md)
+    * [SDK DOCS > JavaScript (CDN) > Context object](../../../sdk-docs/javascript-cdn/context-object.md)
+    * [SDK DOCS > React (npm) > Context object](../../../sdk-docs/react-npm/context-object.md)
+    * [PLATFORM API > Context object for messenger channel](../../../platform-api/context-object-for-messenger-channel.md)
+* Desk assignment and priority rules are configured.
+  * To configure the rules, go to [**Settings > Desk > Rules**](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules) on the Sendbird dashboard.
+  * If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
 
 ***
 
 ## Handoff preview
 
-When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This preview shows ticket information that would be sent to Desk based on the assignment and priority rules you set, helping you verify the handoff flow, check assigned teams, and identify issues without affecting your live Desk workspace.
+When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This shows preview of ticket priority and assigned team based on Desk rules, preview of custom fields would be populated automatically and context object. It helps you verify the entire process from Delight AI agent conversation to Desk handoff without affecting your live Desk workspace.
 
 {% hint style="info" %}
-To configure Desk assignment rules and ticket priority rules, go to [**Settings > Desk > Rules**](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules) on the Sendbird dashboard. If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
+To create an actual Desk ticket regardless of the environment, contact us to turn off this feature.
 {% endhint %}
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
@@ -56,14 +56,10 @@ In the **Conversation Information** panel, find the **Handoff details** section.
 
 The modal displays:
 
-- **Ticket priority**: Based on Desk's priority rules.
-- **Assigned team**: Based on Desk's assignment rules.
-- **Updated ticket fields**: Values populated from the context object.
-- **Context object**: Full context data passed during handoff.
-
-{% hint style="info" %}
-To create an actual Desk ticket regardless of the environment, contact us to turn off this feature.
-{% endhint %}
+* **Ticket priority**: The ticket priority based on Desk's priority rules.
+* **Assigned team**: The assigned team based on Desk's assignment rules.
+* **Updated ticket fields**: Desk ticket field values populated from the context object.
+* **Context object**: Full context data passed during handoff.
 
 ***
 
@@ -92,4 +88,3 @@ The context object's field keys must follow the Desk field key convention: only 
 #### Step 2: Trigger a handoff from the AI agent to Desk in a Production environment
 
 Any ticket fields that match the context object’s fields will appear in the ticket fields section of the ticket view, so you don’t need to update the values manually.
-
