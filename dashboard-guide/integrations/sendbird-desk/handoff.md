@@ -1,11 +1,12 @@
 # Handoff
 
-Handoff is a feature that transfers conversations from an AI agent to the other integrated platform. When a handoff occurs, Desk creates a ticket with a specific priority, assigns it to a team, and automatically populates ticket fields using the context object—so human agents can quickly understand the customer's situation.
+Handoff is a feature that transfers conversations from an AI agent to the other integrated platform. When a handoff occurs, Desk creates a ticket with a specific priority, assigns it to a team, and receives customer-specific information called a context object from the AI agent—so human agents can quickly understand the customer's situation.
 
+\
 The following features are available only for Desk handoff:
 
-* Auto-populating ticket fields based on context object.
-* Handoff preview for end-to-end test without creating actual Desk ticket.
+* Auto-populating ticket fields based on the context object.
+* Handoff preview for end-to-end testing without creating an actual Desk ticket.
 
 ***
 
