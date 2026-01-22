@@ -2,6 +2,10 @@
 
 Handoff is a feature that transfers conversations from an AI agent to a Desk human agent. When a handoff occurs, the AI agent passes customer-specific information called a **context object** to Desk. Desk uses this context object to automatically populate ticket fields, so human agents can quickly understand the customer's situation without asking repetitive questions.
 
+
+
+ㅇ
+
 ***
 
 ## Development vs Production environments
@@ -67,7 +71,7 @@ If you want to turn off this feature so you can create an actual Desk ticket reg
 
 ***
 
-## Handoff in production
+## Handoff in live environment
 
 When a handoff occurs in a Production environment, the AI agent passes customer-specific information called a context object to Desk. Desk uses this context object when creating or updating a ticket, automatically populating any ticket fields that match the fields in the context object.
 
