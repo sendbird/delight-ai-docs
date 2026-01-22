@@ -1,10 +1,11 @@
 # Handoff
 
-Handoff is a feature that transfers conversations from an AI agent to a Desk human agent. When a handoff occurs, the AI agent passes customer-specific information called a **context object** to Desk. Desk uses this context object to automatically populate ticket fields, so human agents can quickly understand the customer's situation without asking repetitive questions.
+Handoff is a feature that transfers conversations from an AI agent to the other integrated platform. When a handoff occurs, Desk create a ticket with specific priority, assign the ticket to a team, and a context object passed by AI agent automatically populate ticket fields, so human agents can quickly understand the customer's situation easily.
 
+There are some features only for the handoff to Desk:
 
-
-ㅇ
+* Auto-populating ticket fields based on context object.
+* Handoff preview for end-to-end test without creating actual Desk ticket.
 
 ***
 
@@ -12,10 +13,10 @@ Handoff is a feature that transfers conversations from an AI agent to a Desk hum
 
 Handoff behaves differently depending on the environment:
 
-| Environment               | Behavior                                                                                                                      |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **Development / Staging** | Displays a **handoff preview** without creating an actual Desk ticket. Use this to verify the handoff flow before going live. |
-| **Production**            | Creates an actual Desk ticket and assigns it to a human agent.                                                                |
+| Environment                         | Behavior                                                                                                                      |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **Test:** **Development / Staging** | Displays a **handoff preview** without creating an actual Desk ticket. Use this to verify the handoff flow before going live. |
+| **Live:** **Production**            | Creates an actual Desk ticket with **automatically populated ticket fields** and assigns it to a human agent.                 |
 
 ***
 
