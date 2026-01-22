@@ -21,14 +21,14 @@ Handoff to Desk works differently depending on your environment:
     * [SDK DOCS > React (npm) > Context object](../../../sdk-docs/react-npm/context-object.md)
     * [PLATFORM API > Context object for messenger channel](../../../platform-api/context-object-for-messenger-channel.md)
 * Desk assignment and priority rules are configured.
-  * To configure the rules, go to [**Settings > Desk > Rules**](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules) on the Sendbird dashboard.
+  * To configure the rules, go to **Settings > Desk > Rules** on the Sendbird dashboard. For more information, see [Desk guide](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules).
   * If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
 
 ***
 
 ## Handoff preview
 
-When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This shows preview of ticket priority and assigned team based on Desk rules, preview of custom fields would be populated automatically and context object. It helps you verify the entire process from Delight AI agent conversation to Desk handoff without affecting your live Desk workspace.
+When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This preview shows the ticket priority and assigned team based on Desk rules, the custom ticket fields that would be auto-populated, and the context object. It helps you verify the entire process from AI agent conversation to Desk handoff without affecting your live Desk workspace.
 
 {% hint style="info" %}
 To create an actual Desk ticket regardless of the environment, contact us to turn off this feature.
@@ -42,7 +42,7 @@ To create an actual Desk ticket regardless of the environment, contact us to tur
 
 #### Step 1: Trigger a handoff and see the conversation details
 
-1. Start a conversation with your Delight AI agent in a Dev or Stage environment and trigger a handoff.
+1. Start a conversation with your AI agent in a Dev or Stage environment and trigger a handoff.
 2. Go to **Evaluate > Reports > Conversations** on the Delight AI dashboard.
 3. Click a conversation to see the conversation details.
 
@@ -75,7 +75,7 @@ When a handoff occurs in a Production environment, the AI agent passes customer-
 
 #### Step 1: Check your custom ticket fields
 
-1. Go to **Settings > Desk > Ticket fields**.
+1. Go to **Settings > Desk > Ticket fields** on the Sendbird dashboard.
 2. Verify the ticket field keys you want to populate. If you don't have any fields, create them.
 3. Only ticket fields whose keys **exactly match** the context object's field keys will be populated.
 
