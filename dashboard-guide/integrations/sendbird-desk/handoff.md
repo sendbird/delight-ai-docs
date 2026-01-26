@@ -34,7 +34,7 @@ When you trigger a handoff in a Development or Staging environment, Delight AI d
 To create an actual Desk ticket regardless of the environment, contact us to turn off this feature.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/desk-handoff-preview-modal@3x.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -46,13 +46,13 @@ To create an actual Desk ticket regardless of the environment, contact us to tur
 2. Go to **Evaluate > Reports > Conversations** on the Delight AI dashboard.
 3. Click a conversation to see the conversation details.
 
-<figure><img src="../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/desk-handoff-preview-details@3x.png" alt=""><figcaption></figcaption></figure>
 
 #### Step 2: See the handoff preview
 
 In the **Conversation Information** panel, find the **Handoff details** section. Click **View details for handoff preview** to open the preview modal.
 
-<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/desk-handoff-preview-modal-flow@3x.png" alt=""><figcaption></figcaption></figure>
 
 The modal displays:
 
