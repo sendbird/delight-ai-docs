@@ -87,4 +87,26 @@ The context object's field keys must follow the Desk field key convention: only 
 
 #### Step 2: Trigger a handoff from the AI agent to Desk in a Production environment
 
-Any ticket fields that match the context object’s fields will appear in the ticket fields section of the ticket view, so you don’t need to update the values manually.
+Any ticket fields that match the context object's fields will appear in the ticket fields section of the ticket view, so you don't need to update the values manually.
+
+***
+
+## Troubleshooting
+
+### Tickets not assigned to any team
+
+When a handoff occurs, the AI agent automatically analyzes the conversation to determine its **category** and **sub-category**—classifications that describe the topic or intent of the conversation, such as "Billing - Refund request". These values are passed to Desk and can be used in assignment rules to assign tickets to the appropriate team.
+
+If you have assignment rules that use **AI agent handoff category or sub-category** as conditions, be aware of the following: when the AI agent fails to analyze the category due to timeout or processing errors, assignment rules with the category won't be applied, and the ticket may remain unassigned.
+
+{% hint style="info" %}
+This issue only affects assignment rules that rely on AI handoff category or sub-category. Other assignment rules based on different conditions will still work as expected.
+{% endhint %}
+
+#### How to ensure assignment
+
+- **Method 1: Create a fallback rule**
+  Add a low-priority assignment rule with the condition `AI agent handoff category is ''`. This rule will catch tickets when category analysis fails and route them to a default team.
+
+- **Method 2: Use custom field via context object**
+  Create a custom ticket field such as `category` and pass this value through the context object. Then create assignment rules based on this custom field instead of the AI-generated category.
