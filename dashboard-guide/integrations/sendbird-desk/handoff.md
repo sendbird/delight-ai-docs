@@ -105,8 +105,6 @@ This issue only affects assignment rules that rely on AI handoff category or sub
 
 #### How to ensure assignment
 
-- **Method 1: Create a fallback rule**
-  Add a low-priority assignment rule with the condition `AI agent handoff category is ''`. This rule will catch tickets when category analysis fails and route them to a default team.
-
-- **Method 2: Use custom field via context object**
-  Create a custom ticket field such as `category` and pass this value through the context object. Then create assignment rules based on this custom field instead of the AI-generated category.
+* **Method 1: Create a fallback rule** Add a low-priority assignment rule with the condition `AI agent handoff category is ''`. This rule will catch tickets when category analysis fails and route them to a default team.\
+  -> 근데 빈 값 인풋으로 못받음
+* **Method 2: Use custom field via context object** Create a custom ticket field such as `category` and pass this value through the context object. Then create assignment rules based on this custom field instead of the AI-generated category.
