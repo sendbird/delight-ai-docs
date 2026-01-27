@@ -91,20 +91,25 @@ Any ticket fields that match the context object's fields will appear in the tick
 
 ***
 
-## Troubleshooting
+## Assigning handed-off tickets
 
-### Tickets not assigned to any team
+When a handoff occurs in a Production environment, Delight AI passes additional information to Desk that can be used in assignment rules to assign tickets to the appropriate team. Below is the list of additional information for assigning.
 
-When a handoff occurs, the AI agent automatically analyzes the conversation to determine its **category** and **sub-category**—classifications that describe the topic or intent of the conversation, such as "Billing - Refund request". These values are passed to Desk and can be used in assignment rules to assign tickets to the appropriate team.
+### AI agent handoff category
 
-If you have assignment rules that use **AI agent handoff category or sub-category** as conditions, be aware of the following: when the AI agent fails to analyze the category due to timeout or processing errors, assignment rules with the category won't be applied, and the ticket may remain unassigned.
+The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as "Billing - Refund request". You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
 
-{% hint style="info" %}
-This issue only affects assignment rules that rely on AI handoff category or sub-category. Other assignment rules based on different conditions will still work as expected.
-{% endhint %}
+#### **Limitations**
 
-#### How to ensure assignment
+* Category and sub-category are system fields and cannot be edited manually.
+* If category analysis fails due to timeout or other issues, the field remains empty and assignment rules based on the AI category will not apply.
 
-**Use custom ticket field via context object**:&#x20;
+#### **Recommended: Set up a fallback**
 
-* Create a custom ticket field and pass this value through the context object. Then create an assignment rule based on this custom field, placing it below the AI-category based rule in priority.
+To ensure tickets are always assigned even when category analysis fails, create fallback assignment rules using other ticket fields.
+
+1. Create custom ticket fields for setting rules.
+2. Create assignment rules based on the fields.
+3. Pass the value through the context object, so it can be populated.
+
+This gives you full control over ticket assignment regardless of AI category analysis results.
