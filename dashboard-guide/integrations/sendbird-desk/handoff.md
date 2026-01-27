@@ -65,7 +65,7 @@ The modal displays:
 
 ## Assigning handed-off tickets
 
-When a handoff occurs in a Production environment, Delight AI passes additional information to Desk that can be used in assignment rules to assign tickets to the appropriate team. Below is the list of additional information for assigning.
+When a handoff occurs in a Production environment, Delight AI passes additional information to Desk that can be used in assignment rules to assign tickets to the appropriate team. Below is the additional information.
 
 ### AI agent handoff category
 
