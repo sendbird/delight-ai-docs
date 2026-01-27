@@ -63,6 +63,31 @@ The modal displays:
 
 ***
 
+## Assigning handed-off tickets
+
+When a handoff occurs in a Production environment, Delight AI passes additional information to Desk that can be used in assignment rules to assign tickets to the appropriate team. Below is the list of additional information for assigning.
+
+### AI agent handoff category
+
+The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as "Billing - Refund request". You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
+
+#### **Limitations**
+
+* Category and sub-category are system fields and cannot be edited manually.
+* If category analysis fails due to timeout or other issues, the field remains empty and assignment rules based on the AI category will not apply.
+
+#### **Recommended: Set up a fallback**
+
+To ensure tickets are always assigned even when category analysis fails, create fallback assignment rules using other ticket fields.
+
+1. Create custom ticket fields for setting rules.
+2. Create assignment rules based on the fields.
+3. Pass the value through the context object, so it can be populated.
+
+This gives you full control over ticket assignment regardless of AI category analysis results.
+
+***
+
 ## Auto-populated ticket fields
 
 When a handoff occurs in a Production environment, the AI agent passes customer-specific information called a context object to Desk. Desk uses this context object to automatically populate any ticket fields that match the fields in the context object.
@@ -88,28 +113,3 @@ The context object's field keys must follow the Desk field key convention: only 
 #### Step 2: Trigger a handoff from the AI agent to Desk in a Production environment
 
 Any ticket fields that match the context object's fields will appear in the ticket fields section of the ticket view, so you don't need to update the values manually.
-
-***
-
-## Assigning handed-off tickets
-
-When a handoff occurs in a Production environment, Delight AI passes additional information to Desk that can be used in assignment rules to assign tickets to the appropriate team. Below is the list of additional information for assigning.
-
-### AI agent handoff category
-
-The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as "Billing - Refund request". You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
-
-#### **Limitations**
-
-* Category and sub-category are system fields and cannot be edited manually.
-* If category analysis fails due to timeout or other issues, the field remains empty and assignment rules based on the AI category will not apply.
-
-#### **Recommended: Set up a fallback**
-
-To ensure tickets are always assigned even when category analysis fails, create fallback assignment rules using other ticket fields.
-
-1. Create custom ticket fields for setting rules.
-2. Create assignment rules based on the fields.
-3. Pass the value through the context object, so it can be populated.
-
-This gives you full control over ticket assignment regardless of AI category analysis results.
