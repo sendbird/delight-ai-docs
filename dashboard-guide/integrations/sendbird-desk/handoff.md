@@ -36,8 +36,6 @@ To create an actual Desk ticket regardless of the environment, contact us to tur
 
 <figure><img src="../../../.gitbook/assets/desk-handoff-preview-modal@3x.png" alt=""><figcaption></figcaption></figure>
 
-***
-
 ### How to access
 
 #### Step 1: Trigger a handoff and see the conversation details
@@ -93,8 +91,6 @@ This gives you full control over ticket assignment regardless of AI category ana
 When a handoff occurs in a Production environment, the AI agent passes customer-specific information called a context object to Desk. Desk uses this context object to automatically populate any ticket fields that match the fields in the context object.
 
 {% include "../../../.gitbook/includes/sample-integration-desk-handoff-1.md" %}
-
-***
 
 ### How to access
 
