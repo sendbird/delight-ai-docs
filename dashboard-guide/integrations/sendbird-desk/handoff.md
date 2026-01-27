@@ -4,7 +4,7 @@ Handoff is a feature that transfers conversations from an AI agent to the other 
 
 Handoff to Desk works differently depending on your environment:
 
-<table><thead><tr><th width="276.7308349609375">AI agent environment</th><th>Behavior</th></tr></thead><tbody><tr><td><strong>Test:</strong> Development / Staging</td><td>Displays a <a href="handoff.md#handoff-preview"><strong>handoff preview</strong></a> without creating an actual Desk ticket.</td></tr><tr><td><strong>Live:</strong> Production</td><td>Creates a Desk ticket with <a href="handoff.md#auto-populated-ticket-fields"><strong>auto-populated ticket fields</strong></a>.</td></tr></tbody></table>
+<table><thead><tr><th width="276.7308349609375">AI agent environment</th><th>Behavior</th></tr></thead><tbody><tr><td><strong>Test:</strong> Development / Staging</td><td>Displays a <a href="handoff.md#handoff-preview"><strong>handoff preview</strong></a> without creating an actual Desk ticket.</td></tr><tr><td><strong>Live:</strong> Production</td><td>Creates a Desk ticket that is <a href="handoff.md#assigning-handed-off-tickets"><strong>automatically assigned</strong></a>, with <a href="handoff.md#auto-populated-ticket-fields"><strong>auto-populated ticket fields</strong></a>.</td></tr></tbody></table>
 
 ***
 
