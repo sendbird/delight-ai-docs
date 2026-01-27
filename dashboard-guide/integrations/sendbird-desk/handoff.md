@@ -107,4 +107,4 @@ This issue only affects assignment rules that rely on AI handoff category or sub
 
 **Use custom ticket field via context object**:&#x20;
 
-* Create a custom ticket field such as `category` and pass this value through the context object. Then create an assignment rule based on this custom field, placing it below the AI-category based rule in priority.
+* Create a custom ticket field and pass this value through the context object. Then create an assignment rule based on this custom field, placing it below the AI-category based rule in priority.
