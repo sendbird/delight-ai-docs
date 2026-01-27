@@ -57,8 +57,6 @@ This allows you to:
 * A/B test different flows across agents
 * Avoid unintended changes to agents that share the same workspace assets
 
-{% include "../.gitbook/includes/untitled (2).md" %}
-
 ***
 
 ### Viewing deployment history

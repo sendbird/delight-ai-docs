@@ -1,41 +1,44 @@
+# Quickstart guide (Messenger)
+
 [iOS](https://github.com/sendbird/delight-ai-agent/blob/main/ios/README.md) / [Android](https://github.com/sendbird/delight-ai-agent/blob/main/android/README.md) / **JS**
 
-# Delight AI agent Quickstart guide (JS)
+## Delight AI agent Quickstart guide (JS)
 
 The **Delight AI agent Messenger** allows seamless integration of chatbot features into your Web. Follow the steps below to initialize and utilize the SDK effectively.
 
 This guide explains:
-- [Delight AI agent Quickstart guide (JS)](#delight-ai-agent-quickstart-guide-js)
-  - [Prerequisites](#prerequisites)
-  - [Getting Started](#getting-started)
-    - [Step 1. Install AI Agent SDK](#step-1-install-ai-agent-sdk)
-    - [Step 2. Initialize AI Agent SDK](#step-2-initialize-ai-agent-sdk)
-      - [Custom Host Configuration](#custom-host-configuration)
-  - [Running your application](#running-your-application)
-    - [Manage user sessions](#manage-user-sessions)
-      - [Session types](#session-types)
-    - [Launch the messenger](#launch-the-messenger)
-  - [Advanced Features](#advanced-features)
-    - [Display messenger without launcher button](#display-messenger-without-launcher-button)
-    - [Deauthenticate and clear session](#deauthenticate-and-clear-session)
-    - [Passing context object to Agent](#passing-context-object-to-agent)
-    - [Localization and Language Support](#localization-and-language-support)
 
-## Prerequisites
+* [Delight AI agent Quickstart guide (JS)](quickstart-guide-messenger.md#delight-ai-agent-quickstart-guide-js)
+  * [Prerequisites](quickstart-guide-messenger.md#prerequisites)
+  * [Getting Started](quickstart-guide-messenger.md#getting-started)
+    * [Step 1. Install AI Agent SDK](quickstart-guide-messenger.md#step-1-install-ai-agent-sdk)
+    * [Step 2. Initialize AI Agent SDK](quickstart-guide-messenger.md#step-2-initialize-ai-agent-sdk)
+      * [Custom Host Configuration](quickstart-guide-messenger.md#custom-host-configuration)
+  * [Running your application](quickstart-guide-messenger.md#running-your-application)
+    * [Manage user sessions](quickstart-guide-messenger.md#manage-user-sessions)
+      * [Session types](quickstart-guide-messenger.md#session-types)
+    * [Launch the messenger](quickstart-guide-messenger.md#launch-the-messenger)
+  * [Advanced Features](quickstart-guide-messenger.md#advanced-features)
+    * [Display messenger without launcher button](quickstart-guide-messenger.md#display-messenger-without-launcher-button)
+    * [Deauthenticate and clear session](quickstart-guide-messenger.md#deauthenticate-and-clear-session)
+    * [Passing context object to Agent](quickstart-guide-messenger.md#passing-context-object-to-agent)
+    * [Localization and Language Support](quickstart-guide-messenger.md#localization-and-language-support)
 
-Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.
-<br><br/>
+### Prerequisites
+
+Before you start, you'll need your Delight **Application ID** and **AI Agent ID**.\
+\
 You can find it under the **Channels** > **Messenger** menu on the Delight AI dashboard.
 
 ![ai-agent-app-id-agent-id](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-messenger-basic-information.png)
 
----
+***
 
-## Getting Started
+### Getting Started
 
 Quickly install and initalize the AI Agent SDK by following the steps below.
 
-### Step 1. Install AI Agent SDK
+#### Step 1. Install AI Agent SDK
 
 Add the AI Agent SDK to your web page by importing it as a module.
 
@@ -45,7 +48,7 @@ Add the AI Agent SDK to your web page by importing it as a module.
 </script>
 ```
 
-### Step 2. Initialize AI Agent SDK
+#### Step 2. Initialize AI Agent SDK
 
 ```javascript
 const messenger = await loadMessenger();
@@ -56,7 +59,7 @@ messenger.initialize({
 });
 ```
 
-#### Custom Host Configuration
+**Custom Host Configuration**
 
 If needed, you can specify custom API and WebSocket hosts during initialization:
 
@@ -70,20 +73,19 @@ messenger.initialize({
 
 Both parameters are optional and only need to be configured if required.
 
----
+***
 
-## Running your application
+### Running your application
 
 Now that you have installed and initialized the AI Agent SDK, follow the steps below to run your application.
 
-### Manage user sessions
+#### Manage user sessions
 
 The SDK supports two types of user sessions: **Manual Session** for authenticated users and **Anonymous Session** for temporary users.
 
-#### Session types
+**Session types**
 
-**1. Manual Session (ManualSessionInfo):**
-Use this when you have an authenticated user with a specific user ID and session token.
+**1. Manual Session (ManualSessionInfo):** Use this when you have an authenticated user with a specific user ID and session token.
 
 ```javascript
 messenger.initialize({
@@ -117,8 +119,7 @@ messenger.initialize({
 });
 ```
 
-**2. Anonymous Session (AnonymousSessionInfo):**
-Use this for guest users or when user authentication is not available. The server will automatically create a temporary user.
+**2. Anonymous Session (AnonymousSessionInfo):** Use this for guest users or when user authentication is not available. The server will automatically create a temporary user.
 
 ```javascript
 messenger.initialize({
@@ -150,15 +151,15 @@ const newManualSessionInfo = new messenger.ManualSessionInfo({
 messenger.updateUserSession(newManualSessionInfo);
 ```
 
-### Launch the messenger
+#### Launch the messenger
 
-<img width="361" height="642" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png" />
+![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-launcher.png)
 
 Once the authentication information has been successfully registered, you can launch the messenger to start a conversation with the ai agent.
 
 To launch and display the messenger, implement the code below:
 
-> **Note**: Replace `YOUR_APP_ID` AND `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](#prerequisites) section.
+> **Note**: Replace `YOUR_APP_ID` AND `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how do to so, refer to the [prerequisites](quickstart-guide-messenger.md#prerequisites) section.
 
 ```javascript
 const messenger = await loadMessenger();
@@ -218,15 +219,15 @@ messenger.updateConfig({
 });
 ```
 
----
+***
 
-## Advanced Features
+### Advanced Features
 
 The following are available advanced features.
 
-### Display messenger without launcher button
+#### Display messenger without launcher button
 
-<img width="361" height="642" src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-suggested-replies.png" />
+![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-suggested-replies.png)
 
 ```javascript
 const messenger = await loadMessenger({
@@ -246,21 +247,23 @@ messenger.initialize({
 });
 ```
 
-### Deauthenticate and clear session
+#### Deauthenticate and clear session
 
 The messenger provides two different methods for cleanup:
 
 1. Use `deauthenticate()` to handle user logout by clearing session data and disconnecting from the chat SDK:
+
 ```javascript
 messenger.deauthenticate();
 ```
 
 2. Use `destroy()` to completely remove the messenger nodes from the DOM:
+
 ```javascript
 messenger.destroy();
 ```
 
-### Passing context object to Agent
+#### Passing context object to Agent
 
 You can predefine customer-specific information such as country, language, or other custom context data to guide the AI Agent in providing faster and more accurate responses.
 
@@ -287,13 +290,13 @@ messenger.initialize({
 });
 ```
 
-### Localization and Language Support
+#### Localization and Language Support
 
 The SDK supports multiple languages and allows you to customize UI strings. You can:
 
-- Set the language during initialization or update it later
-- Customize specific strings in a supported language
-- Add support for languages not built into the SDK
-- Dynamically load language files as needed for better performance
+* Set the language during initialization or update it later
+* Customize specific strings in a supported language
+* Add support for languages not built into the SDK
+* Dynamically load language files as needed for better performance
 
-For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](./MULTILANGUAGE.md).
+For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/javascript-cdn/MULTILANGUAGE.md).
