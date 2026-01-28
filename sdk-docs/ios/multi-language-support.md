@@ -2,7 +2,7 @@
 
 This guide walks you through adding a `Localizable.strings` file to your Xcode project and configuring it to support multiple languages.
 
----
+***
 
 ## 1. Add `Localizable.strings` File
 
@@ -14,7 +14,7 @@ This guide walks you through adding a `Localizable.strings` file to your Xcode p
 
 > Note: Do this process when you don't have a `Localizable.strings` file.
 
----
+***
 
 ## 2. Enable Localization
 
@@ -28,20 +28,21 @@ This guide walks you through adding a `Localizable.strings` file to your Xcode p
 
 > This step ensures your app is properly configured to support multiple languages and allows Xcode to manage localized resources.
 
----
+***
 
 ## 3. Add Translations
 
 Edit the `Localizable.strings` files per language:
 
 ### `Localizable.strings` (English)
+
 ```swift
 "SBA_Common_cancel" = "Cancel";
 "SBA_Common_retry" = "Retry";
 ...
 ```
 
-Refer to the [English-based `Localizable.string` file](en.lproj/Localizable.strings) to set the language-specific strings to use for the keys you need.
+Refer to the [English-based `Localizable.string` file](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/ios/en.lproj/Localizable.strings) to set the language-specific strings to use for the keys you need.
 
 > If you set the key-value of `Localizable.string` for each language you need, it will use the internally customized string first.
 
@@ -54,4 +55,4 @@ Refer to the [English-based `Localizable.string` file](en.lproj/Localizable.stri
 3. Change the language to your desired option (e.g., Bangla)
 4. Relaunch your app — localized strings should appear accordingly
 
----
+***

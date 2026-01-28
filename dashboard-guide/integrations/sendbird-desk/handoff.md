@@ -11,7 +11,7 @@ When an AI agent hands off a conversation to a human agent in Desk, it passes cu
 * Context object setup
   * Context object is a key–value store that sends customer-specific information to the AI agent so it can provide relevant answers. It can include business details such as order numbers, membership tiers, or any other data the agent should know.
   * If you haven’t set up a context object yet, refer to the following guides.
-    * [DASHBOARD GUIDE > Users > Pass a context object to AI agents](../../users.md#pass-a-context-object-to-ai-agents)&#x20;
+    * [DASHBOARD GUIDE > Users > Pass a context object to AI agents](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/dashboard-guide/users.md#pass-a-context-object-to-ai-agents)
     * [SDK DOCS > iOS > Context object](../../../sdk-docs/ios/context-object.md)
     * [SDK DOCS > Android > Context object](../../../sdk-docs/android/context-object.md)
     * [SDK DOCS > JavaScript (CDN) > Context object](../../../sdk-docs/javascript-cdn/context-object.md)
