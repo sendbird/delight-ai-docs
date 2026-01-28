@@ -1,4 +1,4 @@
-# AI agent (home)
+# AI agent - Home and Overview
 
 In the Delight AI Agent dashboard, you can configure agent behavior, manage shared assets, and deploy agents across environments. This page introduces the core concepts of AI agents and explains what you can do on the **Home** and **Overview** pages.
 
@@ -20,14 +20,14 @@ If not sure where to start, use this rule of thumb:
 * **Create a new agent** if you want to serve different audiences, policies, or languages within the same region.
 
 {% hint style="info" %}
-To create a new workspace, contact contact one of our Delight representative.
+To create a new workspace, contact contact one of our Delight representatives.
 {% endhint %}
 
 #### Development, Staging, and Production environments
 
 Once you've created a workspace, you need to build a new AI agent. Delight AI agent automatically comes with three environments:
 
-<table><thead><tr><th width="207.5390625">Environment</th><th>Purpose</th></tr></thead><tbody><tr><td>Development</td><td>A sandbox for testing, editing, and validating your agent before going live.</td></tr><tr><td>Staging</td><td>A pre-production environment for a final validation and quality assurance of changes from <strong>Development</strong>. </td></tr><tr><td>Production</td><td>The live version users interact with.</td></tr></tbody></table>
+<table><thead><tr><th width="207.5390625">Environment</th><th>Purpose</th></tr></thead><tbody><tr><td>Development</td><td>A sandbox for testing, editing, and validating your agent before going live.</td></tr><tr><td>Staging</td><td>A pre-production environment for a final validation and quality assurance of changes from <strong>Development</strong>.</td></tr><tr><td>Production</td><td>The live version users interact with.</td></tr></tbody></table>
 
 Modifications in **Development** and **Staging** do not impact the live agent until they are deployed to Production.
 
@@ -56,18 +56,18 @@ Depending on your service environment, you might need more than one AI agents - 
 Each new agent will come with three environments: [Development, Staging, and Production](ai-agent-home.md#development-vs-production-environments).
 
 {% hint style="info" %}
-To delete an agent, contact one of our Delight representative.
+To delete an agent, contact one of our Delight representatives.
 {% endhint %}
 
 ### Manage workspace settings
 
-You can find the Workspace settings button above the list of AI agents. This allows you to specify the system prompt to apply to AI agents across the workspace, build knowledge assets that will be shared among them, and manage 3rd party platform integrations, and more.&#x20;
+You can find the Workspace settings button above the list of AI agents. This allows you to specify the system prompt to apply to AI agents across the workspace, build knowledge assets that will be shared among them, and manage 3rd party platform integrations, and more.
 
 <figure><img src="../.gitbook/assets/Workspace settings.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-## Overview&#x20;
+## Overview
 
 The **Overview** page provides at-a-glance insight into an AI agent's performance and user satisfaction. You can also deploy or revert changes you've made in **Development** to **Staging** and **Production**.
 
@@ -80,7 +80,7 @@ If there are updates in the **Development** environment that haven’t been depl
 Click the agent card. You can find the **View changes to deploy** button at the top of left menu bar. Review the changes and choose to either deploy all or deploy selectively.
 
 {% hint style="info" %}
-To apply changes from **Development** on a production level, deploy changes to both **Staging** and then **Production**.&#x20;
+To apply changes from **Development** on a production level, deploy changes to both **Staging** and then **Production**.
 {% endhint %}
 
 **Selective deployment**
@@ -126,8 +126,8 @@ After deployment, you can revert the change with a click. Each environment offer
 **Staging and Production**
 
 1. On the **Overview** page, click the **History** button to open the **Version history** modal.
-2. Find an agent version to roll your **Staging** or **Production** back to.&#x20;
-3. Click the **Restore** button in the far right column of the table.&#x20;
+2. Find an agent version to roll your **Staging** or **Production** back to.
+3. Click the **Restore** button in the far right column of the table.
 4. Select what changes to revert from the current settings.
 5. Leave a note about why you are reverting the deployment and type in your organization name to proceed.
 
@@ -143,7 +143,7 @@ You can activate or deactivate an agent in its Overview page. Click its **Active
 * **Inactive**: The agent stops operating, and the specified fallback message will be sent as a response instead.
 
 {% hint style="info" %}
-Toggling the agent in one environment doesn’t affect the others.
+Toggling the agent in one environment doesn’t affect the other environments.
 {% endhint %}
 
 ### Monitor AI agent's performance
