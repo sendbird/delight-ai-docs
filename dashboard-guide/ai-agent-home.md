@@ -1,29 +1,18 @@
 # AI agent (home)
 
-The **AI agent Home** and **Overview** give you a centralized view of all AI agents within your workspace.
+In the Delight AI Agent dashboard, you can configure agent behavior, manage shared assets, and deploy agents across environments. This page introduces the core concepts of AI agents and explains what you can do on the **Home** and **Overview** pages.
 
-\[image]
+***
 
-## Home
+## Core concepts
 
-### What you can do
-
-* View all AI agents in your [workspace](ai-agent-home.md#workspace-vs-ai-agent) at a glance
-* [Check each agent’s environment status](ai-agent-home.md#development-vs-production-environments) (Development / Production)
-* [View deployment history](ai-agent-home.md#viewing-deployment-history)
-* [Create new AI agents](ai-agent-home.md#creating-a-new-ai-agent)
-
-{% hint style="info" %}
-The AI agent list view may vary based on your [role and permission](https://docs.delight.ai/roles-and-permissions) settings within the workspace.
-{% endhint %}
-
-### Core concepts
+This section introduces the key concepts referenced throughout the user guide.
 
 #### Workspace vs. AI agent
 
 A **workspace** is the shared environment where your AI agents operate. A single workspace can contain multiple agents and shared assets, such as knowledge data.
 
-<table><thead><tr><th width="192.26953125">Concept</th><th>Description</th></tr></thead><tbody><tr><td>Workspace</td><td>A region-based container. All agents in a workspace share instructional assets such as Knowledge, Actionbooks, Tools, and Message templates.</td></tr><tr><td>Agent</td><td>A uniquely configured entity with its own behavior, language, and use case.</td></tr></tbody></table>
+<table><thead><tr><th width="192.26953125">Concept</th><th>Description</th></tr></thead><tbody><tr><td>Workspace</td><td>A region-based container. All agents in a workspace share instructional assets such as Knowledge, Actionbooks, Tools, and Message templates.</td></tr><tr><td>AI agent</td><td>A uniquely configured entity with its own behavior, language, and use case.</td></tr></tbody></table>
 
 If not sure where to start, use this rule of thumb:
 
@@ -38,14 +27,24 @@ To create a new workspace, contact contact one of our Delight representative.
 
 Once you've created a workspace, you need to build a new AI agent. Delight AI agent automatically comes with three environments:
 
-* **Development** — a sandbox for testing, editing, and validating your agent before going live.
-* **Staging** - a pre-production environment for a final validation and quality assurance of changes from Development.&#x20;
-* **Production** — the live version users interact with.
+<table><thead><tr><th width="207.5390625">Environment</th><th>Purpose</th></tr></thead><tbody><tr><td>Development</td><td>A sandbox for testing, editing, and validating your agent before going live.</td></tr><tr><td>Staging</td><td>A pre-production environment for a final validation and quality assurance of changes from <strong>Development</strong>. </td></tr><tr><td>Production</td><td>The live version users interact with.</td></tr></tbody></table>
 
-Modifications in Development and Staging do not impact the live agent until they are deployed to Production.
+Modifications in **Development** and **Staging** do not impact the live agent until they are deployed to Production.
 
 {% hint style="info" %}
 You can edit agents only in **Development**. **Staging** and **Production** are read-only.
+{% endhint %}
+
+***
+
+## Home
+
+First, the **Home** page showcases all the workspaces and AI agents you've built in them. You can manage your workspace settings and create more AI agents when needed.
+
+<figure><img src="../.gitbook/assets/home-3states.png" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+The AI agent list view may vary based on your [role and permission](https://docs.delight.ai/roles-and-permissions) settings within the workspace.
 {% endhint %}
 
 ### Create more AI agents
@@ -60,9 +59,19 @@ Each new agent will come with three environments: [Development, Staging, and Pro
 To delete an agent, contact one of our Delight representative.
 {% endhint %}
 
+### Manage workspace settings
+
+You can find the Workspace settings button above the list of AI agents. This allows you to specify the system prompt to apply to AI agents across the workspace, build knowledge assets that will be shared among them, and manage 3rd party platform integrations, and more.&#x20;
+
+<figure><img src="../.gitbook/assets/Workspace settings.png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ## Overview&#x20;
+
+The **Overview** page provides at-a-glance insight into an AI agent's performance and user satisfaction. You can also deploy or revert changes you've made in **Development** to **Staging** and **Production**.
+
+<figure><img src="../.gitbook/assets/Overview (1).png" alt=""><figcaption></figcaption></figure>
 
 ### View and deploy changes
 
@@ -84,11 +93,13 @@ This allows you to:
 * Run A/B tests across agents
 * Prevent unintended changes to agents that share the same workspace assets
 
-***
-
 ### View deployment history
 
-Click **Deployment history** on any agent card to view past deployments.
+Click **History** in **Staging** and **Production** environments to view past deployments.
+
+<figure><img src="../.gitbook/assets/history.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Deployment history.png" alt=""><figcaption></figcaption></figure>
 
 Each record shows:
 
@@ -99,7 +110,7 @@ Each record shows:
 * Restore button\*
 
 {% hint style="info" %}
-Version information and history is available in **Staging** and **Production** only.
+Version history is available in **Staging** and **Production** only.
 {% endhint %}
 
 <details>
@@ -110,11 +121,11 @@ After deployment, you can revert the change with a click. Each environment offer
 
 **Development**
 
-1. Click **Reset changes** in the Overview page. This synchronizes the Development environment back to the current Staging version.
+1. On the **Overview** page, click **Reset changes** in the **Development** environment. This button appears in the same location as **History** in the **Staging** environment and resets **Development** to the current **Staging** version.
 
 **Staging and Production**
 
-1. Click the **History** button in the Overview page to open the **Version history** modal.
+1. On the **Overview** page, click the **History** button to open the **Version history** modal.
 2. Find an agent version to roll your **Staging** or **Production** back to.&#x20;
 3. Click the **Restore** button in the far right column of the table.&#x20;
 4. Select what changes to revert from the current settings.
@@ -135,19 +146,8 @@ You can activate or deactivate an agent in its Overview page. Click its **Active
 Toggling the agent in one environment doesn’t affect the others.
 {% endhint %}
 
-***
+### Monitor AI agent's performance
 
-## Workspace vs. AI agent
+The **Overview** page also displays key metrics for AI agent performance and user satisfaction over the selected time period. The default range is the last 7 days, and vertical lines on the graph indicate version updates.
 
-A **workspace** is the shared environment where your AI agents operate. A single workspace can contain multiple agents and shared assets, such as knowledge data.
-
-<table><thead><tr><th width="192.26953125">Concept</th><th>Description</th></tr></thead><tbody><tr><td>Workspace</td><td>A region-based container. All agents in a workspace share instructional assets such as Knowledge, Actionbooks, Tools, and Message templates.</td></tr><tr><td>Agent</td><td>A uniquely configured entity with its own behavior, language, and use case.</td></tr></tbody></table>
-
-If not sure where to start, use this rule of thumb:
-
-* **Create a new workspace** if you need to serve users in a completely different region (e.g. US vs Korea).
-* **Create a new agent** if you want to serve different audiences, policies, or languages within the same region.
-
-{% hint style="info" %}
-To create a new workspace, contact contact one of our Delight representative.
-{% endhint %}
+<figure><img src="../.gitbook/assets/insights.png" alt=""><figcaption></figcaption></figure>
