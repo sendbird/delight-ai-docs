@@ -4,7 +4,7 @@
 
 ## Dashboard guide
 
-* [AI agent (home)](dashboard-guide/ai-agent-home.md)
+* [AI agent - Home and Overview](dashboard-guide/ai-agent-home.md)
 * [Users](dashboard-guide/users/README.md)
   * [Memory](dashboard-guide/users/memory/README.md)
     * [For You Conversation](dashboard-guide/users/memory/for-you-conversation.md)
