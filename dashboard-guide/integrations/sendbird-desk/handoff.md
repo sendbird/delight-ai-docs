@@ -67,7 +67,7 @@ When a handoff occurs in a Production environment, Delight AI passes additional 
 
 ### AI agent handoff category
 
-The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as "Billing - Refund request". You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
+The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as Billing - Refund request. You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
 
 #### **Limitations**
 
