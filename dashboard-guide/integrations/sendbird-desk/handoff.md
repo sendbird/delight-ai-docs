@@ -1,10 +1,10 @@
 # Handoff
 
-Handoff is a feature that transfers conversations from an AI agent to the other integrated platform. When a handoff occurs, Desk creates a ticket with a specific priority, assigns it to a team, and automatically populates ticket fields based on a context object passed by the AI agent—so human agents can quickly understand the customer's situation.
+Handoff is a feature that transfers conversations from an AI agent to the other integrated platform, including Sendbird Desk. When a conversation is handded off to Desk, it creates a ticket with a specific priority, assigns it to a team, and automatically populates ticket fields based on a context object passed along with the conversation — so human agents can quickly grasp the context of the customer's situation.
 
-Handoff to Desk works differently depending on your environment:
+Handoff to Desk works differently depending on your AI agent's environment:
 
-<table><thead><tr><th width="276.7308349609375">AI agent environment</th><th>Behavior</th></tr></thead><tbody><tr><td><strong>Test:</strong> Development / Staging</td><td>Displays a <a href="handoff.md#handoff-preview"><strong>handoff preview</strong></a> without creating an actual Desk ticket.</td></tr><tr><td><strong>Live:</strong> Production</td><td>Creates a Desk ticket that is <a href="handoff.md#assigning-handed-off-tickets"><strong>automatically assigned</strong></a>, with <a href="handoff.md#auto-populated-ticket-fields"><strong>auto-populated ticket fields</strong></a>.</td></tr></tbody></table>
+<table><thead><tr><th width="276.7308349609375">AI agent environment</th><th>Behavior</th></tr></thead><tbody><tr><td><strong>Test:</strong> Development and Staging</td><td>Displays a <a href="handoff.md#handoff-preview"><strong>handoff preview</strong></a> without creating an actual Desk ticket.</td></tr><tr><td><strong>Live:</strong> Production</td><td>Creates a Desk ticket that is <a href="handoff.md#assigning-handed-off-tickets"><strong>automatically assigned</strong></a>, with <a href="handoff.md#auto-populated-ticket-fields"><strong>auto-populated ticket fields</strong></a>.</td></tr></tbody></table>
 
 ***
 
@@ -28,7 +28,7 @@ Handoff to Desk works differently depending on your environment:
 
 ## Handoff preview
 
-When you trigger a handoff in a Development or Staging environment, Delight AI displays a preview instead of creating an actual Desk ticket. This preview shows the ticket priority and assigned team based on Desk rules, the custom ticket fields that would be auto-populated, and the context object. It helps you verify the entire process from AI agent conversation to Desk handoff without affecting your live Desk workspace.
+When you trigger a handoff in a Development or Staging environment, Delight AI displays a **Hand off to Desk** preview instead of creating an actual Desk ticket. This preview shows the ticket priority and assigned team based on Desk rules, the custom ticket fields that would be auto-populated, and the context object. This helps you verify how the Desk ticket would be created, without affecting your live Desk workspace.
 
 {% hint style="info" %}
 To create an actual Desk ticket regardless of the environment, contact us to turn off this feature.
@@ -79,8 +79,8 @@ The AI agent automatically analyzes the conversation to determine its category a
 To ensure tickets are always assigned even when category analysis fails, create fallback assignment rules using other ticket fields.
 
 1. Create custom ticket fields for setting rules.
-2. Create assignment rules based on the fields.
-3. Pass the value through the context object, so it can be populated.
+2. Create assignment rules based on those fields.
+3. Pass values through the context object, so the corresponding fields can be populated.
 
 This gives you full control over ticket assignment regardless of AI category analysis results.
 
