@@ -58,5 +58,3 @@ Define how to manage conversations with no response from customers.
 <figure><img src="../../../../.gitbook/assets/image (134).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="258.94140625">Field</th><th>Description</th></tr></thead><tbody><tr><td>Timeout period</td><td><p>Define the duration of inactivity after which the conversation is considered ended. The AI agent automatically closes the conversation if the customer does not respond within the specified timeframe.</p><p>Default timeout period: 10 minutes</p></td></tr><tr><td>Closing message</td><td>Enter a message that informs the customer when the conversation is closing due to inactivity.</td></tr></tbody></table>
-
-\\
