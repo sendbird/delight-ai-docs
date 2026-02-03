@@ -44,7 +44,6 @@
   * [AI suggestions](dashboard-guide/evaluate/ai-suggestions.md)
 * [Proactive chat](dashboard-guide/proactive-chat.md)
 * [Integrations](dashboard-guide/integrations/README.md)
-  * [New Sprinklr (WIP)](dashboard-guide/integrations/new-sprinklr-wip.md)
   * [Zendesk](dashboard-guide/integrations/zendesk.md)
   * [Salesforce](dashboard-guide/integrations/salesforce.md)
   * [Freshworks](dashboard-guide/integrations/freshworks.md)

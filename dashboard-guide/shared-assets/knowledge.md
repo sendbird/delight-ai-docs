@@ -14,8 +14,7 @@ Knowledge consists of various content sources your AI agent uses to generate acc
   * Supported file format: `json`, `txt`, `md`, `pdf`, `xlsx`, `xls`, `docx`, `doc`, `pptx`, `ppt`
 * Snippets — Manually add quick facts or guidance.
 * Websites — Import subpages from a main URL.
-* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk, Notion, Amazon S3\
-  (Coming soon: Google Drive)
+* Integrations — Sync from [Salesforce](../integrations/salesforce.md), [Confluence](../integrations/confluence.md), [Sprinklr](../integrations/sprinklr.md), [Zendesk](../integrations/zendesk.md), Notion, [Amazon S3](../integrations/amazon-s3.md), [ServiceNow](../integrations/servicenow.md), [Genesys](../integrations/genesys.md) (Voice channel only)
 
 {% hint style="info" %}
 Integrations must first be configured under **Workspace settings > Integrations**.

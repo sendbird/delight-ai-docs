@@ -15,7 +15,7 @@ Self-serve integration is currently not supported. Contact a Delight representat
 
 ### Step 1: Provide your Sprinklr API credentials.
 
-As of May 12, 2025, the integration can be established by Delight upon your request. To integrate, Delight will need the following information:
+As of May 12, 2025, the integration can be established by Delight upon your request. To integrate, Delight AI agent will need the following information:
 
 * **Live chat application ID** and **API key**
 * **Environment**
