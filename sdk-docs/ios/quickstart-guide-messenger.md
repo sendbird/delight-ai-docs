@@ -550,4 +550,4 @@ AIAgentMessenger.presentConversation(
 
 #### Custom Localization (Multi-language Support)
 
-AIAgent supports adding and customizing multi languages. For more information, see [this detail page](https://github.com/sendbird/delight-ai-docs/blob/develop/sdk-docs/ios/MULTILANGUAGE.md).
+AIAgent supports adding and customizing multi languages. For more information, see [this detail page](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/ios/MULTILANGUAGE.md).

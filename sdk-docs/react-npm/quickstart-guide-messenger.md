@@ -292,4 +292,4 @@ The SDK supports multiple languages and allows you to customize UI strings. You 
 * Add support for additional languages
 * Dynamically load language files
 
-For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](https://github.com/sendbird/delight-ai-docs/blob/develop/sdk-docs/react-npm/MULTILANGUAGE.md).
+For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/react-npm/MULTILANGUAGE.md).

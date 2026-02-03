@@ -8,7 +8,7 @@ Go to **Build > CSAT** in Delight AI dashboard to get started with a customizabl
 Such customization can be applied to [Messenger](channels/messenger/) and [Email](channels/email.md) channels only. If you wish to update the survey question for other channels such as [SMS](channels/sms.md) and [WhatsApp](channels/whatsapp.md), go to **Build >** **Channels** and configure the settings for each channel type. CSAT survey isn't supported in Voice channels.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (131).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/csat_updated_0126.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -59,7 +59,7 @@ The CRE is a survey asking users whether their inquiries have been resolved by A
 * Positive feedback text
 * Negative feedback text
 
-<figure><img src="../../.gitbook/assets/image (102).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/resolution.png" alt="" width="501"><figcaption></figcaption></figure>
 
 #### CSAT survey
 
@@ -79,9 +79,11 @@ A follow-up question is a conditional query that can be asked when the user sele
 1. Select the rating conditions for **If ranting is**. Then, add your question to the box next to **ask**.
    1. Take the screenshot below as an example. If a user rates their satisfaction with one of **1**, **2**, and **3**, they will be asked "What were you dissatisfied with?"
 2. Select response type and add response options. The response type can be either a single answer or a paragraph. For single-answer questions, up to five options are allowed.
-3. Determine whether the follow-up question will be required or optional. If required, check the **Required** box in the top-right corner of the section.
+3. Determine whether the follow-up question will be required or optional.&#x20;
+   1. If required, check the **Required** box in the top-right corner of the section.
+   2. You can also determine whether to display the follow-up question regardless of the user's answer.
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/follow-up_detail.png" alt="" width="447"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 The default CSAT survey includes one open-ended follow-up question for all rating options.\
@@ -90,7 +92,7 @@ Each rating can have only one follow-up question. To customize follow-ups per ra
 
 </details>
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/follow-up_detail (1).png" alt="" width="501"><figcaption></figcaption></figure>
 
 ### Others
 
@@ -99,7 +101,7 @@ Besides the survey's language and content, you can also customize:
 * Submit button label: the text for the **Submit** button.
 * Confirmation message after submission: the text that will appear after the user clicks **Submit**.
 
-<figure><img src="../../.gitbook/assets/image (104).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/submit.png" alt="" width="525"><figcaption></figcaption></figure>
 
 ***
 

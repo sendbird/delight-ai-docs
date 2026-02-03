@@ -10,10 +10,9 @@ Handoff to Desk works differently depending on your AI agent's environment:
 
 ## Prerequisites
 
-* Sendbird Desk integration is enabled.
 * Context object is set up.
-  * A context object is a key-value store that sends customer-specific information to the AI agent. It can include business details such as order numbers, membership tiers, or any other data.
-  * If you haven't set up a context object yet, refer to the following guides:
+  * Context object is a key–value store that sends customer-specific information to the AI agent so it can provide relevant answers. It can include business details such as order numbers, membership tiers, or any other data the agent should know.
+  * If you haven’t set up a context object yet, refer to the following guides.
     * [DASHBOARD GUIDE > Users > Pass a context object to AI agents](../../users.md#pass-a-context-object-to-ai-agents)
     * [SDK DOCS > iOS > Context object](../../../sdk-docs/ios/context-object.md)
     * [SDK DOCS > Android > Context object](../../../sdk-docs/android/context-object.md)

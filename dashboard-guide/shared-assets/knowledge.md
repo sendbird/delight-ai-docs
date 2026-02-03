@@ -14,8 +14,7 @@ Knowledge consists of various content sources your AI agent uses to generate acc
   * Supported file format: `json`, `txt`, `md`, `pdf`, `xlsx`, `xls`, `docx`, `doc`, `pptx`, `ppt`
 * Snippets — Manually add quick facts or guidance.
 * Websites — Import subpages from a main URL.
-* Integrations — Sync from Salesforce, Confluence, Sprinklr, Zendesk, Notion, Amazon S3\
-  (Coming soon: Google Drive)
+* Integrations — Sync from [Salesforce](../integrations/salesforce.md), [Confluence](../integrations/confluence.md), [Sprinklr](../integrations/sprinklr.md), [Zendesk](../integrations/zendesk.md), Notion, [Amazon S3](../integrations/amazon-s3.md),  [Genesys](../integrations/genesys.md) (Voice channel only)
 
 {% hint style="info" %}
 Integrations must first be configured under **Workspace settings > Integrations**.
@@ -69,7 +68,7 @@ Knowledge is a shared asset created and managed at the **workspace level**, but 
 Once saved, go to **AI agent > Build > Knowledge** to enable or disable the entry for each specific agent.
 
 {% hint style="info" %}
-Any changes must be **deployed** to apply in the Production environment.
+Any changes must be **deployed** to apply in the Staging and Production environment.
 {% endhint %}
 
 ***
@@ -81,12 +80,15 @@ Edits to knowledge content follow shared asset rules and apply at the workspace 
 ### **Save**
 
 * Changes to a knowledge item are immediately saved and applied to all agents in the **Development environment**.
-* You must **deploy** changes for them to affect the **Production** environment.
+* You must **deploy** changes for them to affect the **Staging** and **Production** environment.
 
 ### **Sync**
 
 * Syncing fetches the latest version of an external knowledge source (e.g., website or integration).
-* This updates the content across all agents in the **Development environment** and may take a few minutes to complete.
+* You can sync content in either of the following ways:
+  * **Scheduled sync** — Automatically syncs content on a recurring schedule.
+  * **Manual sync** — Syncs content on demand.
+* These updates the content across all agents in the **Development environment** and may take a few minutes to complete.
 
 ### **Delete**
 

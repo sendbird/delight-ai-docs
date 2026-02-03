@@ -1,71 +1,105 @@
-# AI agent (home)
+# AI agent - Home and Overview
 
-The **AI agent home** gives you a centralized view of all AI agents within your workspace.
+In the Delight AI Agent dashboard, you can configure agent behavior, manage shared assets, and deploy agents across environments. This page introduces the core concepts of AI agents and explains what you can do on the **Home** and **Overview** pages.
 
-<figure><img src="../.gitbook/assets/image (125).png" alt=""><figcaption></figcaption></figure>
+***
 
-## What you can do
+## Core concepts
 
-* View all AI agents in your [workspace](ai-agent-home.md#workspace-vs-ai-agent) at a glance
-* [Check each agent’s environment status](ai-agent-home.md#development-vs-production-environments) (Development / Production)
-* [See which changes are pending deployment with a breakdown of updated items](ai-agent-home.md#see-changes)
-* [Deploy changes to Production](ai-agent-home.md#deploy-to-production)
-* [View deployment history](ai-agent-home.md#viewing-deployment-history)
-* [Create new AI agents](ai-agent-home.md#creating-a-new-ai-agent)
-* [Enable or disable an AI agent](ai-agent-home.md#managing-ai-agents-operational-state)
+This section introduces the key concepts referenced throughout the user guide.
+
+#### Workspace vs. AI agent
+
+A **workspace** is the shared environment where your AI agents operate. A single workspace can contain multiple agents and shared assets, such as knowledge data.
+
+<table><thead><tr><th width="192.26953125">Concept</th><th>Description</th></tr></thead><tbody><tr><td>Workspace</td><td>A region-based container. All agents in a workspace share instructional assets such as Knowledge, Actionbooks, Tools, and Message templates.</td></tr><tr><td>AI agent</td><td>A uniquely configured entity with its own behavior, language, and use case.</td></tr></tbody></table>
+
+If not sure where to start, use this rule of thumb:
+
+* **Create a new workspace** if you need to serve users in a completely different region (e.g. US vs Korea).
+* **Create a new agent** if you want to serve different audiences, policies, or languages within the same region.
 
 {% hint style="info" %}
-**Note:** The AI agent list view may vary based on your [role and permission](https://docs.delight.ai/roles-and-permissions) settings within the workspace.
+To create a new workspace, contact contact one of our Delight representatives.
+{% endhint %}
+
+#### Development, Staging, and Production environments
+
+Once you've created a workspace, you need to build a new AI agent. Delight AI agent automatically comes with three environments:
+
+<table><thead><tr><th width="207.5390625">Environment</th><th>Purpose</th></tr></thead><tbody><tr><td>Development</td><td>A sandbox for testing, editing, and validating your agent before going live.</td></tr><tr><td>Staging</td><td>A pre-production environment for a final validation and quality assurance of changes from <strong>Development</strong>.</td></tr><tr><td>Production</td><td>The live version users interact with.</td></tr></tbody></table>
+
+Modifications in **Development** and **Staging** do not impact the live agent until they are deployed to Production.
+
+{% hint style="info" %}
+You can edit agents only in **Development**. **Staging** and **Production** are read-only.
 {% endhint %}
 
 ***
 
-### Development vs Production environments
+## Home
 
-When you create a new AI agent, it automatically comes with two environments:
+First, the **Home** page showcases all the workspaces and AI agents you've built in them. You can manage your workspace settings and create more AI agents when needed.
 
-* **Development** — a sandbox for testing, editing, and validating your agent before going live.
-* **Production** — the live version users interact with.
+<figure><img src="../.gitbook/assets/home-3states.png" alt=""><figcaption></figcaption></figure>
 
-Modifications in Development do not impact the live agent until they are deployed to Production.
+{% hint style="info" %}
+The AI agent list view may vary based on your [role and permission](https://docs.delight.ai/roles-and-permissions) settings within the workspace.
+{% endhint %}
+
+### Create more AI agents
+
+Depending on your service environment, you might need more than one AI agents - one for Sales, one for Customer service, and one for Technical assistance. Click the **Add Agent➕** button below the list of agent cards to create a new agent. You'll be asked to:
+
+* Name the agent (visible to users).
+
+Each new agent will come with three environments: [Development, Staging, and Production](ai-agent-home.md#development-vs-production-environments).
+
+{% hint style="info" %}
+To delete an agent, contact one of our Delight representatives.
+{% endhint %}
+
+### Manage workspace settings
+
+You can find the Workspace settings button above the list of AI agents. This allows you to specify the system prompt to apply to AI agents across the workspace, build knowledge assets that will be shared among them, and manage 3rd party platform integrations, and more.
+
+<figure><img src="../.gitbook/assets/Workspace settings.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-### Viewing changes
+## Overview
 
-If there are updates in the Development environment that haven’t been deployed, a **changes to deploy** badge will appear on the agent card.
+The **Overview** page provides at-a-glance insight into an AI agent's performance and user satisfaction. You can also deploy or revert changes you've made in **Development** to **Staging** and **Production**.
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Overview (1).png" alt=""><figcaption></figcaption></figure>
 
-A modal will then pop up with a detailed list of items that were modified. You can review the changes and choose to deploy all or selectively deploy changes.
+### View and deploy changes
 
-<figure><img src="../.gitbook/assets/image (126).png" alt=""><figcaption></figcaption></figure>
+If there are updates in the **Development** environment that haven’t been deployed, a statement "**Available to deploy**" will appear on the agent card.
 
-***
+Click the agent card. You can find the **View changes to deploy** button at the top of left menu bar. Review the changes and choose to either deploy all or deploy selectively.
 
-### Deploying to Production
-
-Use the **Deploy to production** button to publish changes from an agent’s Development environment to its Production version.
+{% hint style="info" %}
+To apply changes from **Development** on a production level, deploy changes to both **Staging** and then **Production**.
+{% endhint %}
 
 **Selective deployment**
 
-With **selective deployment**, you have full control over which AI agents receive workspace-level changes. For example, when you update a shared Actionbook or Knowledge item, you can choose which agents should receive the new version in Production.
+Selective deployment lets you control which AI agents receive workspace-level changes. For example, when you update a shared **Actionbook** or **Knowledge** item in **Development**, you can choose which agents receive the update in **Staging** and **Production**.
 
 This allows you to:
 
 * Gradually roll out updates to specific agents
-* A/B test different flows across agents
-* Avoid unintended changes to agents that share the same workspace assets
+* Run A/B tests across agents
+* Prevent unintended changes to agents that share the same workspace assets
 
-{% include "../.gitbook/includes/untitled (1).md" %}
+### View deployment history
 
-***
+Click **History** in **Staging** and **Production** environments to view past deployments.
 
-### Viewing deployment history
+<figure><img src="../.gitbook/assets/history.png" alt=""><figcaption></figcaption></figure>
 
-Click **Deployment history** on any agent card to view past deployments.
-
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Deployment history.png" alt=""><figcaption></figcaption></figure>
 
 Each record shows:
 
@@ -73,51 +107,47 @@ Each record shows:
 * Who deployed it
 * When it was deployed
 * Details of the modified items
+* Restore button\*
 
 {% hint style="info" %}
-**Note:** If you do not have member permission, deployment records will display as `No permission` .
+Version history is available in **Staging** and **Production** only.
 {% endhint %}
 
-***
+<details>
 
-### Creating a new AI agent
+<summary>*How to revert deployment</summary>
 
-Click the ➕ icon at the bottom of the agent list to create a new agent. You'll be asked to:
+After deployment, you can revert the change with a click. Each environment offers different ways to roll back your recent deployments.
 
-* Name the agent (visible to users)
-* Each new agent will come with both a [Development and Production](ai-agent-home.md#development-vs-production-environments) environment.
+**Development**
 
-{% hint style="info" %}
-**Note:** To delete an agent, contact sales.
-{% endhint %}
+1. On the **Overview** page, click **Reset changes** in the **Development** environment. This button appears in the same location as **History** in the **Staging** environment and resets **Development** to the current **Staging** version.
 
-***
+**Staging and Production**
 
-### Managing AI agent's operational state
+1. On the **Overview** page, click the **History** button to open the **Version history** modal.
+2. Find an agent version to roll your **Staging** or **Production** back to.
+3. Click the **Restore** button in the far right column of the table.
+4. Select what changes to revert from the current settings.
+5. Leave a note about why you are reverting the deployment and type in your organization name to proceed.
 
-<figure><img src="../.gitbook/assets/CleanShot 2025-05-14 at 17.52.53.gif" alt=""><figcaption><p>Deactivating an AI agent</p></figcaption></figure>
+</details>
 
-You can toggle an agent between **Active** and **Inactive**:
+### Manage AI agent's operational state
+
+You can activate or deactivate an agent in its Overview page. Click its **Active** status button and toggle the agent between **Active** and **Inactive**:
+
+\[image]
 
 * **Active**: The AI agent is up and running, and available to users.
 * **Inactive**: The agent stops operating, and the specified fallback message will be sent as a response instead.
 
 {% hint style="info" %}
-**Note**: Toggling the agent in one environment doesn’t affect the other.
+Toggling the agent in one environment doesn’t affect the other environments.
 {% endhint %}
 
-***
+### Monitor AI agent's performance
 
-### Workspace vs AI agent
+The **Overview** page also displays key metrics for AI agent performance and user satisfaction over the selected time period. The default range is the last 7 days, and vertical lines on the graph indicate version updates.
 
-* **Workspace**: A region-based container. All agents in a workspace share assets such as Knowledge, Actionbooks, Tools, and Message templates.
-* **Agent**: A unique setup with its own behavior, language, and use case.
-
-Use this rule of thumb:
-
-* **Create a new workspace** if you need to serve users in a completely different region (e.g. US vs Korea).
-* **Create a new agent** if you want to serve different audiences, policies, or languages within the same region.
-
-{% hint style="info" %}
-**Note:** To create a new workspace, contact sales.
-{% endhint %}
+<figure><img src="../.gitbook/assets/insights.png" alt=""><figcaption></figcaption></figure>

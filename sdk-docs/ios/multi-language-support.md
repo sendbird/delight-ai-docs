@@ -42,7 +42,7 @@ Edit the `Localizable.strings` files per language:
 ...
 ```
 
-Refer to the [English-based `Localizable.string` file](https://github.com/sendbird/delight-ai-docs/blob/develop/sdk-docs/ios/en.lproj/Localizable.strings) to set the language-specific strings to use for the keys you need.
+Refer to the [English-based `Localizable.string` file](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/ios/en.lproj/Localizable.strings) to set the language-specific strings to use for the keys you need.
 
 > If you set the key-value of `Localizable.string` for each language you need, it will use the internally customized string first.
 

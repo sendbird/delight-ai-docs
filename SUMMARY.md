@@ -4,14 +4,17 @@
 
 ## Dashboard guide
 
-* [AI agent (home)](dashboard-guide/ai-agent-home.md)
-* [Users](dashboard-guide/users.md)
+* [AI agent - Home and Overview](dashboard-guide/ai-agent-home.md)
+* [Users](dashboard-guide/users/README.md)
+  * [Memory](dashboard-guide/users/memory/README.md)
+    * [For You Conversation](dashboard-guide/users/memory/for-you-conversation.md)
 * [Shared assets](dashboard-guide/shared-assets/README.md)
   * [Knowledge](dashboard-guide/shared-assets/knowledge.md)
   * [Actionbooks](dashboard-guide/shared-assets/actionbooks/README.md)
     * [markdown format](dashboard-guide/shared-assets/actionbooks/markdown-format.md)
   * [Tools](dashboard-guide/shared-assets/tools.md)
   * [Message templates](dashboard-guide/shared-assets/message-templates.md)
+  * [Follow-up triggers](dashboard-guide/shared-assets/follow-up-triggers.md)
 * [Build](dashboard-guide/build/README.md)
   * [Profile](dashboard-guide/build/profile.md)
   * [Knowledge](dashboard-guide/build/knowledge.md)
@@ -41,7 +44,6 @@
   * [AI suggestions](dashboard-guide/evaluate/ai-suggestions.md)
 * [Proactive chat](dashboard-guide/proactive-chat.md)
 * [Integrations](dashboard-guide/integrations/README.md)
-  * [New Sprinklr (WIP)](dashboard-guide/integrations/new-sprinklr-wip.md)
   * [Zendesk](dashboard-guide/integrations/zendesk.md)
   * [Salesforce](dashboard-guide/integrations/salesforce.md)
   * [Freshworks](dashboard-guide/integrations/freshworks.md)
@@ -52,6 +54,7 @@
   * [Sprinklr](dashboard-guide/integrations/sprinklr.md)
   * [Amazon S3](dashboard-guide/integrations/amazon-s3.md)
   * [Genesys](dashboard-guide/integrations/genesys.md)
+  * [ServiceNow](dashboard-guide/integrations/servicenow.md)
 * [Roles and permissions](dashboard-guide/roles-and-permissions.md)
 * [Webhook](dashboard-guide/webhook.md)
 
@@ -67,7 +70,7 @@
   * [Multi-language support](sdk-docs/ios/multi-language-support.md)
 * [Android](sdk-docs/android/README.md)
   * [Quickstart guide (Messenger)](sdk-docs/android/quickstart-guide-messenger.md)
-  * [Features](sdk-docs/android/features/readme.md)
+  * [Features](sdk-docs/android/features/README.md)
     * [Launcher](sdk-docs/android/features/launcher.md)
     * [Conversations](sdk-docs/android/features/conversations.md)
     * [Messages](sdk-docs/android/features/messages.md)
@@ -108,5 +111,20 @@
 ## Tutorials
 
 * [How to optimize your knowledge](tutorials/how-to-optimize-your-knowledge.md)
+* [Omnichannel communication with triggers](tutorials/omnichannel-communication-with-triggers.md)
 * [Actionbook best practices](tutorials/actionbook-best-practices.md)
 * [Authentication for Tools](tutorials/authentication-for-tools.md)
+
+## Security
+
+* [Overview](security/overview.md)
+* [Organization and Account](security/organization-and-account.md)
+* [Environment separation](security/environment-separation.md)
+* [AI agent instructions](security/ai-agent-instructions.md)
+* [Shared assets](security/shared-assets/README.md)
+  * [Knowledge](security/shared-assets/knowledge.md)
+  * [Actionbooks](security/shared-assets/actionbooks.md)
+  * [Tools](security/shared-assets/tools.md)
+* [Safeguards](security/safeguards/README.md)
+  * [Safeguards](security/safeguards/ai-agent-safeguards.md)
+  * [Personally Identifiable Information](security/safeguards/personally-identifiable-information.md)

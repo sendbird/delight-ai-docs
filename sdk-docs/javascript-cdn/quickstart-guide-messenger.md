@@ -299,4 +299,4 @@ The SDK supports multiple languages and allows you to customize UI strings. You 
 * Add support for languages not built into the SDK
 * Dynamically load language files as needed for better performance
 
-For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](https://github.com/sendbird/delight-ai-docs/blob/develop/sdk-docs/javascript-cdn/MULTILANGUAGE.md).
+For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/javascript-cdn/MULTILANGUAGE.md).
