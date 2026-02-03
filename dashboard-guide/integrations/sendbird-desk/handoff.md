@@ -21,7 +21,7 @@ Handoff to Desk works differently depending on your AI agent's environment:
     * [SDK DOCS > React (npm) > Context object](../../../sdk-docs/react-npm/context-object.md)
     * [PLATFORM API > Context object for messenger channel](../../../platform-api/context-object-for-messenger-channel.md)
 * Desk assignment and priority rules are configured.
-  * To configure the rules, go to **Settings > Desk > Rules** on the Sendbird dashboard. For more information, see [Desk guide](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules).
+  * To configure the rules, go to **Settings > Desk > Rules** on the [Sendbird dashboard](https://dashboard.sendbird.com/application-id/desk/settings/assignment_rules). For more information, see [Desk guide](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules).
   * If you don't have any assignment or priority rules configured in Desk, tickets will be assigned to the default team with medium priority.
 
 ***
@@ -54,8 +54,8 @@ In the **Conversation Information** panel, find the **Handoff details** section.
 
 The modal displays:
 
-* **Ticket priority**: The ticket priority based on Desk's priority rules.
-* **Assigned team**: The assigned team based on Desk's assignment rules.
+* **Ticket priority**: The ticket priority based on [Desk's priority rules](https://sendbird.com/docs/desk/guide/v1/rules/priority-rules).
+* **Assigned team**: The assigned team based on [Desk's assignment rules](https://sendbird.com/docs/desk/guide/v1/rules/assignment-rules).
 * **Updated ticket fields**: Desk ticket field values populated from the context object.
 * **Context object**: Full context data passed during handoff.
 
@@ -68,6 +68,10 @@ When a handoff occurs in a Production environment, Delight AI passes additional 
 ### AI agent handoff category
 
 The AI agent automatically analyzes the conversation to determine its category and sub-category. These classifications describe the topic or intent of the conversation, such as Billing - Refund request. You can create assignment rules in Desk using **AI agent handoff category** or **sub-category** as conditions.
+
+{% hint style="info" %}
+To configure the rules, go to **Settings > Desk > Rules** on the [Sendbird dashboard](https://dashboard.sendbird.com/application-id/desk/settings/assignment_rules).
+{% endhint %}
 
 #### **Limitations**
 
