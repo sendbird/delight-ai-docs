@@ -68,7 +68,7 @@ Knowledge is a shared asset created and managed at the **workspace level**, but 
 Once saved, go to **AI agent > Build > Knowledge** to enable or disable the entry for each specific agent.
 
 {% hint style="info" %}
-Any changes must be **deployed** to apply in the Production environment.
+Any changes must be **deployed** to apply in the Staging and Production environment.
 {% endhint %}
 
 ***
@@ -80,12 +80,15 @@ Edits to knowledge content follow shared asset rules and apply at the workspace 
 ### **Save**
 
 * Changes to a knowledge item are immediately saved and applied to all agents in the **Development environment**.
-* You must **deploy** changes for them to affect the **Production** environment.
+* You must **deploy** changes for them to affect the **Staging** and **Production** environment.
 
 ### **Sync**
 
 * Syncing fetches the latest version of an external knowledge source (e.g., website or integration).
-* This updates the content across all agents in the **Development environment** and may take a few minutes to complete.
+* You can sync content in either of the following ways:
+  * **Scheduled sync** — Automatically syncs content on a recurring schedule.
+  * **Manual sync** — Syncs content on demand.
+* These updates the content across all agents in the **Development environment** and may take a few minutes to complete.
 
 ### **Delete**
 

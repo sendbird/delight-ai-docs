@@ -30,8 +30,6 @@ Once you've entered all the required credentials, click **Connect** at the top-r
 
 ## **What's next**
 
-### **Add ServiceNow articles as knowledge**
+### **Sync ServiceNow articles as knowledge**
 
-If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and connect them to Delight AI agent.
-
-See our guide on [Knowledge](../shared-assets/knowledge.md) for more information.
+If you have any guidelines or articles that your AI agent can reference, go to the [Shared assets > Knowledge](../shared-assets/knowledge.md) menu in the dashboard and sync them to Delight AI agent. When your ServiceNow articles are updated, re-sync them to keep the agent’s knowledge up to date.
