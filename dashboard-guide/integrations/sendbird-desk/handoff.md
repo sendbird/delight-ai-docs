@@ -1,6 +1,6 @@
 # Handoff
 
-Handoff is a feature that transfers conversations from an AI agent to the other integrated platform, including Sendbird Desk. When a conversation is handded off to Desk, it creates a ticket with a specific priority, assigns it to a team, and automatically populates ticket fields based on a context object passed along with the conversation — so human agents can quickly grasp the context of the customer's situation.
+Handoff is a feature that transfers conversations from an AI agent to the other integrated platform, including Sendbird Desk. When a conversation is handed off to Desk, it creates a ticket with a specific priority, assigns it to a team, and automatically populates ticket fields based on a context object passed along with the conversation — so human agents can quickly grasp the context of the customer's situation.
 
 Handoff to Desk works differently depending on your AI agent's environment:
 
