@@ -7,7 +7,7 @@ When integrating Delight AI agent with your client app, you will consider how yo
 Each layer requires a different approach to authentication and implementation. This guide focuses on authenticating the AI agent’s [Tool](../dashboard-guide/shared-assets/tools.md) calls on the backend.
 
 {% hint style="info" %}
-To learn more about user authentication on the client layer, see our SDK Quick start guide for [iOS](../sdk-docs/ios/quickstart-guide-messenger.md#manage-user-sessions), [Android](../sdk-docs/android/quickstart-guide-messenger.md#manage-user-sessions), [JavaScript](../sdk-docs/javascript-cdn/quickstart-guide-messenger.md#manage-user-sessions), and [React](../sdk-docs/react-npm/quickstart-guide-messenger.md#manage-user-sessions).
+To learn more about user authentication on the client layer, see our SDK Quick start guide for [iOS](../sdk-docs/ios/README.md#manage-user-sessions), [Android](../sdk-docs/android/README.md#manage-user-sessions), [JavaScript](../sdk-docs/javascript-cdn/README.md#manage-user-sessions), and [React](../sdk-docs/react-npm/README.md#manage-user-sessions).
 {% endhint %}
 
 ***
