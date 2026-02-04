@@ -4,17 +4,17 @@ This guide explains how to localize the UI strings used in the **Delight AI agen
 
 This guide explains:
 
-* [Overview](multi-language-support.md#overview)
-  * [Supported languages](multi-language-support.md#supported-languages)
-* [Setting the language](multi-language-support.md#setting-the-language)
-* [Customizing strings](multi-language-support.md#customizing-strings)
-  * [Scenario 1: Customizing strings in supported languages](multi-language-support.md#scenario-1-customizing-strings-in-supported-languages)
-  * [Scenario 2: Adding support for unsupported languages](multi-language-support.md#scenario-2-adding-support-for-unsupported-languages)
-* [Language switching with React](multi-language-support.md#language-switching-with-react)
-* [Organizing and loading language files](multi-language-support.md#organizing-and-loading-language-files)
-  * [Dynamic loading implementation Recommended:](multi-language-support.md#dynamic-loading-implementation-recommended)
-  * [Alternative: Static import Not recommended for multiple languages:](multi-language-support.md#alternative-static-import-not-recommended-for-multiple-languages)
-* [Default SDK strings](multi-language-support.md#default-sdk-strings)
+* [Overview](#overview)
+  * [Supported languages](#supported-languages)
+* [Setting the language](#setting-the-language)
+* [Customizing strings](#customizing-strings)
+  * [Scenario 1: Customizing strings in supported languages](#scenario-1-customizing-strings-in-supported-languages)
+  * [Scenario 2: Adding support for unsupported languages](#scenario-2-adding-support-for-unsupported-languages)
+* [Language switching with React](#language-switching-with-react)
+* [Organizing and loading language files](#organizing-and-loading-language-files)
+  * [Dynamic loading implementation Recommended:](#dynamic-loading-implementation-recommended)
+  * [Alternative: Static import Not recommended for multiple languages:](#alternative-static-import-not-recommended-for-multiple-languages)
+* [Default SDK strings](#default-sdk-strings)
 
 ***
 
