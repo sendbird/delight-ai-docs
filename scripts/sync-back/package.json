@@ -1,0 +1,22 @@
+{
+  "name": "sync-back",
+  "version": "1.0.0",
+  "description": "Sync docs repo changes back to private repos",
+  "main": "sync-back.js",
+  "scripts": {
+    "test": "node test-all.js",
+    "test:old": "node test.js",
+    "test:mapping": "node test-mapping.js",
+    "sync": "node sync-back.js",
+    "sync:dry": "DRY_RUN=true node sync-back.js"
+  },
+  "keywords": [
+    "gitbook",
+    "sync",
+    "docs"
+  ],
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
