@@ -159,6 +159,15 @@ Use ASCII/XML diagrams to show component hierarchy:
 - **Web (React/JS)**: Focus on component registration and props
 - **All platforms**: Include error handling patterns
 
+## Critical rule: Code snippets
+**NEVER copy code from one platform and insert it into another platform's documentation.**
+
+- Each platform has its own code written by platform engineers
+- You may review code for logic or syntax issues and leave comments
+- You may suggest improvements via comments or review
+- You must NOT modify, replace, or insert code snippets across platforms
+- If code appears incorrect, flag it for the platform engineer to fix
+
 </platform_considerations>
 
 <reference>[Existing documentation]</reference>
