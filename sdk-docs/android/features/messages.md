@@ -2,7 +2,18 @@
 
 In Delight AI agent messenger, you can exchange text, images, files, and rich template-based messages. This allows you to build interactive conversations across many use cases.
 
-This guide explains Types, Key features, and API references.
+This guide explains:
+
+- [Types](messages.md#types)
+  - [Text message](messages.md#text-message)
+  - [Image message](messages.md#image-message)
+  - [File message](messages.md#file-message)
+  - [Rich message](messages.md#rich-message)
+- [Key features](messages.md#key-features)
+  - [Read receipt](messages.md#read-receipt)
+  - [Citation](messages.md#citation)
+  - [Special notice](messages.md#special-notice)
+- [API references](messages.md#api-references)
 
 ---
 
@@ -25,17 +36,13 @@ Delight AI agent messenger supports multiple message types. Each type maps to a 
 
 **Text message** represents plain text communication between users and AI agents.
 
-Content: Plain text. You can also use Markdown for formatting.
-Use case: Basic conversational interactions.
-Support: Full text rendering with proper formatting.
+The content is plain text. You can also use Markdown for formatting. The message supports full text rendering with proper formatting.
 
 ### Image message
 
 **Image message** lets you share images in a conversation.
 
-Supported formats: `JPEG`, `PNG` only. You can send an image with text.
-Use case: Sharing visual content.
-Display: Optimized image rendering with proper scaling.
+Supported formats include `JPEG` and `PNG`. You can send an image with text. The UI renders the image with optimized scaling.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-image-message2.png" alt="" width="375">
@@ -48,9 +55,7 @@ Display: Optimized image rendering with proper scaling.
 
 **File message** lets you share files in a conversation.
 
-Supported formats: `PDF` only. You can send a file with text.
-Use case: Document sharing and file-based communication.
-Display: File preview with download capabilities.
+Supported formats include `PDF`. You can send a file with text. The UI provides a file preview and download actions.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-file-message2.png" alt="" width="375">
@@ -65,9 +70,7 @@ Display: File preview with download capabilities.
 
 **CTA** messages include a button that opens an external URL in a web browser.
 
-Components: A single button that links to an external webpage. Custom link formats are not supported.
-Use case: Action-oriented user interactions.
-Configuration: Available through dashboard template configuration.
+The CTA includes a single button that links to an external webpage. Custom link formats are not supported. You can configure CTA templates in the dashboard.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-cta2.png" alt="" width="375">
@@ -78,9 +81,7 @@ Configuration: Available through dashboard template configuration.
 
 **Carousel** messages present multiple items that users can horizontally scroll.
 
-Layout: Horizontal scrolling interface.
-Content: Multiple items with individual interactions.
-Use case: Product showcases, option selection, content browsing.
+The layout uses horizontal scrolling. The content includes multiple items with individual interactions. You can use it for product showcases, option selection, and content browsing.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-carousel2.png" alt="" width="375">
@@ -91,9 +92,7 @@ Use case: Product showcases, option selection, content browsing.
 
 **Suggested replies** provide predefined quick responses for users.
 
-Functionality: Quick response selection.
-Use case: Streamlined user interactions and faster response times.
-Display: Accessible quick reply buttons.
+The UI presents quick response options. You can use this feature to speed up user replies and streamline the flow.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png" alt="" width="375">
@@ -104,9 +103,7 @@ Display: Accessible quick reply buttons.
 
 **CSAT message** collects customer satisfaction feedback within conversations.
 
-Purpose: Customer satisfaction measurement.
-Components: Rating systems and feedback collection.
-Use case: Service quality assessment and user experience evaluation.
+The message collects CSAT feedback. The UI includes rating controls and optional text input. You can use it to measure service quality and user experience.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-csat2.png" alt="" width="375">
@@ -117,9 +114,7 @@ Use case: Service quality assessment and user experience evaluation.
 
 **Product list** messages display product information in a vertical scrolling format.
 
-Layout: Vertical scrolling interface.
-Content: Product information and details.
-Use case: E-commerce integration, product showcases, inventory display.
+The layout uses vertical scrolling. The content includes product information and details. You can use it for product showcases and inventory display.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-sdk-mobile-message-product-list.png" alt="cascade" width="375">
@@ -316,7 +311,11 @@ try {
 
 ## Key features
 
-The core features supported for messages in Delight AI agent include Read receipt, Citation, and Special notice.
+The core features supported for messages in Delight AI agent include:
+
+- Read receipt
+- Citation
+- Special notice
 
 ### Read receipt
 
