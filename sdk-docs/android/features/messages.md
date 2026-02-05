@@ -140,7 +140,7 @@ Custom message templates allow you to implement business-specific UI components 
 
 **Data structure**
 
-The `CustomMessageTemplateData` interface has the following structure:
+The `CustomMessageTemplateData` class has the following structure:
 
 ```kotlin
 data class CustomMessageTemplateData(
@@ -152,6 +152,40 @@ data class CustomMessageTemplateData(
         val status: Int,         // HTTP request status code
         val content: String?     // Message content payload (JSON string)
     )
+}
+```
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `id` | String | Specifies the unique ID of the custom message template. This must match the ID configured in **Delight AI dashboard**. |
+| `response.status` | Int | Indicates the HTTP request status code. |
+| `response.content` | String? | Specifies the message content as a JSON string. |
+| `error` | String? | Specifies the reason why the request failed, if applicable. |
+
+**Sample JSON payload**
+
+Your app receives a JSON payload of `custom_message_templates` like the following:
+
+```json
+{
+  "custom_message_templates": [
+    {
+      "id": "coupon",
+      "response": {
+        "status": 200,
+        "content": "{\"title\": \"20% Off\", \"code\": \"SAVE20\"}"
+      },
+      "error": null
+    },
+    {
+      "id": "product-list",
+      "response": {
+        "status": 404,
+        "content": null
+      },
+      "error": "Failed to fetch products"
+    }
+  ]
 }
 ```
 
@@ -191,6 +225,10 @@ Custom templates render in a dedicated slot within the message structure. They a
 **2. Register a custom handler**
 
 Implement `CustomMessageTemplateViewHandler` and set it in `ConversationMessageListUIParams`.
+
+{% hint style="info" %}
+If you don't register a custom handler, the template slot renders nothing by default.
+{% endhint %}
 
 ```kotlin
 class MyCustomTemplateHandler : CustomMessageTemplateViewHandler {
@@ -275,28 +313,87 @@ override fun onCreateCustomMessageTemplateView(
 
 **Error handling patterns**
 
-**Unregistered templates**: Return fallback UI for unknown template IDs.
+Handle the following exception scenarios in your custom handler:
+
+{% tabs %}
+{% tab title="Fallback UI" %}
+**Fallback UI for unregistered templates**
+
+Return a fallback UI when an unregistered template ID is received. This prevents your app from breaking with unknown templates.
+
 ```kotlin
 when (templateData.id) {
-    "known_template" -> createKnownTemplate(context, data)
+    "coupon_template" -> createCouponCard(context, data)
+    "product_template" -> createProductCard(context, data)
     else -> createFallbackView(context)
 }
-```
 
-**API failures**: Check response status and error field.
-```kotlin
-if (data.error != null) return createErrorView(context, data.error)
-if (data.response.status != 200) return createErrorView(context, "API error")
-```
-
-**Runtime errors**: Wrap handler logic in try-catch. The SDK also wraps calls to prevent crashes.
-```kotlin
-try {
-    callback.onViewReady(createView(context, data))
-} catch (e: Exception) {
-    callback.onViewReady(createFallbackView(context))
+private fun createFallbackView(context: Context): View {
+    return TextView(context).apply {
+        text = "Unsupported template type"
+        setBackgroundColor(Color.parseColor("#FFF3CD"))
+        setPadding(16, 16, 16, 16)
+    }
 }
 ```
+{% endtab %}
+
+{% tab title="API failure" %}
+**Error UI for API failures**
+
+Check the response status and error field to handle API request failures.
+
+```kotlin
+fun handleTemplateData(context: Context, data: CustomMessageTemplateData): View {
+    // Check for error message
+    if (data.error != null) {
+        return createErrorView(context, data.error)
+    }
+
+    // Check for non-success status
+    if (data.response.status != 200) {
+        return createErrorView(context, "Failed to load content")
+    }
+
+    // Process successful response
+    return createTemplateView(context, data)
+}
+
+private fun createErrorView(context: Context, message: String): View {
+    return TextView(context).apply {
+        text = "Error: $message. Please try again later."
+        setPadding(16, 16, 16, 16)
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Runtime error" %}
+**Error boundary for runtime errors**
+
+Wrap your handler logic in try-catch to handle unexpected runtime errors. The SDK also wraps calls to prevent crashes.
+
+```kotlin
+override fun onCreateCustomMessageTemplateView(
+    context: Context,
+    message: BaseMessage,
+    data: List<CustomMessageTemplateData>,
+    callback: CustomMessageTemplateViewCallback
+) {
+    try {
+        val templateData = data.firstOrNull() ?: run {
+            callback.onViewReady(createFallbackView(context))
+            return
+        }
+        callback.onViewReady(createTemplateView(context, templateData))
+    } catch (e: Exception) {
+        Log.e("CustomTemplate", "Failed to render template", e)
+        callback.onViewReady(createErrorView(context, "Something went wrong"))
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ---
 
@@ -403,3 +500,14 @@ AIAgentMessenger.config.conversation.input.camera.enablePhoto = false
 AIAgentMessenger.config.conversation.input.gallery.enablePhoto = false
 AIAgentMessenger.config.conversation.input.enableFile = false
 ```
+
+### Message types
+
+The SDK automatically handles different message types. The following table lists the message classes used internally.
+
+| Type | Class | Description |
+| ---- | ----- | ----------- |
+| Text | `UserMessage` | Plain text messages with optional Markdown. |
+| Image | `FileMessage` | Image files in `JPEG` and `PNG` format. |
+| File | `FileMessage` | Document files in `PDF` format. |
+| Rich | `UserMessage` with template | Template-based interactive messages including CTA, Carousel, and custom templates. |
