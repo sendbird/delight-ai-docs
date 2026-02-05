@@ -324,28 +324,29 @@ To learn more, see `CustomMessageTemplateData`.
 
 ## Key features
 
-The core features supported for messages in Delight AI agent include:
+The SDK supports these message features in Delight AI agent:
 
-* [Read receipt](messages.md#read-receipt)
-* [Citation](messages.md#citation)
-* [Special notice](messages.md#special-notice)
+- Read receipt
+- Citation
+- Special notice
 
 ### Read receipt
 
-Messages in a conversation can display their read status, indicating when they have been viewed by participants. By default, read status isn't displayed, but it can be enabled through `AIAgentMessenger.config`.
+Read receipt indicates when a message is viewed. If you don't specify the setting, the SDK does not show read status.
 
+You can enable read receipt by passing `enableMessageReceiptState`.
+
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
-// Enable message receipt state
 AIAgentMessenger.config.conversation.list.enableMessageReceiptState = true
 ```
+</div>
 
 ### Citation
 
-**Citation** feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
+Citation shows source information for AI agent responses. This allows you to display the references used to generate an answer.
 
-* Default: Disabled by default.
-* Configuration: Requires dashboard configuration to be displayed.
-* Activation settings: Adjustable through dashboard configuration values.
+Citation requires dashboard configuration to appear in the UI. If you don't specify the dashboard setting, the SDK hides the citation view.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-citation2.png" alt="" width="375">
@@ -354,18 +355,7 @@ AIAgentMessenger.config.conversation.list.enableMessageReceiptState = true
 
 ### Special notice
 
-**Special Notice** displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
-
-* Display location: Bottom of the screen.
-* Behavior: Automatically disappears when a conversation starts.
-* Configuration: Available through dashboard configuration.
-
-<figure>
-  <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-special-notice2.png" alt="special_notice" width="375">
-  <figcaption></figcaption>
-</figure>
-
----
+Special notice shows important information before a conversation starts. You can also use this section to present guidelines or terms.
 
 ## API references
 
