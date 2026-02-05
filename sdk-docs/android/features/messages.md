@@ -198,32 +198,21 @@ The client receives a JSON payload of `custom_message_templates` like below:
 **1. Understand the message layout**
 
 Custom templates render in a dedicated slot within the message structure, appearing below the standard message content.
-```
-┌──────────────────────────────────────────────────────────┐
-│                      <MessageBubble>                     │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                    <Message>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <CTAButton>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <Citation>                      │   │
-│   └──────────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                   <MessageTemplate>                      │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│            <CustomMessageTemplateSlot>                   │
-│        (Place CustomMessageTemplate here)                │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                      <Feedback>                          │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                 <SuggestedReplies>                       │
-└──────────────────────────────────────────────────────────┘
+
+```xml
+<MessageBubble>
+  <Message />
+  <CTAButton />
+  <Citation />
+</MessageBubble>
+
+<MessageTemplate />
+
+<!-- Place CustomMessageTemplate here -->
+<CustomMessageTemplateSlot />
+
+<Feedback />
+<SuggestedReplies />
 ```
 
 **2. Register custom handler**
