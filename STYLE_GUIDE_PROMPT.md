@@ -33,6 +33,7 @@ Use transitional phrases:
 - One idea per sentence
 - Avoid nested clauses
 - Break complex sentences into multiple sentences
+- Lead with the main point first, then provide details (inverted pyramid style)
 
 ## Prohibited words
 DO NOT use: simply, just, obviously, please, in order to
@@ -82,6 +83,9 @@ For property tables, use this format:
 ```
 ---
 ```
+
+### Comparisons
+When comparing items, always use a table. Never use prose or bullet points for comparisons.
 
 ### Bold formatting
 Bold the following:
