@@ -237,6 +237,14 @@ Use ASCII/XML diagrams to show component hierarchy:
 - You must NOT modify, replace, or insert code snippets across platforms
 - If code appears incorrect, flag it for the platform engineer to fix
 
+## Critical rule: Content removal
+**NEVER remove existing content without explanation and approval.**
+
+- Do not delete information for the sake of brevity
+- If you think content should be removed, explain why and ask for approval first
+- Existing content was added for a reason - assume it has value unless proven otherwise
+- This includes: bullet points, sentences, sections, examples, and any other information
+
 </platform_considerations>
 
 <reference>[Existing documentation]</reference>

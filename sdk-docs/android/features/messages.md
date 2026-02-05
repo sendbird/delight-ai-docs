@@ -33,6 +33,7 @@ Text messages are the foundation of conversational interactions between users an
 
 * Content: Plain text with Markdown support.
 * Use case: Basic conversational interactions.
+* Display: Full text rendering with proper formatting.
 
 ### Image message
 
@@ -40,6 +41,7 @@ Image messages allow users to share visual content within conversations.
 
 * Supported formats: `JPEG` and `PNG` only. Can be sent with text.
 * Use case: Sharing screenshots, diagrams, and visual content.
+* Display: Optimized image rendering with proper scaling.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-image-message2.png" alt="" width="375">
@@ -54,6 +56,7 @@ File messages allow users to share documents within conversations.
 
 * Supported formats: `PDF` only. Can be sent with text.
 * Use case: Document sharing and file attachments.
+* Display: File preview with download capabilities.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-file-message2.png" alt="" width="375">
