@@ -148,13 +148,13 @@ The `CustomMessageTemplateData` interface structure:
 
 ```kotlin
 data class CustomMessageTemplateData(
-    val id: String,
+    val id: String,              // Unique template identifier matching dashboard configuration
     val response: Response,
-    val error: String?
+    val error: String?           // Failure reason, if applicable
 ) {
     data class Response(
-        val status: Int,
-        val content: String?
+        val status: Int,         // HTTP request status code
+        val content: String?     // Message content payload (JSON string)
     )
 }
 ```
