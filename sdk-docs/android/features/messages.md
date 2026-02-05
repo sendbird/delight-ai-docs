@@ -134,21 +134,22 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Custom message template
 
-**Custom message template** enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
+**Custom message template** lets you render business-specific UI beyond pre-defined templates. The Delight AI agent server sends structured data, and you render it with your own UI components. This allows you to ship domain-specific experiences without changing the message model.
 
-**Core Features**
+**Core features**
 
-- **Data Delivery**: Templates arrive as `custom_message_templates` array in the message's `extendedMessagePayload`. Clients handle UI rendering.
-- **Multiple Templates**: A single message can include multiple templates, each representing different UI elements.
-- **Backward Compatibility**: Unregistered template IDs trigger fallback UI, preventing application breakage.
+- **Data delivery**: Templates arrive in the `custom_message_templates` array under `extendedMessagePayload`. You parse the array and render the UI.
+- **Multiple templates**: One message can include multiple templates, each representing a distinct UI element. You can also map each template to a different view.
+- **Backward compatibility**: Unknown template IDs should fall back to a safe UI to avoid crashes.
 
-**Data Structure**
+**Data structure**
 
-The `CustomMessageTemplateData` interface structure:
+The `CustomMessageTemplateData` interface defines the payload you receive.
 
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 data class CustomMessageTemplateData(
-    val id: String,              // Unique template identifier matching dashboard configuration
+    val id: String,              // Template identifier from the dashboard
     val response: Response,
     val error: String?           // Failure reason, if applicable
 ) {
@@ -158,12 +159,15 @@ data class CustomMessageTemplateData(
     )
 }
 ```
+</div>
 
-**Implementation Steps**
+`id` specifies the template identifier configured in the dashboard. `response.status` indicates the HTTP status code from the agent server. `response.content` determines the JSON payload you render. `error` indicates a server-side failure reason.
+
+**Implementation steps**
 
 **1. Understand the message layout**
 
-Custom templates render in a dedicated slot within the message structure, appearing below the standard message content.
+Custom templates render in a dedicated slot under the standard message content.
 ```
 ┌──────────────────────────────────────────────────────────┐
 │                      <MessageBubble>                     │
@@ -192,10 +196,11 @@ Custom templates render in a dedicated slot within the message structure, appear
 └──────────────────────────────────────────────────────────┘
 ```
 
-**2. Register custom handler**
+**2. Register a custom handler**
 
-Implement `CustomMessageTemplateViewHandler` and set it in `ConversationMessageListUIParams`:
+You can register a handler by passing `customMessageTemplateViewHandler` in `ConversationMessageListUIParams`.
 
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 class MyCustomTemplateHandler : CustomMessageTemplateViewHandler {
     override fun onCreateCustomMessageTemplateView(
@@ -226,7 +231,6 @@ class MyCustomTemplateHandler : CustomMessageTemplateViewHandler {
     }
 }
 
-// Register handler
 AIAgentAdapterProviders.conversation =
     ConversationAdapterProvider { channel, uiParams, containerGenerator ->
         uiParams.customMessageTemplateViewHandler = MyCustomTemplateHandler()
@@ -237,20 +241,24 @@ AIAgentAdapterProviders.conversation =
         )
     }
 ```
+</div>
 
 **3. Process template data**
 
-Access custom template data from the message:
+You can access custom templates by reading `custom_message_templates` from `extendedMessagePayload`. If you don't specify `custom_message_templates`, the message renders without a custom template.
 
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 val customTemplates = message.extendedMessagePayload["custom_message_templates"]
 // SDK automatically parses this to List<CustomMessageTemplateData>
 ```
+</div>
 
 **4. Handle exceptions**
 
-Implement error handling for various failure scenarios:
+Wrap rendering logic and return a fallback view when errors occur. On the other hand, you should still return a view for recoverable errors so the message list remains stable.
 
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 override fun onCreateCustomMessageTemplateView(
     context: Context,
@@ -259,14 +267,12 @@ override fun onCreateCustomMessageTemplateView(
     callback: CustomMessageTemplateViewCallback
 ) {
     try {
-        // Check for errors in data
         val templateData = data.firstOrNull()
         if (templateData?.error != null) {
             callback.onViewReady(createErrorView(context, templateData.error))
             return
         }
 
-        // Validate response status
         when (templateData?.response?.status) {
             200 -> callback.onViewReady(createTemplateView(context, templateData))
             else -> callback.onViewReady(createErrorView(context, "Failed to load template"))
@@ -276,24 +282,33 @@ override fun onCreateCustomMessageTemplateView(
     }
 }
 ```
+</div>
 
-**Error Handling Patterns**
+**Error handling patterns**
 
-**Unregistered templates**: Return fallback UI for unknown template IDs
+**Unregistered templates**
+
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 when (templateData.id) {
     "known_template" -> createKnownTemplate(context, data)
     else -> createFallbackView(context)
 }
 ```
+</div>
 
-**API failures**: Check response status and error field
+**API failures**
+
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 if (data.error != null) return createErrorView(context, data.error)
 if (data.response.status != 200) return createErrorView(context, "API error")
 ```
+</div>
 
-**Runtime errors**: Wrap handler logic in try-catch; SDK also wraps calls to prevent crashes
+**Runtime errors**
+
+<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
 ```kotlin
 try {
     callback.onViewReady(createView(context, data))
@@ -301,6 +316,9 @@ try {
     callback.onViewReady(createFallbackView(context))
 }
 ```
+</div>
+
+To learn more, see `CustomMessageTemplateData`.
 
 ---
 
