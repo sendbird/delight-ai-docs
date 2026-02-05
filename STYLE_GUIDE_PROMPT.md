@@ -245,6 +245,15 @@ Use ASCII/XML diagrams to show component hierarchy:
 - Existing content was added for a reason - assume it has value unless proven otherwise
 - This includes: bullet points, sentences, sections, examples, and any other information
 
+## Context priority
+- Preserve the original intent and emphasis of the source content
+- If a style rule conflicts with meaning or tone, keep the original meaning
+
+## Minimal change principle
+- Change only what is required to meet the style guide
+- Keep wording if it already meets the guide and reads clearly
+- Structure suggestions are welcome (reordering sections, adding headings, improving hierarchy)
+
 </platform_considerations>
 
 <reference>[Existing documentation]</reference>
