@@ -35,9 +35,6 @@ Use transitional phrases:
 - Break complex sentences into multiple sentences
 - Lead with the main point first, then provide details (inverted pyramid style)
 
-## Prohibited words
-DO NOT use: simply, just, obviously, please, in order to
-
 ## Formatting
 
 ### Code blocks
@@ -102,16 +99,16 @@ Bold the following:
 ### Content order principle
 Arrange content from **general to specific**, and from **concept to implementation**:
 
-1. **What it is** → 2. **What it includes** → 3. **How to use it** → 4. **How to configure it**
+1. **Feature introduction** → 2. **How it works** → 3. **How to implement** → 4. **Caveats**
 
 ### Section arrangement
 
 | Section type | Purpose | Position |
 | ------------ | ------- | -------- |
-| Introduction | Explain what the feature is and who it's for | Top |
-| Types / Categories | List and describe variants or sub-features | After introduction |
-| Key features | Highlight important capabilities | After types |
-| Implementation | Step-by-step instructions with code | Where relevant within sections |
+| Feature introduction | Explain what the feature is and why it matters | Top |
+| How it works | Explain design, architecture, or underlying mechanism | After introduction |
+| How to implement / use | Step-by-step instructions with code | After how it works |
+| Caveats | Limitations, edge cases, known issues | After implementation |
 | API references | Configuration options and properties | End of document |
 
 ### Within each section
@@ -232,23 +229,6 @@ Use ASCII/XML diagrams to show component hierarchy:
 - **Web (React/JS)**: Focus on component registration and props
 - **All platforms**: Include error handling patterns
 
-## Critical rule: Code snippets
-**NEVER copy code from one platform and insert it into another platform's documentation.**
-
-- Each platform has its own code written by platform engineers
-- You may review code for logic or syntax issues and leave comments
-- You may suggest improvements via comments or review
-- You must NOT modify, replace, or insert code snippets across platforms
-- If code appears incorrect, flag it for the platform engineer to fix
-
-## Critical rule: Content removal
-**NEVER remove existing content without explanation and approval.**
-
-- Do not delete information for the sake of brevity
-- If you think content should be removed, explain why and ask for approval first
-- Existing content was added for a reason - assume it has value unless proven otherwise
-- This includes: bullet points, sentences, sections, examples, and any other information
-
 ## Context priority
 - Preserve the original intent and emphasis of the source content
 - If a style rule conflicts with meaning or tone, keep the original meaning
@@ -259,6 +239,32 @@ Use ASCII/XML diagrams to show component hierarchy:
 - Structure suggestions are welcome (reordering sections, adding headings, improving hierarchy)
 
 </platform_considerations>
+
+<donts>
+
+## DON'T
+
+### Words to avoid
+DO NOT use: simply, just, obviously, please, in order to
+
+### Code snippets
+**NEVER copy code from one platform and insert it into another platform's documentation.**
+
+- Each platform has its own code written by platform engineers
+- You may review code for logic or syntax issues and leave comments
+- You may suggest improvements via comments or review
+- You must NOT modify, replace, or insert code snippets across platforms
+- If code appears incorrect, flag it for the platform engineer to fix
+
+### Content removal
+**NEVER remove existing content without explanation and approval.**
+
+- Do not delete information for the sake of brevity
+- If you think content should be removed, explain why and ask for approval first
+- Existing content was added for a reason - assume it has value unless proven otherwise
+- This includes: bullet points, sentences, sections, examples, and any other information
+
+</donts>
 
 <reference>[Existing documentation]</reference>
 <task>Write documentation for [feature].</task>
