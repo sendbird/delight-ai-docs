@@ -93,19 +93,88 @@ Bold the following:
 
 <content_structure>
 
-## Recommended document structure
+## Information architecture
 
-1. **Title** - Feature name
-2. **Introduction** - 2-3 sentences explaining what users/developers can do
-3. **Table of contents** - "This guide covers:" with linked sections
-4. **Divider** (---)
-5. **Main sections** - Each with:
-   - Conceptual overview (what it is)
-   - Details (how it works)
-   - Code example
-   - Conditions/edge cases
-   - Related links (if applicable)
-6. **API references** - Configuration tables
+### Content order principle
+Arrange content from **general to specific**, and from **concept to implementation**:
+
+1. **What it is** → 2. **What it includes** → 3. **How to use it** → 4. **How to configure it**
+
+### Section arrangement
+
+| Section type | Purpose | Position |
+| ------------ | ------- | -------- |
+| Introduction | Explain what the feature is and who it's for | Top |
+| Types / Categories | List and describe variants or sub-features | After introduction |
+| Key features | Highlight important capabilities | After types |
+| Implementation | Step-by-step instructions with code | Where relevant within sections |
+| API references | Configuration options and properties | End of document |
+
+### Within each section
+
+1. **Overview first**: Start with what it is, not how to use it
+2. **Visual before code**: Show screenshot/diagram, then code example
+3. **Happy path before edge cases**: Show standard usage, then error handling
+4. **Simple before complex**: Start with basic example, then advanced options
+
+### Grouping related content
+
+- Group by **user goal**, not by technical component
+- If a feature has multiple variants (e.g., message types), list them in a table first, then detail each one
+- Keep related code examples close to their explanations (don't separate into a "Code examples" section)
+
+## Document structure
+
+Every feature document should follow this structure:
+
+```
+# Title
+
+[Introduction: 2-3 sentences]
+
+This guide covers:
+- [Section 1](#section-1)
+    - [Subsection](#subsection)
+- [Section 2](#section-2)
+
+---
+
+## Section 1
+[Content]
+
+---
+
+## API references
+[Configuration tables]
+```
+
+### Title
+Use the feature name. Keep it short (1-3 words).
+
+### Introduction
+- First sentence: Start with "In Delight AI agent, users can..." or "Delight AI agent supports..."
+- Explain what the feature does and why it matters
+- Keep to 2-3 sentences max
+
+### Table of contents
+- Use "This guide covers:" (not "explains" or "includes")
+- Use `-` for list markers (not `*`)
+- Indent nested items with 4 spaces
+- Link to anchors using `[Section name](#section-name)`
+
+### Main sections
+Each section should flow: **concept → details → code → edge cases**
+
+- Start with a brief explanation of what it is
+- Add bullet points for key details (formats, use cases, etc.)
+- Include code example if applicable
+- Note any limitations or edge cases
+
+### API references
+- Place at the end of the document
+- Use tables with: Property | Type | Description
+- Include default values in description: `(Default: value)`
+- Add code example showing common configurations
 
 ## For implementation guides (like Custom message template)
 

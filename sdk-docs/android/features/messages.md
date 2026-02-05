@@ -194,32 +194,14 @@ Your app receives a JSON payload of `custom_message_templates` like the followin
 **1. Understand the message layout**
 
 Custom templates render in a dedicated slot within the message structure. They appear below the standard message content.
-```
-┌──────────────────────────────────────────────────────────┐
-│                      <MessageBubble>                     │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                    <Message>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <CTAButton>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <Citation>                      │   │
-│   └──────────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                   <MessageTemplate>                      │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│            <CustomMessageTemplateSlot>                   │
-│        (Place CustomMessageTemplate here)                │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                      <Feedback>                          │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                 <SuggestedReplies>                       │
-└──────────────────────────────────────────────────────────┘
+
+```kotlin
+// Message structure:
+// MessageBubble { Message, CTAButton, Citation }
+// MessageTemplate
+// CustomMessageTemplateSlot  <-- render your view here
+// Feedback
+// SuggestedReplies
 ```
 
 **2. Register a custom handler**
