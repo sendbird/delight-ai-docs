@@ -66,7 +66,7 @@ For the notification messages in Actionbook event triggers,  AI agent supports m
 
 ## How to manage&#x20;
 
-adfafas
+// description
 
 ### Conversation event triggers
 
@@ -76,11 +76,11 @@ adfafas
 
 ### Actionbook event triggers
 
-dfdf
+// dfdf
 
 <figure><img src="../../.gitbook/assets/actionbook-triggers (1).png" alt=""><figcaption></figcaption></figure>
 
-afdf
+// afdf
 
 ***
 

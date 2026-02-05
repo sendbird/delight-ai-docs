@@ -40,6 +40,7 @@
   * [Categories](dashboard-guide/evaluate/categories.md)
   * [Conversations](dashboard-guide/evaluate/conversations/README.md)
     * [How to evaluate AI agent responses](dashboard-guide/evaluate/conversations/how-to-evaluate-ai-agent-responses.md)
+    * [Conversation group](dashboard-guide/evaluate/conversations/conversation-group.md)
   * [Flagged messages](dashboard-guide/evaluate/flagged-messages.md)
   * [AI suggestions](dashboard-guide/evaluate/ai-suggestions.md)
 * [Proactive chat](dashboard-guide/proactive-chat.md)
