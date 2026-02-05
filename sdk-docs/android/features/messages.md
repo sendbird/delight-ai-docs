@@ -1,8 +1,8 @@
 # Messages
 
-In Delight AI agent messenger, AI agent and users can exchange various types of messages to enable rich and interactive conversations, including text, images, files, and rich template-based messages. It allows users to have comprehensive and engaging conversations with AI agents across different use cases.
+In Delight AI agent, users can exchange text, image, and file messages with AI agents. AI agents can also send rich template-based messages to provide interactive experiences. This enables comprehensive and engaging conversations across different use cases.
 
-This guide explains:
+This guide covers:
 - [Types](#types)
     - [Text Message](#text-message)
     - [Image Message](#image-message)
@@ -18,7 +18,7 @@ This guide explains:
 
 ## Types
 
-Delight AI agent messenger supports various message types to provide comprehensive communication capabilities between users and AI agents. Each message type is designed for specific use cases and content formats.
+Delight AI agent supports the following message types for communication between users and AI agents.
 
 | Type                                       | Description                                 | Content format                      | Use cases                                                                  |
 | ------------------------------------------ | ------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
@@ -27,20 +27,20 @@ Delight AI agent messenger supports various message types to provide comprehensi
 | [File message](messages.md#file-message)   | Document and file sharing                   | Various file formats                | Document sharing, attachments, downloadable resources                      |
 | [Rich message](messages.md#rich-message)   | Template-based messages with interactive UI | Structured JSON templates           | Product displays, carousels, CTAs and more. See below section for details. |
 
-### Text Message
+### Text message
 
-**Text Message** represents regular text-based communication between users and AI agents. These messages support plain text content and are the foundation of conversational interactions.
+Text messages are the foundation of conversational interactions between users and AI agents.
 
-* Content: Plain text messages. Markdown supported.
+* Content: Plain text with Markdown support.
 * Use case: Basic conversational interactions.
-* Support: Full text rendering with proper formatting.
+* Display: Full text rendering with proper formatting.
 
-### Image Message
+### Image message
 
-**Image Message** enables sharing of image files within conversations. This message type supports common image formats for visual communication.
+Image messages allow users to share visual content within conversations.
 
-* Supported formats: `JPEG`, `PNG` only. Can be sent with text.
-* Use case: Sharing visual content.
+* Supported formats: `JPEG` and `PNG` only. Can be sent with text.
+* Use case: Sharing screenshots, diagrams, and visual content.
 * Display: Optimized image rendering with proper scaling.
 
 <figure>
@@ -48,14 +48,14 @@ Delight AI agent messenger supports various message types to provide comprehensi
   <figcaption></figcaption>
 </figure>
 
-> **Note**: However, once handed off to a human agent, users can send image files in any format.
+> __Note__: Once handed off to a human agent, users can send image files in any format.
 
-### File Message
+### File message
 
-**File Message** allows sharing of various file formats within conversations, enabling sharing document and resource between users and AI agents.
+File messages allow users to share documents within conversations.
 
 * Supported formats: `PDF` only. Can be sent with text.
-* Use case: Document sharing and file-based communication.
+* Use case: Document sharing and file attachments.
 * Display: File preview with download capabilities.
 
 <figure>
@@ -63,17 +63,17 @@ Delight AI agent messenger supports various message types to provide comprehensi
   <figcaption></figcaption>
 </figure>
 
-### Rich Message
+### Rich message
 
-**Rich Message** utilizes predefined templates to create interactive and visually appealing message experiences. These templates are configurable through the Delight AI dashboard settings and provide enhanced user interaction.
+Rich messages use predefined templates to create interactive message experiences. You can configure these templates through the **Delight AI dashboard**.
 
 #### Call to Action (CTA) button
 
-**CTA** messages contain a button that allows users to take specific actions directly from the conversation interface. In the Delight AI messenger, the button opens the specified external URL in a web browser.
+CTA messages contain a button that allows users to take specific actions directly from the conversation. The button opens an external URL in a web browser.
 
-* Components: A single button that links to an external webpage. Custom link formats are not supported.
+* Components: A single button linking to an external webpage. Custom link formats are not supported.
 * Use case: Action-oriented user interactions.
-* Configuration: Available through dashboard template configuration.
+* Configuration: Configure through **Workspace settings > Shared assets > Message templates** in **Delight AI dashboard**.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-cta2.png" alt="" width="375">
@@ -82,7 +82,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Carousel
 
-**Carousel** messages present multiple items that can be horizontally scrolled. This allows users to browse through various options or content pieces in a compact format.
+Carousel messages present multiple items in a horizontally scrollable format. Users can browse through various options or content pieces.
 
 * Layout: Horizontal scrolling interface.
 * Content: Multiple items with individual interactions.
@@ -95,23 +95,22 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Suggested replies
 
-**Suggested replies** provide predefined quick responses for users, enabling faster and more efficient conversation flow by offering common response options.
+Suggested replies provide predefined quick response options for users. This enables faster conversation flow by offering common responses.
 
 * Functionality: Quick response selection.
 * Use case: Streamlined user interactions and faster response times.
-* Display: Accessible quick reply buttons.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png" alt="" width="375">
   <figcaption></figcaption>
 </figure>
 
-#### CSAT Message
+#### CSAT message
 
-**CSAT Message** is designed to collect user feedback for customer satisfaction (CSAT) survey within conversations.
+CSAT messages collect user feedback for customer satisfaction surveys within conversations.
 
 * Purpose: Customer satisfaction measurement.
-* Components: Rating systems and feedback collection.
+* Components: Rating system and feedback collection.
 * Use case: Service quality assessment and user experience evaluation.
 
 <figure>
@@ -119,9 +118,9 @@ Delight AI agent messenger supports various message types to provide comprehensi
   <figcaption></figcaption>
 </figure>
 
-#### Product List
+#### Product list
 
-**Product List** messages display product information in a vertical scrolling format, different from Carousel with its vertical layout optimized for product browsing and selection.
+Product list messages display product information in a vertical scrolling format. Unlike Carousel, the vertical layout is optimized for product browsing and selection.
 
 * Layout: Vertical scrolling interface.
 * Content: Product information and details.
@@ -134,17 +133,17 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Custom message template
 
-**Custom message template** enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
+Custom message templates allow you to implement business-specific UI components beyond predefined templates. The Delight AI agent server sends structured data that you render with your own custom UI components.
 
-**Core Features**
+**Core features**
 
-- **Data Delivery**: Templates arrive as `custom_message_templates` array in the message's `extendedMessagePayload`. Clients handle UI rendering.
-- **Multiple Templates**: A single message can include multiple templates, each representing different UI elements.
-- **Backward Compatibility**: Unregistered template IDs trigger fallback UI, preventing application breakage.
+- **Data delivery**: You receive templates in the `custom_message_templates` array within the message's `extendedMessagePayload`. You handle UI rendering.
+- **Multiple templates**: A single message can include multiple templates, each representing different UI elements.
+- **Backward compatibility**: Unregistered template IDs trigger fallback UI, preventing application breakage.
 
-**Data Structure**
+**Data structure**
 
-The `CustomMessageTemplateData` interface structure:
+The `CustomMessageTemplateData` class has the following structure:
 
 ```kotlin
 data class CustomMessageTemplateData(
@@ -159,42 +158,62 @@ data class CustomMessageTemplateData(
 }
 ```
 
-**Implementation Steps**
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `id` | String | Specifies the unique ID of the custom message template. This must match the ID configured in **Delight AI dashboard**. |
+| `response.status` | Int | Indicates the HTTP request status code. |
+| `response.content` | String? | Specifies the message content as a JSON string. |
+| `error` | String? | Specifies the reason why the request failed, if applicable. |
+
+**Sample JSON payload**
+
+Your app receives a JSON payload of `custom_message_templates` like the following:
+
+```json
+{
+  "custom_message_templates": [
+    {
+      "id": "coupon",
+      "response": {
+        "status": 200,
+        "content": "{\"title\": \"20% Off\", \"code\": \"SAVE20\"}"
+      },
+      "error": null
+    },
+    {
+      "id": "product-list",
+      "response": {
+        "status": 404,
+        "content": null
+      },
+      "error": "Failed to fetch products"
+    }
+  ]
+}
+```
+
+**Implementation steps**
 
 **1. Understand the message layout**
 
-Custom templates render in a dedicated slot within the message structure, appearing below the standard message content.
-```
-┌──────────────────────────────────────────────────────────┐
-│                      <MessageBubble>                     │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                    <Message>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <CTAButton>                     │   │
-│   └──────────────────────────────────────────────────┘   │
-│   ┌──────────────────────────────────────────────────┐   │
-│   │                  <Citation>                      │   │
-│   └──────────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                   <MessageTemplate>                      │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│            <CustomMessageTemplateSlot>                   │
-│        (Place CustomMessageTemplate here)                │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                      <Feedback>                          │
-└──────────────────────────────────────────────────────────┘
-┌──────────────────────────────────────────────────────────┐
-│                 <SuggestedReplies>                       │
-└──────────────────────────────────────────────────────────┘
+Custom templates render in a dedicated slot within the message structure. They appear below the standard message content.
+
+```kotlin
+// Message structure:
+// MessageBubble { Message, CTAButton, Citation }
+// MessageTemplate
+// CustomMessageTemplateSlot  <-- render your view here
+// Feedback
+// SuggestedReplies
 ```
 
-**2. Register custom handler**
+**2. Register a custom handler**
 
-Implement `CustomMessageTemplateViewHandler` and set it in `ConversationMessageListUIParams`:
+Implement `CustomMessageTemplateViewHandler` and set it in `ConversationMessageListUIParams`.
+
+{% hint style="info" %}
+If you don't register a custom handler, the template slot renders nothing by default.
+{% endhint %}
 
 ```kotlin
 class MyCustomTemplateHandler : CustomMessageTemplateViewHandler {
@@ -240,7 +259,7 @@ AIAgentAdapterProviders.conversation =
 
 **3. Process template data**
 
-Access custom template data from the message:
+You can access custom template data from the message.
 
 ```kotlin
 val customTemplates = message.extendedMessagePayload["custom_message_templates"]
@@ -249,7 +268,7 @@ val customTemplates = message.extendedMessagePayload["custom_message_templates"]
 
 **4. Handle exceptions**
 
-Implement error handling for various failure scenarios:
+Implement error handling for various failure scenarios.
 
 ```kotlin
 override fun onCreateCustomMessageTemplateView(
@@ -277,36 +296,95 @@ override fun onCreateCustomMessageTemplateView(
 }
 ```
 
-**Error Handling Patterns**
+**Error handling patterns**
 
-**Unregistered templates**: Return fallback UI for unknown template IDs
+Handle the following exception scenarios in your custom handler:
+
+{% tabs %}
+{% tab title="Fallback UI" %}
+**Fallback UI for unregistered templates**
+
+Return a fallback UI when an unregistered template ID is received. This prevents your app from breaking with unknown templates.
+
 ```kotlin
 when (templateData.id) {
-    "known_template" -> createKnownTemplate(context, data)
+    "coupon_template" -> createCouponCard(context, data)
+    "product_template" -> createProductCard(context, data)
     else -> createFallbackView(context)
 }
-```
 
-**API failures**: Check response status and error field
-```kotlin
-if (data.error != null) return createErrorView(context, data.error)
-if (data.response.status != 200) return createErrorView(context, "API error")
-```
-
-**Runtime errors**: Wrap handler logic in try-catch; SDK also wraps calls to prevent crashes
-```kotlin
-try {
-    callback.onViewReady(createView(context, data))
-} catch (e: Exception) {
-    callback.onViewReady(createFallbackView(context))
+private fun createFallbackView(context: Context): View {
+    return TextView(context).apply {
+        text = "Unsupported template type"
+        setBackgroundColor(Color.parseColor("#FFF3CD"))
+        setPadding(16, 16, 16, 16)
+    }
 }
 ```
+{% endtab %}
+
+{% tab title="API failure" %}
+**Error UI for API failures**
+
+Check the response status and error field to handle API request failures.
+
+```kotlin
+fun handleTemplateData(context: Context, data: CustomMessageTemplateData): View {
+    // Check for error message
+    if (data.error != null) {
+        return createErrorView(context, data.error)
+    }
+
+    // Check for non-success status
+    if (data.response.status != 200) {
+        return createErrorView(context, "Failed to load content")
+    }
+
+    // Process successful response
+    return createTemplateView(context, data)
+}
+
+private fun createErrorView(context: Context, message: String): View {
+    return TextView(context).apply {
+        text = "Error: $message. Please try again later."
+        setPadding(16, 16, 16, 16)
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Runtime error" %}
+**Error boundary for runtime errors**
+
+Wrap your handler logic in try-catch to handle unexpected runtime errors. The SDK also wraps calls to prevent crashes.
+
+```kotlin
+override fun onCreateCustomMessageTemplateView(
+    context: Context,
+    message: BaseMessage,
+    data: List<CustomMessageTemplateData>,
+    callback: CustomMessageTemplateViewCallback
+) {
+    try {
+        val templateData = data.firstOrNull() ?: run {
+            callback.onViewReady(createFallbackView(context))
+            return
+        }
+        callback.onViewReady(createTemplateView(context, templateData))
+    } catch (e: Exception) {
+        Log.e("CustomTemplate", "Failed to render template", e)
+        callback.onViewReady(createErrorView(context, "Something went wrong"))
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ---
 
 ## Key features
 
-The core features supported for messages in Delight AI agent include:
+Delight AI agent supports the following message features:
 
 * [Read receipt](messages.md#read-receipt)
 * [Citation](messages.md#citation)
@@ -314,7 +392,7 @@ The core features supported for messages in Delight AI agent include:
 
 ### Read receipt
 
-Messages in a conversation can display their read status, indicating when they have been viewed by participants. By default, read status isn't displayed, but it can be enabled through `AIAgentMessenger.config`.
+You can display read status on messages to indicate when they have been viewed. By default, read status is not displayed. You can enable it through `AIAgentMessenger.config`.
 
 ```kotlin
 // Enable message receipt state
@@ -323,11 +401,10 @@ AIAgentMessenger.config.conversation.list.enableMessageReceiptState = true
 
 ### Citation
 
-**Citation** feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
+Citation displays source information for AI agent responses. Users can see the references that the AI agent used to generate its responses. This provides transparency and credibility to the AI agent's answers.
 
-* Default: Disabled by default.
-* Configuration: Requires dashboard configuration to be displayed.
-* Activation settings: Adjustable through dashboard configuration values.
+* Default: Disabled.
+* Configuration: Configure through **Delight AI dashboard** to display citations.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-citation2.png" alt="" width="375">
@@ -336,11 +413,11 @@ AIAgentMessenger.config.conversation.list.enableMessageReceiptState = true
 
 ### Special notice
 
-**Special Notice** displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
+Special notice displays important information to users before a conversation starts. You can use this to communicate guidelines, terms, or instructions at the beginning of user interactions.
 
 * Display location: Bottom of the screen.
 * Behavior: Automatically disappears when a conversation starts.
-* Configuration: Available through dashboard configuration.
+* Configuration: Configure through **Delight AI dashboard**.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-special-notice2.png" alt="special_notice" width="375">
@@ -351,19 +428,17 @@ AIAgentMessenger.config.conversation.list.enableMessageReceiptState = true
 
 ## API references
 
-The following table provides comprehensive API reference information for message-related functionality:
-
 ### ConversationConfig
 
-The `ConversationConfig` class provides configuration options for the conversation screen, organized into two sub-configurations: `header` and `list`.
+`ConversationConfig` provides configuration options for the conversation screen. It contains the following sub-configurations: `header`, `list`, and `input`.
 
 #### ConversationConfig.Header
 
-The following table lists the configuration options for the conversation header component.
+The following table lists the configuration options for the conversation header.
 
-| Property Name       | Description                                                                               | Default Value |
-| ------------------- | ----------------------------------------------------------------------------------------- | ------------- |
-| `shouldShowProfile` | A boolean flag indicating whether the profile should be shown in the conversation header. | `true`        |
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `shouldShowProfile` | Boolean | Determines whether to show the profile in the conversation header. (Default: `true`) |
 
 ```kotlin
 // Hide profile in conversation header
@@ -375,15 +450,15 @@ AIAgentMessenger.config.conversation.header.shouldShowProfile = true
 
 #### ConversationConfig.List
 
-The following table lists the configuration options available in `AIAgentMessenger.config.conversation.list` besides read receipt. These options control how the conversation list and messages are displayed in the messenger UI.
+The following table lists the configuration options available in `AIAgentMessenger.config.conversation.list`. These options control how the conversation list and messages are displayed.
 
-| Property                      | Type       | Default           | Description                                                                                                                     |
-|-------------------------------|------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `enableMessageReceiptState`   | Boolean    | `false`           | Whether to display message receipt status.                                                                                      |
-| `shouldShowSenderProfile`     | Boolean    | `true`            | Whether to show sender's profile information.                                                                                   |
-| `scrollMode`                  | ScrollMode | `ScrollMode.AUTO` | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses |
-| `shouldShowMessageFooterView` | Boolean    | `true`            | Whether the "Start new conversation" view is shown when conversation has ended                                                  |
-| `enableNewMessageIndicator`   | Boolean    | `true`            | Whether the the new message indicator is enabled                                                                                |
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `enableMessageReceiptState` | Boolean | Determines whether to display message receipt status. (Default: `false`) |
+| `shouldShowSenderProfile` | Boolean | Determines whether to show sender's profile information. (Default: `true`) |
+| `scrollMode` | ScrollMode | Determines scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses. (Default: `ScrollMode.AUTO`) |
+| `shouldShowMessageFooterView` | Boolean | Determines whether the **Start new conversation** view is shown when the conversation has ended. (Default: `true`) |
+| `enableNewMessageIndicator` | Boolean | Determines whether the new message indicator is enabled. (Default: `true`) |
 
 ```kotlin
 // Configure conversation list settings
@@ -396,14 +471,13 @@ AIAgentMessenger.config.conversation.list.enableNewMessageIndicator = false
 
 #### ConversationConfig.Input
 
-The following table lists the configuration options available in `AIAgentMessenger.config.conversation.input`.
-These options control the message input component and attachment capabilities.
+The following table lists the configuration options available in `AIAgentMessenger.config.conversation.input`. These options control the message input component and attachment capabilities.
 
-| Property               | Type      | Default | Description                                     |
-|------------------------|-----------|---------|-------------------------------------------------|
-| `camera.enablePhoto`   | Boolean   | `true` | Whether photo capture from camera is enabled    |
-| `gallery.enablePhoto`  | Boolean   | `true` | Whether photo selection from gallery is enabled |
-| `enableFile`           | Boolean   | `true` | Whether file attachment is enabled              |
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `camera.enablePhoto` | Boolean | Determines whether photo capture from camera is enabled. (Default: `true`) |
+| `gallery.enablePhoto` | Boolean | Determines whether photo selection from gallery is enabled. (Default: `true`) |
+| `enableFile` | Boolean | Determines whether file attachment is enabled. (Default: `true`) |
 
 ```kotlin
 // Configure input settings
@@ -411,3 +485,14 @@ AIAgentMessenger.config.conversation.input.camera.enablePhoto = false
 AIAgentMessenger.config.conversation.input.gallery.enablePhoto = false
 AIAgentMessenger.config.conversation.input.enableFile = false
 ```
+
+### Message types
+
+The SDK automatically handles different message types. The following table lists the message classes used internally.
+
+| Type | Class | Description |
+| ---- | ----- | ----------- |
+| Text | `UserMessage` | Plain text messages with optional Markdown. |
+| Image | `FileMessage` | Image files in `JPEG` and `PNG` format. |
+| File | `FileMessage` | Document files in `PDF` format. |
+| Rich | `UserMessage` with template | Template-based interactive messages including CTA, Carousel, and custom templates. |
