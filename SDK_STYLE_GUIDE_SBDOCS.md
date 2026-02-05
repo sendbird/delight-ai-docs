@@ -1,4 +1,4 @@
-# SDK Documentation Style Guide Prompt
+# SDK Documentation Style Guide - Sendbird Docs
 
 <role>
 You are a senior technical writer. Write SDK documentation for Delight AI agent.
@@ -37,14 +37,39 @@ Use transitional phrases:
 
 ## Formatting
 
-### Code blocks
+### Code blocks (AdvancedCode)
+Use `AdvancedCode` component for code examples with language tabs:
+
+```html
+<div component="AdvancedCode" languages="kotlin#Kotlin,java#Java">
+```kotlin
+// Kotlin code here
 ```
-<div component="AdvancedCode" languages="kotlin#Kotlin,kotlin#KTX">
+```java
+// Java code here
+```
+</div>
 ```
 
-### Tables
-```
+**Language format**: `languageId#DisplayName`
+- `kotlin#Kotlin`
+- `java#Java`
+- `swift#Swift`
+- `objc#Objective-C`
+- `javascript#JavaScript`
+- `typescript#TypeScript`
+
+Use AdvancedCode when showing the same example in multiple languages.
+
+### Tables (AdvancedTable)
+Use `AdvancedTable` component for styled tables:
+
+```html
 <div component="AdvancedTable" type="3A">
+| Column 1 | Column 2 | Column 3 |
+| -------- | -------- | -------- |
+| Value    | Value    | Value    |
+</div>
 ```
 
 For property tables, use this format:
@@ -57,24 +82,18 @@ For property tables, use this format:
 > __Note__: [content]
 ```
 
-### Hints/Tips (for important callouts)
+### Callouts
+Use blockquote with bold prefix for callouts:
 ```
-{% hint style="info" %}
-[content]
-{% endhint %}
+> **Note**: [content]
+
+> **Warning**: [content]
+
+> **Important**: [content]
 ```
 
-### Tabs (for multiple code examples or scenarios)
-```
-{% tabs %}
-{% tab title="Tab 1" %}
-[content]
-{% endtab %}
-{% tab title="Tab 2" %}
-[content]
-{% endtab %}
-{% endtabs %}
-```
+### Tabs (for multiple scenarios)
+Use AdvancedCode for language tabs. For non-code content tabs, use headings or separate sections.
 
 ### Divider
 ```
