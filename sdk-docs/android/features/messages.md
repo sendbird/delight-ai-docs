@@ -160,7 +160,7 @@ data class CustomMessageTemplateData(
 ```
 
 | Property | Type | Description |
-|----------|------|--------------------------------------------------------------|
+|----------|------|-------------|
 | `id` | String | Unique template identifier matching dashboard configuration. |
 | `response.status` | Int | HTTP request status code. |
 | `response.content` | String? | Message content payload (JSON string). |
@@ -409,7 +409,7 @@ The `ConversationConfig` class provides configuration options for the conversati
 The following table lists the configuration options for the conversation header component.
 
 | Property name | Type | Description |
-|---------------|------|----------------------------------------------------------------------|
+|---------------|------|-------------|
 | `shouldShowProfile` | Boolean | Whether to show the profile in the conversation header. (Default: `true`) |
 
 ```kotlin
@@ -425,7 +425,7 @@ AIAgentMessenger.config.conversation.header.shouldShowProfile = true
 The following table lists the configuration options available in `AIAgentMessenger.config.conversation.list` besides read receipt. These options control how the conversation list and messages are displayed in the messenger UI.
 
 | Property name | Type | Description |
-|---------------|------|----------------------------------------------------------------------|
+|---------------|------|-------------|
 | `enableMessageReceiptState` | Boolean | Whether to display message receipt status. (Default: `false`) |
 | `shouldShowSenderProfile` | Boolean | Whether to show sender's profile information. (Default: `true`) |
 | `scrollMode` | ScrollMode | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses. (Default: `ScrollMode.AUTO`) |
@@ -447,7 +447,7 @@ The following table lists the configuration options available in `AIAgentMesseng
 These options control the message input component and attachment capabilities.
 
 | Property name | Type | Description |
-|---------------|------|----------------------------------------------------------------------|
+|---------------|------|-------------|
 | `camera.enablePhoto` | Boolean | Whether photo capture from camera is enabled. (Default: `true`) |
 | `gallery.enablePhoto` | Boolean | Whether photo selection from gallery is enabled. (Default: `true`) |
 | `enableFile` | Boolean | Whether file attachment is enabled. (Default: `true`) |
