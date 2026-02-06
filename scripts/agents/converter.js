@@ -25,6 +25,7 @@ Markdown Style Guide (follow this for all output):
 - Italic: use rarely, only for subtle emphasis
 - Fenced code blocks with language identifier (kotlin, swift, javascript, json, xml, bash, etc.)
 - Single line break between paragraphs, double line break before/after code blocks
+- Horizontal rules (---) are used as section dividers between major sections — preserve them exactly where they appear
 `;
 
 /**
@@ -51,7 +52,7 @@ Conversion rules:
 4. Remove {% include %}, {% file %}, {% embed %} tags completely
 5. Preserve all code blocks exactly as they are
 6. Preserve all links and images exactly as they are
-7. Preserve the document structure (headers, lists, etc.)
+7. Preserve the document structure (headers, lists, horizontal rules/dividers, etc.)
 8. Do NOT add any explanations - output ONLY the converted markdown`;
 
   const userPrompt = `Convert this GitBook markdown to pure GitHub-flavored markdown:
@@ -146,7 +147,7 @@ Conversion rules:
 4. Remove {% include %}, {% file %}, {% embed %} tags completely
 5. Preserve all code blocks exactly as they are
 6. Preserve all links and images exactly as they are
-7. Preserve the document structure (headers, lists, etc.)
+7. Preserve the document structure (headers, lists, horizontal rules/dividers, etc.)
 8. Do NOT add any explanations - output ONLY the converted markdown`;
 
   const userPrompt = `A previous conversion attempt had these validation issues:
