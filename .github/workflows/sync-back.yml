@@ -1,0 +1,98 @@
+name: Sync Back to Private Repos
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'sdk-docs/**/*.md'
+
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual changes)'
+        required: false
+        default: 'false'
+        type: boolean
+      files:
+        description: 'Comma-separated file paths to sync (e.g. sdk-docs/android/features/messages.md). If empty, uses git diff from last commit.'
+        required: false
+        type: string
+
+jobs:
+  sync-back:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Get changed files info
+        id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_AFTER: ${{ github.event.after }}
+          MANUAL_FILES: ${{ github.event.inputs.files || '' }}
+        run: |
+          if [ -n "$MANUAL_FILES" ]; then
+            echo "Manual files specified: $MANUAL_FILES"
+            CHANGED_COUNT=$(echo "$MANUAL_FILES" | tr ',' '\n' | wc -l | tr -d ' ')
+            echo "manual_files=${MANUAL_FILES}" >> $GITHUB_OUTPUT
+          else
+            if [ "$EVENT_NAME" = "push" ]; then
+              BASE_SHA="$EVENT_BEFORE"
+              HEAD_SHA="$EVENT_AFTER"
+            else
+              BASE_SHA="HEAD~1"
+              HEAD_SHA="HEAD"
+            fi
+
+            echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
+            echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
+
+            CHANGED_COUNT=$(git diff --name-only ${BASE_SHA} ${HEAD_SHA} -- 'sdk-docs/**/*.md' | wc -l | tr -d ' ')
+          fi
+          echo "changed_count=${CHANGED_COUNT}" >> $GITHUB_OUTPUT
+          echo "Changed sdk-docs md files: ${CHANGED_COUNT}"
+
+      - name: Run sync-back script
+        if: steps.changes.outputs.changed_count != '0'
+        env:
+          GITHUB_TOKEN: ${{ secrets.SDK_GH_BOT1_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BASE_SHA: ${{ steps.changes.outputs.base_sha }}
+          HEAD_SHA: ${{ steps.changes.outputs.head_sha }}
+          MANUAL_FILES: ${{ steps.changes.outputs.manual_files }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          cd scripts/sync-back
+          node sync-back.js
+
+      - name: No changes to sync
+        if: steps.changes.outputs.changed_count == '0'
+        run: echo "No sdk-docs markdown files changed, nothing to sync"
+
+      - name: Summary
+        if: always()
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          CHANGED_COUNT: ${{ steps.changes.outputs.changed_count }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: |
+          echo "## Sync Back Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed files:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Conversion:** Claude AI (GitBook → Markdown)" >> $GITHUB_STEP_SUMMARY
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "- **Mode:** Dry Run" >> $GITHUB_STEP_SUMMARY
+          fi
