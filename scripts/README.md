@@ -157,16 +157,44 @@ Files are mapped between repositories using pattern-based rules. See `mapping-ta
 
 ### Infinite loop concern
 
-Both sync directions use **normalized content comparison**:
-1. Remove GitBook/Markdown syntax only (whitespace and case are preserved)
-2. Compare the extracted text
+Both sync directions use **normalized content comparison** — the same `normalize()` function strips all syntax from both sides, leaving only pure text content for comparison. Conversion only runs when the text content actually differs.
 
-If the text content is identical, no sync occurs. This prevents:
-- Forward sync from triggering backward sync
-- Backward sync from triggering forward sync
-- False positives from syntax differences (GitBook vs pure Markdown)
+**What `normalize()` strips:**
+1. **GitBook syntax**: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
+2. **Markdown syntax**: `**bold**`, `*italic*`, `# headers`, `` `code` ``, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
+3. **HTML tags**: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc. (GitBook uses these for images)
+4. **Hint-equivalent prefixes**: `> **Note:**`, `> **Warning:**`, etc. (Claude adds these when converting `{% hint style="info" %}` to Markdown)
 
-> **Note**: Whitespace and case differences are treated as meaningful changes and will trigger a sync.
+**What is preserved**: Case differences and whitespace — these are treated as meaningful editorial changes.
+
+**How comparison works:**
+```
+┌─────────────────────────────────────────────────────────┐
+│  Backward sync (docs → private)                         │
+│                                                         │
+│  normalize(docs GitBook content)                        │
+│         vs                                              │
+│  normalize(private Markdown content)                    │
+│         ↓                                               │
+│  Same? → Skip (no sync needed)                          │
+│  Different? → Convert GitBook → Markdown, create PR     │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│  Forward sync (public → docs)                           │
+│                                                         │
+│  normalize(public Markdown content)                     │
+│         vs                                              │
+│  normalize(docs GitBook content)                        │
+│         ↓                                               │
+│  Same? → Skip (no sync needed)                          │
+│  Different? → Convert Markdown → GitBook, create PR     │
+│              (uses existing docs file as structural      │
+│               reference to preserve {% tags %})          │
+└─────────────────────────────────────────────────────────┘
+```
+
+This prevents infinite loops because after a sync completes, the opposite direction sees "same content" and skips.
 
 ---
 
@@ -175,8 +203,8 @@ If the text content is identical, no sync occurs. This prevents:
 ```
 scripts/
 ├── mapping-table.json    # Path mappings between repos
-├── normalizer.js         # GitBook syntax normalization
-├── claude-converter.js   # GitBook → Markdown conversion (Claude AI)
+├── normalizer.js         # Syntax normalization (GitBook + Markdown + HTML + hint prefixes)
+├── claude-converter.js   # Bidirectional conversion: GitBook ↔ Markdown (Claude AI)
 ├── MAPPING-REFERENCE.md  # Detailed mapping reference
 ├── sync/
 │   └── sync.js           # Forward sync script
@@ -210,8 +238,8 @@ scripts/
 
 ### Why No Infinite Loop?
 
-Both syncs use **normalized content comparison** (syntax-only stripping, whitespace and case preserved):
-- Forward sync: compares text content, skips if identical
-- Backward sync: compares text content, skips if identical
+Both syncs strip all syntax (GitBook, Markdown, HTML, hint prefixes) and compare pure text only:
+- Backward sync: `normalize(docs)` vs `normalize(private)` → skip if identical
+- Forward sync: `normalize(public)` vs `normalize(docs)` → skip if identical
 
-So when forward sync updates docs repo, backward sync sees "same content" and skips.
+So when backward sync pushes converted Markdown to private → propagates to public → forward sync compares `normalize(public Markdown)` vs `normalize(docs GitBook)` → same text → **skips**.

@@ -22,11 +22,15 @@ Create PR in docs repo
 
 ## How It Works
 
-1. **Mapping**: Uses `../mapping-table.json` for path mapping
-2. **Normalization**: Removes GitBook/Markdown syntax only (whitespace and case are preserved)
-3. **Comparison**: Compares normalized content to detect actual text changes (including wording, whitespace, and case differences)
-4. **Conversion**: Converts Markdown to GitBook syntax using Claude AI
-5. **Write**: Writes converted content only when text content differs
+1. **Mapping**: Uses `../mapping-table.json` to map public repo paths → docs repo paths
+2. **Normalization**: Strips all syntax from both sides to extract pure text content:
+   - GitBook syntax: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
+   - Markdown syntax: `**bold**`, `# headers`, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
+   - HTML tags: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc.
+   - Hint-equivalent prefixes: `> **Note:**`, `> **Warning:**`, etc.
+3. **Comparison**: `normalize(public Markdown)` vs `normalize(docs GitBook)` — compares pure text only (case and whitespace preserved)
+4. **Conversion** (only if different): Converts Markdown → GitBook syntax using Claude AI, with the existing docs file as a structural reference to preserve `{% tags %}`
+5. **Write**: Writes converted content to docs repo, creates PR
 
 ## File Structure
 

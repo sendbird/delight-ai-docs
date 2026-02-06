@@ -40,17 +40,21 @@ scripts/
 
 ## Infinite Loop Prevention Logic
 
-Uses **normalized content comparison**:
+Uses **normalized content comparison** — both sides are stripped of all syntax before comparison, so GitBook and Markdown representations of the same content are treated as identical:
 
-1. Change occurs in docs repo
-2. Read the docs file content
-3. Read the corresponding file in private repo
-4. Normalize both (remove GitBook/Markdown syntax only — whitespace and case are preserved)
-5. Compare normalized content
-   - If different → TW actually modified it → Execute backward sync
+1. Change occurs in docs repo (GitBook commit to develop)
+2. Read the docs file content (GitBook Markdown)
+3. Read the corresponding file in private repo (pure Markdown)
+4. Normalize both — strips:
+   - GitBook syntax: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
+   - Markdown syntax: `**bold**`, `# headers`, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
+   - HTML tags: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc.
+   - Hint-equivalent prefixes: `> **Note:**`, `> **Warning:**`, etc.
+5. Compare normalized content (pure text only, case and whitespace preserved)
+   - If different → TW actually modified it → Convert GitBook → Markdown → Create PR
    - If identical → No change needed → Skip
 
-> **Note**: The normalizer only strips syntax (GitBook tags, Markdown formatting). Whitespace and case differences are treated as meaningful changes and will trigger a sync.
+This ensures that syntax-only differences (e.g., `<figure><img alt="x">` vs `![x](url)`, or `{% hint style="info" %}` vs `> **Note:**`) do not trigger unnecessary syncs.
 
 ## GitBook Syntax List
 

@@ -124,12 +124,20 @@ Output ONLY the converted markdown, nothing else.`;
 /**
  * Validate conversion result
  * @param {string} apiKey - Anthropic API key
- * @param {string} original - Original GitBook content
- * @param {string} converted - Converted markdown
+ * @param {string} original - Original content
+ * @param {string} converted - Converted content
+ * @param {string} direction - 'gitbook-to-markdown' or 'markdown-to-gitbook'
  * @returns {Promise<{passed: boolean, issues: string[]}>}
  */
-async function validateConversion(apiKey, original, converted) {
-  const systemPrompt = `You are a technical documentation QA reviewer. Your task is to validate that a GitBook-to-Markdown conversion was done correctly.
+async function validateConversion(apiKey, original, converted, direction = 'gitbook-to-markdown') {
+  const isForward = direction === 'markdown-to-gitbook';
+  const originalLabel = isForward ? 'Markdown' : 'GitBook';
+  const convertedLabel = isForward ? 'GitBook' : 'Markdown';
+  const conversionDesc = isForward
+    ? 'a Markdown-to-GitBook conversion'
+    : 'a GitBook-to-Markdown conversion';
+
+  const systemPrompt = `You are a technical documentation QA reviewer. Your task is to validate that ${conversionDesc} was done correctly.
 
 Check for these issues:
 1. CONTENT_LOSS: Important content from original is missing
@@ -148,10 +156,10 @@ If all checks pass, respond with: {"passed": true, "issues": []}`;
 
   const userPrompt = `Validate this conversion:
 
-=== ORIGINAL (GitBook) ===
+=== ORIGINAL (${originalLabel}) ===
 ${original}
 
-=== CONVERTED (Markdown) ===
+=== CONVERTED (${convertedLabel}) ===
 ${converted}
 
 Respond with JSON only.`;
@@ -186,7 +194,7 @@ async function convertAndValidate(apiKey, gitbookContent) {
   console.log('  [Claude] Validating conversion...');
 
   // 2. Validate
-  const validation = await validateConversion(apiKey, gitbookContent, converted);
+  const validation = await validateConversion(apiKey, gitbookContent, converted, 'gitbook-to-markdown');
 
   if (validation.passed) {
     console.log('  [Claude] Validation passed ✓');
@@ -216,8 +224,8 @@ async function convertToGitBookAndValidate(apiKey, markdownContent, referenceGit
 
   console.log('  [Claude] Validating conversion...');
 
-  // 2. Validate (reuse validation logic, swap original/converted for context)
-  const validation = await validateConversion(apiKey, markdownContent, converted);
+  // 2. Validate (forward direction: Markdown → GitBook)
+  const validation = await validateConversion(apiKey, markdownContent, converted, 'markdown-to-gitbook');
 
   if (validation.passed) {
     console.log('  [Claude] Validation passed ✓');
