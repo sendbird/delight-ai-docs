@@ -1,18 +1,52 @@
 #!/usr/bin/env node
 
 /**
- * Forward Sync Main Script
+ * Forward Sync Main Script (Orchestrated)
  *
  * Syncs documentation from delight-ai-agent (public) to delight-ai-docs
+ *
+ * Pipeline per file:
+ * 1. [Script]  Mapping lookup
+ * 2. [Script]  Read source file
+ * 3. [Agent 1] Classify — should this file be published?
+ * 4. [Script]  Read target file (if exists)
+ * 5. [Agent 2] Compare — semantic content comparison
+ * 6. [Agent 3] Convert — Markdown → GitBook
+ * 7. [Agent 4] Validate — check conversion quality
+ * 8. [Script]  Write file + save classification to cache
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Shared modules
-const { normalize } = require('../normalizer');
-const { convertToGitBookAndValidate } = require('../claude-converter');
+// Agent modules
+const { classify } = require('../agents/classifier');
+const { compare } = require('../agents/comparator');
+const { convertMarkdownToGitBook } = require('../agents/converter');
+const { validate } = require('../agents/validator');
+
+// Script modules
 const mappingTable = require('../mapping-table.json');
+
+/**
+ * Classification cache helpers
+ */
+const CACHE_PATH = path.resolve(__dirname, '..', 'classification-cache.json');
+
+function loadClassificationCache() {
+  try {
+    if (fs.existsSync(CACHE_PATH)) {
+      return JSON.parse(fs.readFileSync(CACHE_PATH, 'utf-8'));
+    }
+  } catch (e) {
+    console.error('Failed to load classification cache:', e.message);
+  }
+  return { entries: {} };
+}
+
+function saveClassificationCache(cache) {
+  fs.writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2) + '\n', 'utf-8');
+}
 
 /**
  * Find mapping for public repo path → docs repo path
@@ -74,9 +108,10 @@ function readChangedFiles(filePath) {
  * Main execution function
  */
 async function main() {
-  const agentRepoPath = process.env.AGENT_REPO_PATH || 'delight-ai-agent';
-  const docsRepoPath = process.env.DOCS_REPO_PATH || '.';
-  const changedFilesPath = process.env.CHANGED_FILES_PATH || 'changed_source_files.txt';
+  const repoRoot = path.resolve(__dirname, '..', '..');
+  const agentRepoPath = path.resolve(repoRoot, process.env.AGENT_REPO_PATH || 'delight-ai-agent');
+  const docsRepoPath = path.resolve(repoRoot, process.env.DOCS_REPO_PATH || '.');
+  const changedFilesPath = path.resolve(repoRoot, process.env.CHANGED_FILES_PATH || 'changed_source_files.txt');
   const dryRun = process.env.DRY_RUN === 'true';
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
 
@@ -85,11 +120,14 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('=== Forward Sync: public → docs ===');
+  console.log('=== Forward Sync: public → docs (orchestrated) ===');
   console.log(`Agent repo path: ${agentRepoPath}`);
   console.log(`Docs repo path: ${docsRepoPath}`);
   console.log(`Dry run: ${dryRun}`);
   console.log('');
+
+  // Load classification cache
+  const classificationCache = loadClassificationCache();
 
   // 1. Read changed files
   const changedFiles = readChangedFiles(changedFilesPath);
@@ -102,6 +140,7 @@ async function main() {
     synced: [],
     skipped: [],
     notMapped: [],
+    classified: [],
     conversionFailed: [],
     errors: [],
   };
@@ -109,7 +148,7 @@ async function main() {
   for (const publicPath of changedFiles) {
     console.log(`\nProcessing: ${publicPath}`);
 
-    // Find mapping
+    // Step 1: [Script] Mapping lookup
     const mapping = findPublicToDocsMapping(publicPath);
     if (!mapping) {
       console.log('  → Not mapped, skipping');
@@ -119,7 +158,7 @@ async function main() {
 
     console.log(`  → Maps to: ${mapping.docsPath}`);
 
-    // Read source file from public repo
+    // Step 2: [Script] Read source file
     const srcFullPath = path.join(agentRepoPath, publicPath);
     if (!fs.existsSync(srcFullPath)) {
       console.log('  → Source file not found, skipping');
@@ -129,27 +168,55 @@ async function main() {
 
     const srcContent = fs.readFileSync(srcFullPath, 'utf-8');
 
-    // Read target file from docs repo (if exists)
+    // Step 3: [Agent 1] Classify
+    console.log('  [Classifier] Checking file eligibility...');
+    const contentSnippet = srcContent.slice(0, 500);
+    const classification = await classify(anthropicKey, publicPath, contentSnippet);
+
+    // Save classification to cache
+    classificationCache.entries[publicPath] = {
+      ...classification,
+      classifiedAt: new Date().toISOString(),
+    };
+
+    if (!classification.publish) {
+      console.log(`  → Classified as not publishable: ${classification.reason}`);
+      results.classified.push({
+        path: publicPath,
+        reason: classification.reason,
+      });
+      continue;
+    }
+
+    console.log(`  → Classified as publishable (syncBack: ${classification.syncBack})`);
+
+    // Step 4: [Script] Read target file (if exists)
     const dstFullPath = path.join(docsRepoPath, mapping.docsPath);
     let dstContent = null;
 
     if (fs.existsSync(dstFullPath)) {
       dstContent = fs.readFileSync(dstFullPath, 'utf-8');
 
-      // Compare normalized content (extract text, ignore syntax differences)
-      const normalizedSrc = normalize(srcContent);
-      const normalizedDst = normalize(dstContent);
+      // Step 5: [Agent 2] Compare semantically
+      console.log('  [Comparator] Checking for content differences...');
+      const comparison = await compare(
+        anthropicKey,
+        srcContent,
+        dstContent,
+        'Markdown (public repo)',
+        'GitBook (docs repo)',
+      );
 
-      if (normalizedSrc === normalizedDst) {
-        console.log('  → Content is identical (after normalization), skipping');
+      if (comparison.identical) {
+        console.log(`  → Content is identical: ${comparison.reason}`);
         results.skipped.push({
           path: publicPath,
           docsPath: mapping.docsPath,
-          reason: 'identical content',
+          reason: comparison.reason,
         });
         continue;
       }
-      console.log('  → Content differs, will sync');
+      console.log(`  → Content differs: ${comparison.reason}`);
     } else {
       console.log('  → Target file not found in docs repo, will create new');
     }
@@ -161,22 +228,30 @@ async function main() {
       continue;
     }
 
-    // Convert Markdown to GitBook and write file
+    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate
     try {
-      // Convert using Claude (pass existing GitBook file as structural reference)
-      const conversionResult = await convertToGitBookAndValidate(anthropicKey, srcContent, dstContent);
+      console.log('  [Converter] Converting Markdown → GitBook...');
+      if (dstContent) {
+        console.log('  [Converter] Using existing GitBook file as structural reference');
+      }
 
-      if (!conversionResult.success) {
+      const converted = await convertMarkdownToGitBook(anthropicKey, srcContent, dstContent);
+
+      console.log('  [Validator] Checking conversion quality...');
+      const validation = await validate(anthropicKey, srcContent, converted, 'markdown-to-gitbook');
+
+      if (!validation.passed) {
         console.log('  → Conversion validation failed, using original content');
+        validation.issues.forEach(issue => console.log(`    - ${issue}`));
         results.conversionFailed.push({
           path: publicPath,
-          issues: conversionResult.issues,
+          issues: validation.issues,
         });
       }
 
-      const contentToWrite = conversionResult.success ? conversionResult.content : srcContent;
+      const contentToWrite = validation.passed ? converted : srcContent;
 
-      // Ensure directory exists
+      // Step 8: [Script] Write file
       const dstDir = path.dirname(dstFullPath);
       if (!fs.existsSync(dstDir)) {
         fs.mkdirSync(dstDir, { recursive: true });
@@ -191,6 +266,10 @@ async function main() {
     }
   }
 
+  // Save classification cache
+  saveClassificationCache(classificationCache);
+  console.log(`\nClassification cache saved (${Object.keys(classificationCache.entries).length} entries)`);
+
   // 3. Output results
   console.log('\n=== Results ===');
 
@@ -201,7 +280,12 @@ async function main() {
 
   console.log(`\nSkipped (identical content): ${results.skipped.length}`);
   results.skipped.forEach(r =>
-    console.log(`  - ${r.path}`)
+    console.log(`  - ${r.path} (${r.reason})`)
+  );
+
+  console.log(`\nClassified as not publishable: ${results.classified.length}`);
+  results.classified.forEach(r =>
+    console.log(`  - ${r.path} (${r.reason})`)
   );
 
   console.log(`\nNot mapped: ${results.notMapped.length}`);
@@ -217,7 +301,7 @@ async function main() {
   results.errors.forEach(e => console.log(`  ✗ ${e.path}: ${e.error}`));
 
   // 4. Write synced files list for commit step
-  const syncedFilesPath = process.env.SYNCED_FILES_PATH || 'synced_files.txt';
+  const syncedFilesPath = path.resolve(repoRoot, process.env.SYNCED_FILES_PATH || 'synced_files.txt');
   if (results.synced.length > 0 && !dryRun) {
     const syncedList = results.synced.map(r => r.docsPath).join('\n') + '\n';
     fs.writeFileSync(syncedFilesPath, syncedList, 'utf-8');
@@ -231,6 +315,7 @@ async function main() {
     const output = [
       `synced_count=${results.synced.length}`,
       `skipped_count=${results.skipped.length}`,
+      `classified_count=${results.classified.length}`,
       `not_mapped_count=${results.notMapped.length}`,
       `error_count=${results.errors.length}`,
     ].join('\n');
@@ -241,6 +326,7 @@ async function main() {
   return {
     syncedCount: results.synced.length,
     skippedCount: results.skipped.length,
+    classifiedCount: results.classified.length,
     syncedFiles: results.synced.map(r => r.docsPath),
   };
 }

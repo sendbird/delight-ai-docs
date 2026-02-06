@@ -1,19 +1,97 @@
 #!/usr/bin/env node
 
 /**
- * Reverse Sync Main Script
+ * Reverse Sync Main Script (Orchestrated)
  *
  * Detects changes in docs repo and creates PRs to private repos
- * Uses Claude API for GitBook → Markdown conversion and validation
+ *
+ * Pipeline per file:
+ * 1. [Script]  Mapping lookup
+ * 2. [Script]  Check classification cache — syncBack=false? SKIP
+ * 3. [Script]  Read docs file
+ * 4. [Script]  Fetch private repo file (GitHub API)
+ * 5. [Agent 2] Compare — semantic content comparison
+ * 6. [Agent 3] Convert — GitBook → Markdown
+ * 7. [Agent 4] Validate — check conversion quality (fail → skip PR)
+ * 8. [Script]  Create branch + update file + create PR (GitHub API)
  */
 
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-// Shared modules
-const { normalize } = require('../normalizer');
-const { convertAndValidate } = require('../claude-converter');
+
+// Agent modules
+const { compare } = require('../agents/comparator');
+const { convertGitBookToMarkdown } = require('../agents/converter');
+const { validate } = require('../agents/validator');
+
+// Script modules
 const mappingTable = require('../mapping-table.json');
+
+/**
+ * Classification cache helpers
+ */
+const CACHE_PATH = path.resolve(__dirname, '..', 'classification-cache.json');
+
+function loadClassificationCache() {
+  try {
+    if (fs.existsSync(CACHE_PATH)) {
+      return JSON.parse(fs.readFileSync(CACHE_PATH, 'utf-8'));
+    }
+  } catch (e) {
+    console.error('Failed to load classification cache:', e.message);
+  }
+  return { entries: {} };
+}
+
+/**
+ * Check if a file is eligible for sync-back using the classification cache.
+ * Checks both the exact path and all pattern-matched public paths.
+ * @param {object} cache - Classification cache
+ * @param {string} docsPath - Docs repo path (e.g., "sdk-docs/android/features/messages.md")
+ * @returns {{ eligible: boolean, reason: string }}
+ */
+function checkSyncBackEligibility(cache, docsPath) {
+  // Check all cache entries — the cache is keyed by public repo path,
+  // so we need to find the entry that maps to this docs path
+  for (const [publicPath, entry] of Object.entries(cache.entries)) {
+    // Try to find the mapping for this public path to see if it matches docsPath
+    const mapping = findPublicToDocsMapping(publicPath);
+    if (mapping && mapping.docsPath === docsPath) {
+      if (!entry.syncBack) {
+        return { eligible: false, reason: entry.reason || 'syncBack disabled by classifier' };
+      }
+      return { eligible: true, reason: 'syncBack enabled' };
+    }
+  }
+
+  // Also check if the docsPath itself is in the cache (for direct lookups)
+  if (cache.entries[docsPath]) {
+    if (!cache.entries[docsPath].syncBack) {
+      return { eligible: false, reason: cache.entries[docsPath].reason || 'syncBack disabled' };
+    }
+    return { eligible: true, reason: 'syncBack enabled' };
+  }
+
+  // Not in cache — eligible by default (fail-open)
+  return { eligible: true, reason: 'not in cache (fail-open)' };
+}
+
+/**
+ * Find mapping for public repo path → docs repo path (for cache lookup)
+ */
+function findPublicToDocsMapping(publicPath) {
+  if (mappingTable.patterns) {
+    for (const pattern of mappingTable.patterns) {
+      if (!pattern.publicBase) continue;
+      if (publicPath.startsWith(pattern.publicBase)) {
+        const filename = publicPath.slice(pattern.publicBase.length);
+        return { docsPath: pattern.docsPrefix + filename };
+      }
+    }
+  }
+  return null;
+}
 
 /**
  * Get list of changed files
@@ -39,7 +117,6 @@ function findMapping(docsPath) {
   // 1. Check overrides first (exact path matching)
   if (mappingTable.overrides && mappingTable.overrides[docsPath]) {
     const override = mappingTable.overrides[docsPath];
-    // Ignore $comment field
     if (override.repo && override.privatePath) {
       const repoInfo = mappingTable.repositories[override.repo];
       if (repoInfo) {
@@ -281,10 +358,16 @@ async function main() {
   const headSha = process.env.HEAD_SHA || 'HEAD';
   const dryRun = process.env.DRY_RUN === 'true';
 
-  console.log('=== Sync Back: docs → private repos ===');
+  console.log('=== Sync Back: docs → private repos (orchestrated) ===');
   console.log(`Base SHA: ${baseSha}`);
   console.log(`Head SHA: ${headSha}`);
   console.log(`Dry run: ${dryRun}`);
+  console.log('');
+
+  // Load classification cache
+  const classificationCache = loadClassificationCache();
+  const cacheSize = Object.keys(classificationCache.entries).length;
+  console.log(`Classification cache loaded (${cacheSize} entries)`);
   console.log('');
 
   // 1. Extract changed files list
@@ -301,6 +384,7 @@ async function main() {
     synced: [],
     skipped: [],
     notMapped: [],
+    classified: [],
     validationFailed: [],
     errors: [],
   };
@@ -308,7 +392,7 @@ async function main() {
   for (const docsPath of changedFiles) {
     console.log(`\nProcessing: ${docsPath}`);
 
-    // Find mapping
+    // Step 1: [Script] Mapping lookup
     const mapping = findMapping(docsPath);
     if (!mapping) {
       console.log('  → Not mapped, skipping');
@@ -319,8 +403,18 @@ async function main() {
     console.log(`  → Maps to: ${mapping.owner}/${mapping.repo}/${mapping.fullPath}`);
     console.log(`  → Base branch: ${mapping.defaultBranch}`);
 
-    // Read docs repo file
-    const docsFullPath = path.join(process.cwd(), docsPath);
+    // Step 2: [Script] Check classification cache
+    const eligibility = checkSyncBackEligibility(classificationCache, docsPath);
+    if (!eligibility.eligible) {
+      console.log(`  → Sync-back not eligible: ${eligibility.reason}`);
+      results.classified.push({ path: docsPath, reason: eligibility.reason });
+      continue;
+    }
+    console.log(`  → Sync-back eligible (${eligibility.reason})`);
+
+    // Step 3: [Script] Read docs file
+    const repoRoot = path.resolve(__dirname, '..', '..');
+    const docsFullPath = path.join(repoRoot, docsPath);
     if (!fs.existsSync(docsFullPath)) {
       console.log('  → File deleted in docs repo, skipping');
       results.skipped.push({ path: docsPath, reason: 'deleted' });
@@ -329,7 +423,7 @@ async function main() {
 
     const docsContent = fs.readFileSync(docsFullPath, 'utf-8');
 
-    // Get private repo file
+    // Step 4: [Script] Fetch private repo file (GitHub API)
     const privateContent = await getPrivateRepoContent(
       mapping.owner,
       mapping.repo,
@@ -338,17 +432,23 @@ async function main() {
       githubToken
     );
 
-    // Compare normalized content (extract text, ignore syntax differences)
+    // Step 5: [Agent 2] Compare semantically
     if (privateContent !== null) {
-      const normalizedDocs = normalize(docsContent);
-      const normalizedPrivate = normalize(privateContent);
+      console.log('  [Comparator] Checking for content differences...');
+      const comparison = await compare(
+        anthropicKey,
+        docsContent,
+        privateContent,
+        'GitBook (docs repo)',
+        'Markdown (private repo)',
+      );
 
-      if (normalizedDocs === normalizedPrivate) {
-        console.log('  → Content is identical (after normalization), skipping');
-        results.skipped.push({ path: docsPath, reason: 'identical content' });
+      if (comparison.identical) {
+        console.log(`  → Content is identical: ${comparison.reason}`);
+        results.skipped.push({ path: docsPath, reason: comparison.reason });
         continue;
       }
-      console.log('  → Content differs, will sync');
+      console.log(`  → Content differs: ${comparison.reason}`);
     } else {
       console.log('  → File not found in private repo, will create new');
     }
@@ -360,22 +460,27 @@ async function main() {
       continue;
     }
 
-    // Convert and validate with Claude
+    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate
     try {
-      const conversionResult = await convertAndValidate(anthropicKey, docsContent);
+      console.log('  [Converter] Converting GitBook → Markdown...');
+      const converted = await convertGitBookToMarkdown(anthropicKey, docsContent);
 
-      if (!conversionResult.success) {
+      console.log('  [Validator] Checking conversion quality...');
+      const validation = await validate(anthropicKey, docsContent, converted, 'gitbook-to-markdown');
+
+      if (!validation.passed) {
         console.log('  → Validation failed, skipping PR creation');
+        validation.issues.forEach(issue => console.log(`    - ${issue}`));
         results.validationFailed.push({
           path: docsPath,
-          issues: conversionResult.issues,
+          issues: validation.issues,
         });
         continue;
       }
 
-      const convertedContent = conversionResult.content;
+      const convertedContent = converted;
 
-      // PR creation logic
+      // Step 8: [Script] Create branch + update file + create PR
       const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
       const branchName = `sync-back/${timestamp}/${path.basename(docsPath, '.md')}`;
 
@@ -456,8 +561,11 @@ This PR brings those changes back to the private repo.
   console.log(`\nSynced: ${results.synced.length}`);
   results.synced.forEach(r => console.log(`  ✓ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
 
-  console.log(`\nSkipped (identical content): ${results.skipped.length}`);
-  results.skipped.forEach(r => console.log(`  - ${r.path}`));
+  console.log(`\nSkipped: ${results.skipped.length}`);
+  results.skipped.forEach(r => console.log(`  - ${r.path} (${r.reason})`));
+
+  console.log(`\nClassified (sync-back ineligible): ${results.classified.length}`);
+  results.classified.forEach(r => console.log(`  - ${r.path} (${r.reason})`));
 
   console.log(`\nNot mapped: ${results.notMapped.length}`);
   results.notMapped.forEach(p => console.log(`  - ${p}`));
@@ -476,6 +584,7 @@ This PR brings those changes back to the private repo.
     const output = [
       `synced_count=${results.synced.length}`,
       `skipped_count=${results.skipped.length}`,
+      `classified_count=${results.classified.length}`,
       `validation_failed_count=${results.validationFailed.length}`,
       `error_count=${results.errors.length}`,
     ].join('\n');
