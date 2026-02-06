@@ -74,9 +74,10 @@ function readChangedFiles(filePath) {
  * Main execution function
  */
 async function main() {
-  const agentRepoPath = process.env.AGENT_REPO_PATH || 'delight-ai-agent';
-  const docsRepoPath = process.env.DOCS_REPO_PATH || '.';
-  const changedFilesPath = process.env.CHANGED_FILES_PATH || 'changed_source_files.txt';
+  const repoRoot = path.resolve(__dirname, '..', '..');
+  const agentRepoPath = path.resolve(repoRoot, process.env.AGENT_REPO_PATH || 'delight-ai-agent');
+  const docsRepoPath = path.resolve(repoRoot, process.env.DOCS_REPO_PATH || '.');
+  const changedFilesPath = path.resolve(repoRoot, process.env.CHANGED_FILES_PATH || 'changed_source_files.txt');
   const dryRun = process.env.DRY_RUN === 'true';
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
 
@@ -217,7 +218,7 @@ async function main() {
   results.errors.forEach(e => console.log(`  ✗ ${e.path}: ${e.error}`));
 
   // 4. Write synced files list for commit step
-  const syncedFilesPath = process.env.SYNCED_FILES_PATH || 'synced_files.txt';
+  const syncedFilesPath = path.resolve(repoRoot, process.env.SYNCED_FILES_PATH || 'synced_files.txt');
   if (results.synced.length > 0 && !dryRun) {
     const syncedList = results.synced.map(r => r.docsPath).join('\n') + '\n';
     fs.writeFileSync(syncedFilesPath, syncedList, 'utf-8');
