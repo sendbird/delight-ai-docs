@@ -14,6 +14,10 @@ on:
         required: false
         default: 'false'
         type: boolean
+      files:
+        description: 'Comma-separated file paths to sync (e.g. sdk-docs/android/features/messages.md). If empty, uses git diff from last commit.'
+        required: false
+        type: string
 
 jobs:
   sync-back:
@@ -32,19 +36,30 @@ jobs:
 
       - name: Get changed files info
         id: changes
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_AFTER: ${{ github.event.after }}
+          MANUAL_FILES: ${{ github.event.inputs.files || '' }}
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            BASE_SHA="${{ github.event.before }}"
-            HEAD_SHA="${{ github.event.after }}"
+          if [ -n "$MANUAL_FILES" ]; then
+            echo "Manual files specified: $MANUAL_FILES"
+            CHANGED_COUNT=$(echo "$MANUAL_FILES" | tr ',' '\n' | wc -l | tr -d ' ')
+            echo "manual_files=${MANUAL_FILES}" >> $GITHUB_OUTPUT
           else
-            BASE_SHA="HEAD~1"
-            HEAD_SHA="HEAD"
+            if [ "$EVENT_NAME" = "push" ]; then
+              BASE_SHA="$EVENT_BEFORE"
+              HEAD_SHA="$EVENT_AFTER"
+            else
+              BASE_SHA="HEAD~1"
+              HEAD_SHA="HEAD"
+            fi
+
+            echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
+            echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
+
+            CHANGED_COUNT=$(git diff --name-only ${BASE_SHA} ${HEAD_SHA} -- 'sdk-docs/**/*.md' | wc -l | tr -d ' ')
           fi
-
-          echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
-          echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
-
-          CHANGED_COUNT=$(git diff --name-only ${BASE_SHA} ${HEAD_SHA} -- 'sdk-docs/**/*.md' | wc -l | tr -d ' ')
           echo "changed_count=${CHANGED_COUNT}" >> $GITHUB_OUTPUT
           echo "Changed sdk-docs md files: ${CHANGED_COUNT}"
 
@@ -55,6 +70,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BASE_SHA: ${{ steps.changes.outputs.base_sha }}
           HEAD_SHA: ${{ steps.changes.outputs.head_sha }}
+          MANUAL_FILES: ${{ steps.changes.outputs.manual_files }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
           cd scripts/sync-back
@@ -66,13 +82,17 @@ jobs:
 
       - name: Summary
         if: always()
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          CHANGED_COUNT: ${{ steps.changes.outputs.changed_count }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
           echo "## Sync Back Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Changed files:** ${{ steps.changes.outputs.changed_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed files:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
           echo "- **Conversion:** Claude AI (GitBook → Markdown)" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+          if [ "$DRY_RUN" = "true" ]; then
             echo "- **Mode:** Dry Run" >> $GITHUB_STEP_SUMMARY
           fi

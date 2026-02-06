@@ -23,8 +23,8 @@ Create PR in docs repo
 ## How It Works
 
 1. **Mapping**: Uses `../mapping-table.json` for path mapping
-2. **Normalization**: Extracts pure text content (removes GitBook/Markdown syntax)
-3. **Comparison**: Compares normalized content to detect actual text changes
+2. **Normalization**: Removes GitBook/Markdown syntax only (whitespace and case are preserved)
+3. **Comparison**: Compares normalized content to detect actual text changes (including wording, whitespace, and case differences)
 4. **Conversion**: Converts Markdown to GitBook syntax using Claude AI
 5. **Write**: Writes converted content only when text content differs
 

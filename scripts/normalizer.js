@@ -182,7 +182,11 @@ function normalizeWhitespace(content) {
 
 /**
  * Content normalization (full pipeline)
- * Remove GitBook syntax → Remove markdown syntax → Normalize whitespace → Lowercase
+ * Remove GitBook syntax → Remove markdown syntax → Light whitespace cleanup
+ *
+ * Case differences are preserved to detect meaningful expression changes.
+ * Only trivial whitespace differences (trailing spaces, excessive blank lines)
+ * are normalized to prevent false sync triggers from Claude conversions.
  *
  * @param {string} content - Original markdown content
  * @returns {string} - Normalized pure text
@@ -200,11 +204,10 @@ function normalize(content) {
   // 2. Remove markdown syntax
   result = removeMarkdownSyntax(result);
 
-  // 3. Normalize whitespace
-  result = normalizeWhitespace(result);
-
-  // 4. Convert to lowercase
-  result = result.toLowerCase();
+  // 3. Light whitespace cleanup (absorb trivial differences from conversions)
+  result = result.split('\n').map(line => line.trimEnd()).join('\n');
+  result = result.replace(/\n{3,}/g, '\n\n');
+  result = result.trim();
 
   return result;
 }

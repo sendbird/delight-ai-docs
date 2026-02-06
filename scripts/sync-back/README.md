@@ -45,10 +45,12 @@ Uses **normalized content comparison**:
 1. Change occurs in docs repo
 2. Read the docs file content
 3. Read the corresponding file in private repo
-4. Normalize both (extract pure text, remove GitBook/Markdown syntax)
+4. Normalize both (remove GitBook/Markdown syntax only — whitespace and case are preserved)
 5. Compare normalized content
    - If different → TW actually modified it → Execute backward sync
    - If identical → No change needed → Skip
+
+> **Note**: The normalizer only strips syntax (GitBook tags, Markdown formatting). Whitespace and case differences are treated as meaningful changes and will trigger a sync.
 
 ## GitBook Syntax List
 
@@ -91,15 +93,21 @@ Automatically runs when `sdk-docs/**/*.md` files are changed in the develop bran
 Manual execution:
 1. Go to Actions tab → Select "Sync Back to Private Repos"
 2. Click "Run workflow"
-3. dry_run option available
+3. Options:
+   - **dry_run**: If checked, no actual PR is created
+   - **files**: Comma-separated file paths to sync (e.g. `sdk-docs/android/features/messages.md`). If empty, uses git diff from last commit.
+
+When `files` is specified, the script skips git diff detection and directly processes the listed files. This is useful for syncing specific files that were missed or need re-syncing.
 
 ## Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `GITHUB_TOKEN` | PAT for private repo access | Yes |
+| `ANTHROPIC_API_KEY` | API key for Claude (GitBook → Markdown conversion) | Yes |
 | `BASE_SHA` | Base commit SHA for comparison | Optional (default: HEAD~1) |
 | `HEAD_SHA` | Current commit SHA | Optional (default: HEAD) |
+| `MANUAL_FILES` | Comma-separated file paths to sync (bypasses git diff) | No |
 | `DRY_RUN` | If true, don't create PR | No |
 
 ## Modifying the Mapping Table
@@ -135,10 +143,10 @@ When adding a new repo:
 
 ## GitHub Secrets Setup
 
-Need to add `PRIVATE_REPO_TOKEN` secret:
+The following secrets are managed at the **organization level** (not per-repository):
 
-1. GitHub → Settings → Secrets and variables → Actions
-2. Click "New repository secret"
-3. Name: `PRIVATE_REPO_TOKEN`
-4. Value: PAT with private repo access permission
-   - Required permissions: `repo` (full control of private repositories)
+| Secret | Description |
+|--------|-------------|
+| `SDK_GH_BOT1_TOKEN` | PAT with private repo access permission (`repo` scope) |
+| `SDK_GH_BOT2_TOKEN` | Secondary PAT for private repo access |
+| `ANTHROPIC_API_KEY` | Anthropic API key for Claude-based GitBook → Markdown conversion |

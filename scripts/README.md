@@ -158,13 +158,15 @@ Files are mapped between repositories using pattern-based rules. See `mapping-ta
 ### Infinite loop concern
 
 Both sync directions use **normalized content comparison**:
-1. Extract pure text content (remove GitBook syntax, Markdown formatting)
+1. Remove GitBook/Markdown syntax only (whitespace and case are preserved)
 2. Compare the extracted text
 
 If the text content is identical, no sync occurs. This prevents:
 - Forward sync from triggering backward sync
 - Backward sync from triggering forward sync
 - False positives from syntax differences (GitBook vs pure Markdown)
+
+> **Note**: Whitespace and case differences are treated as meaningful changes and will trigger a sync.
 
 ---
 
@@ -208,7 +210,7 @@ scripts/
 
 ### Why No Infinite Loop?
 
-Both syncs use **normalized content comparison**:
+Both syncs use **normalized content comparison** (syntax-only stripping, whitespace and case preserved):
 - Forward sync: compares text content, skips if identical
 - Backward sync: compares text content, skips if identical
 

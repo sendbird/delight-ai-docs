@@ -73,10 +73,11 @@ Output ONLY the converted markdown, nothing else.`;
  * Convert pure markdown to GitBook syntax
  * @param {string} apiKey - Anthropic API key
  * @param {string} markdownContent - Pure GitHub-flavored markdown
+ * @param {string|null} referenceGitBook - Existing GitBook file for structural reference
  * @returns {Promise<string>} - Markdown with GitBook syntax
  */
-async function convertMarkdownToGitBook(apiKey, markdownContent) {
-  const systemPrompt = `You are a technical documentation converter. Your task is to convert pure GitHub-flavored markdown to GitBook-flavored markdown.
+async function convertMarkdownToGitBook(apiKey, markdownContent, referenceGitBook = null) {
+  let systemPrompt = `You are a technical documentation converter. Your task is to convert pure GitHub-flavored markdown to GitBook-flavored markdown.
 
 Rules:
 1. Convert note/warning/tip blockquotes to GitBook hints:
@@ -91,13 +92,31 @@ Rules:
 6. Do NOT add any explanations - output ONLY the converted markdown
 7. If there's nothing to convert, return the original content as-is`;
 
-  const userPrompt = `Convert this GitHub-flavored markdown to GitBook-flavored markdown:
+  if (referenceGitBook) {
+    systemPrompt += `
+8. A REFERENCE GitBook file is provided. Preserve ALL GitBook-specific syntax ({% ... %} tags) from the reference where the content maps to the same sections. Use the reference to determine which sections should use which GitBook syntax. Common GitBook patterns include but are not limited to: hints, tabs, includes, embeds, files, code wrappers, and content-refs. Do NOT invent new GitBook syntax that doesn't exist in the reference.`;
+  }
+
+  let userPrompt;
+  if (referenceGitBook) {
+    userPrompt = `Convert this GitHub-flavored markdown to GitBook-flavored markdown, using the reference file to preserve GitBook structures:
+
+=== NEW CONTENT (Markdown) ===
+${markdownContent}
+
+=== REFERENCE (existing GitBook file) ===
+${referenceGitBook}
+
+Output ONLY the converted markdown, nothing else.`;
+  } else {
+    userPrompt = `Convert this GitHub-flavored markdown to GitBook-flavored markdown:
 
 ---
 ${markdownContent}
 ---
 
 Output ONLY the converted markdown, nothing else.`;
+  }
 
   return await callClaude(apiKey, systemPrompt, userPrompt);
 }
@@ -183,13 +202,17 @@ async function convertAndValidate(apiKey, gitbookContent) {
  * Markdown → GitBook conversion + validation pipeline
  * @param {string} apiKey - Anthropic API key
  * @param {string} markdownContent - Pure GitHub-flavored markdown
+ * @param {string|null} referenceGitBook - Existing GitBook file for structural reference
  * @returns {Promise<{success: boolean, content: string, issues: string[]}>}
  */
-async function convertToGitBookAndValidate(apiKey, markdownContent) {
+async function convertToGitBookAndValidate(apiKey, markdownContent, referenceGitBook = null) {
   console.log('  [Claude] Converting Markdown to GitBook...');
+  if (referenceGitBook) {
+    console.log('  [Claude] Using existing GitBook file as structural reference');
+  }
 
   // 1. Convert
-  const converted = await convertMarkdownToGitBook(apiKey, markdownContent);
+  const converted = await convertMarkdownToGitBook(apiKey, markdownContent, referenceGitBook);
 
   console.log('  [Claude] Validating conversion...');
 
