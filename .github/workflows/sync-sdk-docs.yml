@@ -248,17 +248,23 @@ jobs:
 
       - name: Summary
         if: always()
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          CHANGED_COUNT: ${{ steps.detect-updates.outputs.changed_count }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SKIP_PR: ${{ steps.commit-changes.outputs.skip_pr || 'false' }}
+          PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
         run: |
           echo "## Forward Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Changed files in public repo:** ${{ steps.detect-updates.outputs.changed_count }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed files in public repo:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
           echo "- **Conversion:** Claude AI (Markdown → GitBook)" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+          if [ "$DRY_RUN" = "true" ]; then
             echo "- **Mode:** Dry Run (no changes made)" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ steps.commit-changes.outputs.skip_pr }}" = "true" ]; then
+          elif [ "$SKIP_PR" = "true" ]; then
             echo "- **Result:** No files needed sync (content unchanged or not mapped)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "- **PR Created:** #${{ steps.push-and-pr.outputs.pr_number }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **PR Created:** #$PR_NUMBER" >> $GITHUB_STEP_SUMMARY
           fi
