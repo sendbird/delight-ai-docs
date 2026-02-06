@@ -131,9 +131,10 @@ async function main() {
 
     // Read target file from docs repo (if exists)
     const dstFullPath = path.join(docsRepoPath, mapping.docsPath);
+    let dstContent = null;
 
     if (fs.existsSync(dstFullPath)) {
-      const dstContent = fs.readFileSync(dstFullPath, 'utf-8');
+      dstContent = fs.readFileSync(dstFullPath, 'utf-8');
 
       // Compare normalized content (extract text, ignore syntax differences)
       const normalizedSrc = normalize(srcContent);
@@ -162,8 +163,8 @@ async function main() {
 
     // Convert Markdown to GitBook and write file
     try {
-      // Convert using Claude
-      const conversionResult = await convertToGitBookAndValidate(anthropicKey, srcContent);
+      // Convert using Claude (pass existing GitBook file as structural reference)
+      const conversionResult = await convertToGitBookAndValidate(anthropicKey, srcContent, dstContent);
 
       if (!conversionResult.success) {
         console.log('  → Conversion validation failed, using original content');

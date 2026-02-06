@@ -41,6 +41,27 @@ const GITBOOK_PATTERNS = {
 };
 
 /**
+ * HTML syntax pattern definitions
+ * Used by GitBook for images (<figure>/<img>) and other formatting
+ */
+const HTML_PATTERNS = {
+  // <img> tags with alt attribute - extract alt text (parallel to ![alt](url))
+  imgWithAlt: /<img\s[^>]*?alt="([^"]*)"[^>]*\/?>/gi,
+
+  // <img> tags without alt or after alt extraction
+  img: /<img[^>]*\/?>/gi,
+
+  // <a> tags - extract inner text (parallel to [text](url))
+  anchor: /<a\s[^>]*>([\s\S]*?)<\/a>/gi,
+
+  // <figcaption> with content - remove entirely
+  figcaption: /<figcaption[^>]*>[\s\S]*?<\/figcaption>/gi,
+
+  // All remaining HTML tags (figure, br, div, p, span, etc.)
+  genericTag: /<[^>]+>/g,
+};
+
+/**
  * Markdown syntax pattern definitions
  */
 const MARKDOWN_PATTERNS = {
@@ -70,6 +91,12 @@ const MARKDOWN_PATTERNS = {
 
   // Numbered lists
   numberedList: /^[\s]*\d+\.\s+/gm,
+
+  // Hint-style prefixes: markdown equivalents of {% hint style="..." %}
+  // Claude converts: info→"Note:", warning→"Warning:", danger→"Danger:", success→"Tip:"
+  // Also handles emoji variants: ℹ️, ⚠️, 🚨, ✅
+  hintPrefix: /^>\s*(?:\*\*)?(?:Note|Warning|Danger|Tip|Info)(?::?\s*)?(?:\*\*)?\s*/gim,
+  hintEmoji: /[ℹ️⚠️🚨✅]/g,
 
   // Blockquotes (>)
   blockquote: /^>\s*/gm,
@@ -134,15 +161,20 @@ function removeMarkdownSyntax(content) {
   // Inline code (keep text)
   result = result.replace(MARKDOWN_PATTERNS.inlineCode, '$1');
 
+  // Images BEFORE links (![alt](url) contains [alt](url) as substring)
+  result = result.replace(MARKDOWN_PATTERNS.images, '$1');
+
   // Links (keep text only)
   result = result.replace(MARKDOWN_PATTERNS.links, '$1');
-
-  // Images (keep alt text only)
-  result = result.replace(MARKDOWN_PATTERNS.images, '$1');
 
   // Remove bullet/numbered list markdown
   result = result.replace(MARKDOWN_PATTERNS.bulletList, '');
   result = result.replace(MARKDOWN_PATTERNS.numberedList, '');
+
+  // Strip hint-style prefixes BEFORE blockquotes (> Note:, > Warning:, etc.)
+  // These are markdown equivalents of {% hint style="..." %} attributes
+  result = result.replace(MARKDOWN_PATTERNS.hintPrefix, '');
+  result = result.replace(MARKDOWN_PATTERNS.hintEmoji, '');
 
   // Remove blockquote markdown
   result = result.replace(MARKDOWN_PATTERNS.blockquote, '');
@@ -158,6 +190,33 @@ function removeMarkdownSyntax(content) {
 }
 
 /**
+ * Remove HTML tags and extract meaningful text
+ * Handles <figure>/<img>/<figcaption> and other HTML used in GitBook docs
+ * @param {string} content - Content with possible HTML tags
+ * @returns {string} - Content with HTML removed, alt/link text preserved
+ */
+function removeHtmlSyntax(content) {
+  let result = content;
+
+  // <img> with alt: extract alt text (same as ![alt](url) → alt)
+  result = result.replace(HTML_PATTERNS.imgWithAlt, '$1');
+
+  // <img> without alt or remaining after alt extraction
+  result = result.replace(HTML_PATTERNS.img, '');
+
+  // <a href="...">text</a> → text (same as [text](url) → text)
+  result = result.replace(HTML_PATTERNS.anchor, '$1');
+
+  // <figcaption>...</figcaption> → remove entirely
+  result = result.replace(HTML_PATTERNS.figcaption, '');
+
+  // All remaining HTML tags (figure, br, div, span, etc.)
+  result = result.replace(HTML_PATTERNS.genericTag, '');
+
+  return result;
+}
+
+/**
  * Normalize whitespace and line breaks
  * @param {string} content - Text content
  * @returns {string} - Normalized text
@@ -165,14 +224,14 @@ function removeMarkdownSyntax(content) {
 function normalizeWhitespace(content) {
   let result = content;
 
-  // Collapse consecutive line breaks to single line break
-  result = result.replace(/\n{2,}/g, '\n');
-
   // Collapse consecutive spaces to single space
   result = result.replace(/[ \t]+/g, ' ');
 
-  // Trim each line
+  // Trim each line first (so whitespace-only lines become empty)
   result = result.split('\n').map(line => line.trim()).join('\n');
+
+  // THEN collapse consecutive line breaks (including newly-empty lines)
+  result = result.replace(/\n{2,}/g, '\n');
 
   // Trim overall
   result = result.trim();
@@ -182,7 +241,11 @@ function normalizeWhitespace(content) {
 
 /**
  * Content normalization (full pipeline)
- * Remove GitBook syntax → Remove markdown syntax → Normalize whitespace → Lowercase
+ * Remove GitBook syntax → Remove markdown syntax → Light whitespace cleanup
+ *
+ * Case differences are preserved to detect meaningful expression changes.
+ * Only trivial whitespace differences (trailing spaces, excessive blank lines)
+ * are normalized to prevent false sync triggers from Claude conversions.
  *
  * @param {string} content - Original markdown content
  * @returns {string} - Normalized pure text
@@ -200,11 +263,14 @@ function normalize(content) {
   // 2. Remove markdown syntax
   result = removeMarkdownSyntax(result);
 
-  // 3. Normalize whitespace
-  result = normalizeWhitespace(result);
+  // 3. Remove HTML syntax (figure, img, figcaption, etc.)
+  result = removeHtmlSyntax(result);
 
-  // 4. Convert to lowercase
-  result = result.toLowerCase();
+  // 4. Light whitespace cleanup (absorb trivial differences from conversions)
+  // Full trim per line — after all syntax stripping, leading whitespace is artifact
+  result = result.split('\n').map(line => line.trim()).join('\n');
+  result = result.replace(/\n{3,}/g, '\n\n');
+  result = result.trim();
 
   return result;
 }
@@ -213,7 +279,9 @@ module.exports = {
   normalize,
   removeGitBookSyntax,
   removeMarkdownSyntax,
+  removeHtmlSyntax,
   normalizeWhitespace,
   GITBOOK_PATTERNS,
+  HTML_PATTERNS,
   MARKDOWN_PATTERNS,
 };
