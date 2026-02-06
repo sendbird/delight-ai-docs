@@ -103,4 +103,43 @@ Output ONLY the converted markdown, nothing else.`;
   return await callClaude(apiKey, systemPrompt, userPrompt, MODEL);
 }
 
-module.exports = { convertGitBookToMarkdown, convertMarkdownToGitBook };
+/**
+ * Retry GitBook→Markdown conversion with validation feedback
+ * @param {string} apiKey - Anthropic API key
+ * @param {string} gitbookContent - Original GitBook content
+ * @param {string} previousAttempt - Previous conversion result that failed validation
+ * @param {string[]} issues - Validation issues from the previous attempt
+ * @returns {Promise<string>} - Improved pure markdown
+ */
+async function retryGitBookToMarkdown(apiKey, gitbookContent, previousAttempt, issues) {
+  const systemPrompt = `You are a technical documentation converter. Your task is to fix a GitBook-to-Markdown conversion that failed quality validation.
+
+Rules:
+1. Remove GitBook-specific syntax while preserving the content meaning
+2. Convert GitBook hints to appropriate markdown:
+   - {% hint style="info" %} → > **Note:** or > ℹ️
+   - {% hint style="warning" %} → > **Warning:** or > ⚠️
+   - {% hint style="danger" %} → > **Danger:** or > 🚨
+   - {% hint style="success" %} → > **Tip:** or > ✅
+3. Convert {% tabs %}/{% tab %} to clear section headers
+4. Remove {% include %}, {% file %}, {% embed %} tags completely
+5. Preserve all code blocks exactly as they are
+6. Preserve all links and images exactly as they are
+7. Preserve the document structure (headers, lists, etc.)
+8. Do NOT add any explanations - output ONLY the converted markdown`;
+
+  const userPrompt = `A previous conversion attempt had these validation issues:
+${issues.map(i => `- ${i}`).join('\n')}
+
+=== ORIGINAL (GitBook) ===
+${gitbookContent}
+
+=== PREVIOUS ATTEMPT (failed validation) ===
+${previousAttempt}
+
+Fix the issues listed above and output ONLY the corrected markdown, nothing else.`;
+
+  return await callClaude(apiKey, systemPrompt, userPrompt, MODEL);
+}
+
+module.exports = { convertGitBookToMarkdown, convertMarkdownToGitBook, retryGitBookToMarkdown };
