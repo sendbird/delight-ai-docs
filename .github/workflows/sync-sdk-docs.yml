@@ -4,6 +4,12 @@ on:
   repository_dispatch:
     types: [sync-sdk-docs]
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual changes)'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   sync-sdk-docs:
@@ -33,7 +39,11 @@ jobs:
           token: ${{ secrets.SDK_GH_BOT1_TOKEN }}
           fetch-depth: 2                   # need previous commit for diff
 
-      # NEW: detect which files changed in the latest commit on delight-ai-agent
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Detect updated source files in delight-ai-agent
         id: detect-updates
         run: |
@@ -53,112 +63,26 @@ jobs:
           echo "Changed source files (from delight-ai-agent):"
           cat changed_source_files.txt || echo "(none)"
 
-      - name: Sync mapped files from delight-ai-agent to sdk-docs
+          # Count changed md files for summary
+          CHANGED_COUNT=$(grep -c '\.md$' changed_source_files.txt 2>/dev/null || echo "0")
+          echo "changed_count=${CHANGED_COUNT}" >> $GITHUB_OUTPUT
+
+      - name: Run sync script
         id: sync-files
+        env:
+          AGENT_REPO_PATH: delight-ai-agent
+          DOCS_REPO_PATH: .
+          CHANGED_FILES_PATH: changed_source_files.txt
+          SYNCED_FILES_PATH: updated_files.txt
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python << 'EOF'
-          import shutil
-          from pathlib import Path
-
-          agent_root = Path("delight-ai-agent")
-          docs_root = Path(".")
-
-          changed_file_list = Path("changed_source_files.txt")
-          if changed_file_list.is_file():
-              changed_sources = {
-                  line.strip()
-                  for line in changed_file_list.read_text(encoding="utf-8").splitlines()
-                  if line.strip()
-              }
-              print("Changed sources from delight-ai-agent:")
-              for s in sorted(changed_sources):
-                  print(f"  - {s}")
-          else:
-              changed_sources = set()
-              print("[WARN] changed_source_files.txt not found; assuming no changed sources.")
-
-          # Mapping: source in delight-ai-agent -> target in delight-ai-docs
-          MAPPING = {
-              # ANDROID
-              "android/docs/conversations.md": "sdk-docs/android/features/conversations.md",
-              "android/docs/launcher.md": "sdk-docs/android/features/launcher.md",
-              "android/docs/messages.md": "sdk-docs/android/features/messages.md",
-              "android/MULTILANGUAGE.md": "sdk-docs/android/multi-language-support.md",
-              "android/README.md": "sdk-docs/android/quickstart-guide-messenger.md",
-
-              # IOS
-              "ios/docs/conversations.md": "sdk-docs/ios/features/conversations.md",
-              "ios/docs/launcher.md": "sdk-docs/ios/features/launcher.md",
-              "ios/docs/messages.md": "sdk-docs/ios/features/messages.md",
-              "ios/MULTILANGUAGE.md": "sdk-docs/ios/multi-language-support.md",
-              "ios/README.md": "sdk-docs/ios/quickstart-guide-messenger.md",
-
-              # JAVASCRIPT CDN
-              "js/cdn/docs/conversations.md": "sdk-docs/javascript-cdn/features/conversations.md",
-              "js/cdn/docs/messages.md": "sdk-docs/javascript-cdn/features/messages.md",
-              "js/cdn/MULTILANGUAGE.md": "sdk-docs/javascript-cdn/multi-language-support.md",
-              "js/cdn/README.md": "sdk-docs/javascript-cdn/quickstart-guide-messenger.md",
-
-              # REACT (NPM)
-              "js/react/docs/conversations.md": "sdk-docs/react-npm/features/conversations.md",
-              "js/react/docs/messages.md": "sdk-docs/react-npm/features/messages.md",
-              "js/react/MULTILANGUAGE.md": "sdk-docs/react-npm/multi-language-support.md",
-              "js/react/README.md": "sdk-docs/react-npm/quickstart-guide-messenger.md",
-              "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": "sdk-docs/react-npm/template-based-layout-component-customization-guide.md",
-
-              # REACT (Native)
-              "js/react-native/docs/conversations.md": "sdk-docs/react-native/features/conversations.md",
-              "js/react-native/docs/messages.md": "sdk-docs/react-native/features/messages.md",
-              "js/react-native/MULTILANGUAGE.md": "sdk-docs/react-native/multi-language-support.md",
-              "js/react-native/README.md": "sdk-docs/react-native/quickstart-guide-messenger.md",
-          }
-
-          mapping_sources = set(MAPPING.keys())
-
-          # Only sync files that are BOTH:
-          # - changed in delight-ai-agent (changed_sources)
-          # - present in our mapping table (mapping_sources)
-          to_sync_sources = sorted(mapping_sources & changed_sources)
-
-          print("Sources selected for sync (intersection of mapping & changed files):")
-          if to_sync_sources:
-              for src in to_sync_sources:
-                  print(f"  - {src}")
-          else:
-              print("  (none)")
-
-          updated_targets = []
-
-          for src in to_sync_sources:
-              dst = MAPPING[src]
-              src_path = agent_root / src
-              dst_path = docs_root / dst
-
-              if not src_path.is_file():
-                  print(f"[WARN] Missing source (skipping): {src}")
-                  continue
-
-              dst_path.parent.mkdir(parents=True, exist_ok=True)
-              shutil.copy2(src_path, dst_path)
-              updated_targets.append(dst)  # store repo-relative path
-              print(f"Copied {src} -> {dst}")
-
-          # Write updated targets for later steps (commits & PR body)
-          updated_list_path = Path("updated_files.txt")
-          if updated_targets:
-              updated_list_path.write_text("\n".join(updated_targets) + "\n", encoding="utf-8")
-              print(f"{len(updated_targets)} file(s) copied for sync.")
-              print("updated_files.txt will contain:")
-              for t in updated_targets:
-                  print(f"  - {t}")
-          else:
-              # still create the file so the next step can safely check it
-              updated_list_path.write_text("", encoding="utf-8")
-              print("No mapped files updated from latest commit.")
-          EOF
+          cd scripts/sync
+          node sync.js
 
       - name: Commit changes (one commit per changed file)
         id: commit-changes
+        if: github.event.inputs.dry_run != 'true'
         run: |
           echo "===== 📝 Commit Changes Step Started ====="
 
@@ -243,7 +167,7 @@ jobs:
 
       - name: Push branch and create PR via API
         id: push-and-pr
-        if: steps.commit-changes.outputs.skip_pr == 'false'
+        if: steps.commit-changes.outputs.skip_pr == 'false' && github.event.inputs.dry_run != 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
           REPO: sendbird/delight-ai-docs
@@ -304,7 +228,7 @@ jobs:
           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
 
       - name: Approve pull request via API
-        if: steps.push-and-pr.outputs.pr_number != '' && steps.commit-changes.outputs.skip_pr == 'false'
+        if: steps.push-and-pr.outputs.pr_number != '' && steps.commit-changes.outputs.skip_pr == 'false' && github.event.inputs.dry_run != 'true'
         env:
           APPROVE_TOKEN: ${{ secrets.SDK_GH_BOT2_TOKEN }}
           REPO: sendbird/delight-ai-docs
@@ -321,3 +245,26 @@ jobs:
           echo "Approve API status: $RESP"
           echo "Approve API response:"
           cat approve_response.json
+
+      - name: Summary
+        if: always()
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          CHANGED_COUNT: ${{ steps.detect-updates.outputs.changed_count }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SKIP_PR: ${{ steps.commit-changes.outputs.skip_pr || 'false' }}
+          PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
+        run: |
+          echo "## Forward Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changed files in public repo:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Conversion:** Claude AI (Markdown → GitBook)" >> $GITHUB_STEP_SUMMARY
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "- **Mode:** Dry Run (no changes made)" >> $GITHUB_STEP_SUMMARY
+          elif [ "$SKIP_PR" = "true" ]; then
+            echo "- **Result:** No files needed sync (content unchanged or not mapped)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- **PR Created:** #$PR_NUMBER" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,0 +1,12 @@
+{
+  "name": "sync",
+  "version": "1.0.0",
+  "description": "Forward sync from delight-ai-agent to delight-ai-docs",
+  "main": "sync.js",
+  "scripts": {
+    "sync": "node sync.js",
+    "sync:dry": "DRY_RUN=true node sync.js"
+  },
+  "keywords": ["sync", "docs"],
+  "license": "MIT"
+}
