@@ -12,7 +12,7 @@
  * 4. [Script]  Fetch private repo file (GitHub API)
  * 5. [Agent 2] Compare — semantic content comparison
  * 6. [Agent 3] Convert — GitBook → Markdown
- * 7. [Agent 4] Validate — check conversion quality (fail → skip PR)
+ * 7. [Agent 4] Validate — check conversion quality (fail → retry with feedback, max 2 retries)
  * 8. [Script]  Create branch + update file + create PR (GitHub API)
  */
 
@@ -22,7 +22,7 @@ const { execSync } = require('child_process');
 
 // Agent modules
 const { compare } = require('../agents/comparator');
-const { convertGitBookToMarkdown } = require('../agents/converter');
+const { convertGitBookToMarkdown, retryGitBookToMarkdown } = require('../agents/converter');
 const { validate } = require('../agents/validator');
 
 // Script modules
@@ -460,17 +460,33 @@ async function main() {
       continue;
     }
 
-    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate
+    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate (with retry)
+    const MAX_RETRIES = 2;
     try {
       console.log('  [Converter] Converting GitBook → Markdown...');
-      const converted = await convertGitBookToMarkdown(anthropicKey, docsContent);
+      let converted = await convertGitBookToMarkdown(anthropicKey, docsContent);
+      let validation;
+      let passed = false;
 
-      console.log('  [Validator] Checking conversion quality...');
-      const validation = await validate(anthropicKey, docsContent, converted, 'gitbook-to-markdown');
+      for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
+        console.log(`  [Validator] Checking conversion quality (attempt ${attempt}/${MAX_RETRIES + 1})...`);
+        validation = await validate(anthropicKey, docsContent, converted, 'gitbook-to-markdown');
 
-      if (!validation.passed) {
-        console.log('  → Validation failed, skipping PR creation');
+        if (validation.passed) {
+          passed = true;
+          break;
+        }
+
         validation.issues.forEach(issue => console.log(`    - ${issue}`));
+
+        if (attempt <= MAX_RETRIES) {
+          console.log(`  [Converter] Retrying with validation feedback...`);
+          converted = await retryGitBookToMarkdown(anthropicKey, docsContent, converted, validation.issues);
+        }
+      }
+
+      if (!passed) {
+        console.log(`  → Validation failed after ${MAX_RETRIES + 1} attempts, skipping PR creation`);
         results.validationFailed.push({
           path: docsPath,
           issues: validation.issues,

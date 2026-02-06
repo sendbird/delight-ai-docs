@@ -1,6 +1,6 @@
 # Sync Back
 
-A system that automatically syncs changes made by TW in GitBook backward to private repos.
+A system that automatically syncs changes made by TW in GitBook backward to private repos, using a multi-agent orchestration pipeline.
 
 ## Flow Diagram
 
@@ -13,48 +13,86 @@ Reflected in docs repo develop
         ↓
 Backward sync Action triggers
    1. Detect changed md files
-   2. Normalize content (remove GitBook syntax)
-   3. Compare with private repo files
-   4. If actually different → Create PR
-      If same → Ignore (prevent infinite loop)
+   2. Classification cache check (syncBack eligible?)
+   3. Agent-based semantic comparison
+   4. If actually different → Convert + Validate (with retry) → Create PR
+      If same → Skip
         ↓
 Create PR in private repo
 ```
+
+## Pipeline Architecture
+
+Each file goes through an 8-step pipeline with 4 Claude-powered agents:
+
+```
+Step 1: [Script]    Mapping lookup
+Step 2: [Script]    Classification cache check (syncBack=false → SKIP)
+Step 3: [Script]    Read docs file
+Step 4: [Script]    Fetch private repo file (GitHub API)
+Step 5: [Agent 2]   Compare — semantic content comparison (Haiku)
+Step 6: [Agent 3]   Convert — GitBook → Markdown (Sonnet)
+Step 7: [Agent 4]   Validate — check conversion quality (Sonnet)
+        ↳ Fail? → Feed issues back to Converter, retry (max 2 retries)
+Step 8: [Script]    Create branch + update file + create PR (GitHub API)
+```
+
+### Agent Details
+
+| Agent | Module | Model | Purpose |
+|-------|--------|-------|---------|
+| Classifier | `agents/classifier.js` | Haiku | Determines if file is eligible for syncBack |
+| Comparator | `agents/comparator.js` | Haiku | Semantic content comparison (ignores syntax diffs) |
+| Converter | `agents/converter.js` | Sonnet | GitBook → Markdown conversion with style guide |
+| Validator | `agents/validator.js` | Sonnet | Quality check: content loss, broken code/links, structure |
+
+### Validation & Retry
+
+The Validator checks for 5 issue types:
+- **CONTENT_LOSS**: Important text content missing
+- **CODE_BLOCK_CORRUPTED**: Code blocks modified or corrupted
+- **LINK_BROKEN**: Links or images removed/modified incorrectly
+- **MEANING_CHANGED**: Text meaning altered
+- **STRUCTURE_BROKEN**: Actual document structure damaged (not format-specific syntax conversion)
+
+Validation is **direction-aware**: for GitBook→Markdown, removing `{% tabs %}`, `{% hint %}` etc. is recognized as expected behavior, not flagged as errors.
+
+On validation failure, the pipeline **retries up to 2 times** by feeding validation issues back to the Converter agent before giving up.
+
+### Markdown Style Guide
+
+The Converter follows an embedded style guide for output:
+- `#` (H1): Page title only
+- `##` (H2): Major sections
+- `###` (H3): Subsections
+- `####` (H4): Detailed breakdowns (use sparingly). No H5 or H6.
+- Backticks for code elements, property/method names, file names, values
+- Bold for UI text, dashboard paths, product names, important terms
+- Fenced code blocks with language identifier
+
+Tab conversion specifically respects heading depth — uses subheadings when hierarchy allows (max H4), otherwise **bold text** as visual separators.
 
 ## File Structure
 
 ```
 scripts/
-├── mapping-table.json    # Shared: docs ↔ private repo file mapping
-├── normalizer.js         # Shared: GitBook/markdown syntax normalization
-├── claude-converter.js   # Shared: GitBook → Markdown conversion using Claude API
+├── mapping-table.json       # Shared: docs ↔ private repo file mapping
+├── classification-cache.json # Cache: classifier results per file
+├── agents/
+│   ├── call-claude.js       # Shared Claude API caller
+│   ├── classifier.js        # Agent 1: file eligibility classification
+│   ├── comparator.js        # Agent 2: semantic content comparison
+│   ├── converter.js         # Agent 3: GitBook ↔ Markdown conversion
+│   └── validator.js         # Agent 4: conversion quality validation
 ├── sync-back/
-│   ├── sync-back.js      # Main execution script
+│   ├── sync-back.js         # Main execution script
 │   ├── package.json
 │   └── README.md
 └── sync/
-    ├── sync.js           # Forward sync script
+    ├── sync.js              # Forward sync script
     ├── package.json
     └── README.md
 ```
-
-## Infinite Loop Prevention Logic
-
-Uses **normalized content comparison** — both sides are stripped of all syntax before comparison, so GitBook and Markdown representations of the same content are treated as identical:
-
-1. Change occurs in docs repo (GitBook commit to develop)
-2. Read the docs file content (GitBook Markdown)
-3. Read the corresponding file in private repo (pure Markdown)
-4. Normalize both — strips:
-   - GitBook syntax: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
-   - Markdown syntax: `**bold**`, `# headers`, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
-   - HTML tags: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc.
-   - Hint-equivalent prefixes: `> **Note:**`, `> **Warning:**`, etc.
-5. Compare normalized content (pure text only, case and whitespace preserved)
-   - If different → TW actually modified it → Convert GitBook → Markdown → Create PR
-   - If identical → No change needed → Skip
-
-This ensures that syntax-only differences (e.g., `<figure><img alt="x">` vs `![x](url)`, or `{% hint style="info" %}` vs `> **Note:**`) do not trigger unnecessary syncs.
 
 ## GitBook Syntax List
 
@@ -84,10 +122,10 @@ cd scripts/sync-back
 npm test
 
 # Dry run (doesn't create actual PR)
-GITHUB_TOKEN=xxx DRY_RUN=true node sync-back.js
+GITHUB_TOKEN=xxx ANTHROPIC_API_KEY=xxx DRY_RUN=true node sync-back.js
 
 # Actual execution
-GITHUB_TOKEN=xxx node sync-back.js
+GITHUB_TOKEN=xxx ANTHROPIC_API_KEY=xxx node sync-back.js
 ```
 
 ### GitHub Action
@@ -108,7 +146,7 @@ When `files` is specified, the script skips git diff detection and directly proc
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `GITHUB_TOKEN` | PAT for private repo access | Yes |
-| `ANTHROPIC_API_KEY` | API key for Claude (GitBook → Markdown conversion) | Yes |
+| `ANTHROPIC_API_KEY` | API key for Claude (agent pipeline) | Yes |
 | `BASE_SHA` | Base commit SHA for comparison | Optional (default: HEAD~1) |
 | `HEAD_SHA` | Current commit SHA | Optional (default: HEAD) |
 | `MANUAL_FILES` | Comma-separated file paths to sync (bypasses git diff) | No |
@@ -153,4 +191,4 @@ The following secrets are managed at the **organization level** (not per-reposit
 |--------|-------------|
 | `SDK_GH_BOT1_TOKEN` | PAT with private repo access permission (`repo` scope) |
 | `SDK_GH_BOT2_TOKEN` | Secondary PAT for private repo access |
-| `ANTHROPIC_API_KEY` | Anthropic API key for Claude-based GitBook → Markdown conversion |
+| `ANTHROPIC_API_KEY` | Anthropic API key for Claude agent pipeline |
