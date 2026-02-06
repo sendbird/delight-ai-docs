@@ -320,7 +320,8 @@ async function main() {
     console.log(`  → Base branch: ${mapping.defaultBranch}`);
 
     // Read docs repo file
-    const docsFullPath = path.join(process.cwd(), docsPath);
+    const repoRoot = path.resolve(__dirname, '..', '..');
+    const docsFullPath = path.join(repoRoot, docsPath);
     if (!fs.existsSync(docsFullPath)) {
       console.log('  → File deleted in docs repo, skipping');
       results.skipped.push({ path: docsPath, reason: 'deleted' });
@@ -456,8 +457,8 @@ This PR brings those changes back to the private repo.
   console.log(`\nSynced: ${results.synced.length}`);
   results.synced.forEach(r => console.log(`  ✓ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
 
-  console.log(`\nSkipped (identical content): ${results.skipped.length}`);
-  results.skipped.forEach(r => console.log(`  - ${r.path}`));
+  console.log(`\nSkipped: ${results.skipped.length}`);
+  results.skipped.forEach(r => console.log(`  - ${r.path} (${r.reason})`));
 
   console.log(`\nNot mapped: ${results.notMapped.length}`);
   results.notMapped.forEach(p => console.log(`  - ${p}`));
