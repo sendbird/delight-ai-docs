@@ -40,15 +40,21 @@ scripts/
 
 ## Infinite Loop Prevention Logic
 
-Uses **normalized content comparison**:
+Uses **normalized content comparison** — both sides are stripped of all syntax before comparison, so GitBook and Markdown representations of the same content are treated as identical:
 
-1. Change occurs in docs repo
-2. Read the docs file content
-3. Read the corresponding file in private repo
-4. Normalize both (extract pure text, remove GitBook/Markdown syntax)
-5. Compare normalized content
-   - If different → TW actually modified it → Execute backward sync
+1. Change occurs in docs repo (GitBook commit to develop)
+2. Read the docs file content (GitBook Markdown)
+3. Read the corresponding file in private repo (pure Markdown)
+4. Normalize both — strips:
+   - GitBook syntax: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
+   - Markdown syntax: `**bold**`, `# headers`, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
+   - HTML tags: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc.
+   - Hint-equivalent prefixes: `> **Note:**`, `> **Warning:**`, etc.
+5. Compare normalized content (pure text only, case and whitespace preserved)
+   - If different → TW actually modified it → Convert GitBook → Markdown → Create PR
    - If identical → No change needed → Skip
+
+This ensures that syntax-only differences (e.g., `<figure><img alt="x">` vs `![x](url)`, or `{% hint style="info" %}` vs `> **Note:**`) do not trigger unnecessary syncs.
 
 ## GitBook Syntax List
 
@@ -91,15 +97,21 @@ Automatically runs when `sdk-docs/**/*.md` files are changed in the develop bran
 Manual execution:
 1. Go to Actions tab → Select "Sync Back to Private Repos"
 2. Click "Run workflow"
-3. dry_run option available
+3. Options:
+   - **dry_run**: If checked, no actual PR is created
+   - **files**: Comma-separated file paths to sync (e.g. `sdk-docs/android/features/messages.md`). If empty, uses git diff from last commit.
+
+When `files` is specified, the script skips git diff detection and directly processes the listed files. This is useful for syncing specific files that were missed or need re-syncing.
 
 ## Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
 | `GITHUB_TOKEN` | PAT for private repo access | Yes |
+| `ANTHROPIC_API_KEY` | API key for Claude (GitBook → Markdown conversion) | Yes |
 | `BASE_SHA` | Base commit SHA for comparison | Optional (default: HEAD~1) |
 | `HEAD_SHA` | Current commit SHA | Optional (default: HEAD) |
+| `MANUAL_FILES` | Comma-separated file paths to sync (bypasses git diff) | No |
 | `DRY_RUN` | If true, don't create PR | No |
 
 ## Modifying the Mapping Table
@@ -135,10 +147,10 @@ When adding a new repo:
 
 ## GitHub Secrets Setup
 
-Need to add `PRIVATE_REPO_TOKEN` secret:
+The following secrets are managed at the **organization level** (not per-repository):
 
-1. GitHub → Settings → Secrets and variables → Actions
-2. Click "New repository secret"
-3. Name: `PRIVATE_REPO_TOKEN`
-4. Value: PAT with private repo access permission
-   - Required permissions: `repo` (full control of private repositories)
+| Secret | Description |
+|--------|-------------|
+| `SDK_GH_BOT1_TOKEN` | PAT with private repo access permission (`repo` scope) |
+| `SDK_GH_BOT2_TOKEN` | Secondary PAT for private repo access |
+| `ANTHROPIC_API_KEY` | Anthropic API key for Claude-based GitBook → Markdown conversion |

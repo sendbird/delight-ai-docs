@@ -21,7 +21,7 @@ const mappingTable = require('../mapping-table.json');
 function getChangedFiles(baseSha, headSha) {
   try {
     const output = execSync(
-      `git diff --name-only ${baseSha} ${headSha} -- '*.md'`,
+      `git diff --name-only ${baseSha} ${headSha} -- 'sdk-docs/**/*.md'`,
       { encoding: 'utf-8' }
     );
     return output.split('\n').filter(f => f.trim().length > 0);
@@ -288,8 +288,11 @@ async function main() {
   console.log('');
 
   // 1. Extract changed files list
-  const changedFiles = getChangedFiles(baseSha, headSha);
-  console.log(`Changed files: ${changedFiles.length}`);
+  const manualFiles = process.env.MANUAL_FILES;
+  const changedFiles = manualFiles
+    ? manualFiles.split(',').map(f => f.trim()).filter(f => f.length > 0)
+    : getChangedFiles(baseSha, headSha);
+  console.log(`Changed files: ${changedFiles.length}${manualFiles ? ' (manual)' : ''}`);
   changedFiles.forEach(f => console.log(`  - ${f}`));
   console.log('');
 
