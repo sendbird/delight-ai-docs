@@ -57,7 +57,11 @@ This guide explains how to manage documentation across public, private, and docs
 1. TW edits documentation in GitBook
 2. GitBook commits to `delight-ai-docs` develop branch
 3. `sync-back.yml` workflow runs
-4. GitBook syntax is converted to pure Markdown (using Claude AI)
+4. Multi-agent pipeline processes each file:
+   - Classifier checks eligibility
+   - Comparator detects semantic differences
+   - Converter transforms GitBook → Markdown (with style guide)
+   - Validator checks quality (retries up to 2x on failure)
 5. PRs are created in respective private repos
 
 **Workflow:** `.github/workflows/sync-back.yml`
@@ -152,43 +156,37 @@ Files are mapped between repositories using pattern-based rules. See `mapping-ta
 ### Backward sync PR not created
 
 - Check if the file has a `privatePath` mapping
-- Check if content is identical (no changes needed)
+- Check classification cache — file may be marked `syncBack=false`
+- Check if content is semantically identical (Comparator found no diff)
+- Check if conversion failed validation after all retries
 - Check GitHub Actions logs for Claude API errors
 
 ### Infinite loop concern
 
-Both sync directions use **normalized content comparison** — the same `normalize()` function strips all syntax from both sides, leaving only pure text content for comparison. Conversion only runs when the text content actually differs.
-
-**What `normalize()` strips:**
-1. **GitBook syntax**: `{% hint %}`, `{% tabs %}`, `{% tab %}`, `{% include %}`, etc.
-2. **Markdown syntax**: `**bold**`, `*italic*`, `# headers`, `` `code` ``, `[links](url)`, `![images](url)`, `> blockquotes`, etc.
-3. **HTML tags**: `<figure>`, `<img>`, `<figcaption>`, `<a>`, `<br>`, etc. (GitBook uses these for images)
-4. **Hint-equivalent prefixes**: `> **Note:**`, `> **Warning:**`, etc. (Claude adds these when converting `{% hint style="info" %}` to Markdown)
-
-**What is preserved**: Case differences and whitespace — these are treated as meaningful editorial changes.
+Both sync directions use **agent-based semantic comparison** — the Comparator agent (powered by Claude Haiku) understands that GitBook syntax and Markdown syntax can represent the same content, preventing false positives.
 
 **How comparison works:**
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Backward sync (docs → private)                         │
 │                                                         │
-│  normalize(docs GitBook content)                        │
+│  [Comparator] docs GitBook content                      │
 │         vs                                              │
-│  normalize(private Markdown content)                    │
+│  [Comparator] private Markdown content                  │
 │         ↓                                               │
 │  Same? → Skip (no sync needed)                          │
-│  Different? → Convert GitBook → Markdown, create PR     │
+│  Different? → Convert + Validate → Create PR            │
 └─────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────┐
 │  Forward sync (public → docs)                           │
 │                                                         │
-│  normalize(public Markdown content)                     │
+│  [Comparator] public Markdown content                   │
 │         vs                                              │
-│  normalize(docs GitBook content)                        │
+│  [Comparator] docs GitBook content                      │
 │         ↓                                               │
 │  Same? → Skip (no sync needed)                          │
-│  Different? → Convert Markdown → GitBook, create PR     │
+│  Different? → Convert Markdown → GitBook → Create PR    │
 │              (uses existing docs file as structural      │
 │               reference to preserve {% tags %})          │
 └─────────────────────────────────────────────────────────┘
@@ -202,14 +200,21 @@ This prevents infinite loops because after a sync completes, the opposite direct
 
 ```
 scripts/
-├── mapping-table.json    # Path mappings between repos
-├── normalizer.js         # Syntax normalization (GitBook + Markdown + HTML + hint prefixes)
-├── claude-converter.js   # Bidirectional conversion: GitBook ↔ Markdown (Claude AI)
-├── MAPPING-REFERENCE.md  # Detailed mapping reference
+├── mapping-table.json       # Path mappings between repos
+├── classification-cache.json # Classifier results cache
+├── agents/
+│   ├── call-claude.js       # Shared Claude API caller
+│   ├── classifier.js        # Agent 1: file eligibility classification
+│   ├── comparator.js        # Agent 2: semantic content comparison
+│   ├── converter.js         # Agent 3: GitBook ↔ Markdown conversion
+│   └── validator.js         # Agent 4: conversion quality validation
+├── normalizer.js            # Legacy: syntax normalization (kept for reference)
+├── claude-converter.js      # Legacy: monolithic converter (kept for reference)
+├── MAPPING-REFERENCE.md     # Detailed mapping reference
 ├── sync/
-│   └── sync.js           # Forward sync script
+│   └── sync.js              # Forward sync script
 └── sync-back/
-    └── sync-back.js      # Backward sync script
+    └── sync-back.js         # Backward sync script
 ```
 
 ---
@@ -231,15 +236,15 @@ scripts/
 ```
 1. TW edits in GitBook
 2. GitBook commits to docs repo (delight-ai-docs)
-3. Push triggers backward sync
+3. Push triggers backward sync (multi-agent pipeline)
 4. PR created in private repos (ai-agent-*)
 5. Engineer reviews and merges PR
 ```
 
 ### Why No Infinite Loop?
 
-Both syncs strip all syntax (GitBook, Markdown, HTML, hint prefixes) and compare pure text only:
-- Backward sync: `normalize(docs)` vs `normalize(private)` → skip if identical
-- Forward sync: `normalize(public)` vs `normalize(docs)` → skip if identical
+Both syncs use semantic comparison via Claude — the Comparator agent understands that different syntax can represent the same content:
+- Backward sync: Comparator(docs GitBook) vs Comparator(private Markdown) → skip if same meaning
+- Forward sync: Comparator(public Markdown) vs Comparator(docs GitBook) → skip if same meaning
 
-So when backward sync pushes converted Markdown to private → propagates to public → forward sync compares `normalize(public Markdown)` vs `normalize(docs GitBook)` → same text → **skips**.
+So when backward sync pushes converted Markdown to private → propagates to public → forward sync compares → same content → **skips**.
