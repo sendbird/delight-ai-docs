@@ -182,7 +182,10 @@ function normalizeWhitespace(content) {
 
 /**
  * Content normalization (full pipeline)
- * Remove GitBook syntax → Remove markdown syntax → Normalize whitespace → Lowercase
+ * Remove GitBook syntax → Remove markdown syntax
+ *
+ * Whitespace and case differences are preserved to detect
+ * meaningful expression changes between repos.
  *
  * @param {string} content - Original markdown content
  * @returns {string} - Normalized pure text
@@ -199,12 +202,6 @@ function normalize(content) {
 
   // 2. Remove markdown syntax
   result = removeMarkdownSyntax(result);
-
-  // 3. Normalize whitespace
-  result = normalizeWhitespace(result);
-
-  // 4. Convert to lowercase
-  result = result.toLowerCase();
 
   return result;
 }
