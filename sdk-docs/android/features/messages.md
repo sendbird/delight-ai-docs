@@ -1,8 +1,8 @@
 # Messages
 
-In Delight AI agent messenger, AI agent and users can exchange various types of messages to enable rich and interactive conversations, including text, images, files, and rich template-based messages. It allows users to have comprehensive and engaging conversations with AI agents across different use cases.
+In Delight AI agent, users and AI agents can exchange various types of messages to enable rich and interactive conversations, including text, images, files, and rich template-based messages. This allows users to have comprehensive and engaging conversations with AI agents across different use cases.
 
-This guide explains:
+This guide covers:
 - [Types](#types)
     - [Text message](#text-message)
     - [Image message](#image-message)
@@ -18,18 +18,18 @@ This guide explains:
 
 ## Types
 
-Delight AI agent messenger supports various message types to provide comprehensive communication capabilities between users and AI agents. Each message type is designed for specific use cases and content formats.
+Delight AI agent supports the following message types.
 
 | Type                                       | Description                                 | Content format                      | Use cases                                                                  |
 | ------------------------------------------ | ------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
 | [Text message](#text-message)   | Regular text-based communication            | Plain text                          | Basic conversational interactions, Q\&A, general dialogue                  |
-| [Image message](#image-message) | Visual file sharing                         | Image files in `PNG` and `JPG` only | Visual communication, screenshots, diagrams                                |
+| [Image message](#image-message) | Visual file sharing                         | Image files in `JPEG` and `PNG` only | Visual communication, screenshots, diagrams                                |
 | [File message](#file-message)   | Document and file sharing                   | Various file formats                | Document sharing, attachments, downloadable resources                      |
 | [Rich message](#rich-message)   | Template-based messages with interactive UI | Structured JSON templates           | Product displays, carousels, CTAs and more. See below section for details. |
 
 ### Text message
 
-**Text message** represents regular text-based communication between users and AI agents. These messages support plain text content and are the foundation of conversational interactions.
+Text message represents regular text-based communication between users and AI agents. These messages support plain text content and are the foundation of conversational interactions.
 
 - Content: Plain text messages. Markdown supported.
 - Use case: Basic conversational interactions.
@@ -37,9 +37,9 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 ### Image message
 
-**Image message** enables sharing of image files within conversations. This message type supports common image formats for visual communication.
+Image message enables sharing of image files within conversations. This message type supports common image formats for visual communication.
 
-- Supported formats: `JPG` and `PNG` only. Can be sent with text.
+- Supported formats: `JPEG` and `PNG` only. Can be sent with text.
 - Use case: Sharing visual content.
 - Display: Optimized image rendering with proper scaling.
 
@@ -48,11 +48,11 @@ Delight AI agent messenger supports various message types to provide comprehensi
   <figcaption></figcaption>
 </figure>
 
-> **Note**: However, once handed off to a human agent, users can send image files in any format.
+> __Note__: Once handed off to a human agent, users can send image files in any format.
 
 ### File message
 
-**File message** allows sharing of various file formats within conversations, enabling sharing document and resource between users and AI agents.
+File message allows sharing of various file formats within conversations, enabling the sharing of documents and resources between users and AI agents.
 
 - Supported formats: `PDF` only. Can be sent with text.
 - Use case: Document sharing and file-based communication.
@@ -65,11 +65,11 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 ### Rich message
 
-**Rich message** utilizes predefined templates to create interactive and visually appealing message experiences. These templates are configurable through the Delight AI dashboard settings and provide enhanced user interaction.
+Rich message utilizes predefined templates to create interactive and visually appealing message experiences. These templates are configurable through the Delight AI dashboard settings and provide enhanced user interaction.
 
 #### Call to Action (CTA) button
 
-**CTA** messages contain a button that allows users to take specific actions directly from the conversation interface. In the Delight AI messenger, the button opens the specified external URL in a web browser.
+CTA messages contain a button that allows users to take specific actions directly from the conversation interface. In the Delight AI messenger, the button opens the specified external URL in a web browser.
 
 - Components: A single button that links to an external webpage. Custom link formats are not supported.
 - Use case: Action-oriented user interactions.
@@ -82,7 +82,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Carousel
 
-**Carousel** messages present multiple items that can be horizontally scrolled. This allows users to browse through various options or content pieces in a compact format.
+Carousel messages present multiple items that can be horizontally scrolled. This allows users to browse through various options or content pieces in a compact format.
 
 - Layout: Horizontal scrolling interface.
 - Content: Multiple items with individual interactions.
@@ -95,7 +95,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Suggested replies
 
-**Suggested replies** provide predefined quick responses for users, enabling faster and more efficient conversation flow by offering common response options.
+Suggested replies provide predefined quick responses for users, enabling faster and more efficient conversation flow by offering common response options.
 
 - Functionality: Quick response selection.
 - Use case: Streamlined user interactions and faster response times.
@@ -108,7 +108,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### CSAT message
 
-**CSAT message** is designed to collect user feedback for customer satisfaction (CSAT) survey within conversations.
+CSAT message is designed to collect user feedback through a customer satisfaction (CSAT) survey within conversations.
 
 - Purpose: Customer satisfaction measurement.
 - Components: Rating systems and feedback collection.
@@ -121,7 +121,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Product list
 
-**Product list** messages display product information in a vertical scrolling format, different from Carousel with its vertical layout optimized for product browsing and selection.
+Product list messages display product information in a vertical scrolling format optimized for product browsing and selection, unlike Carousel which uses horizontal scrolling.
 
 - Layout: Vertical scrolling interface.
 - Content: Product information and details.
@@ -134,15 +134,15 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 #### Custom message template
 
-**Custom message template** enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
+Custom message template enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
 
-**Core Features**
+##### Core features
 
 - **Data Delivery**: Templates arrive as `custom_message_templates` array in the message's `extendedMessagePayload`. Clients handle UI rendering.
 - **Multiple Templates**: A single message can include multiple templates, each representing different UI elements.
 - **Backward Compatibility**: Unregistered template IDs trigger fallback UI, preventing application breakage.
 
-**Data Structure**
+##### Data structure
 
 The `CustomMessageTemplateData` interface structure:
 
@@ -193,7 +193,7 @@ The client receives a JSON payload of `custom_message_templates` like below:
 }
 ```
 
-**Implementation Steps**
+##### Implementation steps
 
 **1. Understand the message layout**
 
@@ -300,7 +300,7 @@ override fun onCreateCustomMessageTemplateView(
 }
 ```
 
-**Error Handling Patterns**
+##### Error handling patterns
 
 {% tabs %}
 {% tab title="Fallback UI" %}
@@ -366,13 +366,12 @@ When enabled, messages display visual indicators for:
 
 ### Citation
 
-**Citation** feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
+The citation feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
 
-- Default: Disabled by default.
-- Configuration: Requires dashboard configuration to be displayed.
-- Activation settings: Adjustable through dashboard configuration values.
+- Default: Disabled.
+- Configuration: Dashboard only — no additional code required.
 
-Citations are automatically rendered by the SDK when provided by the AI agent. No additional code is required - the feature is configured entirely through Delight AI dashboard. When enabled, citations appear as clickable elements that can expand to show source details such as document titles, URL references, and knowledge base articles.
+When enabled, citations are automatically rendered by the SDK. They appear as clickable elements that expand to show source details such as document titles, URL references, and knowledge base articles.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-citation2.png" alt="" width="375">
@@ -381,7 +380,7 @@ Citations are automatically rendered by the SDK when provided by the AI agent. N
 
 ### Special notice
 
-**Special notice** displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
+Special notice displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
 
 - Display location: Bottom of the screen.
 - Behavior: Automatically disappears when a conversation starts.
@@ -398,7 +397,7 @@ Special notices are configured through Delight AI dashboard and automatically di
 
 ## API references
 
-The following table provides comprehensive API reference information for message-related functionality:
+The following sections provide API reference information for message-related functionality.
 
 ### ConversationConfig
 
@@ -428,9 +427,9 @@ The following table lists the configuration options available in `AIAgentMesseng
 |-------------------------------|------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | `enableMessageReceiptState`   | Boolean    | `false`           | Whether to display message receipt status.                                                                                      |
 | `shouldShowSenderProfile`     | Boolean    | `true`            | Whether to show sender's profile information.                                                                                   |
-| `scrollMode`                  | ScrollMode | `ScrollMode.AUTO` | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses |
-| `shouldShowMessageFooterView` | Boolean    | `true`            | Whether the "Start new conversation" view is shown when conversation has ended                                                  |
-| `enableNewMessageIndicator`   | Boolean    | `true`            | Whether the new message indicator is enabled                                                                                    |
+| `scrollMode`                  | ScrollMode | `ScrollMode.AUTO` | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses. |
+| `shouldShowMessageFooterView` | Boolean    | `true`            | Whether the **Start new conversation** view is shown when conversation has ended.                                                  |
+| `enableNewMessageIndicator`   | Boolean    | `true`            | Whether the new message indicator is enabled.                                                                                    |
 
 ```kotlin
 // Configure conversation list settings
@@ -448,9 +447,9 @@ These options control the message input component and attachment capabilities.
 
 | Property               | Type      | Default | Description                                     |
 |------------------------|-----------|---------|-------------------------------------------------|
-| `camera.enablePhoto`   | Boolean   | `true` | Whether photo capture from camera is enabled    |
-| `gallery.enablePhoto`  | Boolean   | `true` | Whether photo selection from gallery is enabled |
-| `enableFile`           | Boolean   | `true` | Whether file attachment is enabled              |
+| `camera.enablePhoto`   | Boolean   | `true` | Whether photo capture from camera is enabled.    |
+| `gallery.enablePhoto`  | Boolean   | `true` | Whether photo selection from gallery is enabled. |
+| `enableFile`           | Boolean   | `true` | Whether file attachment is enabled.              |
 
 ```kotlin
 // Configure input settings
