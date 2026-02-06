@@ -13,6 +13,20 @@ const { callClaude } = require('./call-claude');
 
 const MODEL = 'claude-sonnet-4-20250514';
 
+const MARKDOWN_STYLE_GUIDE = `
+Markdown Style Guide (follow this for all output):
+- # (H1): Page title only
+- ## (H2): Major sections
+- ### (H3): Subsections
+- #### (H4): Detailed breakdowns (use sparingly). Do NOT use H5 or H6.
+- Backticks for: code elements, property/method names, file names, values (true, false, null)
+- Bold for: UI text displayed to users, dashboard paths, product names in UI context, important terms on first use
+- Bold+Code (**\`term\`**) for highlighting specific code terms in sentences
+- Italic: use rarely, only for subtle emphasis
+- Fenced code blocks with language identifier (kotlin, swift, javascript, json, xml, bash, etc.)
+- Single line break between paragraphs, double line break before/after code blocks
+`;
+
 /**
  * Convert GitBook syntax to pure Markdown
  * Used by backward sync (docs → private repos)
@@ -24,14 +38,16 @@ const MODEL = 'claude-sonnet-4-20250514';
 async function convertGitBookToMarkdown(apiKey, gitbookContent) {
   const systemPrompt = `You are a technical documentation converter. Your task is to convert GitBook-flavored markdown to pure GitHub-flavored markdown.
 
-Rules:
+${MARKDOWN_STYLE_GUIDE}
+
+Conversion rules:
 1. Remove GitBook-specific syntax while preserving the content meaning
 2. Convert GitBook hints to appropriate markdown:
    - {% hint style="info" %} → > **Note:** or > ℹ️
    - {% hint style="warning" %} → > **Warning:** or > ⚠️
    - {% hint style="danger" %} → > **Danger:** or > 🚨
    - {% hint style="success" %} → > **Tip:** or > ✅
-3. Convert {% tabs %}/{% tab %} to clear section headers
+3. Convert {% tabs %}/{% tab %} blocks: remove the tab syntax and keep each tab's inner content as-is. If the heading hierarchy allows (max H4), use the tab title as a subheading one level below the parent. Otherwise, use **bold text** as a visual separator for each tab section. Do NOT duplicate or summarize tab content — just unwrap it.
 4. Remove {% include %}, {% file %}, {% embed %} tags completely
 5. Preserve all code blocks exactly as they are
 6. Preserve all links and images exactly as they are
@@ -60,6 +76,9 @@ Output ONLY the converted markdown, nothing else.`;
  */
 async function convertMarkdownToGitBook(apiKey, markdownContent, referenceGitBook = null) {
   let systemPrompt = `You are a technical documentation converter. Your task is to convert pure GitHub-flavored markdown to GitBook-flavored markdown.
+
+The input markdown follows this style guide — understand it to produce accurate GitBook output:
+${MARKDOWN_STYLE_GUIDE}
 
 Rules:
 1. Convert note/warning/tip blockquotes to GitBook hints:
@@ -114,14 +133,16 @@ Output ONLY the converted markdown, nothing else.`;
 async function retryGitBookToMarkdown(apiKey, gitbookContent, previousAttempt, issues) {
   const systemPrompt = `You are a technical documentation converter. Your task is to fix a GitBook-to-Markdown conversion that failed quality validation.
 
-Rules:
+${MARKDOWN_STYLE_GUIDE}
+
+Conversion rules:
 1. Remove GitBook-specific syntax while preserving the content meaning
 2. Convert GitBook hints to appropriate markdown:
    - {% hint style="info" %} → > **Note:** or > ℹ️
    - {% hint style="warning" %} → > **Warning:** or > ⚠️
    - {% hint style="danger" %} → > **Danger:** or > 🚨
    - {% hint style="success" %} → > **Tip:** or > ✅
-3. Convert {% tabs %}/{% tab %} to clear section headers
+3. Convert {% tabs %}/{% tab %} blocks: remove the tab syntax and keep each tab's inner content as-is. If the heading hierarchy allows (max H4), use the tab title as a subheading one level below the parent. Otherwise, use **bold text** as a visual separator for each tab section. Do NOT duplicate or summarize tab content — just unwrap it.
 4. Remove {% include %}, {% file %}, {% embed %} tags completely
 5. Preserve all code blocks exactly as they are
 6. Preserve all links and images exactly as they are
