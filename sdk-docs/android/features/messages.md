@@ -407,9 +407,9 @@ The `ConversationConfig` class provides configuration options for the conversati
 
 The following table lists the configuration options for the conversation header component.
 
-| Property            | Type    | Default | Description                                                 |
-| ------------------- | ------- | ------- | ----------------------------------------------------------- |
-| `shouldShowProfile` | Boolean | `true`  | Whether to show the profile in the conversation header.     |
+| Property name | Type | Description |
+|---------------|------|-------------|
+| `shouldShowProfile` | Boolean | Whether to show the profile in the conversation header. (Default: `true`) |
 
 ```kotlin
 // Hide profile in conversation header
@@ -423,13 +423,13 @@ AIAgentMessenger.config.conversation.header.shouldShowProfile = true
 
 The following table lists the configuration options available in `AIAgentMessenger.config.conversation.list` besides read receipt. These options control how the conversation list and messages are displayed in the messenger UI.
 
-| Property                      | Type       | Default           | Description                                                                                                                     |
-|-------------------------------|------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `enableMessageReceiptState`   | Boolean    | `false`           | Whether to display message receipt status.                                                                                      |
-| `shouldShowSenderProfile`     | Boolean    | `true`            | Whether to show sender's profile information.                                                                                   |
-| `scrollMode`                  | ScrollMode | `ScrollMode.AUTO` | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses. |
-| `shouldShowMessageFooterView` | Boolean    | `true`            | Whether the **Start new conversation** view is shown when conversation has ended.                                                  |
-| `enableNewMessageIndicator`   | Boolean    | `true`            | Whether the new message indicator is enabled.                                                                                    |
+| Property name | Type | Description |
+|---------------|------|-------------|
+| `enableMessageReceiptState` | Boolean | Whether to display message receipt status. (Default: `false`) |
+| `shouldShowSenderProfile` | Boolean | Whether to show sender's profile information. (Default: `true`) |
+| `scrollMode` | ScrollMode | Scroll behavior of the message list. `AUTO` for normal scroll, `FIX` to keep user message fixed at the top during bot responses. (Default: `ScrollMode.AUTO`) |
+| `shouldShowMessageFooterView` | Boolean | Whether the **Start new conversation** view is shown when conversation has ended. (Default: `true`) |
+| `enableNewMessageIndicator` | Boolean | Whether the new message indicator is enabled. (Default: `true`) |
 
 ```kotlin
 // Configure conversation list settings
@@ -445,11 +445,11 @@ AIAgentMessenger.config.conversation.list.enableNewMessageIndicator = false
 The following table lists the configuration options available in `AIAgentMessenger.config.conversation.input`.
 These options control the message input component and attachment capabilities.
 
-| Property               | Type      | Default | Description                                     |
-|------------------------|-----------|---------|-------------------------------------------------|
-| `camera.enablePhoto`   | Boolean   | `true` | Whether photo capture from camera is enabled.    |
-| `gallery.enablePhoto`  | Boolean   | `true` | Whether photo selection from gallery is enabled. |
-| `enableFile`           | Boolean   | `true` | Whether file attachment is enabled.              |
+| Property name | Type | Description |
+|---------------|------|-------------|
+| `camera.enablePhoto` | Boolean | Whether photo capture from camera is enabled. (Default: `true`) |
+| `gallery.enablePhoto` | Boolean | Whether photo selection from gallery is enabled. (Default: `true`) |
+| `enableFile` | Boolean | Whether file attachment is enabled. (Default: `true`) |
 
 ```kotlin
 // Configure input settings
