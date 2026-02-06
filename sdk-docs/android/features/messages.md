@@ -370,6 +370,7 @@ The citation feature displays source information of AI agent responses, allowing
 
 - Default: Disabled.
 - Configuration: Dashboard only — no additional code required.
+- Activation settings: Adjustable through dashboard configuration values.
 
 When enabled, citations are automatically rendered by the SDK. They appear as clickable elements that expand to show source details such as document titles, URL references, and knowledge base articles.
 
