@@ -35,6 +35,42 @@
       "syncBack": true,
       "reason": "SDK feature guide for React - localization/multi-language support is a user-facing feature that should be documented and maintainable",
       "classifiedAt": "2026-02-09T07:12:32.254Z"
+    },
+    "android/CHANGELOGS.md": {
+      "publish": false,
+      "syncBack": false,
+      "reason": "CHANGELOG/CHANGELOGS files are auto-generated release notes, not user-facing product documentation. They should not be published to docs or synced back from docs edits.",
+      "classifiedAt": "2026-02-09T07:23:03.902Z"
+    },
+    "android/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK quickstart guide for Android platform - user-facing documentation that should be published and synchronized back to the private repository",
+      "classifiedAt": "2026-02-09T07:23:05.044Z"
+    },
+    "android/docs/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for messages functionality - user-facing documentation that should be published to docs site and synced back to repo",
+      "classifiedAt": "2026-02-09T07:26:09.517Z"
+    },
+    "android/docs/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality - product documentation that should be published and synced back to maintain consistency across repos",
+      "classifiedAt": "2026-02-09T07:27:08.666Z"
+    },
+    "android/docs/launcher.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for Android Launcher component - user-facing documentation for implementing core messaging functionality",
+      "classifiedAt": "2026-02-09T07:27:10.289Z"
+    },
+    "android/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for Android multi-language support - user-facing documentation about localizing UI strings in the Delight AI agent SDK. This is product documentation that should be published and synced back to the private repo.",
+      "classifiedAt": "2026-02-09T07:27:12.094Z"
     }
   }
 }
