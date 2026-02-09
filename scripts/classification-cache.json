@@ -35,6 +35,36 @@
       "syncBack": true,
       "reason": "SDK feature guide for React - localization/multi-language support is a user-facing feature that should be documented and maintainable",
       "classifiedAt": "2026-02-09T07:12:32.254Z"
+    },
+    "js/cdn/CHANGELOG.md": {
+      "publish": false,
+      "syncBack": false,
+      "reason": "CHANGELOG.md files are auto-generated version histories and not user-facing product documentation. They should not be published to docs sites or synced back from documentation changes.",
+      "classifiedAt": "2026-02-09T07:24:16.850Z"
+    },
+    "js/cdn/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK quickstart guide for JS/Web platform - user-facing documentation for getting started with the Delight AI agent SDK",
+      "classifiedAt": "2026-02-09T07:24:17.810Z"
+    },
+    "js/cdn/docs/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for messages functionality - user-facing documentation that should be published and kept in sync with the source repository",
+      "classifiedAt": "2026-02-09T07:24:21.257Z"
+    },
+    "js/cdn/docs/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is an SDK feature guide documenting the Conversations functionality for the Delight AI agent. It's user-facing product documentation that should be published to the docs site and synced back to the source repository.",
+      "classifiedAt": "2026-02-09T07:24:49.074Z"
+    },
+    "js/cdn/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for multi-language support in JavaScript SDK - user-facing documentation that should be published and editable",
+      "classifiedAt": "2026-02-09T07:24:51.937Z"
     }
   }
 }
