@@ -31,7 +31,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Use case: Sharing visual content.
 * Display: Optimized image rendering with proper scaling.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-image-message2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-image-message2.png" alt="Image message displayed in the mobile messenger" width="375"></figure>
 
 > **Note**: However, once handed off to a human agent, users can send image files in any format.
 
@@ -43,7 +43,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Use case: Document sharing and file-based communication.
 * Display: File preview with download capabilities.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-file-message2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-file-message2.png" alt="File message with PDF preview in the mobile messenger" width="375"></figure>
 
 ### Rich message
 
@@ -57,7 +57,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Use case: Action-oriented user interactions.
 * Configuration: Available through dashboard template configuration.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-cta2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-cta2.png" alt="CTA button message with an external link in the mobile messenger" width="375"></figure>
 
 #### Carousel
 
@@ -69,7 +69,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Content: Multiple items with individual interactions.
 * Use case: Product showcases, option selection, content browsing.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-carousel2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-carousel2.png" alt="Carousel message with horizontally scrollable items in the mobile messenger" width="375"></figure>
 
 #### Suggested replies
 
@@ -79,7 +79,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Use case: Streamlined user interactions and faster response times.
 * Display: Accessible quick reply buttons.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png" alt="Suggested reply buttons displayed below an AI agent message" width="375"></figure>
 
 #### CSAT message
 
@@ -89,7 +89,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Components: Rating systems and feedback collection.
 * Use case: Service quality assessment and user experience evaluation.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-csat2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-csat2.png" alt="CSAT survey message with rating options in the mobile messenger" width="375"></figure>
 
 ***
 
@@ -108,7 +108,7 @@ The core features supported for messages in Delight AI agent include:
 * Configuration: Requires dashboard configuration to be displayed.
 * Activation settings: Adjustable through dashboard configuration values.
 
-![](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-citation2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-citation2.png" alt="Citation sources displayed below an AI agent response" width="375"></figure>
 
 ### Special notice
 
@@ -118,4 +118,4 @@ The core features supported for messages in Delight AI agent include:
 * Behavior: Automatically disappears when a conversation starts.
 * Configuration: Available through dashboard configuration.
 
-![special\_notice](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-special-notice2.png)
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-special-notice2.png" alt="Special notice banner displayed at the bottom of the screen before conversation starts" width="375"></figure>
