@@ -93,6 +93,12 @@
     }
   ],
 
+  "excludePatterns": {
+    "$comment": "Paths matching these patterns are skipped in both forward and backward sync",
+    "directories": ["discussions/"],
+    "keywords": ["sample", "example"]
+  },
+
   "overrides": {
     "$comment": "Add entries here only for files with different names or special paths"
   }

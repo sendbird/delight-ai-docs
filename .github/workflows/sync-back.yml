@@ -18,6 +18,10 @@ on:
         description: 'Comma-separated file paths to sync (e.g. sdk-docs/android/features/messages.md). If empty, uses git diff from last commit.'
         required: false
         type: string
+      path_prefix:
+        description: 'Scan all .md files under this path instead of using git diff (e.g. sdk-docs/android/, sdk-docs/ios/features/). Useful for checking sync status of an entire directory.'
+        required: false
+        type: string
 
 jobs:
   sync-back:
@@ -41,12 +45,26 @@ jobs:
           EVENT_BEFORE: ${{ github.event.before }}
           EVENT_AFTER: ${{ github.event.after }}
           MANUAL_FILES: ${{ github.event.inputs.files || '' }}
+          PATH_PREFIX: ${{ github.event.inputs.path_prefix || '' }}
         run: |
           if [ -n "$MANUAL_FILES" ]; then
+            # Explicit file list provided
             echo "Manual files specified: $MANUAL_FILES"
             CHANGED_COUNT=$(echo "$MANUAL_FILES" | tr ',' '\n' | wc -l | tr -d ' ')
             echo "manual_files=${MANUAL_FILES}" >> $GITHUB_OUTPUT
+          elif [ -n "$PATH_PREFIX" ]; then
+            # Path prefix: scan ALL .md files under the given directory
+            echo "Scanning all .md files under: $PATH_PREFIX"
+            FOUND_FILES=$(find "$PATH_PREFIX" -name "*.md" -type f 2>/dev/null | paste -sd ',' - || echo "")
+            if [ -n "$FOUND_FILES" ]; then
+              CHANGED_COUNT=$(echo "$FOUND_FILES" | tr ',' '\n' | wc -l | tr -d ' ')
+              echo "manual_files=${FOUND_FILES}" >> $GITHUB_OUTPUT
+            else
+              CHANGED_COUNT=0
+            fi
+            echo "Found files: $FOUND_FILES"
           else
+            # Default: git diff
             if [ "$EVENT_NAME" = "push" ]; then
               BASE_SHA="$EVENT_BEFORE"
               HEAD_SHA="$EVENT_AFTER"
@@ -86,10 +104,14 @@ jobs:
           TRIGGER_EVENT: ${{ github.event_name }}
           CHANGED_COUNT: ${{ steps.changes.outputs.changed_count }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          PATH_PREFIX: ${{ github.event.inputs.path_prefix || '' }}
         run: |
           echo "## Sync Back Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$PATH_PREFIX" ]; then
+            echo "- **Path prefix:** \`$PATH_PREFIX\` (scanned all .md files)" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "- **Changed files:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
           echo "- **Conversion:** Claude AI (GitBook → Markdown)" >> $GITHUB_STEP_SUMMARY

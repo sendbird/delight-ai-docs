@@ -81,6 +81,16 @@ function checkSyncBackEligibility(cache, docsPath) {
  * Find mapping for public repo path → docs repo path (for cache lookup)
  */
 function findPublicToDocsMapping(publicPath) {
+  // 1. Check overrides first
+  if (mappingTable.overrides) {
+    for (const [docsPath, override] of Object.entries(mappingTable.overrides)) {
+      if (override.publicAgentPath === publicPath) {
+        return { docsPath };
+      }
+    }
+  }
+
+  // 2. Check patterns
   if (mappingTable.patterns) {
     for (const pattern of mappingTable.patterns) {
       if (!pattern.publicBase) continue;
@@ -90,6 +100,34 @@ function findPublicToDocsMapping(publicPath) {
       }
     }
   }
+  return null;
+}
+
+/**
+ * Check if a path should be excluded based on excludePatterns in mapping table
+ * @param {string} filePath - File path to check
+ * @returns {string|null} - Exclusion reason or null if not excluded
+ */
+function checkExcluded(filePath) {
+  const exclude = mappingTable.excludePatterns;
+  if (!exclude) return null;
+
+  if (exclude.directories) {
+    for (const dir of exclude.directories) {
+      if (filePath.includes(dir)) {
+        return `matches excluded directory "${dir}"`;
+      }
+    }
+  }
+
+  if (exclude.keywords) {
+    for (const keyword of exclude.keywords) {
+      if (filePath.toLowerCase().includes(keyword.toLowerCase())) {
+        return `matches excluded keyword "${keyword}"`;
+      }
+    }
+  }
+
   return null;
 }
 
@@ -437,6 +475,14 @@ async function main() {
   for (const docsPath of changedFiles) {
     console.log(`\nProcessing: ${docsPath}`);
 
+    // Step 0: [Script] Check exclude patterns
+    const excludeReason = checkExcluded(docsPath);
+    if (excludeReason) {
+      console.log(`  → Excluded: ${excludeReason}`);
+      results.notMapped.push(docsPath);
+      continue;
+    }
+
     // Step 1: [Script] Mapping lookup
     const mapping = findMapping(docsPath);
     if (!mapping) {
@@ -627,7 +673,13 @@ This PR deletes a file that was removed from the docs repo.
 
       // Step 8: [Script] Create branch + update file + create PR
       const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-      const branchName = `sync-back/${timestamp}/${path.basename(docsPath, '.md')}`;
+      // Use full path (minus sdk-docs/ prefix and .md suffix) to avoid collisions
+      // e.g., sdk-docs/react-npm/features/messages.md → react-npm-features-messages
+      const safeName = docsPath
+        .replace(/^sdk-docs\//, '')
+        .replace(/\.md$/, '')
+        .replace(/\//g, '-');
+      const branchName = `sync-back/${timestamp}/${safeName}`;
 
       // Create branch
       const branchCreated = await createBranch(
@@ -740,9 +792,13 @@ This PR brings those changes back to the private repo.
     fs.appendFileSync(process.env.GITHUB_OUTPUT, output);
   }
 
-  // Exit with failure if validation failed or errors occurred
-  if (results.errors.length > 0 || results.validationFailed.length > 0) {
+  // Exit with failure only on script errors (not validation failures, which are handled gracefully)
+  if (results.errors.length > 0) {
+    console.error(`\nExiting with failure: ${results.errors.length} script error(s)`);
     process.exit(1);
+  }
+  if (results.validationFailed.length > 0) {
+    console.warn(`\nWarning: ${results.validationFailed.length} file(s) failed conversion validation (PRs skipped)`);
   }
 }
 
