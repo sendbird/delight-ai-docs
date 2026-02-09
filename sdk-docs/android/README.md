@@ -1,4 +1,6 @@
-# Android
+[iOS](https://github.com/sendbird/delight-ai-agent/blob/main/ios/README.md) / **Android** / [JS](https://github.com/sendbird/sendbird-ai-agent/blob/main/js/)
+
+# Delight AI agent Quickstart guide (Android)
 
 The **Delight AI agent Messenger** allows seamless integration of chatbot features into your Android application. Follow the steps below to initialize and utilize the SDK effectively.
 
@@ -70,7 +72,8 @@ dependencyResolutionManagement {
     }
 }
 ```
-**Note:** You should be using Gradle 8.0 or higher. You can check the `gradle-wrapper.properties` file in your project to see the version of Gradle you are using.
+
+> **Note:** You should be using Gradle 8.0 or higher. You can check the `gradle-wrapper.properties` file in your project to see the version of Gradle you are using.
 
 #### Adding dependency
 
@@ -166,7 +169,7 @@ To ensure that your `AgentApplication` class is used as the application class, y
 
 Now that you have installed and initialized the AI Agent SDK, follow the steps below to run your application.
 
-> Note: Make sure to perform the following steps after the SDK has been successfully initialized. Once initialization is complete, set up the user session and launch the messenger.
+> **Note:** Make sure to perform the following steps after the SDK has been successfully initialized. Once initialization is complete, set up the user session and launch the messenger.
 
 ### Manage user sessions
 
@@ -404,7 +407,7 @@ For more details, refer to the [Push notifications](https://sendbird.com/docs/ch
 
 #### Register for push notifications
 
-To receive push notifications from Delight AI server, register the device token by setting up a custom `FirebaseMessagingService`.
+To receive push notifications from Delight AI server, register the device token by setting up a custom `FirebaseMessagingService`.  
 Call the following method after login:
 
 ```kotlin
@@ -432,7 +435,7 @@ override fun onMessageReceived(context: Context, remoteMessage: RemoteMessage) {
     val sendbird = JSONObject(jsonStr)
     val message = sendbird.getString("message")
     val channelUrl = sendbird.getJSONObject("channel").getString("channel_url")
-
+    
     // Show local notification and route user to the correct screen
 }
 ```
