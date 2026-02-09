@@ -1,4 +1,18 @@
-# Multi-language support
+# Delight AI agent SDK Localization Guide (React-Native)
+
+## Table of Contents
+
+- [Delight AI agent SDK Localization Guide (React-Native)](#delight-ai-agent-sdk-localization-guide-react-native)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Supported Languages](#supported-languages)
+  - [Setting the Language](#setting-the-language)
+  - [Customizing Strings](#customizing-strings)
+    - [Scenario 1: Customizing Strings in Supported Languages](#scenario-1-customizing-strings-in-supported-languages)
+    - [Scenario 2: Adding Support for Unsupported Languages](#scenario-2-adding-support-for-unsupported-languages)
+  - [Language Switching with React-Native](#language-switching-with-react-native)
+
+## Overview
 
 Delight AI agent SDK for React-Native includes a default set of user-facing strings such as button labels, error messages, input hints, and system texts. To support internationalization, you can set the language preference during component initialization or update it later using the `AIAgentProviderContainer` props.
 
@@ -8,22 +22,22 @@ The language setting influences both the UI text displayed in the messenger and 
 
 The SDK currently provides built-in localization for the following languages:
 
-* English (`en`)
-* German (`de`)
-* Spanish (`es`)
-* French (`fr`)
-* Hindi (`hi`)
-* Italian (`it`)
-* Japanese (`ja`)
-* Korean (`ko`)
-* Portuguese (`pt`)
-* Turkish (`tr`)
+- English (`en`)
+- German (`de`)
+- Spanish (`es`)
+- French (`fr`)
+- Hindi (`hi`)
+- Italian (`it`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Portuguese (`pt`)
+- Turkish (`tr`)
 
 If you need support for a language that is not listed above, you can customize the SDK strings by providing a complete set of string values.
 
-***
+---
 
-## Setting the language
+## Setting the Language
 
 You can set the language during component initialization:
 
@@ -44,9 +58,9 @@ function App() {
 }
 ```
 
-***
+---
 
-## Customizing strings
+## Customizing Strings
 
 ### Scenario 1: Customizing Strings in Supported Languages
 
@@ -97,9 +111,9 @@ function App() {
 </AIAgentProviderContainer>
 ```
 
-***
+---
 
-## Language switching with React-Native
+## Language Switching with React-Native
 
 ```tsx
 function App() {
