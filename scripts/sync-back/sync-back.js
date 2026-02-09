@@ -104,6 +104,34 @@ function findPublicToDocsMapping(publicPath) {
 }
 
 /**
+ * Check if a path should be excluded based on excludePatterns in mapping table
+ * @param {string} filePath - File path to check
+ * @returns {string|null} - Exclusion reason or null if not excluded
+ */
+function checkExcluded(filePath) {
+  const exclude = mappingTable.excludePatterns;
+  if (!exclude) return null;
+
+  if (exclude.directories) {
+    for (const dir of exclude.directories) {
+      if (filePath.includes(dir)) {
+        return `matches excluded directory "${dir}"`;
+      }
+    }
+  }
+
+  if (exclude.keywords) {
+    for (const keyword of exclude.keywords) {
+      if (filePath.toLowerCase().includes(keyword.toLowerCase())) {
+        return `matches excluded keyword "${keyword}"`;
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
  * Get list of changed files
  */
 function getChangedFiles(baseSha, headSha) {
@@ -401,6 +429,14 @@ async function main() {
 
   for (const docsPath of changedFiles) {
     console.log(`\nProcessing: ${docsPath}`);
+
+    // Step 0: [Script] Check exclude patterns
+    const excludeReason = checkExcluded(docsPath);
+    if (excludeReason) {
+      console.log(`  → Excluded: ${excludeReason}`);
+      results.notMapped.push(docsPath);
+      continue;
+    }
 
     // Step 1: [Script] Mapping lookup
     const mapping = findMapping(docsPath);

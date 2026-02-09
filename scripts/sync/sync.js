@@ -49,6 +49,34 @@ function saveClassificationCache(cache) {
 }
 
 /**
+ * Check if a path should be excluded based on excludePatterns in mapping table
+ * @param {string} filePath - File path to check
+ * @returns {string|null} - Exclusion reason or null if not excluded
+ */
+function checkExcluded(filePath) {
+  const exclude = mappingTable.excludePatterns;
+  if (!exclude) return null;
+
+  if (exclude.directories) {
+    for (const dir of exclude.directories) {
+      if (filePath.includes(dir)) {
+        return `matches excluded directory "${dir}"`;
+      }
+    }
+  }
+
+  if (exclude.keywords) {
+    for (const keyword of exclude.keywords) {
+      if (filePath.toLowerCase().includes(keyword.toLowerCase())) {
+        return `matches excluded keyword "${keyword}"`;
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
  * Find mapping for public repo path → docs repo path
  * @param {string} publicPath - Path in public repo (e.g., "android/docs/conversations.md")
  * @returns {object|null} - Mapping info or null
@@ -147,6 +175,14 @@ async function main() {
 
   for (const publicPath of changedFiles) {
     console.log(`\nProcessing: ${publicPath}`);
+
+    // Step 0: [Script] Check exclude patterns
+    const excludeReason = checkExcluded(publicPath);
+    if (excludeReason) {
+      console.log(`  → Excluded: ${excludeReason}`);
+      results.notMapped.push(publicPath);
+      continue;
+    }
 
     // Step 1: [Script] Mapping lookup
     const mapping = findPublicToDocsMapping(publicPath);
