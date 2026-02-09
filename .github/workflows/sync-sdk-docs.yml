@@ -10,6 +10,10 @@ on:
         required: false
         default: 'false'
         type: boolean
+      path_prefix:
+        description: 'Scan all .md files under this path instead of using git diff (e.g. android/, js/react/docs/). Useful for checking sync status of an entire directory.'
+        required: false
+        type: string
 
 jobs:
   sync-sdk-docs:
@@ -46,15 +50,21 @@ jobs:
 
       - name: Detect updated source files in delight-ai-agent
         id: detect-updates
+        env:
+          PATH_PREFIX: ${{ github.event.inputs.path_prefix || '' }}
         run: |
           cd delight-ai-agent
 
-          # If there is no previous commit (very first commit / shallow history),
-          # fall back to treating all tracked files as "changed".
-          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+          if [ -n "$PATH_PREFIX" ]; then
+            # Manual mode: scan ALL .md files under the given path prefix
+            echo "Scanning all .md files under: $PATH_PREFIX"
+            find "$PATH_PREFIX" -name "*.md" -type f 2>/dev/null > ../changed_source_files.txt || true
+          elif git rev-parse HEAD~1 >/dev/null 2>&1; then
+            # Normal mode: diff against previous commit
             echo "Diffing HEAD~1..HEAD to find changed files..."
             git diff --name-only HEAD~1 HEAD > ../changed_source_files.txt
           else
+            # Initial sync: treat all tracked files as changed
             echo "No HEAD~1, using all tracked files as changed (initial sync case)..."
             git ls-files > ../changed_source_files.txt
           fi
@@ -119,6 +129,21 @@ jobs:
               continue
             fi
 
+            if [[ "$file" == D:* ]]; then
+              # Deletion: strip D: prefix and use git rm
+              actual_file="${file#D:}"
+              if git ls-files --error-unmatch "$actual_file" >/dev/null 2>&1; then
+                echo "🗑️  Deleting: $actual_file"
+                git rm "$actual_file"
+                git commit -m "[Sync] delete $actual_file"
+                echo "$actual_file" >> committed_files.txt
+                COUNT=$((COUNT+1))
+              else
+                echo "⚠️  [WARN] File not tracked in git, skipping deletion: $actual_file"
+              fi
+              continue
+            fi
+
             if [ ! -f "$file" ]; then
               echo "⚠️  [WARN] Target file missing at commit time, skipping: $file"
               continue
@@ -130,6 +155,14 @@ jobs:
             echo "$file" >> committed_files.txt
             COUNT=$((COUNT+1))
           done < updated_files.txt
+
+          # Commit classification cache if it changed
+          if [ -f scripts/classification-cache.json ] && ! git diff --quiet -- scripts/classification-cache.json 2>/dev/null; then
+            echo "➡️  Committing: scripts/classification-cache.json"
+            git add scripts/classification-cache.json
+            git commit -m "[Sync] update classification cache"
+            COUNT=$((COUNT+1))
+          fi
 
           echo "===== 🧹 Cleanup: removing updated_files.txt ====="
           rm -f updated_files.txt
@@ -252,12 +285,16 @@ jobs:
           TRIGGER_EVENT: ${{ github.event_name }}
           CHANGED_COUNT: ${{ steps.detect-updates.outputs.changed_count }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          PATH_PREFIX: ${{ github.event.inputs.path_prefix || '' }}
           SKIP_PR: ${{ steps.commit-changes.outputs.skip_pr || 'false' }}
           PR_NUMBER: ${{ steps.push-and-pr.outputs.pr_number }}
         run: |
           echo "## Forward Sync Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Trigger:** $TRIGGER_EVENT" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$PATH_PREFIX" ]; then
+            echo "- **Path prefix:** \`$PATH_PREFIX\` (scanned all .md files)" >> $GITHUB_STEP_SUMMARY
+          fi
           echo "- **Changed files in public repo:** $CHANGED_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- **Comparison:** Normalized content (text only)" >> $GITHUB_STEP_SUMMARY
           echo "- **Conversion:** Claude AI (Markdown → GitBook)" >> $GITHUB_STEP_SUMMARY

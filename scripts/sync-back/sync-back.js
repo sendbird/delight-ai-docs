@@ -12,7 +12,7 @@
  * 4. [Script]  Fetch private repo file (GitHub API)
  * 5. [Agent 2] Compare — semantic content comparison
  * 6. [Agent 3] Convert — GitBook → Markdown
- * 7. [Agent 4] Validate — check conversion quality (fail → skip PR)
+ * 7. [Agent 4] Validate — check conversion quality (fail → retry with feedback, max 2 retries)
  * 8. [Script]  Create branch + update file + create PR (GitHub API)
  */
 
@@ -22,7 +22,7 @@ const { execSync } = require('child_process');
 
 // Agent modules
 const { compare } = require('../agents/comparator');
-const { convertGitBookToMarkdown } = require('../agents/converter');
+const { convertGitBookToMarkdown, retryGitBookToMarkdown } = require('../agents/converter');
 const { validate } = require('../agents/validator');
 
 // Script modules
@@ -81,6 +81,16 @@ function checkSyncBackEligibility(cache, docsPath) {
  * Find mapping for public repo path → docs repo path (for cache lookup)
  */
 function findPublicToDocsMapping(publicPath) {
+  // 1. Check overrides first
+  if (mappingTable.overrides) {
+    for (const [docsPath, override] of Object.entries(mappingTable.overrides)) {
+      if (override.publicAgentPath === publicPath) {
+        return { docsPath };
+      }
+    }
+  }
+
+  // 2. Check patterns
   if (mappingTable.patterns) {
     for (const pattern of mappingTable.patterns) {
       if (!pattern.publicBase) continue;
@@ -90,6 +100,34 @@ function findPublicToDocsMapping(publicPath) {
       }
     }
   }
+  return null;
+}
+
+/**
+ * Check if a path should be excluded based on excludePatterns in mapping table
+ * @param {string} filePath - File path to check
+ * @returns {string|null} - Exclusion reason or null if not excluded
+ */
+function checkExcluded(filePath) {
+  const exclude = mappingTable.excludePatterns;
+  if (!exclude) return null;
+
+  if (exclude.directories) {
+    for (const dir of exclude.directories) {
+      if (filePath.includes(dir)) {
+        return `matches excluded directory "${dir}"`;
+      }
+    }
+  }
+
+  if (exclude.keywords) {
+    for (const keyword of exclude.keywords) {
+      if (filePath.toLowerCase().includes(keyword.toLowerCase())) {
+        return `matches excluded keyword "${keyword}"`;
+      }
+    }
+  }
+
   return null;
 }
 
@@ -302,6 +340,50 @@ async function updateFile(owner, repo, filePath, content, branch, message, token
 }
 
 /**
+ * Delete file in private repo via GitHub API
+ */
+async function deleteFile(owner, repo, filePath, branch, message, token) {
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+  // Get current file SHA (required for deletion)
+  const getResponse = await fetch(`${url}?ref=${branch}`, {
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+    },
+  });
+
+  if (!getResponse.ok) {
+    console.error(`Failed to get file for deletion: ${await getResponse.text()}`);
+    return false;
+  }
+
+  const data = await getResponse.json();
+
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      sha: data.sha,
+      branch,
+    }),
+  });
+
+  if (!response.ok) {
+    console.error(`Failed to delete file: ${await response.text()}`);
+    return false;
+  }
+
+  console.log(`  Deleted file: ${filePath}`);
+  return true;
+}
+
+/**
  * Create pull request
  */
 async function createPullRequest(owner, repo, title, body, head, base, token) {
@@ -382,6 +464,7 @@ async function main() {
   // 2. Process each file
   const results = {
     synced: [],
+    deleted: [],
     skipped: [],
     notMapped: [],
     classified: [],
@@ -391,6 +474,14 @@ async function main() {
 
   for (const docsPath of changedFiles) {
     console.log(`\nProcessing: ${docsPath}`);
+
+    // Step 0: [Script] Check exclude patterns
+    const excludeReason = checkExcluded(docsPath);
+    if (excludeReason) {
+      console.log(`  → Excluded: ${excludeReason}`);
+      results.notMapped.push(docsPath);
+      continue;
+    }
 
     // Step 1: [Script] Mapping lookup
     const mapping = findMapping(docsPath);
@@ -416,8 +507,92 @@ async function main() {
     const repoRoot = path.resolve(__dirname, '..', '..');
     const docsFullPath = path.join(repoRoot, docsPath);
     if (!fs.existsSync(docsFullPath)) {
-      console.log('  → File deleted in docs repo, skipping');
-      results.skipped.push({ path: docsPath, reason: 'deleted' });
+      // File deleted in docs repo — propagate deletion to private repo
+      console.log('  → File deleted in docs repo, checking private repo...');
+
+      const privateContent = await getPrivateRepoContent(
+        mapping.owner,
+        mapping.repo,
+        mapping.fullPath,
+        mapping.defaultBranch,
+        githubToken
+      );
+
+      if (privateContent === null) {
+        console.log('  → File does not exist in private repo either, skipping');
+        results.skipped.push({ path: docsPath, reason: 'deleted in both repos' });
+        continue;
+      }
+
+      if (dryRun) {
+        console.log(`  → [DRY RUN] Would delete ${mapping.fullPath} in ${mapping.owner}/${mapping.repo}`);
+        results.deleted.push({ path: docsPath, dryRun: true });
+        continue;
+      }
+
+      try {
+        const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const safeName = docsPath
+          .replace(/^sdk-docs\//, '')
+          .replace(/\.md$/, '')
+          .replace(/\//g, '-');
+        const branchName = `sync-back/${timestamp}/delete-${safeName}`;
+
+        const branchCreated = await createBranch(
+          mapping.owner,
+          mapping.repo,
+          branchName,
+          mapping.defaultBranch,
+          githubToken
+        );
+
+        if (!branchCreated) {
+          results.errors.push({ path: docsPath, error: 'Failed to create branch for deletion' });
+          continue;
+        }
+
+        const fileDeleted = await deleteFile(
+          mapping.owner,
+          mapping.repo,
+          mapping.fullPath,
+          branchName,
+          `docs: delete ${mapping.fullPath} (removed from docs repo)`,
+          githubToken
+        );
+
+        if (!fileDeleted) {
+          results.errors.push({ path: docsPath, error: 'Failed to delete file in private repo' });
+          continue;
+        }
+
+        const prUrl = await createPullRequest(
+          mapping.owner,
+          mapping.repo,
+          `[Sync Back] Delete ${path.basename(docsPath)} (removed from docs)`,
+          `## Summary
+
+This PR deletes a file that was removed from the docs repo.
+
+**Deleted file:** \`${mapping.fullPath}\` (this repo)
+**Source:** \`${docsPath}\` was deleted from the docs repo
+
+---
+
+🤖 This PR was automatically created by the sync-back workflow.`,
+          branchName,
+          mapping.defaultBranch,
+          githubToken
+        );
+
+        if (prUrl) {
+          results.deleted.push({ path: docsPath, prUrl });
+        } else {
+          results.deleted.push({ path: docsPath, note: 'PR may already exist' });
+        }
+      } catch (error) {
+        console.error(`  Error during deletion sync: ${error.message}`);
+        results.errors.push({ path: docsPath, error: error.message });
+      }
       continue;
     }
 
@@ -460,17 +635,33 @@ async function main() {
       continue;
     }
 
-    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate
+    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate (with retry)
+    const MAX_RETRIES = 2;
     try {
       console.log('  [Converter] Converting GitBook → Markdown...');
-      const converted = await convertGitBookToMarkdown(anthropicKey, docsContent);
+      let converted = await convertGitBookToMarkdown(anthropicKey, docsContent);
+      let validation;
+      let passed = false;
 
-      console.log('  [Validator] Checking conversion quality...');
-      const validation = await validate(anthropicKey, docsContent, converted, 'gitbook-to-markdown');
+      for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
+        console.log(`  [Validator] Checking conversion quality (attempt ${attempt}/${MAX_RETRIES + 1})...`);
+        validation = await validate(anthropicKey, docsContent, converted, 'gitbook-to-markdown');
 
-      if (!validation.passed) {
-        console.log('  → Validation failed, skipping PR creation');
+        if (validation.passed) {
+          passed = true;
+          break;
+        }
+
         validation.issues.forEach(issue => console.log(`    - ${issue}`));
+
+        if (attempt <= MAX_RETRIES) {
+          console.log(`  [Converter] Retrying with validation feedback...`);
+          converted = await retryGitBookToMarkdown(anthropicKey, docsContent, converted, validation.issues);
+        }
+      }
+
+      if (!passed) {
+        console.log(`  → Validation failed after ${MAX_RETRIES + 1} attempts, skipping PR creation`);
         results.validationFailed.push({
           path: docsPath,
           issues: validation.issues,
@@ -482,7 +673,13 @@ async function main() {
 
       // Step 8: [Script] Create branch + update file + create PR
       const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-      const branchName = `sync-back/${timestamp}/${path.basename(docsPath, '.md')}`;
+      // Use full path (minus sdk-docs/ prefix and .md suffix) to avoid collisions
+      // e.g., sdk-docs/react-npm/features/messages.md → react-npm-features-messages
+      const safeName = docsPath
+        .replace(/^sdk-docs\//, '')
+        .replace(/\.md$/, '')
+        .replace(/\//g, '-');
+      const branchName = `sync-back/${timestamp}/${safeName}`;
 
       // Create branch
       const branchCreated = await createBranch(
@@ -561,6 +758,9 @@ This PR brings those changes back to the private repo.
   console.log(`\nSynced: ${results.synced.length}`);
   results.synced.forEach(r => console.log(`  ✓ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
 
+  console.log(`\nDeleted: ${results.deleted.length}`);
+  results.deleted.forEach(r => console.log(`  ✗ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
+
   console.log(`\nSkipped: ${results.skipped.length}`);
   results.skipped.forEach(r => console.log(`  - ${r.path} (${r.reason})`));
 
@@ -583,6 +783,7 @@ This PR brings those changes back to the private repo.
   if (process.env.GITHUB_OUTPUT) {
     const output = [
       `synced_count=${results.synced.length}`,
+      `deleted_count=${results.deleted.length}`,
       `skipped_count=${results.skipped.length}`,
       `classified_count=${results.classified.length}`,
       `validation_failed_count=${results.validationFailed.length}`,
@@ -591,9 +792,13 @@ This PR brings those changes back to the private repo.
     fs.appendFileSync(process.env.GITHUB_OUTPUT, output);
   }
 
-  // Exit with failure if validation failed or errors occurred
-  if (results.errors.length > 0 || results.validationFailed.length > 0) {
+  // Exit with failure only on script errors (not validation failures, which are handled gracefully)
+  if (results.errors.length > 0) {
+    console.error(`\nExiting with failure: ${results.errors.length} script error(s)`);
     process.exit(1);
+  }
+  if (results.validationFailed.length > 0) {
+    console.warn(`\nWarning: ${results.validationFailed.length} file(s) failed conversion validation (PRs skipped)`);
   }
 }
 
