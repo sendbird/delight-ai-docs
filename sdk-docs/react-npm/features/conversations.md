@@ -9,7 +9,9 @@ When the launcher is clicked, a user can be led to either their conversation lis
 | Number of active conversation| A user can have only one active conversation with your AI agent at a time.| A user can have multiple active conversations with your AI agent at the same time.|
 | Starting a new conversation | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first.| New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`.|
 
->__Note__: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+{% hint style="info" %}
+**Note**: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+{% endhint %}
 
 This guide explains:
 - [Start a conversation](#start-a-conversation)
@@ -75,7 +77,9 @@ You can customize the launcher's position, margin, and size using the `FixedMess
   <figcaption></figcaption>
 </figure>
 
->__Note__: On mobile devices, the messenger automatically opens in full-screen mode. On desktop, it displays as a floating mini-window anchored near the launcher.
+{% hint style="info" %}
+**Note**: On mobile devices, the messenger automatically opens in full-screen mode. On desktop, it displays as a floating mini-window anchored near the launcher.
+{% endhint %}
 
 The following example demonstrates all customization options together:
 
@@ -231,7 +235,9 @@ function CustomMessengerView() {
 
 Multiple active conversation mode allows users to simultaneously communicate with your AI agent in different channels. In this case, use the `createConversation()` function from `useMessengerSessionContext()` to create a new conversation whenever needed.
 
->__Note__: In single conversation mode, a new conversation can't be created if there is an active conversation.
+{% hint style="info" %}
+**Note**: In single conversation mode, a new conversation can't be created if there is an active conversation.
+{% endhint %}
 
 ```tsx
 import { useMessengerSessionContext } from '@sendbird/ai-agent-messenger-react';
@@ -323,7 +329,7 @@ Configuration options for the `Conversation` component.
 | `channelUrl` | string | - | Channel URL to open. If not provided, uses active channel from context. |
 | `onClearChannelUrl` | () => void | - | Callback when channel URL should be cleared. |
 | `onNavigateToConversationList` | () => void | - | Callback to navigate to conversation list. |
-| `shouldMarkAsRead` | boolean | false | Whether to mark messages as read when viewed. |
+| `shouldMarkAsRead` | boolean | true | Whether to mark messages as read when viewed. |
 
 ### useMessengerSessionContext Hook
 
