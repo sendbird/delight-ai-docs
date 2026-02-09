@@ -1,3 +1,40 @@
 {
-  "entries": {}
+  "entries": {
+    "js/react/CHANGELOG.md": {
+      "publish": false,
+      "syncBack": false,
+      "reason": "CHANGELOG.md files are auto-generated artifacts tracking version history and release notes. They are not user-facing documentation and should not be published to the docs site or synced back from edits.",
+      "classifiedAt": "2026-02-09T07:11:11.335Z"
+    },
+    "js/react/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React component customization. This is user-facing product documentation for customizing the Delight AI Messenger UI, fitting the pattern of SDK feature guides like messages.md or conversations.md.",
+      "classifiedAt": "2026-02-09T07:11:14.036Z"
+    },
+    "js/react/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is a SDK quickstart/getting started guide for the React implementation of Delight AI agent. Quickstart guides and SDK integration documentation are user-facing product docs that should be published and synced back to maintain consistency across repos.",
+      "classifiedAt": "2026-02-09T07:11:16.818Z"
+    },
+    "js/react/docs/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React messaging functionality. This is user-facing documentation that explains core API capabilities and should be published to the docs site. Changes in docs should sync back to the source repo.",
+      "classifiedAt": "2026-02-09T07:11:20.165Z"
+    },
+    "js/react/docs/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality in Delight AI agent. This is user-facing product documentation for the React SDK that should be published and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-09T07:11:22.808Z"
+    },
+    "js/react/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React - localization/multi-language support is a user-facing feature that should be documented and maintainable",
+      "classifiedAt": "2026-02-09T07:12:32.254Z"
+    }
+  }
 }
