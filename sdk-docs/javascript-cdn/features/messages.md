@@ -44,7 +44,9 @@ Delight AI agent messenger supports various message types to provide comprehensi
 
 <figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-image-message.png" alt="" width="375"><figcaption></figcaption></figure>
 
-> **Note**: However, once handed off to a human agent, users can send image files in any format.
+{% hint style="info" %}
+However, once handed off to a human agent, users can send image files in any format.
+{% endhint %}
 
 ### File message
 
@@ -108,7 +110,7 @@ Delight AI agent messenger supports various message types to provide comprehensi
 * Content: Product information and details.
 * Use case: E-commerce integration, product showcases, inventory display.
 
-<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-sdk-web-message-product-list.png" alt="cascade" width="375"><figcaption></figcaption></figure>
+<figure><img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-web-product-list.png" alt="cascade" width="375"><figcaption></figcaption></figure>
 
 ***
 
