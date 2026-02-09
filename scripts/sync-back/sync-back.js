@@ -302,6 +302,50 @@ async function updateFile(owner, repo, filePath, content, branch, message, token
 }
 
 /**
+ * Delete file in private repo via GitHub API
+ */
+async function deleteFile(owner, repo, filePath, branch, message, token) {
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+  // Get current file SHA (required for deletion)
+  const getResponse = await fetch(`${url}?ref=${branch}`, {
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+    },
+  });
+
+  if (!getResponse.ok) {
+    console.error(`Failed to get file for deletion: ${await getResponse.text()}`);
+    return false;
+  }
+
+  const data = await getResponse.json();
+
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `token ${token}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      sha: data.sha,
+      branch,
+    }),
+  });
+
+  if (!response.ok) {
+    console.error(`Failed to delete file: ${await response.text()}`);
+    return false;
+  }
+
+  console.log(`  Deleted file: ${filePath}`);
+  return true;
+}
+
+/**
  * Create pull request
  */
 async function createPullRequest(owner, repo, title, body, head, base, token) {
@@ -382,6 +426,7 @@ async function main() {
   // 2. Process each file
   const results = {
     synced: [],
+    deleted: [],
     skipped: [],
     notMapped: [],
     classified: [],
@@ -416,8 +461,92 @@ async function main() {
     const repoRoot = path.resolve(__dirname, '..', '..');
     const docsFullPath = path.join(repoRoot, docsPath);
     if (!fs.existsSync(docsFullPath)) {
-      console.log('  → File deleted in docs repo, skipping');
-      results.skipped.push({ path: docsPath, reason: 'deleted' });
+      // File deleted in docs repo — propagate deletion to private repo
+      console.log('  → File deleted in docs repo, checking private repo...');
+
+      const privateContent = await getPrivateRepoContent(
+        mapping.owner,
+        mapping.repo,
+        mapping.fullPath,
+        mapping.defaultBranch,
+        githubToken
+      );
+
+      if (privateContent === null) {
+        console.log('  → File does not exist in private repo either, skipping');
+        results.skipped.push({ path: docsPath, reason: 'deleted in both repos' });
+        continue;
+      }
+
+      if (dryRun) {
+        console.log(`  → [DRY RUN] Would delete ${mapping.fullPath} in ${mapping.owner}/${mapping.repo}`);
+        results.deleted.push({ path: docsPath, dryRun: true });
+        continue;
+      }
+
+      try {
+        const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const safeName = docsPath
+          .replace(/^sdk-docs\//, '')
+          .replace(/\.md$/, '')
+          .replace(/\//g, '-');
+        const branchName = `sync-back/${timestamp}/delete-${safeName}`;
+
+        const branchCreated = await createBranch(
+          mapping.owner,
+          mapping.repo,
+          branchName,
+          mapping.defaultBranch,
+          githubToken
+        );
+
+        if (!branchCreated) {
+          results.errors.push({ path: docsPath, error: 'Failed to create branch for deletion' });
+          continue;
+        }
+
+        const fileDeleted = await deleteFile(
+          mapping.owner,
+          mapping.repo,
+          mapping.fullPath,
+          branchName,
+          `docs: delete ${mapping.fullPath} (removed from docs repo)`,
+          githubToken
+        );
+
+        if (!fileDeleted) {
+          results.errors.push({ path: docsPath, error: 'Failed to delete file in private repo' });
+          continue;
+        }
+
+        const prUrl = await createPullRequest(
+          mapping.owner,
+          mapping.repo,
+          `[Sync Back] Delete ${path.basename(docsPath)} (removed from docs)`,
+          `## Summary
+
+This PR deletes a file that was removed from the docs repo.
+
+**Deleted file:** \`${mapping.fullPath}\` (this repo)
+**Source:** \`${docsPath}\` was deleted from the docs repo
+
+---
+
+🤖 This PR was automatically created by the sync-back workflow.`,
+          branchName,
+          mapping.defaultBranch,
+          githubToken
+        );
+
+        if (prUrl) {
+          results.deleted.push({ path: docsPath, prUrl });
+        } else {
+          results.deleted.push({ path: docsPath, note: 'PR may already exist' });
+        }
+      } catch (error) {
+        console.error(`  Error during deletion sync: ${error.message}`);
+        results.errors.push({ path: docsPath, error: error.message });
+      }
       continue;
     }
 
@@ -577,6 +706,9 @@ This PR brings those changes back to the private repo.
   console.log(`\nSynced: ${results.synced.length}`);
   results.synced.forEach(r => console.log(`  ✓ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
 
+  console.log(`\nDeleted: ${results.deleted.length}`);
+  results.deleted.forEach(r => console.log(`  ✗ ${r.path} ${r.prUrl || r.note || '[DRY RUN]'}`));
+
   console.log(`\nSkipped: ${results.skipped.length}`);
   results.skipped.forEach(r => console.log(`  - ${r.path} (${r.reason})`));
 
@@ -599,6 +731,7 @@ This PR brings those changes back to the private repo.
   if (process.env.GITHUB_OUTPUT) {
     const output = [
       `synced_count=${results.synced.length}`,
+      `deleted_count=${results.deleted.length}`,
       `skipped_count=${results.skipped.length}`,
       `classified_count=${results.classified.length}`,
       `validation_failed_count=${results.validationFailed.length}`,

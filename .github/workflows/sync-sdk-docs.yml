@@ -119,6 +119,21 @@ jobs:
               continue
             fi
 
+            if [[ "$file" == D:* ]]; then
+              # Deletion: strip D: prefix and use git rm
+              actual_file="${file#D:}"
+              if git ls-files --error-unmatch "$actual_file" >/dev/null 2>&1; then
+                echo "🗑️  Deleting: $actual_file"
+                git rm "$actual_file"
+                git commit -m "[Sync] delete $actual_file"
+                echo "$actual_file" >> committed_files.txt
+                COUNT=$((COUNT+1))
+              else
+                echo "⚠️  [WARN] File not tracked in git, skipping deletion: $actual_file"
+              fi
+              continue
+            fi
+
             if [ ! -f "$file" ]; then
               echo "⚠️  [WARN] Target file missing at commit time, skipping: $file"
               continue

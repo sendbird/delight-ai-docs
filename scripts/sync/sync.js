@@ -138,6 +138,7 @@ async function main() {
   // 2. Process each file
   const results = {
     synced: [],
+    deleted: [],
     skipped: [],
     notMapped: [],
     classified: [],
@@ -161,8 +162,17 @@ async function main() {
     // Step 2: [Script] Read source file
     const srcFullPath = path.join(agentRepoPath, publicPath);
     if (!fs.existsSync(srcFullPath)) {
-      console.log('  → Source file not found, skipping');
-      results.errors.push({ path: publicPath, error: 'Source file not found' });
+      // Source deleted — if the mapped docs file exists, delete it
+      const dstFullPath = path.join(docsRepoPath, mapping.docsPath);
+      if (fs.existsSync(dstFullPath)) {
+        if (!dryRun) {
+          fs.unlinkSync(dstFullPath);
+        }
+        console.log(`  → Source deleted, ${dryRun ? 'would delete' : 'deleted'} docs file: ${mapping.docsPath}`);
+        results.deleted.push({ path: publicPath, docsPath: mapping.docsPath, dryRun: dryRun || undefined });
+      } else {
+        console.log('  → Source file not found and docs file does not exist, skipping');
+      }
       continue;
     }
 
@@ -278,6 +288,11 @@ async function main() {
     console.log(`  ✓ ${r.path} → ${r.docsPath}${r.dryRun ? ' [DRY RUN]' : ''}`)
   );
 
+  console.log(`\nDeleted: ${results.deleted.length}`);
+  results.deleted.forEach(r =>
+    console.log(`  ✗ ${r.path} → ${r.docsPath}${r.dryRun ? ' [DRY RUN]' : ''}`)
+  );
+
   console.log(`\nSkipped (identical content): ${results.skipped.length}`);
   results.skipped.forEach(r =>
     console.log(`  - ${r.path} (${r.reason})`)
@@ -302,9 +317,12 @@ async function main() {
 
   // 4. Write synced files list for commit step
   const syncedFilesPath = path.resolve(repoRoot, process.env.SYNCED_FILES_PATH || 'synced_files.txt');
-  if (results.synced.length > 0 && !dryRun) {
-    const syncedList = results.synced.map(r => r.docsPath).join('\n') + '\n';
-    fs.writeFileSync(syncedFilesPath, syncedList, 'utf-8');
+  const hasChanges = (results.synced.length > 0 || results.deleted.length > 0) && !dryRun;
+  if (hasChanges) {
+    const syncedList = results.synced.map(r => r.docsPath);
+    const deletedList = results.deleted.map(r => `D:${r.docsPath}`);
+    const allFiles = [...syncedList, ...deletedList].join('\n') + '\n';
+    fs.writeFileSync(syncedFilesPath, allFiles, 'utf-8');
     console.log(`\nWrote synced files list to: ${syncedFilesPath}`);
   } else {
     fs.writeFileSync(syncedFilesPath, '', 'utf-8');
@@ -314,6 +332,7 @@ async function main() {
   if (process.env.GITHUB_OUTPUT) {
     const output = [
       `synced_count=${results.synced.length}`,
+      `deleted_count=${results.deleted.length}`,
       `skipped_count=${results.skipped.length}`,
       `classified_count=${results.classified.length}`,
       `not_mapped_count=${results.notMapped.length}`,
@@ -325,9 +344,11 @@ async function main() {
   // Return summary for workflow
   return {
     syncedCount: results.synced.length,
+    deletedCount: results.deleted.length,
     skippedCount: results.skipped.length,
     classifiedCount: results.classified.length,
     syncedFiles: results.synced.map(r => r.docsPath),
+    deletedFiles: results.deleted.map(r => r.docsPath),
   };
 }
 
