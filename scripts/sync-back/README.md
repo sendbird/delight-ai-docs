@@ -14,8 +14,9 @@ Reflected in docs repo develop
 Backward sync Action triggers
    1. Detect changed md files
    2. Classification cache check (syncBack eligible?)
-   3. Agent-based semantic comparison
-   4. If actually different → Convert + Validate (with retry) → Create PR
+   3. Docs file deleted? → Delete file in private repo via PR → Done
+   4. Agent-based semantic comparison
+   5. If actually different → Convert + Validate (with retry) → Create PR
       If same → Skip
         ↓
 Create PR in private repo
@@ -29,7 +30,7 @@ Each file goes through an 8-step pipeline with 3 Claude-powered agents:
 Step 0: [Script]    Exclude patterns check (discussions/, sample, example → SKIP)
 Step 1: [Script]    Mapping lookup
 Step 2: [Script]    Classification cache check (syncBack=false → SKIP)
-Step 3: [Script]    Read docs file
+Step 3: [Script]    Read docs file (if deleted → delete in private repo via PR, done)
 Step 4: [Script]    Fetch private repo file (GitHub API)
 Step 5: [Agent 2]   Compare — semantic content comparison (Haiku)
 Step 6: [Agent 3]   Convert — GitBook → Markdown (Sonnet)
@@ -75,12 +76,14 @@ All Claude API calls automatically retry on transient errors (429, 500, 502, 503
 Each file gets a unique branch in the target private repo:
 
 ```
-sync-back/{date}/{sanitized-path}
+sync-back/{date}/{sanitized-path}          # for updates
+sync-back/{date}/delete-{sanitized-path}   # for deletions
 ```
 
 For example:
 - `sdk-docs/android/features/messages.md` → `sync-back/20260209/android-features-messages`
 - `sdk-docs/react-npm/features/messages.md` → `sync-back/20260209/react-npm-features-messages`
+- Deletion of `sdk-docs/android/features/messages.md` → `sync-back/20260209/delete-android-features-messages`
 
 This avoids collisions when multiple files with the same basename map to the same repo.
 

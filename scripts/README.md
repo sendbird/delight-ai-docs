@@ -44,11 +44,12 @@ This guide explains how to manage documentation across public, private, and docs
 2. GitHub Action detects changed `.md` files (or scans all files under `path_prefix`)
 3. `sync-sdk-docs.yml` workflow runs
 4. Multi-agent pipeline processes each file:
+   - If source file deleted → delete corresponding docs file
    - Classifier checks publish eligibility
    - Comparator detects semantic differences
    - Converter transforms Markdown → GitBook (with existing file as structural reference)
    - Validator checks quality (retries up to 2x on failure)
-5. Files are written to `delight-ai-docs` with path mapping
+5. Files are written (or deleted) in `delight-ai-docs` with path mapping
 6. Classification cache is committed
 7. PR is created and auto-approved
 
@@ -64,10 +65,11 @@ This guide explains how to manage documentation across public, private, and docs
 3. `sync-back.yml` workflow runs
 4. Multi-agent pipeline processes each file:
    - Classification cache check (syncBack eligible?)
+   - If docs file deleted → delete file in private repo via PR
    - Comparator detects semantic differences
    - Converter transforms GitBook → Markdown (with style guide)
    - Validator checks quality (retries up to 2x on failure)
-5. PRs are created in respective private repos
+5. PRs are created in respective private repos (for updates and deletions)
 
 **Workflow:** `.github/workflows/sync-back.yml`
 
@@ -161,6 +163,18 @@ Paths matching `excludePatterns` in `mapping-table.json` are skipped before any 
 2. Manually copy changes to `delight-ai-agent`
 3. Push to main branch
 4. Forward sync updates `delight-ai-docs`
+
+### Scenario 4: File is deleted
+
+**From public repo:**
+1. Engineer deletes a doc file in `delight-ai-agent`
+2. Forward sync detects deletion and removes the corresponding file in `delight-ai-docs`
+3. PR includes the `git rm` commit
+
+**From docs repo:**
+1. TW removes a page in GitBook
+2. Backward sync detects deletion and creates a PR in the private repo to delete the corresponding file
+3. Engineer reviews and merges the deletion PR
 
 ---
 

@@ -12,11 +12,12 @@ Changes detected in public repo
 Forward sync Action triggers
    1. Detect changed md files
    2. Map public paths to docs paths
-   3. Classify file eligibility (Agent)
-   4. Semantic content comparison (Agent)
-   5. If different → Convert Markdown → GitBook (Agent) + Validate (Agent)
+   3. Source deleted? → Delete docs file → Done
+   4. Classify file eligibility (Agent)
+   5. Semantic content comparison (Agent)
+   6. If different → Convert Markdown → GitBook (Agent) + Validate (Agent)
       If identical → Skip
-   6. Validation failed? → Retry with feedback (max 2 retries)
+   7. Validation failed? → Retry with feedback (max 2 retries)
         ↓
 Write to docs repo, commit classification cache, create PR
 ```
@@ -28,7 +29,7 @@ Each file goes through an 8-step pipeline with 4 Claude-powered agents:
 ```
 Step 0: [Script]    Exclude patterns check (discussions/, sample, example → SKIP)
 Step 1: [Script]    Mapping lookup
-Step 2: [Script]    Read source file
+Step 2: [Script]    Read source file (if deleted → delete docs file, done)
 Step 3: [Agent 1]   Classify — should this file be published? (Haiku)
 Step 4: [Script]    Read target file (if exists)
 Step 5: [Agent 2]   Compare — semantic content comparison (Haiku)
