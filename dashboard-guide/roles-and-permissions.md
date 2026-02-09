@@ -86,4 +86,4 @@ If you have integrated Sendbird Desk with Delight AI agent and need to control m
 2. Go to the **Members** page under your organization settings.
 3. Click **Invite +** to invite new members to your organization. You can choose from the dropdown list of roles you created earlier.
 
-<figure><img src="../.gitbook/assets/image (117).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (117) (1).png" alt=""><figcaption></figcaption></figure>

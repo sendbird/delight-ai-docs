@@ -33,7 +33,7 @@ Admins can grant an evaluator role to dashboard users and set their conversation
       1. To limit an evaluator to a specific language, pick a set of languages.
       2. To allow evaluation of all conversations, choose **All languages**.
 
-<figure><img src="../../../.gitbook/assets/image (93).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (93) (1).png" alt=""><figcaption></figcaption></figure>
 
 7. Click **OK** to return to the evaluator list.
 
@@ -52,7 +52,7 @@ Once evaluators completed their rating, you can see the results in the **Convers
     > If AI agent's categorization was <mark style="color:red;background-color:red;">POOR</mark>, a human evaluator can manually reassign the conversation's cateogry and sub-category.
 3. If you wish to edit the evaluation result of a conversation, navigate to the conversation view. You will see the **Edit** button at the top-right corner of the screen in the conversation view. Click it and make changes needed. Then **Submit**.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ***
 

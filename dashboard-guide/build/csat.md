@@ -29,7 +29,7 @@ This guide walks you through the customization process for a CSAT survey.
 3. After choosing an AI agent to set a CSAT survey for, navigate to **Build > CSAT** in the left menu bar.
 4. Then, activate the feature.
 
-<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (40) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Once this feature is enabled:
@@ -79,7 +79,7 @@ A follow-up question is a conditional query that can be asked when the user sele
 1. Select the rating conditions for **If ranting is**. Then, add your question to the box next to **ask**.
    1. Take the screenshot below as an example. If a user rates their satisfaction with one of **1**, **2**, and **3**, they will be asked "What were you dissatisfied with?"
 2. Select response type and add response options. The response type can be either a single answer or a paragraph. For single-answer questions, up to five options are allowed.
-3. Determine whether the follow-up question will be required or optional.&#x20;
+3. Determine whether the follow-up question will be required or optional.
    1. If required, check the **Required** box in the top-right corner of the section.
    2. You can also determine whether to display the follow-up question regardless of the user's answer.
 

@@ -25,7 +25,7 @@ When an AI agent hands off a conversation, it invites a human agent to the chann
 
 As of May 12, 2025, the integration can be established by Sendbird upon your request. Contact a Delight AI agent representative or [our Sales team](https://xn--zca.com/contact-sales) to connect Sendbird Desk with the AI agent.
 
-<figure><img src="../../../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (110) (1).png" alt=""><figcaption></figcaption></figure>
 
 Once the integration is complete, you will see the `CONNECTED` label on the **Sendbird Desk** tile in Delight AI dashboard.
 
@@ -33,4 +33,4 @@ Once the integration is complete, you will see the `CONNECTED` label on the **Se
 
 Click the **Sendbird Dashboard** button right next to your organization name at the top-right corner of the browser to return to your Desk dashboard. You can also see the `CONNECTED` label on the **Delight AI agent** tile and manage AI agents' status in Sendbird Desk dashboard.
 
-<figure><img src="../../../.gitbook/assets/image (15) (1).png" alt="" width="326"><figcaption><p>Connection status on Sendbird Desk dashbaord</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (15) (1) (1).png" alt="" width="326"><figcaption><p>Connection status on Sendbird Desk dashbaord</p></figcaption></figure>

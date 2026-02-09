@@ -7,7 +7,7 @@ In the **WhatsApp** channel settings you can:
 * Connect a WhatsApp Business Account with Delight AI agent.
 * Configure the settings of WhatsApp conversations for your AI agent.
 
-<figure><img src="../../../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (73) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

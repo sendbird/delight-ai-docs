@@ -39,7 +39,7 @@ Follow the instsructions below to create a workflow that Delight AI agent can fo
 [Our tutorial ](../../../tutorials/actionbook-best-practices.md)offers the best practices you can refer to when building your own actionbooks.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. Go to **Workspace settings > Shared assets > Actionbooks**.
 2. Click **Add actionbook +**.

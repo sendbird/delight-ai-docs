@@ -28,7 +28,7 @@ Once the phone number was added, follow the instructions below to connect a phon
 2. Click the **SMS** tile.
 3. Select an existing phone number you've registered in advance.
 
-<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (62) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Step 3: Configure the channel settings
 

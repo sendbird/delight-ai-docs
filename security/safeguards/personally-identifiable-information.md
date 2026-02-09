@@ -30,7 +30,7 @@ Delight AI stores PII data only within the customer's region and does not transf
 
 ### PII Masking
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
 
 Delight AI includes a PII masking feature that, when enabled, masks personally identifiable information such as phone numbers, emails, and other sensitive data from appearing in dashboard conversation history and databases.
 

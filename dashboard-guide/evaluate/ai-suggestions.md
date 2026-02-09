@@ -49,4 +49,4 @@ On the **AI suggestions** page, you can:
 * Review related conversations before taking action.
 * Use the **Mark as done** buttons to address or resolve the suggestion directly.
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>

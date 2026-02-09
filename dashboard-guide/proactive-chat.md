@@ -6,7 +6,7 @@ With Proactive chat, AI agents can send a message to users and initiate a conver
 Currently, this feature is supported for SMS and messenger channels in web apps only.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (98).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (98) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
