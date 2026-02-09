@@ -1,13 +1,13 @@
 # Messages
 
-In Delight AI agent, users and AI agents can exchange various types of messages to enable rich and interactive conversations, including text, images, files, and rich template-based messages. This allows users to have comprehensive and engaging conversations with AI agents across different use cases.
+In Delight AI agent messenger, AI agent and users can exchange various types of messages to enable rich and interactive conversations, including text, images, files, and rich template-based messages. It allows users to have comprehensive and engaging conversations with AI agents across different use cases.
 
-This guide covers:
+This guide explains:
 - [Types](#types)
-    - [Text message](#text-message)
-    - [Image message](#image-message)
-    - [File message](#file-message)
-    - [Rich message](#rich-message)
+    - [Text Message](#text-message)
+    - [Image Message](#image-message)
+    - [File Message](#file-message)
+    - [Rich Message](#rich-message)
 - [Key features](#key-features)
     - [Read receipt](#read-receipt)
     - [Citation](#citation)
@@ -18,62 +18,64 @@ This guide covers:
 
 ## Types
 
-Delight AI agent supports the following message types.
+Delight AI agent messenger supports various message types to provide comprehensive communication capabilities between users and AI agents. Each message type is designed for specific use cases and content formats.
 
 | Type                                       | Description                                 | Content format                      | Use cases                                                                  |
 | ------------------------------------------ | ------------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------- |
 | [Text message](#text-message)   | Regular text-based communication            | Plain text                          | Basic conversational interactions, Q\&A, general dialogue                  |
-| [Image message](#image-message) | Visual file sharing                         | Image files in `JPEG` and `PNG` only | Visual communication, screenshots, diagrams                                |
+| [Image message](#image-message) | Visual file sharing                         | Image files in `PNG` and `JPG` only | Visual communication, screenshots, diagrams                                |
 | [File message](#file-message)   | Document and file sharing                   | Various file formats                | Document sharing, attachments, downloadable resources                      |
 | [Rich message](#rich-message)   | Template-based messages with interactive UI | Structured JSON templates           | Product displays, carousels, CTAs and more. See below section for details. |
 
-### Text message
+### Text Message
 
-Text message represents regular text-based communication between users and AI agents. These messages support plain text content and are the foundation of conversational interactions.
+**Text Message** represents regular text-based communication between users and AI agents. These messages support plain text content and are the foundation of conversational interactions.
 
-- Content: Plain text messages. Markdown supported.
-- Use case: Basic conversational interactions.
-- Support: Full text rendering with proper formatting.
+* Content: Plain text messages. Markdown supported.
+* Use case: Basic conversational interactions.
+* Support: Full text rendering with proper formatting.
 
-### Image message
+### Image Message
 
-Image message enables sharing of image files within conversations. This message type supports common image formats for visual communication.
+**Image Message** enables sharing of image files within conversations. This message type supports common image formats for visual communication.
 
-- Supported formats: `JPEG` and `PNG` only. Can be sent with text.
-- Use case: Sharing visual content.
-- Display: Optimized image rendering with proper scaling.
+* Supported formats: `JPEG`, `PNG` only. Can be sent with text.
+* Use case: Sharing visual content.
+* Display: Optimized image rendering with proper scaling.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-image-message2.png" alt="" width="375">
   <figcaption></figcaption>
 </figure>
 
-> __Note__: Once handed off to a human agent, users can send image files in any format.
+{% hint style="info" %}
+However, once handed off to a human agent, users can send image files in any format.
+{% endhint %}
 
-### File message
+### File Message
 
-File message allows sharing of various file formats within conversations, enabling the sharing of documents and resources between users and AI agents.
+**File Message** allows sharing of various file formats within conversations, enabling sharing document and resource between users and AI agents.
 
-- Supported formats: `PDF` only. Can be sent with text.
-- Use case: Document sharing and file-based communication.
-- Display: File preview with download capabilities.
+* Supported formats: `PDF` only. Can be sent with text.
+* Use case: Document sharing and file-based communication.
+* Display: File preview with download capabilities.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-file-message2.png" alt="" width="375">
   <figcaption></figcaption>
 </figure>
 
-### Rich message
+### Rich Message
 
-Rich message utilizes predefined templates to create interactive and visually appealing message experiences. These templates are configurable through the Delight AI dashboard settings and provide enhanced user interaction.
+**Rich Message** utilizes predefined templates to create interactive and visually appealing message experiences. These templates are configurable through the Delight AI dashboard settings and provide enhanced user interaction.
 
 #### Call to Action (CTA) button
 
-CTA messages contain a button that allows users to take specific actions directly from the conversation interface. In the Delight AI messenger, the button opens the specified external URL in a web browser.
+**CTA** messages contain a button that allows users to take specific actions directly from the conversation interface. In the Delight AI messenger, the button opens the specified external URL in a web browser.
 
-- Components: A single button that links to an external webpage. Custom link formats are not supported.
-- Use case: Action-oriented user interactions.
-- Configuration: Available through dashboard template configuration.
+* Components: A single button that links to an external webpage. Custom link formats are not supported.
+* Use case: Action-oriented user interactions.
+* Configuration: Available through dashboard template configuration.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-cta2.png" alt="" width="375">
@@ -82,11 +84,11 @@ CTA messages contain a button that allows users to take specific actions directl
 
 #### Carousel
 
-Carousel messages present multiple items that can be horizontally scrolled. This allows users to browse through various options or content pieces in a compact format.
+**Carousel** messages present multiple items that can be horizontally scrolled. This allows users to browse through various options or content pieces in a compact format.
 
-- Layout: Horizontal scrolling interface.
-- Content: Multiple items with individual interactions.
-- Use case: Product showcases, option selection, content browsing.
+* Layout: Horizontal scrolling interface.
+* Content: Multiple items with individual interactions.
+* Use case: Product showcases, option selection, content browsing.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-carousel2.png" alt="" width="375">
@@ -95,37 +97,37 @@ Carousel messages present multiple items that can be horizontally scrolled. This
 
 #### Suggested replies
 
-Suggested replies provide predefined quick responses for users, enabling faster and more efficient conversation flow by offering common response options.
+**Suggested replies** provide predefined quick responses for users, enabling faster and more efficient conversation flow by offering common response options.
 
-- Functionality: Quick response selection.
-- Use case: Streamlined user interactions and faster response times.
-- Display: Accessible quick reply buttons.
+* Functionality: Quick response selection.
+* Use case: Streamlined user interactions and faster response times.
+* Display: Accessible quick reply buttons.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-suggested-replies2.png" alt="" width="375">
   <figcaption></figcaption>
 </figure>
 
-#### CSAT message
+#### CSAT Message
 
-CSAT message is designed to collect user feedback through a customer satisfaction (CSAT) survey within conversations.
+**CSAT Message** is designed to collect user feedback for customer satisfaction (CSAT) survey within conversations.
 
-- Purpose: Customer satisfaction measurement.
-- Components: Rating systems and feedback collection.
-- Use case: Service quality assessment and user experience evaluation.
+* Purpose: Customer satisfaction measurement.
+* Components: Rating systems and feedback collection.
+* Use case: Service quality assessment and user experience evaluation.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/da-mobile-csat2.png" alt="" width="375">
   <figcaption></figcaption>
 </figure>
 
-#### Product list
+#### Product List
 
-Product list messages display product information in a vertical scrolling format optimized for product browsing and selection, unlike Carousel which uses horizontal scrolling.
+**Product List** messages display product information in a vertical scrolling format, different from Carousel with its vertical layout optimized for product browsing and selection.
 
-- Layout: Vertical scrolling interface.
-- Content: Product information and details.
-- Use case: E-commerce integration, product showcases, inventory display.
+* Layout: Vertical scrolling interface.
+* Content: Product information and details.
+* Use case: E-commerce integration, product showcases, inventory display.
 
 <figure>
   <img src="https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-sdk-mobile-message-product-list.png" alt="cascade" width="375">
@@ -134,7 +136,7 @@ Product list messages display product information in a vertical scrolling format
 
 #### Custom message template
 
-Custom message template enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
+**Custom message template** enables implementation of business-specific UI components beyond pre-defined templates. The Delight AI agent server sends structured data that clients render with their own custom UI components.
 
 ##### Core features
 
@@ -346,9 +348,9 @@ try {
 
 The core features supported for messages in Delight AI agent include:
 
-- [Read receipt](#read-receipt)
-- [Citation](#citation)
-- [Special notice](#special-notice)
+* [Read receipt](#read-receipt)
+* [Citation](#citation)
+* [Special notice](#special-notice)
 
 ### Read receipt
 
@@ -366,11 +368,11 @@ When enabled, messages display visual indicators for:
 
 ### Citation
 
-The citation feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
+**Citation** feature displays source information of AI agent responses, allowing users to see the references and sources that the AI agent used to generate its responses. This feature provides transparency and credibility to the AI agent's answers.
 
-- Default: Disabled.
-- Configuration: Dashboard only — no additional code required.
-- Activation settings: Adjustable through dashboard configuration values.
+* Default: Disabled.
+* Configuration: Dashboard only — no additional code required.
+* Activation settings: Adjustable through dashboard configuration values.
 
 When enabled, citations are automatically rendered by the SDK. They appear as clickable elements that expand to show source details such as document titles, URL references, and knowledge base articles.
 
@@ -381,11 +383,11 @@ When enabled, citations are automatically rendered by the SDK. They appear as cl
 
 ### Special notice
 
-Special notice displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
+**Special Notice** displays important information to users before conversation starts. This feature helps communicate important guidelines, terms, or instructions to users at the beginning of their interaction.
 
-- Display location: Bottom of the screen.
-- Behavior: Automatically disappears when a conversation starts.
-- Configuration: Available through dashboard configuration.
+* Display location: Bottom of the screen.
+* Behavior: Automatically disappears when a conversation starts.
+* Configuration: Available through dashboard configuration.
 
 Special notices are configured through Delight AI dashboard and automatically displayed by the SDK. The notice appears when the conversation screen is first opened, before any messages are sent. It dismisses automatically when the user sends their first message.
 
