@@ -35,6 +35,42 @@
       "syncBack": true,
       "reason": "SDK feature guide for React - localization/multi-language support is a user-facing feature that should be documented and maintainable",
       "classifiedAt": "2026-02-09T07:12:32.254Z"
+    },
+    "android/CHANGELOGS.md": {
+      "publish": false,
+      "syncBack": false,
+      "reason": "CHANGELOGS.md is an auto-generated changelog file tracking version history and release notes. These are typically maintained automatically and not user-facing product documentation that requires manual editing or syncing.",
+      "classifiedAt": "2026-02-09T07:26:14.383Z"
+    },
+    "android/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK quickstart guide for Android platform - user-facing documentation that should be published and kept in sync with source repository",
+      "classifiedAt": "2026-02-09T07:26:15.338Z"
+    },
+    "android/docs/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting message types and functionality for Android SDK. User-facing documentation that should be published and kept in sync with source repo.",
+      "classifiedAt": "2026-02-09T07:27:46.846Z"
+    },
+    "android/docs/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality for Android SDK. This is user-facing product documentation that should be published and synced back to keep the private repo updated with any documentation improvements.",
+      "classifiedAt": "2026-02-09T07:29:51.876Z"
+    },
+    "android/docs/launcher.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for Android launcher component - user-facing documentation for developers integrating the Delight AI messenger into their Android apps",
+      "classifiedAt": "2026-02-09T07:29:55.317Z"
+    },
+    "android/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting multi-language support for Android SDK. This is user-facing product documentation that helps developers implement localization, similar to other SDK feature guides (messages.md, conversations.md). Should be published and edits should sync back to the source repo.",
+      "classifiedAt": "2026-02-09T07:29:57.062Z"
     }
   }
 }
