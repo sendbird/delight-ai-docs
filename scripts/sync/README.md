@@ -26,6 +26,7 @@ Write to docs repo, commit classification cache, create PR
 Each file goes through an 8-step pipeline with 4 Claude-powered agents:
 
 ```
+Step 0: [Script]    Exclude patterns check (discussions/, sample, example → SKIP)
 Step 1: [Script]    Mapping lookup
 Step 2: [Script]    Read source file
 Step 3: [Agent 1]   Classify — should this file be published? (Haiku)

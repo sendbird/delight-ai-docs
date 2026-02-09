@@ -108,6 +108,20 @@ Engineers manually copy/update docs from private repos to `delight-ai-agent` whe
 
 Files are mapped between repositories using pattern-based rules. See `mapping-table.json` for details.
 
+### Excluded Paths
+
+Paths matching `excludePatterns` in `mapping-table.json` are skipped before any processing (no API calls). This is a deterministic, hard filter applied in both forward and backward sync.
+
+```json
+"excludePatterns": {
+  "directories": ["discussions/"],
+  "keywords": ["sample", "example"]
+}
+```
+
+- **directories**: Paths containing these directory segments are excluded (e.g., `android/docs/discussions/faq.md`)
+- **keywords**: Paths containing these keywords (case-insensitive) are excluded (e.g., `js/cdn/live-sample/`, `js/live-example/`)
+
 ### Example Mappings
 
 | Public Repo | Docs Repo | Private Repo |

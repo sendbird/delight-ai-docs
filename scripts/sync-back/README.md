@@ -26,6 +26,7 @@ Create PR in private repo
 Each file goes through an 8-step pipeline with 3 Claude-powered agents:
 
 ```
+Step 0: [Script]    Exclude patterns check (discussions/, sample, example → SKIP)
 Step 1: [Script]    Mapping lookup
 Step 2: [Script]    Classification cache check (syncBack=false → SKIP)
 Step 3: [Script]    Read docs file
