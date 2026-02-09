@@ -41,6 +41,8 @@ jobs:
       - name: Get changed files info
         id: changes
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           EVENT_NAME: ${{ github.event_name }}
           EVENT_BEFORE: ${{ github.event.before }}
           EVENT_AFTER: ${{ github.event.after }}
@@ -64,7 +66,7 @@ jobs:
             fi
             echo "Found files: $FOUND_FILES"
           else
-            # Default: git diff
+            # Default: detect changed files
             if [ "$EVENT_NAME" = "push" ]; then
               BASE_SHA="$EVENT_BEFORE"
               HEAD_SHA="$EVENT_AFTER"
@@ -76,7 +78,10 @@ jobs:
             echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
             echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
 
-            CHANGED_COUNT=$(git diff --name-only ${BASE_SHA} ${HEAD_SHA} -- 'sdk-docs/**/*.md' | wc -l | tr -d ' ')
+            # Use GitHub Compare API to avoid fetch-depth limitations
+            echo "Comparing ${BASE_SHA}...${HEAD_SHA} via GitHub API"
+            CHANGED_COUNT=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${BASE_SHA}...${HEAD_SHA}" \
+              --jq '[.files[].filename | select(test("^sdk-docs/.*\\.md$"))] | length')
           fi
           echo "changed_count=${CHANGED_COUNT}" >> $GITHUB_OUTPUT
           echo "Changed sdk-docs md files: ${CHANGED_COUNT}"
