@@ -1,33 +1,51 @@
 # React Native
 
-The **Delight AI agent Messenger React-Native** allows seamless integration of chatbot features into your React-Native application.
+The **Delight AI agent Messenger** for React Native allows seamless integration of AI-powered messaging features into your React Native application. Follow the steps below to initialize and utilize the SDK effectively.
 
-***
+This guide covers:
+- [Prerequisites](#prerequisites)
+- [Getting started](#getting-started)
+    - [Step 1. Install AI Agent SDK](#step-1-install-ai-agent-sdk)
+    - [Step 2. Configure native modules](#step-2-configure-native-modules)
+    - [Step 3. Initialize AI Agent SDK](#step-3-initialize-ai-agent-sdk)
+- [Component overview](#component-overview)
+- [Running your application](#running-your-application)
+    - [FixedMessenger styles](#fixedmessenger-styles)
+    - [Window modes](#window-modes)
+    - [Entry points](#entry-points)
+    - [Manage user sessions](#manage-user-sessions)
+- [Advanced features](#advanced-features)
+    - [Customizing theme](#customizing-theme)
+    - [Display messenger without launcher button](#display-messenger-without-launcher-button)
+    - [Passing context object to agent](#passing-context-object-to-agent)
+    - [Localization and language support](#localization-and-language-support)
 
-### Prerequisites
+---
 
-Before you start, you'll need your **Application ID** and **AI Agent ID**.\
-\
-You can find it under the **Channels** > **Messenger** menu on the Delight AI dashboard.
+## Prerequisites
+
+Before you start, you'll need your **Application ID** and **AI Agent ID**.
+
+You can find them under the **Channels** > **Messenger** menu on the Delight AI dashboard.
 
 ![ai-agent-app-id-agent-id](https://sendbird-files.s3.ap-northeast-1.amazonaws.com/docs/aa-messenger-basic-information.png)
 
 **System Requirements:**
 
-* React later than 18.0.0
-* React-Native later than or equal to 0.80.0
-* @sendbird/chat later than 4.19.0
-* react-native-mmkv later than or equal to 3.0.0
-* react-native-safe-area-context later than or equal to 5.0.0
-* date-fns later than or equal to 4.0.0
+- React >= 18.0.0
+- React Native >= 0.80.0
+- @sendbird/chat ^4.19.0
+- react-native-mmkv >= 3.0.0
+- react-native-safe-area-context >= 5.0.0
+- date-fns >= 4.0.0
 
-***
+---
 
-### Getting Started
+## Getting started
 
 Quickly install and initialize the AI Agent SDK by following the steps below.
 
-#### Step 1. Install AI Agent SDK
+### Step 1. Install AI Agent SDK
 
 Install the package with its peer dependencies using npm or yarn:
 
@@ -45,24 +63,26 @@ If file attachment is enabled in your AI Agent settings, install one of the foll
 npm install expo-image-picker expo-document-picker
 ```
 
-**Option B: Community modules (For bare React-Native projects)**
+**Option B: Community modules (for bare React Native projects)**
 
 ```bash
 npm install react-native-image-picker @react-native-documents/picker react-native-permissions
 ```
 
-> **Note:** When using `react-native-image-picker`, you must also install `react-native-permissions` for camera access.
+{% hint style="info" %}
+When using `react-native-image-picker`, you must also install `react-native-permissions` for camera access.
+{% endhint %}
 
-#### Step 2. Configure Native Modules
+### Step 2. Configure native modules
 
 The SDK requires native module configuration. Only `mmkv` is required; picker modules are optional.
 
 **Minimal setup (without file attachment):**
 
 ```tsx
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
-const mmkv = new MMKV();
+const mmkv = createMMKV();
 
 const nativeModules = {
   mmkv,
@@ -72,11 +92,11 @@ const nativeModules = {
 **With file attachment support (Expo modules):**
 
 ```tsx
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 
-const mmkv = new MMKV();
+const mmkv = createMMKV();
 
 const nativeModules = {
   mmkv,
@@ -88,12 +108,12 @@ const nativeModules = {
 **With file attachment support (Community modules):**
 
 ```tsx
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 import * as ImagePicker from 'react-native-image-picker';
 import * as DocumentPicker from '@react-native-documents/picker';
 import * as Permissions from 'react-native-permissions';
 
-const mmkv = new MMKV();
+const mmkv = createMMKV();
 
 const nativeModules = {
   mmkv,
@@ -103,9 +123,9 @@ const nativeModules = {
 };
 ```
 
-#### Step 3. Initialize AI Agent SDK
+### Step 3. Initialize AI Agent SDK
 
-The React-Native SDK provides two main approaches for integration:
+The React Native SDK provides two main approaches for integration:
 
 **Option 1: FixedMessenger (Recommended for quick setup)**
 
@@ -152,36 +172,33 @@ function App() {
 }
 ```
 
-***
+---
 
-### Component Overview
+## Component overview
 
-#### FixedMessenger vs AIAgentProviderContainer
+### FixedMessenger vs AIAgentProviderContainer
 
-**FixedMessenger:**
+#### Comparison of FixedMessenger and AIAgentProviderContainer
 
-* Complete UI toolkit with launcher and messenger window
-* Supports floating and fullscreen window modes
-* Includes navigation between Conversation and ConversationList
-* Handles Android back button automatically
-* Recommended for most use cases
+| Feature | FixedMessenger | AIAgentProviderContainer + Conversation |
+|---------|---------------|----------------------------------------|
+| UI toolkit | Complete UI with launcher and messenger window | Provider for custom UI implementations |
+| Window modes | Supports floating and fullscreen | Custom layouts and components |
+| Navigation | Includes Conversation and ConversationList navigation | Must combine with conversation components like `<Conversation />` |
+| Back button | Handles Android back button automatically | Manual implementation required |
+| Recommended for | Most use cases | Specific UI layouts or custom components |
 
-**AIAgentProviderContainer + Conversation:**
+---
 
-* Provider component for custom UI implementations
-* Allows building custom messenger interfaces
-* Use when you need specific UI layouts or custom components
-* Must be combined with conversation components like `<Conversation />`
-
-***
-
-### Running your application
+## Running your application
 
 Now that you have installed and initialized the AI Agent SDK, follow the steps below to run your application.
 
 To launch and display the messenger, implement the code below:
 
-> **Note:** Replace `YOUR_APP_ID` and `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how to do so, refer to the [prerequisites](#prerequisites) section.
+{% hint style="info" %}
+Replace `YOUR_APP_ID` and `YOUR_AI_AGENT_ID` with your Application ID and AI agent ID which you can obtain from the Delight AI dashboard. To learn how to do so, refer to the [prerequisites](#prerequisites) section.
+{% endhint %}
 
 ```tsx
 function App() {
@@ -198,14 +215,14 @@ function App() {
 }
 ```
 
-#### FixedMessenger styles
+### FixedMessenger styles
 
 When using the fixed messenger, `FixedMessenger.Style` allows you to customize its appearance and positioning:
 
-* `position`: Determines which corner of the screen the launcher will appear in. Available options are: `start-top`, `start-bottom`, `end-top` and `end-bottom`.
-* `margin`: Defines the margin around the fixed messenger and its launcher.
-* `launcherSize`: Defines the size of the launcher button in pixels (width and height are equal).
-* `spacing`: Defines the spacing between the launcher and the messenger window.
+- `position`: Determines which corner of the screen the launcher will appear in. Available options are `start-top`, `start-bottom`, `end-top`, and `end-bottom`.
+- `margin`: Defines the margin around the fixed messenger and its launcher.
+- `launcherSize`: Defines the size of the launcher button in pixels (width and height are equal).
+- `spacing`: Defines the spacing between the launcher and the messenger window.
 
 ```tsx
 function App() {
@@ -224,12 +241,12 @@ function App() {
 }
 ```
 
-#### Window modes
+### Window modes
 
 FixedMessenger supports two window modes:
 
-* `floating` (default): The messenger appears as a floating window above your app content.
-* `fullscreen`: The messenger takes up the full screen.
+- `floating` (default): The messenger appears as a floating window above your app content.
+- `fullscreen`: The messenger takes up the full screen.
 
 ```tsx
 <FixedMessenger windowMode={'fullscreen'} />
@@ -244,12 +261,12 @@ When using fullscreen mode, you can specify insets:
 />
 ```
 
-#### Entry points
+### Entry points
 
 You can configure which screen appears first when opening the messenger:
 
-* `Conversation` (default): Opens directly to a conversation.
-* `ConversationList`: Opens to the list of conversations.
+- `Conversation` (default): Opens directly to a conversation.
+- `ConversationList`: Opens to the list of conversations.
 
 ```tsx
 <FixedMessenger entryPoint={'ConversationList'} />
@@ -261,13 +278,14 @@ You can also specify an initial channel URL to open a specific conversation:
 <FixedMessenger initialChannelUrl={'sendbird_group_channel_xxx'} />
 ```
 
-#### Manage user sessions
+### Manage user sessions
 
 The SDK supports two types of user sessions: **Manual Session** for authenticated users and **Anonymous Session** for temporary users.
 
-**Session types**
+#### Session types
 
-**1. Manual Session (ManualSessionInfo):** Use this when you have an authenticated user with a specific user ID and session token.
+**1. Manual Session (ManualSessionInfo):**
+Use this when you have an authenticated user with a specific user ID and session token.
 
 ```tsx
 import { ManualSessionInfo } from '@sendbird/ai-agent-messenger-react-native';
@@ -298,7 +316,8 @@ import { ManualSessionInfo } from '@sendbird/ai-agent-messenger-react-native';
 </AIAgentProviderContainer>
 ```
 
-**2. Anonymous Session (AnonymousSessionInfo):** Use this when you don't have user authentication or want to allow guest access. The server will automatically create a temporary user.
+**2. Anonymous Session (AnonymousSessionInfo):**
+Use this when you don't have user authentication or want to allow guest access. The server will automatically create a temporary user.
 
 ```tsx
 import { AnonymousSessionInfo } from '@sendbird/ai-agent-messenger-react-native';
@@ -313,7 +332,7 @@ import { AnonymousSessionInfo } from '@sendbird/ai-agent-messenger-react-native'
 </AIAgentProviderContainer>
 ```
 
-**Authentication**
+#### Authentication
 
 You can manually control user authentication using `useMessengerSessionContext`. Call `authenticate()` before showing the messenger to avoid loading delays.
 
@@ -331,7 +350,7 @@ const App = () => {
 };
 ```
 
-**Deauthentication**
+#### Deauthentication
 
 To log out the current user, call `deauthenticate()`. This disconnects the user session and clears the authentication state.
 
@@ -349,13 +368,13 @@ const LogoutButton = () => {
 };
 ```
 
-***
+---
 
-### Advanced Features
+## Advanced features
 
 The following are available advanced features.
 
-#### Customizing Theme
+### Customizing theme
 
 You can customize the messenger theme by passing a `theme` prop to `AIAgentProviderContainer`.
 
@@ -377,7 +396,7 @@ You can customize the messenger theme by passing a `theme` prop to `AIAgentProvi
 </AIAgentProviderContainer>
 ```
 
-#### Display messenger without launcher button
+### Display messenger without launcher button
 
 Build custom messenger UI using AIAgentProviderContainer with Conversation directly:
 
@@ -401,13 +420,15 @@ function App() {
 }
 ```
 
-#### Passing context object to Agent
+### Passing context object to agent
 
-You can predefine customer-specific information such as country, language, or other custom context data to guide the AI Agent in providing faster and more accurate responses.
+You can predefine customer-specific information such as country, language, or other custom context data to guide the AI agent in providing faster and more accurate responses.
 
 This allows for a more personalized and context-aware interaction experience.
 
-> **Important**: These settings can only be configured during initialization.
+{% hint style="warning" %}
+These settings can only be configured during initialization.
+{% endhint %}
 
 ```tsx
 <AIAgentProviderContainer
@@ -429,13 +450,13 @@ This allows for a more personalized and context-aware interaction experience.
 </AIAgentProviderContainer>
 ```
 
-#### Localization and Language Support
+### Localization and language support
 
 The SDK supports multiple languages and allows you to customize UI strings. You can:
 
-* Set the language during initialization
-* Customize specific strings in supported languages
-* Add support for additional languages
+- Set the language during initialization
+- Customize specific strings in supported languages
+- Add support for additional languages
 
 **Supported languages:** German (de), English (en), Spanish (es), French (fr), Hindi (hi), Italian (it), Japanese (ja), Korean (ko), Portuguese (pt), Turkish (tr)
 
@@ -458,4 +479,4 @@ The SDK supports multiple languages and allows you to customize UI strings. You 
 </AIAgentProviderContainer>
 ```
 
-For detailed information about localization options and full list of available string sets, refer to our [Localization Guide](MULTILANGUAGE.md).
+To learn more about localization options and the full list of available string sets, refer to the [Localization guide](MULTILANGUAGE.md).
