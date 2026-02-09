@@ -54,6 +54,38 @@ async function callClaude(apiKey, systemPrompt, userPrompt, model = 'claude-sonn
 }
 
 /**
+ * Extract the first complete JSON object from text using brace-depth tracking.
+ * Handles escaped characters and braces inside string values correctly.
+ * @param {string} text - Raw text containing JSON
+ * @returns {string|null} - Extracted JSON string or null
+ */
+function extractJSON(text) {
+  const start = text.indexOf('{');
+  if (start === -1) return null;
+
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+
+    if (escaped) { escaped = false; continue; }
+    if (ch === '\\' && inString) { escaped = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+
+    if (ch === '{') depth++;
+    if (ch === '}') {
+      depth--;
+      if (depth === 0) return text.slice(start, i + 1);
+    }
+  }
+
+  return null;
+}
+
+/**
  * Call Claude and parse JSON response
  * @param {string} apiKey - Anthropic API key
  * @param {string} systemPrompt - System prompt
@@ -65,12 +97,12 @@ async function callClaude(apiKey, systemPrompt, userPrompt, model = 'claude-sonn
 async function callClaudeJSON(apiKey, systemPrompt, userPrompt, model = 'claude-sonnet-4-20250514', maxTokens = 4096) {
   const text = await callClaude(apiKey, systemPrompt, userPrompt, model, maxTokens);
 
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) {
+  const jsonStr = extractJSON(text);
+  if (!jsonStr) {
     throw new Error(`No JSON found in response: ${text.slice(0, 200)}`);
   }
 
-  return JSON.parse(jsonMatch[0]);
+  return JSON.parse(jsonStr);
 }
 
 module.exports = { callClaude, callClaudeJSON };
