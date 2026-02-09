@@ -16,8 +16,9 @@ Forward sync Action triggers
    4. Semantic content comparison (Agent)
    5. If different → Convert Markdown → GitBook (Agent) + Validate (Agent)
       If identical → Skip
+   6. Validation failed? → Retry with feedback (max 2 retries)
         ↓
-Write to docs repo, create PR
+Write to docs repo, commit classification cache, create PR
 ```
 
 ## Pipeline Architecture
@@ -32,7 +33,8 @@ Step 4: [Script]    Read target file (if exists)
 Step 5: [Agent 2]   Compare — semantic content comparison (Haiku)
 Step 6: [Agent 3]   Convert — Markdown → GitBook (Sonnet)
 Step 7: [Agent 4]   Validate — check conversion quality (Sonnet)
-        ↳ Fail? → Use original content as fallback
+        ↳ Fail? → Feed issues back to Converter, retry (max 2 retries)
+        ↳ Still fail after 3 attempts? → Skip file entirely
 Step 8: [Script]    Write file + save classification to cache
 ```
 
@@ -45,20 +47,32 @@ Step 8: [Script]    Write file + save classification to cache
 | Converter | `agents/converter.js` | Sonnet | Markdown → GitBook conversion (uses existing docs file as structural reference) |
 | Validator | `agents/validator.js` | Sonnet | Quality check: content loss, broken code/links, structure |
 
-### Validation
+### Validation & Retry
 
 Validation is **direction-aware**: for Markdown→GitBook, adding `{% hint %}`, `{% tabs %}` etc. is recognized as expected behavior.
 
-On validation failure, forward sync uses the **original content as fallback** (unlike backward sync which retries).
+On validation failure, the pipeline **retries up to 2 times** by feeding validation issues back to the Converter agent. If all 3 attempts fail, the file is **skipped entirely** (not written to docs repo).
+
+### API Retry
+
+All Claude API calls automatically retry on transient errors (429, 500, 502, 503, 529) with exponential backoff (1s, 2s, 4s), up to 3 attempts.
+
+### Classification Cache
+
+The Classifier determines two flags per file:
+- **publish**: Should this file be synced to the docs site?
+- **syncBack**: Should TW edits to this file sync back to private repos?
+
+Results are saved to `classification-cache.json` and **committed** as part of the sync PR. The backward sync reads this cache to decide whether to create PRs for TW edits.
 
 ## File Structure
 
 ```
 scripts/
 ├── mapping-table.json       # Shared: Path mappings
-├── classification-cache.json # Cache: classifier results per file
+├── classification-cache.json # Cache: classifier results per file (committed by forward sync)
 ├── agents/
-│   ├── call-claude.js       # Shared Claude API caller
+│   ├── call-claude.js       # Shared Claude API caller (with retry)
 │   ├── classifier.js        # Agent 1: file eligibility classification
 │   ├── comparator.js        # Agent 2: semantic content comparison
 │   ├── converter.js         # Agent 3: GitBook ↔ Markdown conversion
@@ -103,3 +117,10 @@ ANTHROPIC_API_KEY=xxx AGENT_REPO_PATH=../../delight-ai-agent node sync.js
 ### GitHub Action
 
 The workflow in `.github/workflows/sync-sdk-docs.yml` runs this script automatically when changes are pushed to delight-ai-agent.
+
+Manual execution:
+1. Go to Actions tab → Select "Sync SDK docs from delight-ai-agent"
+2. Click "Run workflow"
+3. Options:
+   - **dry_run**: If checked, no actual changes are made
+   - **path_prefix**: Scan all `.md` files under this path instead of using git diff (e.g. `android/`, `js/react/docs/`). Useful for checking sync status of an entire directory regardless of the latest commit.

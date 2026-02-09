@@ -22,7 +22,7 @@ const path = require('path');
 // Agent modules
 const { classify } = require('../agents/classifier');
 const { compare } = require('../agents/comparator');
-const { convertMarkdownToGitBook } = require('../agents/converter');
+const { convertMarkdownToGitBook, retryMarkdownToGitBook } = require('../agents/converter');
 const { validate } = require('../agents/validator');
 
 // Script modules
@@ -228,28 +228,43 @@ async function main() {
       continue;
     }
 
-    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate
+    // Step 6+7: [Agent 3] Convert + [Agent 4] Validate (with retry)
+    const MAX_RETRIES = 2;
     try {
       console.log('  [Converter] Converting Markdown → GitBook...');
       if (dstContent) {
         console.log('  [Converter] Using existing GitBook file as structural reference');
       }
 
-      const converted = await convertMarkdownToGitBook(anthropicKey, srcContent, dstContent);
+      let converted = await convertMarkdownToGitBook(anthropicKey, srcContent, dstContent);
+      let validation;
+      let passed = false;
 
-      console.log('  [Validator] Checking conversion quality...');
-      const validation = await validate(anthropicKey, srcContent, converted, 'markdown-to-gitbook');
+      for (let attempt = 1; attempt <= MAX_RETRIES + 1; attempt++) {
+        console.log(`  [Validator] Checking conversion quality (attempt ${attempt}/${MAX_RETRIES + 1})...`);
+        validation = await validate(anthropicKey, srcContent, converted, 'markdown-to-gitbook');
 
-      if (!validation.passed) {
-        console.log('  → Conversion validation failed, using original content');
+        if (validation.passed) {
+          passed = true;
+          break;
+        }
+
         validation.issues.forEach(issue => console.log(`    - ${issue}`));
+
+        if (attempt <= MAX_RETRIES) {
+          console.log('  [Converter] Retrying with validation feedback...');
+          converted = await retryMarkdownToGitBook(anthropicKey, srcContent, converted, validation.issues, dstContent);
+        }
+      }
+
+      if (!passed) {
+        console.log(`  → Conversion validation failed after ${MAX_RETRIES + 1} attempts, skipping`);
         results.conversionFailed.push({
           path: publicPath,
           issues: validation.issues,
         });
+        continue;
       }
-
-      const contentToWrite = validation.passed ? converted : srcContent;
 
       // Step 8: [Script] Write file
       const dstDir = path.dirname(dstFullPath);
@@ -257,7 +272,7 @@ async function main() {
         fs.mkdirSync(dstDir, { recursive: true });
       }
 
-      fs.writeFileSync(dstFullPath, contentToWrite, 'utf-8');
+      fs.writeFileSync(dstFullPath, converted, 'utf-8');
       console.log(`  → Converted and written to: ${mapping.docsPath}`);
       results.synced.push({ path: publicPath, docsPath: mapping.docsPath });
     } catch (error) {
