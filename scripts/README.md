@@ -37,32 +37,39 @@ This guide explains how to manage documentation across public, private, and docs
 
 ### 1. Forward Sync: Public → Docs (Automatic)
 
-**Trigger:** Push to `delight-ai-agent` main branch
+**Trigger:** Push to `delight-ai-agent` main branch (or manual with optional `path_prefix`)
 
 **Flow:**
 1. Engineer updates docs in `delight-ai-agent`
-2. GitHub Action detects changed `.md` files
+2. GitHub Action detects changed `.md` files (or scans all files under `path_prefix`)
 3. `sync-sdk-docs.yml` workflow runs
-4. Markdown is converted to GitBook syntax (using Claude AI)
-5. Files are written to `delight-ai-docs` with path mapping
-6. PR is created automatically
+4. Multi-agent pipeline processes each file:
+   - If source file deleted → delete corresponding docs file
+   - Classifier checks publish eligibility
+   - Comparator detects semantic differences
+   - Converter transforms Markdown → GitBook (with existing file as structural reference)
+   - Validator checks quality (retries up to 2x on failure)
+5. Files are written (or deleted) in `delight-ai-docs` with path mapping
+6. Classification cache is committed
+7. PR is created and auto-approved
 
 **Workflow:** `.github/workflows/sync-sdk-docs.yml`
 
 ### 2. Backward Sync: Docs → Private (Automatic)
 
-**Trigger:** Push to `delight-ai-docs` develop branch (sdk-docs/**/*.md)
+**Trigger:** Push to `delight-ai-docs` develop branch (sdk-docs/**/*.md), or manual with `files`/`path_prefix`
 
 **Flow:**
 1. TW edits documentation in GitBook
 2. GitBook commits to `delight-ai-docs` develop branch
 3. `sync-back.yml` workflow runs
 4. Multi-agent pipeline processes each file:
-   - Classifier checks eligibility
+   - Classification cache check (syncBack eligible?)
+   - If docs file deleted → delete file in private repo via PR
    - Comparator detects semantic differences
    - Converter transforms GitBook → Markdown (with style guide)
    - Validator checks quality (retries up to 2x on failure)
-5. PRs are created in respective private repos
+5. PRs are created in respective private repos (for updates and deletions)
 
 **Workflow:** `.github/workflows/sync-back.yml`
 
@@ -103,6 +110,20 @@ Engineers manually copy/update docs from private repos to `delight-ai-agent` whe
 
 Files are mapped between repositories using pattern-based rules. See `mapping-table.json` for details.
 
+### Excluded Paths
+
+Paths matching `excludePatterns` in `mapping-table.json` are skipped before any processing (no API calls). This is a deterministic, hard filter applied in both forward and backward sync.
+
+```json
+"excludePatterns": {
+  "directories": ["discussions/"],
+  "keywords": ["sample", "example"]
+}
+```
+
+- **directories**: Paths containing these directory segments are excluded (e.g., `android/docs/discussions/faq.md`)
+- **keywords**: Paths containing these keywords (case-insensitive) are excluded (e.g., `js/cdn/live-sample/`, `js/live-example/`)
+
 ### Example Mappings
 
 | Public Repo | Docs Repo | Private Repo |
@@ -142,6 +163,18 @@ Files are mapped between repositories using pattern-based rules. See `mapping-ta
 2. Manually copy changes to `delight-ai-agent`
 3. Push to main branch
 4. Forward sync updates `delight-ai-docs`
+
+### Scenario 4: File is deleted
+
+**From public repo:**
+1. Engineer deletes a doc file in `delight-ai-agent`
+2. Forward sync detects deletion and removes the corresponding file in `delight-ai-docs`
+3. PR includes the `git rm` commit
+
+**From docs repo:**
+1. TW removes a page in GitBook
+2. Backward sync detects deletion and creates a PR in the private repo to delete the corresponding file
+3. Engineer reviews and merges the deletion PR
 
 ---
 
@@ -201,16 +234,13 @@ This prevents infinite loops because after a sync completes, the opposite direct
 ```
 scripts/
 ├── mapping-table.json       # Path mappings between repos
-├── classification-cache.json # Classifier results cache
+├── classification-cache.json # Classifier results cache (committed by forward sync)
 ├── agents/
-│   ├── call-claude.js       # Shared Claude API caller
+│   ├── call-claude.js       # Shared Claude API caller (with retry + exponential backoff)
 │   ├── classifier.js        # Agent 1: file eligibility classification
 │   ├── comparator.js        # Agent 2: semantic content comparison
-│   ├── converter.js         # Agent 3: GitBook ↔ Markdown conversion
+│   ├── converter.js         # Agent 3: GitBook ↔ Markdown conversion (with retry)
 │   └── validator.js         # Agent 4: conversion quality validation
-├── normalizer.js            # Legacy: syntax normalization (kept for reference)
-├── claude-converter.js      # Legacy: monolithic converter (kept for reference)
-├── MAPPING-REFERENCE.md     # Detailed mapping reference
 ├── sync/
 │   └── sync.js              # Forward sync script
 └── sync-back/
