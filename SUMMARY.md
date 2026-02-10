@@ -24,7 +24,7 @@
   * [Channels](dashboard-guide/build/channels/README.md)
     * [Messenger](dashboard-guide/build/channels/messenger/README.md)
       * [Conversation settings](dashboard-guide/build/channels/messenger/conversation-settings/README.md)
-        * [For You Conversation](dashboard-guide/build/channels/messenger/conversation-settings/for-you-conversation.md)
+        * [Personalize with AI](dashboard-guide/build/channels/messenger/conversation-settings/for-you-conversation.md)
       * [Appearance](dashboard-guide/build/channels/messenger/appearance.md)
       * [Basic information](dashboard-guide/build/channels/messenger/basic-information.md)
     * [Voice](dashboard-guide/build/channels/voice.md)
