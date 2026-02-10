@@ -1,6 +1,6 @@
 # Personally Identifiable Information
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Handling Personally Identifiable Information (PII) is a critical priority for any enterprise. A robust strategy is essential for both data privacy and regulatory compliance. Delight AI provides the following features to help organizations effectively manage PII.
 
