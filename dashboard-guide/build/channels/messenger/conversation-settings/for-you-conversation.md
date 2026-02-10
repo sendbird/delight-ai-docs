@@ -27,7 +27,7 @@ This feature also requires deployment for live action. Make sure deploy the chan
 3. Toggle on **Personalize with AI** to let AI agent dynamically generate the welcome message and suggested replies when a conversation opens.
 4. Select whether AI agent can access **User memory** and **API data**. For more personalized assistance, we recommend you enable both.
 5. Provide **Instructions for AI**, **Welcome message example**, and **Suggested reply example**. AI agent will refer to the instructions and examples when generating messages.
-6. As a fallback, enter a default welcome message under **Language** that can be used when the AI agent can't generate a personalized message.
+6. As a fallback, add a default welcome message under **Language** that can be used when the AI agent can't generate a personalized message.
 
 {% hint style="warning" %}
 #### Message behavior - When **Personalize with AI** is enabled
