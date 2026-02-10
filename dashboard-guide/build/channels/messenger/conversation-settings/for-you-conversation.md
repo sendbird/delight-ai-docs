@@ -29,3 +29,6 @@ FYC utilizes the following sources to generate personalized messages:
 
 <figure><img src="../../../../../.gitbook/assets/FYC-welcome-message.png" alt=""><figcaption></figcaption></figure>
 
+{% hint style="info" %}
+FYC doesn't require deployment. Instead, save the settings in each AI agent environment, such as **Production**.
+{% endhint %}
