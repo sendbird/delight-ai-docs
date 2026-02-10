@@ -27,8 +27,8 @@ FYC utilizes the following sources to generate personalized messages:
 5. Provide **Instructions for AI**, **Welcome message example**, and **Suggested reply example**. AI agent will refer to the guideline and sample messages when sending an actual message.
    1. Instructions for AI example:&#x20;
 
-<figure><img src="../../../../../.gitbook/assets/FYC-welcome-message.png" alt=""><figcaption></figcaption></figure>
-
 {% hint style="info" %}
-FYC doesn't require deployment. Instead, save the settings in each AI agent environment, such as **Production**.
+FYC doesn't require deployment. Instead, save the settings in each AI agent environment, such as **Staging** and **Production**.
 {% endhint %}
+
+<figure><img src="../../../../../.gitbook/assets/FYC-welcome-message.png" alt=""><figcaption></figcaption></figure>
