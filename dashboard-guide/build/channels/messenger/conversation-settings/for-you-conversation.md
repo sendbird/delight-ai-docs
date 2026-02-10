@@ -20,6 +20,8 @@ To personalize messages, the AI agent can use the following sources:
 This feature also requires deployment for live action. Make sure deploy the change up to **Production**.
 {% endhint %}
 
+***
+
 ## How to use
 
 1. Navigate to **Build > Channels > Messenger** in the left menu bar of Delight AI agent dashboard.
