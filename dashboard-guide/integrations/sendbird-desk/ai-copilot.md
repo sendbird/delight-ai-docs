@@ -34,7 +34,7 @@ Once you have an AI agent ready, follow the steps below to enable the feature.
 2. Go to **Settings > Desk > AI features**.
 3. Click on the **AI copilot** card and turn on the feature. Make sure the AI agent linked to the copilot is the one you've created for this feature.
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Agent access
 

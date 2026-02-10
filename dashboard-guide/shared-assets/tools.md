@@ -12,7 +12,7 @@ Tools let you connect external APIs to your AI agent, enabling it to retrieve or
 2. Click **Add tool** + in the top-right corner.
 3. Fill out the following fields:
 
-<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (32) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### **Basic information**
 
@@ -29,7 +29,7 @@ Add custom headers if your API requires authentication or specific content types
 * HTTP method: Choose `POST`, `GET`, `PUT`, `PATCH`, `DELETE`
 * URL: Add your endpoint URL.
 
-<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (34) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Request body
 

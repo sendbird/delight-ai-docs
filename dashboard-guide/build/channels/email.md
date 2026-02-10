@@ -21,7 +21,7 @@ When you enable the Email channel, it will automatically create a Delight email 
 2. Click the **Email** tile.
 3. Confirm that you will add an email channel for the AI Agent.
 
-<figure><img src="../../../.gitbook/assets/image (27).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (27) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 4. Once the email channel is enabled, you will see an email address auto-generated for your AI agent in the **Channel settings** tab.
 
@@ -47,7 +47,7 @@ First, set up the email domain and register AI agent’s DNS records to your dom
 Your MAIL-FROM domain won't be displayed to your users when they receive emails from the AI Agent.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (31).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (31) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 4. Once the domains are set, you will see **DomainKeys Identified Mail** (DKIM), **Amazon SES** (SPF), and **Domain-based Message Authentication, Reporting, and Comformance** (DMARC) records assigned to your AI agent. Copy and paste these records to your DNS settings to ensure the emails sent from your AI Agent aren’t filtered as spam.
 
@@ -99,7 +99,7 @@ v=spf1 include:_spf.aiagent.sendbird.com ~all
 
 Once you’ve set up SPF, DKIM, and DMARC, check if all records have been successfully detected and verified through your DNS by clicking the Check verification status button under **Workspace settings > Channels > Emails** in **Delight AI dashboard**.
 
-<figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption><p><strong>Check verification status</strong> button</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (25) (1).png" alt=""><figcaption><p><strong>Check verification status</strong> button</p></figcaption></figure>
 
 </details>
 
