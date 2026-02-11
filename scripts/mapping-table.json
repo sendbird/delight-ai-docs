@@ -25,14 +25,14 @@
       "$comment": "Android features → docs/",
       "docsPrefix": "sdk-docs/android/features/",
       "repo": "android",
-      "privateBase": "docs/",
+      "privateBase": "docs/docs/features/",
       "publicBase": "android/docs/"
     },
     {
       "$comment": "Android root level",
       "docsPrefix": "sdk-docs/android/",
       "repo": "android",
-      "privateBase": "",
+      "privateBase": "docs/docs/",
       "publicBase": "android/"
     },
     {
@@ -53,42 +53,42 @@
       "$comment": "JavaScript CDN features",
       "docsPrefix": "sdk-docs/javascript-cdn/features/",
       "repo": "js",
-      "privateBase": "packages/cdn-loader/docs/",
+      "privateBase": "packages/cdn-loader/docs/features/",
       "publicBase": "js/cdn/docs/"
     },
     {
       "$comment": "JavaScript CDN root",
       "docsPrefix": "sdk-docs/javascript-cdn/",
       "repo": "js",
-      "privateBase": "packages/cdn-loader/",
+      "privateBase": "packages/cdn-loader/docs/",
       "publicBase": "js/cdn/"
     },
     {
       "$comment": "React NPM features",
       "docsPrefix": "sdk-docs/react-npm/features/",
       "repo": "js",
-      "privateBase": "packages/messenger-react/docs/",
+      "privateBase": "packages/messenger-react/docs/features/",
       "publicBase": "js/react/docs/"
     },
     {
       "$comment": "React NPM root",
       "docsPrefix": "sdk-docs/react-npm/",
       "repo": "js",
-      "privateBase": "packages/messenger-react/",
+      "privateBase": "packages/messenger-react/docs/",
       "publicBase": "js/react/"
     },
     {
       "$comment": "React Native features",
       "docsPrefix": "sdk-docs/react-native/features/",
       "repo": "js",
-      "privateBase": "packages/messenger-react-native/docs/",
+      "privateBase": "packages/messenger-react-native/docs/features",
       "publicBase": "js/react-native/docs/"
     },
     {
       "$comment": "React Native root",
       "docsPrefix": "sdk-docs/react-native/",
       "repo": "js",
-      "privateBase": "packages/messenger-react-native/",
+      "privateBase": "packages/messenger-react-native/docs",
       "publicBase": "js/react-native/"
     }
   ],
