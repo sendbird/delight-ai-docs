@@ -51,14 +51,14 @@
     "js/react-native/docs/messages.md": {
       "publish": true,
       "syncBack": true,
-      "reason": "SDK feature guide for messages functionality in React Native SDK. This is user-facing documentation about how to use the messages API, which should be published to the docs site and synced back when edited.",
-      "classifiedAt": "2026-02-09T07:25:33.889Z"
+      "reason": "SDK feature guide documenting messages functionality for React Native. This is user-facing product documentation that should be published and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-11T08:25:34.620Z"
     },
     "js/react-native/docs/conversations.md": {
       "publish": true,
       "syncBack": true,
-      "reason": "SDK feature guide documenting conversations functionality in React Native - user-facing product documentation that should be published and kept in sync across repos",
-      "classifiedAt": "2026-02-09T07:25:37.451Z"
+      "reason": "SDK feature guide for React Native - documents conversations functionality, a core product feature. Should be published to docs and edits should sync back to source repo.",
+      "classifiedAt": "2026-02-11T08:24:12.585Z"
     },
     "js/react-native/MULTILANGUAGE.md": {
       "publish": true,
