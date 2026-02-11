@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # ServiceNow
 
 The ServiceNow integration with Delight AI agent enables us to extract all the internal spaces and pages that you've created. This integration allows you to:
@@ -12,7 +8,7 @@ The ServiceNow integration with Delight AI agent enables us to extract all the i
 
 ## **How to integrate**
 
-### **Step 1:**  Provide your ServiceNow API credentials.
+### **Step 1:** Provide your ServiceNow API credentials.
 
 To integrate, Delight AI agent will need the following information:
 
