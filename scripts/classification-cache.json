@@ -65,6 +65,18 @@
       "syncBack": true,
       "reason": "This is an SDK feature guide for React Native localization/multilanguage support. It's a user-facing documentation file that explains how to use the SDK's localization features, making it appropriate for publication and syncing back changes from the docs site.",
       "classifiedAt": "2026-02-09T07:25:40.782Z"
+    },
+    "js/cdn/docs/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality. This is user-facing product documentation that should be published to the docs site and synchronized with the source repository.",
+      "classifiedAt": "2026-02-11T08:28:49.500Z"
+    },
+    "js/cdn/docs/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide covering messages functionality - core product documentation that should be published and kept in sync with source repository",
+      "classifiedAt": "2026-02-11T08:29:21.704Z"
     }
   }
 }
