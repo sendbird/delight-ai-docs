@@ -21,14 +21,14 @@
     "js/react/docs/messages.md": {
       "publish": true,
       "syncBack": true,
-      "reason": "SDK feature guide for React messaging functionality. This is user-facing documentation that explains core API capabilities and should be published to the docs site. Changes in docs should sync back to the source repo.",
-      "classifiedAt": "2026-02-09T07:11:20.165Z"
+      "reason": "SDK feature guide for React/JS SDK covering message types and functionality. This is user-facing documentation for developers integrating the Delight AI messenger, appropriate for the public docs site and should sync back to keep private repos in sync.",
+      "classifiedAt": "2026-02-11T08:27:22.225Z"
     },
     "js/react/docs/conversations.md": {
       "publish": true,
       "syncBack": true,
-      "reason": "SDK feature guide documenting conversations functionality in Delight AI agent. This is user-facing product documentation for the React SDK that should be published and kept in sync with the source repository.",
-      "classifiedAt": "2026-02-09T07:11:22.808Z"
+      "reason": "SDK feature guide documenting conversations functionality. This is user-facing product documentation for the Delight AI React SDK that should be published to docs site and kept in sync with source.",
+      "classifiedAt": "2026-02-11T08:26:46.319Z"
     },
     "js/react/MULTILANGUAGE.md": {
       "publish": true,
