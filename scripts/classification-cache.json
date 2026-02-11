@@ -65,6 +65,30 @@
       "syncBack": true,
       "reason": "This is an SDK feature guide for React Native localization/multilanguage support. It's a user-facing documentation file that explains how to use the SDK's localization features, making it appropriate for publication and syncing back changes from the docs site.",
       "classifiedAt": "2026-02-09T07:25:40.782Z"
+    },
+    "js/react-native/docs/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is an SDK feature guide for the React-Native Delight AI agent SDK covering localization/multilanguage support. It's a user-facing feature documentation that should be published to the docs site and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-11T11:33:46.459Z"
+    },
+    "js/react-native/docs/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK quickstart guide for React-Native platform. User-facing documentation for integrating Delight AI agent into React-Native applications. Qualifies as SDK getting started / quickstart content.",
+      "classifiedAt": "2026-02-11T11:33:50.365Z"
+    },
+    "js/react-native/docs/features/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality in React Native. This is user-facing product documentation that should be published and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-11T11:35:09.900Z"
+    },
+    "js/react-native/docs/features/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is an SDK feature guide for React Native that documents message types and functionality. It's user-facing product documentation that should be published and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-11T11:35:12.783Z"
     }
   }
 }
