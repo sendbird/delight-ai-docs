@@ -26,70 +26,70 @@
       "docsPrefix": "sdk-docs/android/features/",
       "repo": "android",
       "privateBase": "docs/docs/features/",
-      "publicBase": "android/docs/"
+      "publicBase": "android/docs/features/"
     },
     {
       "$comment": "Android root level",
       "docsPrefix": "sdk-docs/android/",
       "repo": "android",
       "privateBase": "docs/docs/",
-      "publicBase": "android/"
+      "publicBase": "android/docs/"
     },
     {
       "$comment": "iOS features → docs/features/",
       "docsPrefix": "sdk-docs/ios/features/",
       "repo": "ios",
       "privateBase": "docs/features/",
-      "publicBase": "ios/docs/"
+      "publicBase": "ios/docs/features/"
     },
     {
       "$comment": "iOS root level",
       "docsPrefix": "sdk-docs/ios/",
       "repo": "ios",
       "privateBase": "docs/",
-      "publicBase": "ios/"
+      "publicBase": "ios/docs/"
     },
     {
       "$comment": "JavaScript CDN features",
       "docsPrefix": "sdk-docs/javascript-cdn/features/",
       "repo": "js",
       "privateBase": "packages/cdn-loader/docs/features/",
-      "publicBase": "js/cdn/docs/"
+      "publicBase": "js/cdn/docs/features/"
     },
     {
       "$comment": "JavaScript CDN root",
       "docsPrefix": "sdk-docs/javascript-cdn/",
       "repo": "js",
       "privateBase": "packages/cdn-loader/docs/",
-      "publicBase": "js/cdn/"
+      "publicBase": "js/cdn/docs/"
     },
     {
       "$comment": "React NPM features",
       "docsPrefix": "sdk-docs/react-npm/features/",
       "repo": "js",
       "privateBase": "packages/messenger-react/docs/features/",
-      "publicBase": "js/react/docs/"
+      "publicBase": "js/react/docs/features/"
     },
     {
       "$comment": "React NPM root",
       "docsPrefix": "sdk-docs/react-npm/",
       "repo": "js",
       "privateBase": "packages/messenger-react/docs/",
-      "publicBase": "js/react/"
+      "publicBase": "js/react/docs/"
     },
     {
       "$comment": "React Native features",
       "docsPrefix": "sdk-docs/react-native/features/",
       "repo": "js",
-      "privateBase": "packages/messenger-react-native/docs/features",
-      "publicBase": "js/react-native/docs/"
+      "privateBase": "packages/messenger-react-native/docs/features/",
+      "publicBase": "js/react-native/docs/features/"
     },
     {
       "$comment": "React Native root",
       "docsPrefix": "sdk-docs/react-native/",
       "repo": "js",
-      "privateBase": "packages/messenger-react-native/docs",
-      "publicBase": "js/react-native/"
+      "privateBase": "packages/messenger-react-native/docs/",
+      "publicBase": "js/react-native/docs/"
     }
   ],
 

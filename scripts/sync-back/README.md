@@ -195,8 +195,8 @@ Most files are auto-mapped using prefix patterns. New files under existing prefi
     {
       "docsPrefix": "sdk-docs/android/features/",
       "repo": "android",
-      "privateBase": "docs/",
-      "publicBase": "android/docs/"
+      "privateBase": "docs/docs/features/",
+      "publicBase": "android/docs/features/"
     }
   ]
 }
@@ -211,8 +211,8 @@ For files with different names or special paths, add an override:
   "overrides": {
     "sdk-docs/android/quickstart.md": {
       "repo": "android",
-      "privatePath": "README.md",
-      "publicAgentPath": "android/README.md"
+      "privatePath": "docs/docs/README.md",
+      "publicAgentPath": "android/docs/README.md"
     }
   }
 }
