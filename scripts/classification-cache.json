@@ -65,6 +65,42 @@
       "syncBack": true,
       "reason": "This is an SDK feature guide for React Native localization/multilanguage support. It's a user-facing documentation file that explains how to use the SDK's localization features, making it appropriate for publication and syncing back changes from the docs site.",
       "classifiedAt": "2026-02-09T07:25:40.782Z"
+    },
+    "js/react/docs/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React SDK's multi-language support functionality. This is user-facing documentation for developers implementing the SDK, similar to other feature guides (messages.md, conversations.md). Should be published and synced back to the source repo.",
+      "classifiedAt": "2026-02-12T08:50:45.266Z"
+    },
+    "js/react/docs/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is a React SDK getting started/integration guide for the Delight AI agent Messenger. It contains user-facing documentation about prerequisites, installation, initialization, and component overview - core content for SDK users. It should be published to docs and synced back to the repo.",
+      "classifiedAt": "2026-02-12T08:51:15.667Z"
+    },
+    "js/react/docs/TEMPLATE-LAYOUT-CUSTOMIZATION-GUIDE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React component customization. This is a product documentation file explaining how developers can customize the Delight AI Messenger UI - directly relevant to SDK users and should be published to docs site. Changes should sync back to the source repository.",
+      "classifiedAt": "2026-02-12T08:51:19.416Z"
+    },
+    "js/react/docs/context-object.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting context objects functionality for React SDK. This is user-facing product documentation that should be published and kept in sync with source repo.",
+      "classifiedAt": "2026-02-12T08:51:23.134Z"
+    },
+    "js/react/docs/features/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is an SDK feature guide index for the React SDK. It serves as user-facing documentation for developers integrating the SDK, explaining how to use various features. This type of content should be published to the docs site and edits should sync back to the source repository.",
+      "classifiedAt": "2026-02-12T08:51:26.150Z"
+    },
+    "js/react/docs/features/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting message types and functionality for React/JavaScript SDK. This is user-facing product documentation that should be published and kept in sync with source repos.",
+      "classifiedAt": "2026-02-12T08:51:31.357Z"
     }
   }
 }
