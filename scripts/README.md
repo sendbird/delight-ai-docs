@@ -128,9 +128,9 @@ Paths matching `excludePatterns` in `mapping-table.json` are skipped before any 
 
 | Public Repo | Docs Repo | Private Repo |
 |-------------|-----------|--------------|
-| `android/docs/conversations.md` | `sdk-docs/android/features/conversations.md` | `ai-agent-android/docs/conversations.md` |
-| `android/README.md` | `sdk-docs/android/quickstart-guide-messenger.md` | `ai-agent-android/README.md` |
-| `js/react/docs/messages.md` | `sdk-docs/react-npm/features/messages.md` | `ai-agent-js/packages/messenger-react/docs/messages.md` |
+| `android/docs/features/conversations.md` | `sdk-docs/android/features/conversations.md` | `ai-agent-android/docs/docs/features/conversations.md` |
+| `android/docs/README.md` | `sdk-docs/android/README.md` | `ai-agent-android/docs/docs/README.md` |
+| `js/react/docs/features/messages.md` | `sdk-docs/react-npm/features/messages.md` | `ai-agent-js/packages/messenger-react/docs/features/messages.md` |
 
 ### Adding New Files
 
