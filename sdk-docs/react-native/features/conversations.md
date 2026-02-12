@@ -9,7 +9,9 @@ When the launcher is clicked, a user can be led to either their conversation lis
 | Number of active conversation| A user can have only one active conversation with your AI agent at a time.| A user can have multiple active conversations with your AI agent at the same time.|
 | Starting a new conversation | A new conversation can't be created if there is an active conversation at the moment. The existing conversation must end first.| New conversations can be created anytime using the `createConversation()` function from `useMessengerSessionContext()`.|
 
->__Note__: Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+{% hint style="info" %}
+Whichever conversation mode you choose, if there is no active conversation, a new conversation is automatically created and the user can start a dialogue with your AI agent. This provides seamless user experience without requiring manual conversation setup.
+{% endhint %}
 
 This guide explains:
 
@@ -50,7 +52,9 @@ yarn add react-native-mmkv expo-image-picker expo-document-picker
 pnpm add react-native-mmkv expo-image-picker expo-document-picker
 ```
 
->__Note__: If you're using bare React Native instead of Expo, use `react-native-image-picker` and `react-native-document-picker` instead of the Expo packages. Make sure to follow the installation instructions for each package.
+{% hint style="info" %}
+If you're using bare React Native instead of Expo, use `react-native-image-picker` and `react-native-document-picker` instead of the Expo packages. Make sure to follow the installation instructions for each package.
+{% endhint %}
 
 ### Configure native modules
 
@@ -95,10 +99,11 @@ Once you have determined which conversation mode to apply, you should also consi
 
 The launcher's appearance can be customized via the dashboard. For positioning and sizing customization, see the launcher customization sections below.
 
->__Note__: `FixedMessenger` must be used within an `AIAgentProviderContainer` which handles initialization, authentication, and configuration.
+{% hint style="info" %}
+`FixedMessenger` must be used within an `AIAgentProviderContainer` which handles initialization, authentication, and configuration.
+{% endhint %}
 
 ```tsx
-import { useState } from 'react';
 import {
   AIAgentProviderContainer,
   FixedMessenger,
@@ -237,7 +242,6 @@ You can customize the launcher's position, margin, size and spacing between the 
 The following example demonstrates all customization options together:
 
 ```tsx
-import { useState } from 'react';
 import {
   AIAgentProviderContainer,
   FixedMessenger,
@@ -377,7 +381,6 @@ Also, you can open a specific conversation channel by passing its URL, or manual
 The `context` object allows you to provide user's information to AI agents for more personalized service, such as their country code and language preference. This context can be set when creating conversations to enhance the user experience. You can configure these settings at the provider level using the `AIAgentProviderContainer` component props.
 
 ```tsx
-import { useState } from 'react';
 import {
   AIAgentProviderContainer,
   FixedMessenger,
@@ -417,7 +420,6 @@ const App = () => {
 You can open a specific conversation by passing its channel URL to the `Conversation` component. This is useful when you want to display a specific conversation directly without using the launcher.
 
 ```tsx
-import { useState } from 'react';
 import {
   AIAgentProviderContainer,
   Conversation,
@@ -431,7 +433,7 @@ const mmkv = createMMKV();
 
 // Using Conversation component directly to open specific conversation
 function CustomMessengerView() {
-  const [channelUrl] = useState('sendbird_group_channel_12345');
+  const channelUrl = 'sendbird_group_channel_12345';
 
   return (
     <AIAgentProviderContainer
@@ -454,10 +456,11 @@ function CustomMessengerView() {
 
 Multiple active conversation mode allows users to simultaneously communicate with your AI agent in different channels. In this case, use the `createConversation()` function from `useMessengerSessionContext()` to create a new conversation whenever needed.
 
->__Note__: In single conversation mode, a new conversation can't be created if there is an active conversation.
+{% hint style="info" %}
+In single conversation mode, a new conversation can't be created if there is an active conversation.
+{% endhint %}
 
 ```tsx
-import { useState } from 'react';
 import { Button } from 'react-native';
 import { useMessengerSessionContext } from '@sendbird/ai-agent-messenger-react-native';
 
@@ -492,7 +495,9 @@ function CreateConversationButton() {
 }
 ```
 
->__Note__: The `CreateConversationButton` component must be used within an `AIAgentProviderContainer` to access the `useMessengerSessionContext` hook.
+{% hint style="info" %}
+The `CreateConversationButton` component must be used within an `AIAgentProviderContainer` to access the `useMessengerSessionContext` hook.
+{% endhint %}
 
 ```tsx
 // Usage within AIAgentProviderContainer
@@ -521,7 +526,7 @@ Configuration options for the `AIAgentProviderContainer` component. This compone
 | `aiAgentId` | string | Required | AI agent identifier for conversation target |
 | `userSessionInfo` | ManualSessionInfo \| AnonymousSessionInfo | Required | User session information for authentication |
 | `nativeModules` | NativeAdapterConfig | Required | Native modules configuration (mmkv, imagePicker, documentPicker) |
-| `chatParams` | Partial<SendbirdChatParams> | - | Custom parameters for initializing the chat SDK |
+| `chatParams` | Partial<SendbirdChatParams<[GroupChannelModule, AIAgentModule]>> | - | Custom parameters for initializing the chat SDK |
 | `theme` | object | - | Theme customization including mode, palette and typography |
 | `logLevel` | LogLevel | LogLevel.WARN | Log level for the AI agent client |
 | `language` | string | System default | Language setting following IETF BCP 47 format (e.g., "en-US", "ko-KR") |
