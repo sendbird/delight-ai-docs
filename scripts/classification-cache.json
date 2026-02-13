@@ -1,3 +1,34 @@
 {
-  "entries": {}
+  "entries": {
+    "js/react-native/docs/MULTILANGUAGE.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting multi-language support for React Native SDK. User-facing documentation that explains how to implement i18n functionality. Should be published to docs site and synced back to source repo.",
+      "classifiedAt": "2026-02-12T08:51:08.299Z"
+    },
+    "js/react-native/docs/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "This is a SDK getting started/quickstart guide for React Native. It contains user-facing documentation about initializing and using the Delight AI agent Messenger SDK, which should be published to the docs site and kept in sync with the source repository.",
+      "classifiedAt": "2026-02-12T08:51:10.756Z"
+    },
+    "js/react-native/docs/features/README.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature documentation - React Native docs README serves as an index/overview for feature guides, which are user-facing product documentation that should be published and synced back from edits",
+      "classifiedAt": "2026-02-12T08:51:13.236Z"
+    },
+    "js/react-native/docs/features/conversations.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide documenting conversations functionality for React Native. This is user-facing product documentation that should be published and synced back to the source repository.",
+      "classifiedAt": "2026-02-12T08:51:15.133Z"
+    },
+    "js/react-native/docs/features/messages.md": {
+      "publish": true,
+      "syncBack": true,
+      "reason": "SDK feature guide for React Native messages functionality. User-facing documentation about how to use the messaging API, belongs in product docs and should sync back to source repo.",
+      "classifiedAt": "2026-02-12T08:52:42.553Z"
+    }
+  }
 }
