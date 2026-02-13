@@ -75,13 +75,16 @@ jobs:
               HEAD_SHA="HEAD"
             fi
 
-            echo "base_sha=${BASE_SHA}" >> $GITHUB_OUTPUT
-            echo "head_sha=${HEAD_SHA}" >> $GITHUB_OUTPUT
-
             # Use GitHub Compare API to avoid fetch-depth limitations
             echo "Comparing ${BASE_SHA}...${HEAD_SHA} via GitHub API"
-            CHANGED_COUNT=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${BASE_SHA}...${HEAD_SHA}" \
-              --jq '[.files[].filename | select(test("^sdk-docs/.*\\.md$"))] | length')
+            CHANGED_FILES=$(gh api "repos/${GITHUB_REPOSITORY}/compare/${BASE_SHA}...${HEAD_SHA}" \
+              --jq '[.files[].filename | select(test("^sdk-docs/.*\\.md$"))] | join(",")')
+            if [ -n "$CHANGED_FILES" ]; then
+              CHANGED_COUNT=$(echo "$CHANGED_FILES" | tr ',' '\n' | wc -l | tr -d ' ')
+              echo "manual_files=${CHANGED_FILES}" >> $GITHUB_OUTPUT
+            else
+              CHANGED_COUNT=0
+            fi
           fi
           echo "changed_count=${CHANGED_COUNT}" >> $GITHUB_OUTPUT
           echo "Changed sdk-docs md files: ${CHANGED_COUNT}"
@@ -91,8 +94,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SDK_GH_BOT1_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          BASE_SHA: ${{ steps.changes.outputs.base_sha }}
-          HEAD_SHA: ${{ steps.changes.outputs.head_sha }}
           MANUAL_FILES: ${{ steps.changes.outputs.manual_files }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
         run: |
