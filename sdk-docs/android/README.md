@@ -196,7 +196,7 @@ val manualSessionInfo = SessionInfo.ManualSessionInfo(
 AIAgentMessenger.updateSessionInfo(manualSessionInfo)
 ```
 
-{% hint style="danger" %}
+{% hint style="warning" %}
 When using Manual Session, you **must** implement a `SessionHandler` to handle session expiration and token refresh. See the [Handle session expiration](#handle-session-expiration) section for implementation details.
 {% endhint %}
 
