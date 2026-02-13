@@ -47,7 +47,9 @@ Delight AI agent messenger supports various message types to provide comprehensi
   <figcaption></figcaption>
 </figure>
 
->__Note__: However, once handed off to a human agent, users can send image files in any format.
+{% hint style="info" %}
+However, once handed off to a human agent, users can send image files in any format.
+{% endhint %}
 
 ### File message
 
@@ -239,7 +241,7 @@ Custom templates are rendered in a dedicated slot within the message structure. 
 
 **2) Register a custom message template**
 
-Register your custom message template as `IncomingMessageLayout.MessageTemplate` under `AgentProviderContainer`. In the following snippet, you'll register `MyCustomMessageTemplate` as a component.
+Register your custom message template as `IncomingMessageLayout.CustomMessageTemplate` under `AgentProviderContainer`. In the following snippet, you'll register `MyCustomMessageTemplate` as a component.
 
 {% hint style="info" %}
 If you don't register a custom component, this template slot renders nothing by default.
