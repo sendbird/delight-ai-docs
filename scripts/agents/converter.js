@@ -57,9 +57,9 @@ Conversion rules:
 
   const userPrompt = `Convert this GitBook markdown to pure GitHub-flavored markdown:
 
----
+=== GITBOOK CONTENT ===
 ${gitbookContent}
----
+=== END CONTENT ===
 
 Output ONLY the converted markdown, nothing else.`;
 
@@ -113,9 +113,9 @@ Output ONLY the converted markdown, nothing else.`;
   } else {
     userPrompt = `Convert this GitHub-flavored markdown to GitBook-flavored markdown:
 
----
+=== MARKDOWN CONTENT ===
 ${markdownContent}
----
+=== END CONTENT ===
 
 Output ONLY the converted markdown, nothing else.`;
   }
