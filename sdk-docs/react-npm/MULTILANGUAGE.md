@@ -236,4 +236,4 @@ function App() {
 
 ## Default SDK strings
 
-The string keys remain the same as the JavaScript version. Please refer to the [JavaScript version's string keys ](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/cdn/MULTILANGUAGE.md#default-sdk-strings)for the complete list.
+The string keys remain the same as the JavaScript version. Please refer to the [JavaScript version's string keys](https://github.com/sendbird/delight-ai-docs/blob/katherine/guide/donna/sdk-docs/cdn/MULTILANGUAGE.md#default-sdk-strings)for the complete list.
